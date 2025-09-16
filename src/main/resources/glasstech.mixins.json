@@ -4,11 +4,13 @@
   "package": "net.glasslauncher.mods.glasstech.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "ExampleMixin"
+    "ExampleMixin",
+    "TooltipHelperMixin"
   ],
   "server": [
   ],
   "client": [
+    "MixinWorldRenderer"
   ],
   "injectors": {
     "defaultRequire": 1

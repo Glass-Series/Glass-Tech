@@ -3,10 +3,10 @@
   "id": "glasstech",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Glass Tech",
+  "description": "A total conversion mod aiming to add new features and revitalize beta 1.7.3. Incompatible with everything, including StationAPI.",
   "authors": [
-    "Me!"
+    "calmilamsy"
   ],
   "contact": {
     "homepage": "https://glass-launcher.net/",
@@ -19,7 +19,10 @@
   "environment": "*",
   "entrypoints": {
     "stationapi:event_bus": [
-      "net.glasslauncher.mods.glasstech.events.init.InitListener"
+      {
+        "adapter": "kotlin",
+        "value": "net.glasslauncher.mods.glasstech.events.init.InitListener"
+      }
     ],
     "stationapi:event_bus_client": [
     ],
@@ -29,6 +32,7 @@
   "mixins": [
     "glasstech.mixins.json"
   ],
+  "accessWidener": "glasstech.accesswidener",
 
   "depends": {
     "minecraft": "1.0.0-beta.7.3"

@@ -1,0 +1,31 @@
+{
+  "multipart": [
+    {
+      "apply": { "model": "glasstech:block/cable/$0$/$0$_cable_core_core" }
+    },
+    {
+      "when": { "north": "true" },
+      "apply": { "model": "glasstech:block/cable/$0$/$0$_cable_core_north" }
+    },
+    {
+      "when": { "east": "true" },
+      "apply": { "model": "glasstech:block/cable/$0$/$0$_cable_core_east" }
+    },
+    {
+      "when": { "south": "true" },
+      "apply": { "model": "glasstech:block/cable/$0$/$0$_cable_core_south" }
+    },
+    {
+      "when": { "west": "true" },
+      "apply": { "model": "glasstech:block/cable/$0$/$0$_cable_core_west" }
+    },
+    {
+      "when": { "up": "true" },
+      "apply": { "model": "glasstech:block/cable/$0$/$0$_cable_core_up" }
+    },
+    {
+      "when": { "down": "true" },
+      "apply": { "model": "glasstech:block/cable/$0$/$0$_cable_core_down" }
+    }
+  ]
+}

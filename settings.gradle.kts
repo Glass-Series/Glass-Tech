@@ -6,3 +6,6 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+
+include(":Glass-GUIs")
+project(":Glass-GUIs").projectDir = file("../Glass-GUIs")

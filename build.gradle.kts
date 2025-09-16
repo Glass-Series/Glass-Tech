@@ -1,25 +1,37 @@
-import org.gradle.internal.extensions.stdlib.toDefaultLowerCase
-import java.io.BufferedReader
-import java.io.InputStreamReader
+import net.glasslauncher.gradleplugin.resourcegen.CableResourceGenHelper
+import net.glasslauncher.gradleplugin.resourcegen.ResourceGenPatternOutputFile
+import net.glasslauncher.gradleplugin.resourcegen.ResourceGenPatternTargetFile
+import net.glasslauncher.gradleplugin.resourcegen.ResourceGenPatternTargets
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import java.net.URI
-import java.net.URL
 
 plugins {
+	kotlin("jvm") version "2.1.20"
 	id("maven-publish")
 	id("fabric-loom") version "1.9.2"
-	id("babric-loom-extension") version "1.9.3"
+	id("babric-loom-extension") version "1.9.4"
+	id("resourceGen")
 }
 
 //noinspection GroovyUnusedAssignment
 java.sourceCompatibility = JavaVersion.VERSION_17
 java.targetCompatibility = JavaVersion.VERSION_17
+kotlin.compilerOptions.jvmTarget.set(JvmTarget.JVM_17)
 
 base.archivesName = project.properties["archives_base_name"] as String
 version = project.properties["mod_version"] as String
 group = project.properties["maven_group"] as String
 
+sourceSets {
+	main {
+		resources {
+			srcDir("src/main/generated/resources")
+		}
+	}
+}
+
 loom {
-//	accessWidenerPath = file("src/main/resources/examplemod.accesswidener")
+	accessWidenerPath = file("src/main/resources/glasstech.accesswidener")
 
 	runs {
 		// If you want to make a testmod for your mod, right click on src, and create a new folder with the same name as source() below.
@@ -34,6 +46,12 @@ loom {
 			server()
 			configurations.transitiveImplementation
 		}
+	}
+}
+
+glassResourceGen {
+	patternTargets = ResourceGenPatternTargets.create {
+		it.addAll(CableResourceGenHelper.create("iron"))
 	}
 }
 
@@ -52,12 +70,17 @@ repositories {
 			includeGroup("maven.modrinth")
 		}
 	}
+	mavenLocal()
+}
+
+configurations.all {
+	exclude("babric") // Why gradle, this exists literally nowhere
 }
 
 dependencies {
 	minecraft("com.mojang:minecraft:b1.7.3")
 	mappings("net.glasslauncher:biny:${project.properties["yarn_mappings"]}:v2")
-	modImplementation("babric:fabric-loader:${project.properties["loader_version"]}")
+	modImplementation("net.fabricmc:fabric-loader:${project.properties["loader_version"]}")
 
 	implementation("org.apache.logging.log4j:log4j-core:2.17.2")
 
@@ -75,7 +98,8 @@ dependencies {
 
 	// StAPI itself.
 	// transitiveImplementation tells babric loom that you want this dependency to be pulled into other mod's development workspaces. Best used ONLY for required dependencies.
-	modImplementation("net.modificationstation:StationAPI:${project.properties["stationapi_version"]}")
+	transitiveImplementation(modImplementation("net.modificationstation:StationAPI:${project.properties["stationapi_version"]}") as Dependency)
+	transitiveImplementation(modImplementation("net.teamterminus:machine_essentials:1.0.0") as Dependency)
 
 	// Extra mods.
 	// https://github.com/calmilamsy/glass-config-api
@@ -84,6 +108,15 @@ dependencies {
 	modImplementation("net.glasslauncher.mods:ModMenu:${project.properties["modmenu_version"]}")
 	// https://github.com/Glass-Series/Always-More-Items
 	modImplementation("net.glasslauncher.mods:AlwaysMoreItems:${project.properties["alwaysmoreitems_version"]}")
+
+	modImplementation(project(":Glass-GUIs")) {
+		isTransitive = false
+	}
+
+	transitiveImplementation(modImplementation("net.fabricmc:fabric-language-kotlin:1.13.2+kotlin.2.1.20") {
+		exclude("net.fabricmc")
+	} as Dependency)
+
 }
 
 tasks.withType<ProcessResources> {

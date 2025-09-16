@@ -1,0 +1,7 @@
+{
+  "parent": "glasstech:block/cable/cable_core_north",
+  "textures": {
+    "core": "glasstech:block/$0$_cable",
+    "particle": "#core"
+  }
+}
