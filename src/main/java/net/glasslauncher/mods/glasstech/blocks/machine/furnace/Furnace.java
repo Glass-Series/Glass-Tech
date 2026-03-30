@@ -1,5 +1,7 @@
-package net.glasslauncher.mods.glasstech.blocks.furnace;
+package net.glasslauncher.mods.glasstech.blocks.machine.furnace;
 
+import net.danygames2014.nyalib.block.DropInventoryOnBreak;
+import net.danygames2014.nyalib.energy.template.block.EnergyConsumerBlockTemplate;
 import net.glasslauncher.mods.glasstech.PlayerEntityUtil;
 import net.glasslauncher.mods.glasstech.events.init.InitListener;
 
@@ -17,11 +19,8 @@ import net.modificationstation.stationapi.api.state.StateManager;
 import net.modificationstation.stationapi.api.state.property.Properties;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.math.Direction;
-import net.teamterminus.machineessentials.energy.electric.template.ElectricBlock;
-import net.teamterminus.machineessentials.network.NetworkComponentBlock;
-import net.teamterminus.machineessentials.network.NetworkType;
 
-public class Furnace extends ElectricBlock implements NetworkComponentBlock {
+public class Furnace extends EnergyConsumerBlockTemplate implements DropInventoryOnBreak {
 
     public Furnace(Identifier identifier, Material material) {
         super(identifier, material);
@@ -35,6 +34,7 @@ public class Furnace extends ElectricBlock implements NetworkComponentBlock {
 
     @Override
     public void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        builder.add(Properties.HORIZONTAL_FACING);
         builder.add(Properties.LIT);
         super.appendProperties(builder);
     }
@@ -61,11 +61,6 @@ public class Furnace extends ElectricBlock implements NetworkComponentBlock {
         FurnaceBlockEntity furnaceBlockEntity = (FurnaceBlockEntity) world.getBlockEntity(x, y, z);
         GuiHelper.openGUI(player, InitListener.NAMESPACE.id("furnace"), furnaceBlockEntity, new FurnaceScreenHandler(player.inventory, furnaceBlockEntity));
         return true;
-    }
-
-    @Override
-    public NetworkType getType() {
-        return NetworkType.ELECTRIC;
     }
 
     @Override

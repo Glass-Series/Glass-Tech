@@ -1,6 +1,5 @@
-package net.glasslauncher.mods.glasstech.blocks.furnace;
+package net.glasslauncher.mods.glasstech.blocks.machine.furnace;
 
-import net.glasslauncher.mods.glassguis.screen.GlassScreen;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.modificationstation.stationapi.api.util.Formatting;
@@ -29,7 +28,7 @@ public class FurnaceScreen extends HandledScreen {
     public void render(int mouseX, int mouseY, float delta) {
         super.render(mouseX, mouseY, delta);
 
-        glassguis_tooltip(this, List.of(((furnaceBlockEntity.getEnergy() < furnaceBlockEntity.getEnergyCapacity() / 5) ? Formatting.RED : Formatting.AQUA).toString() + furnaceBlockEntity.getEnergy() + Formatting.FORMATTING_CODE_PREFIX + "r/" + Formatting.AQUA + furnaceBlockEntity.getEnergyCapacity() + " EU"), euTooltipRect, mouseX, mouseY);
+        glassguis_tooltip(this, List.of(((furnaceBlockEntity.getEnergyStored() < furnaceBlockEntity.getEnergyCapacity() / 5) ? Formatting.RED : Formatting.AQUA).toString() + furnaceBlockEntity.getEnergyStored() + Formatting.FORMATTING_CODE_PREFIX + "r/" + Formatting.AQUA + furnaceBlockEntity.getEnergyCapacity() + " EU"), euTooltipRect, mouseX, mouseY);
     }
 
     @Override
@@ -39,7 +38,7 @@ public class FurnaceScreen extends HandledScreen {
         GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
         GL11.glEnable(GL11.GL_BLEND);
         glassguis_drawImage(this, "/assets/glasstech/stationapi/textures/gui/energy_background.png", 80, 10);
-        glassguis_drawImagePercentage(this, "/assets/glasstech/stationapi/textures/gui/energy_bar.png", 82, 12, (((float) furnaceBlockEntity.getEnergy()) / furnaceBlockEntity.getEnergyCapacity()));
+        glassguis_drawImagePercentage(this, "/assets/glasstech/stationapi/textures/gui/energy_bar.png", 82, 12, (((float) furnaceBlockEntity.getEnergyStored()) / furnaceBlockEntity.getEnergyCapacity()));
         glassguis_drawImage(this, "/assets/glasstech/stationapi/textures/gui/energy_overlay.png", 80, 10);
 
         glassguis_drawSlots(this);

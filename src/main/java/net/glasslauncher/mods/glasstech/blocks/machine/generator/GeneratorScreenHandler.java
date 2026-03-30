@@ -1,6 +1,6 @@
-package net.glasslauncher.mods.glasstech.blocks.generator;
+package net.glasslauncher.mods.glasstech.blocks.machine.generator;
 
-import net.glasslauncher.mods.glassguis.packet.s2c.ScreenHandlerPropertyUpdateLongS2CPacket;
+import net.glasslauncher.mods.glassguis.packet.s2c.ScreenHandlerPropertyUpdateIntegerS2CPacket;
 import net.glasslauncher.mods.glasstech.gui.BatterySlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -31,13 +31,13 @@ class GeneratorScreenHandler extends ScreenHandler {
         super.addListener(listener);
         // Ah yes, cursed shit, my favourite
         ServerPlayerEntity player = (ServerPlayerEntity) listener;
-        player.networkHandler.sendPacket(new ScreenHandlerPropertyUpdateLongS2CPacket(syncId, 0, generatorBlockEntity.getEnergy()));
+        player.networkHandler.sendPacket(new ScreenHandlerPropertyUpdateIntegerS2CPacket(syncId, 0, generatorBlockEntity.getEnergyStored()));
     }
 
     @Override
-    public void glassguis_setProperty(int syncID, long long_) {
+    public void setProperty(int syncID, int int_) {
         if (syncID == 0) {
-            generatorBlockEntity.setEnergy(long_);
+            generatorBlockEntity.setEnergy(int_);
         }
     }
 }

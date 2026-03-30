@@ -1,6 +1,6 @@
-package net.glasslauncher.mods.glasstech.blocks.furnace;
+package net.glasslauncher.mods.glasstech.blocks.machine.furnace;
 
-import net.glasslauncher.mods.glassguis.packet.s2c.ScreenHandlerPropertyUpdateLongS2CPacket;
+import net.glasslauncher.mods.glassguis.packet.s2c.ScreenHandlerPropertyUpdateIntegerS2CPacket;
 import net.glasslauncher.mods.glasstech.gui.BatterySlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -32,13 +32,13 @@ class FurnaceScreenHandler extends ScreenHandler {
         super.addListener(listener);
         // Ah yes, cursed shit, my favourite
         ServerPlayerEntity player = (ServerPlayerEntity) listener;
-        player.networkHandler.sendPacket(new ScreenHandlerPropertyUpdateLongS2CPacket(syncId, 0, furnaceBlockEntity.getEnergy()));
+        player.networkHandler.sendPacket(new ScreenHandlerPropertyUpdateIntegerS2CPacket(syncId, 0, furnaceBlockEntity.getEnergyStored()));
     }
 
     @Override
-    public void glassguis_setProperty(int syncID, long long_) {
+    public void setProperty(int syncID, int int_) {
         if (syncID == 0) {
-            furnaceBlockEntity.setEnergy(long_);
+            furnaceBlockEntity.setEnergy(int_);
         }
     }
 }

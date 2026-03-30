@@ -1,0 +1,225 @@
+package net.glasslauncher.mods.glasstech.blocks;
+
+import lombok.Setter;
+import net.danygames2014.nyalib.energy.EnergyConductor;
+import net.danygames2014.nyalib.network.*;
+import net.danygames2014.nyalib.particle.ParticleHelper;
+import net.glasslauncher.mods.glasstech.VoltageTier;
+import net.glasslauncher.mods.glasstech.WireProperties;
+import net.minecraft.block.Block;
+import net.minecraft.block.FurnaceBlock;
+import net.minecraft.block.material.Material;
+import net.minecraft.util.hit.HitResult;
+import net.minecraft.util.math.Box;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.Vec3i;
+import net.minecraft.world.World;
+import net.modificationstation.stationapi.api.block.BlockState;
+import net.modificationstation.stationapi.api.block.States;
+import net.modificationstation.stationapi.api.item.ItemPlacementContext;
+import net.modificationstation.stationapi.api.state.StateManager;
+import net.modificationstation.stationapi.api.state.property.BooleanProperty;
+import net.modificationstation.stationapi.api.state.property.Properties;
+import net.modificationstation.stationapi.api.template.block.TemplateBlock;
+import net.modificationstation.stationapi.api.util.Identifier;
+import net.modificationstation.stationapi.api.util.math.Direction;
+
+import javax.annotation.Nullable;
+
+import java.util.ArrayList;
+import java.util.Map;
+
+public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComponent, EnergyConductor {
+    public static final float PIXEL_SIZE = 1f / 16;
+    // Fucking beta directions
+    public static final Map<BooleanProperty, Direction> DIR_PROPS = Map.of(
+            Properties.NORTH, Direction.NORTH.rotateYClockwise(),
+            Properties.SOUTH, Direction.SOUTH.rotateYClockwise(),
+            Properties.EAST, Direction.EAST.rotateYClockwise(),
+            Properties.WEST, Direction.WEST.rotateYClockwise(),
+            Properties.UP, Direction.UP,
+            Properties.DOWN, Direction.DOWN
+    );
+
+    private final WireProperties wireProperties;
+    @Setter
+    private int breakdownVoltage;
+    @Setter
+    private int breakdownPower;
+
+    public TemplateCableBlock(Identifier identifier, WireProperties wireProperties) {
+        super(identifier, Material.WOOL);
+        this.wireProperties = wireProperties;
+        VoltageTier voltageTier = wireProperties.wireMaterial.voltageTier;
+        breakdownPower = voltageTier.maxVoltage; // I know this looks wrong, but this is how ic2 acts.
+        breakdownVoltage = voltageTier.maxVoltage;
+        resistance = 1f;
+        hardness = 0.5f;
+        setDefaultState(getDefaultState()
+            .with(Properties.NORTH, false)
+            .with(Properties.SOUTH, false)
+            .with(Properties.EAST, false)
+            .with(Properties.WEST, false)
+            .with(Properties.UP, false)
+            .with(Properties.DOWN, false)
+        );
+    }
+
+    public BlockState getPlacementState(ItemPlacementContext context) {
+        return updateModel(context.getWorld(), context.getBlockPos().x, context.getBlockPos().y, context.getBlockPos().z);
+    }
+
+    public void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        builder.add(Properties.NORTH);
+        builder.add(Properties.SOUTH);
+        builder.add(Properties.EAST);
+        builder.add(Properties.WEST);
+        builder.add(Properties.UP);
+        builder.add(Properties.DOWN);
+        super.appendProperties(builder);
+    }
+
+    @Override
+    public NetworkType getNetworkType() {
+        return NetworkType.ENERGY;
+    }
+
+    public boolean isFullCube() {
+        return false;
+    }
+
+    public boolean isOpaque() {
+        return false;
+    }
+
+    public void onBreak(World world, int x, int y, int z) {
+        if (!FurnaceBlock.ignoreBlockRemoval) {
+            super.onBreak(world, x, y, z);
+        }
+    }
+
+    public void onPlaced(World world, int x, int y, int z) {
+        if (!FurnaceBlock.ignoreBlockRemoval) {
+            super.onPlaced(world, x, y, z);
+        }
+    }
+
+    public void neighborUpdate(World world, int x, int y, int z, int id) {
+        super.neighborUpdate(world, x, y, z, id);
+
+        FurnaceBlock.ignoreBlockRemoval = true;
+        world.setBlockState(x, y, z, updateModel(world, x, y, z));
+        FurnaceBlock.ignoreBlockRemoval = false;
+    }
+
+    public BlockState updateModel(World world, int x, int y, int z) {
+        var state = getDefaultState();
+        for (Map.Entry<BooleanProperty, Direction> it : DIR_PROPS.entrySet()) {
+            state = state.with(it.getKey(), canConnectTo(world, x, y, z, null, it.getValue()));
+        }
+        return state;
+    }
+
+    @Override
+    public boolean canConnectTo(World world, int x, int y, int z, @Nullable Network network, Direction dir) {
+        BlockState other = world.getBlockState(x + dir.getOffsetX(), y + dir.getOffsetY(), z + dir.getOffsetZ());
+        if (other.getBlock() instanceof NetworkComponent component) {
+            return component.getNetworkTypes().contains(net.danygames2014.nyalib.network.NetworkType.ENERGY);
+        }
+        return false;
+    }
+
+    @Override
+    public Box getBoundingBox(World world, int x, int y, int z) {
+        BlockState state = world.getBlockState(x, y, z);
+
+        if (state.getBlock() != this) {
+            return null;
+        }
+
+        float center = (1f / 16) * 8;
+        float maxC = center + (wireProperties.size / 2);
+        float minC = center - (wireProperties.size / 2);
+
+        float minX = minC;
+        float minY = minC;
+        float minZ = minC;
+
+        float maxX = maxC;
+        float maxY = maxC;
+        float maxZ = maxC;
+
+        if (state.get(Properties.UP)) {
+            maxY = 1.0F;
+        }
+
+        if (state.get(Properties.DOWN)) {
+            minY = 0.0F;
+        }
+
+        if (state.get(Properties.SOUTH)) {
+            maxZ = 1.0F;
+        }
+
+        if (state.get(Properties.NORTH)) {
+            minZ = 0.0F;
+        }
+
+        if (state.get(Properties.WEST)) {
+            minX = 0.0F;
+        }
+
+        if (state.get(Properties.EAST)) {
+            maxX = 1.0F;
+        }
+
+        return Box.createCached(x + minX, y + minY, z + minZ, x + maxX, y + maxY, z + maxZ);
+    }
+
+    @Override
+    public HitResult raycast(World world, int x, int y, int z, Vec3d startPos, Vec3d endPos) {
+        Box box = getBoundingBox(world, x, y, z);
+
+        HitResult hitResult = box.raycast(startPos, endPos);
+
+        if (hitResult == null) {
+            return null;
+        }
+
+        hitResult.blockX = x;
+        hitResult.blockY = y;
+        hitResult.blockZ = z;
+
+        return hitResult;
+    }
+
+    @Override
+    public Box getCollisionShape(World world, int x, int y, int z) {
+        return getBoundingBox(world, x, y, z);
+    }
+
+    // Energy Conductor
+    @Override
+    public void onBreakdownVoltage(World world, NetworkComponentEntry networkComponentEntry, int voltage) {
+
+    }
+
+    @Override
+    public void onBreakdownPower(World world, NetworkComponentEntry networkComponentEntry, int voltage, int power) {
+        for (int particle = 0; particle < 4; particle++) {
+            Vec3i pos = networkComponentEntry.pos();
+            ParticleHelper.addParticle(world, "smoke", pos.x + 0.5D + (world.random.nextDouble() - 0.5D), pos.y + 0.5D, pos.z + 0.5D + (world.random.nextDouble() - 0.5D));
+            world.setBlockState(pos.x, pos.y, pos.z, States.AIR.get());
+        }
+    }
+
+    @Override
+    public int getBreakdownVoltage(World world, NetworkComponentEntry networkComponentEntry) {
+        return breakdownVoltage;
+    }
+
+    @Override
+    public int getBreakdownPower(World world, NetworkComponentEntry networkComponentEntry) {
+        return breakdownPower;
+    }
+}

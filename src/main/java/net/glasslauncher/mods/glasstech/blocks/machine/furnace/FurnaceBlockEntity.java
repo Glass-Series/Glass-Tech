@@ -1,6 +1,8 @@
-package net.glasslauncher.mods.glasstech.blocks.furnace;
+package net.glasslauncher.mods.glasstech.blocks.machine.furnace;
 
 import net.glasslauncher.mods.glasstech.FuelValues;
+import net.glasslauncher.mods.glasstech.VoltageTier;
+import net.glasslauncher.mods.glasstech.blocks.machine.ConsumerBlockEntityTemplate;
 import net.minecraft.block.FurnaceBlock;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
@@ -8,15 +10,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtInt;
 import net.minecraft.recipe.SmeltingRecipeManager;
-import net.minecraft.screen.slot.Slot;
-import net.minecraft.world.explosion.Explosion;
 import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.state.property.Properties;
-import net.modificationstation.stationapi.api.util.math.Direction;
-import net.teamterminus.machineessentials.energy.electric.api.VoltageTier;
-import net.teamterminus.machineessentials.energy.electric.template.ElectricDeviceBlockEntity;
 
-public class FurnaceBlockEntity extends ElectricDeviceBlockEntity implements Inventory {
+public class FurnaceBlockEntity extends ConsumerBlockEntityTemplate implements Inventory {
     protected int smeltTime = 6 * 20;
 
     protected int currentSmeltTime = -1;
@@ -24,21 +21,9 @@ public class FurnaceBlockEntity extends ElectricDeviceBlockEntity implements Inv
     protected ItemStack[] slots = new ItemStack[2];
 
     public FurnaceBlockEntity() {
-        capacity = (long) (FuelValues.COAL * 0.5); // .2 coal worth
-        maxVoltageIn = (long) VoltageTier.LV.maxVoltage;
-        maxAmpsIn = 1; // tl;dr 24 eu/t in
-    }
-
-    @Override
-    public void onOvervoltage(long l) {
-        Explosion dio = new Explosion(world, null, x, y, z, 5F);
-        dio.playExplosionSound(true);
-        dio.explode();
-    }
-
-    @Override
-    public boolean canReceive(Direction dir) {
-        return true;
+        super(VoltageTier.LV);
+        setEnergyCapacity((int) (FuelValues.COAL * 0.5)); // .2 coal worth
+        setMaxEnergyInput(24); // 2 generators
     }
 
     public boolean canSmelt() {
@@ -121,11 +106,12 @@ public class FurnaceBlockEntity extends ElectricDeviceBlockEntity implements Inv
     public void writeNbt(NbtCompound tag) {
         super.writeNbt(tag);
         tag.put("currentSmeltTime", new NbtInt(currentSmeltTime));
-        for (ItemStack slot : slots) {
+        for (int i = 0; i < slots.length; i++) {
+            ItemStack slot = slots[i];
             if (slot != null) {
                 NbtCompound item = new NbtCompound();
                 slot.writeNbt(item);
-                tag.put("item$i", item);
+                tag.put("item" + i, item);
             }
         }
     }
@@ -135,8 +121,8 @@ public class FurnaceBlockEntity extends ElectricDeviceBlockEntity implements Inv
         super.readNbt(tag);
         currentSmeltTime = tag.getInt("currentSmeltTime");
         for (int i = 0; i < slots.length; i++) {
-            if (tag.contains("item$i")) {
-                slots[i] = new ItemStack(tag.getCompound("item$i"));
+            if (tag.contains("item" + i)) {
+                slots[i] = new ItemStack(tag.getCompound("item" + i));
             }
         }
     }

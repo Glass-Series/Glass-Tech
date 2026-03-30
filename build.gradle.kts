@@ -84,8 +84,8 @@ dependencies {
 
 	// convenience stuff
 	// adds some useful annotations for data classes. does not add any dependencies
-	compileOnly("org.projectlombok:lombok:1.18.24")
-	annotationProcessor("org.projectlombok:lombok:1.18.24")
+	compileOnly("org.projectlombok:lombok:1.18.42")
+	annotationProcessor("org.projectlombok:lombok:1.18.42")
 
 	// adds some useful annotations for miscellaneous uses. does not add any dependencies, though people without the lib will be missing some useful context hints.
 	implementation("org.jetbrains:annotations:23.0.0")
@@ -94,7 +94,12 @@ dependencies {
 	// StAPI itself.
 	// transitiveImplementation tells babric loom that you want this dependency to be pulled into other mod's development workspaces. Best used ONLY for required dependencies.
 	transitiveImplementation(modImplementation("net.modificationstation:StationAPI:${project.properties["stationapi_version"]}") as Dependency)
-	transitiveImplementation(modImplementation("net.teamterminus:machine_essentials:1.0.0") as Dependency)
+
+	modImplementation("net.danygames2014:NyaLib:${project.properties["nyalib_version"]}")
+
+	modImplementation("net.glasslauncher.mods:GlassGUIs:${project.properties["gguis_version"]}") {
+		isTransitive = false
+	}
 
 	// Extra mods.
 	// https://github.com/calmilamsy/glass-config-api
@@ -103,13 +108,6 @@ dependencies {
 	modImplementation("net.danygames2014:modmenu:${project.properties["modmenu_version"]}")
 	// https://github.com/Glass-Series/Always-More-Items
 	modImplementation("net.glasslauncher.mods:AlwaysMoreItems:${project.properties["alwaysmoreitems_version"]}")
-
-	modImplementation("net.danygames2014:NyaLib:${project.properties["nyalib_version"]}")
-
-	modImplementation("net.glasslauncher.mods:GlassGUIs:${project.properties["gguis_version"]}") {
-		isTransitive = false
-	}
-
 }
 
 tasks.withType<ProcessResources> {

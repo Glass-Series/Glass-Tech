@@ -1,13 +1,12 @@
 package net.glasslauncher.mods.glasstech.events.init;
 
 import net.glasslauncher.mods.glasstech.blocks.cable.IronCableBlock;
-import net.glasslauncher.mods.glasstech.blocks.cable.IronCableBlockEntity;
-import net.glasslauncher.mods.glasstech.blocks.furnace.Furnace;
-import net.glasslauncher.mods.glasstech.blocks.furnace.FurnaceBlockEntity;
-import net.glasslauncher.mods.glasstech.blocks.furnace.FurnaceScreen;
-import net.glasslauncher.mods.glasstech.blocks.generator.GeneratorBlock;
-import net.glasslauncher.mods.glasstech.blocks.generator.GeneratorBlockEntity;
-import net.glasslauncher.mods.glasstech.blocks.generator.GeneratorScreen;
+import net.glasslauncher.mods.glasstech.blocks.machine.furnace.Furnace;
+import net.glasslauncher.mods.glasstech.blocks.machine.furnace.FurnaceBlockEntity;
+import net.glasslauncher.mods.glasstech.blocks.machine.furnace.FurnaceScreen;
+import net.glasslauncher.mods.glasstech.blocks.machine.generator.GeneratorBlock;
+import net.glasslauncher.mods.glasstech.blocks.machine.generator.GeneratorBlockEntity;
+import net.glasslauncher.mods.glasstech.blocks.machine.generator.GeneratorScreen;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -26,8 +25,8 @@ import org.apache.logging.log4j.Logger;
 import java.lang.invoke.MethodHandles;
 
 public class InitListener {
-        @SuppressWarnings("UnstableApiUsage")
-        public static final Namespace NAMESPACE = Namespace.resolve();
+    @SuppressWarnings("UnstableApiUsage")
+    public static final Namespace NAMESPACE = Namespace.resolve();
     public static final Logger LOGGER = NAMESPACE.getLogger("GlassTech");
 
     public static Block generatorBlock;
@@ -56,7 +55,6 @@ public class InitListener {
     private static void tileEntityInit(BlockEntityRegisterEvent event) {
         event.register(GeneratorBlockEntity.class, NAMESPACE.id("generator").toString());
         event.register(FurnaceBlockEntity.class, NAMESPACE.id("furnace").toString());
-        event.register(IronCableBlockEntity.class, NAMESPACE.id("iron_cable").toString());
     }
 
     @EventListener

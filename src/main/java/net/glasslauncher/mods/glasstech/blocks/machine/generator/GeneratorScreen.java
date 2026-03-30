@@ -1,4 +1,4 @@
-package net.glasslauncher.mods.glasstech.blocks.generator;
+package net.glasslauncher.mods.glasstech.blocks.machine.generator;
 
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.entity.player.PlayerInventory;
@@ -28,7 +28,7 @@ public class GeneratorScreen extends HandledScreen {
     public void render(int mouseX, int mouseY, float delta) {
         super.render(mouseX, mouseY, delta);
 
-        glassguis_tooltip(this, List.of(((generatorBlockEntity.getEnergy() < generatorBlockEntity.getEnergyCapacity() / 5) ? Formatting.RED : Formatting.AQUA).toString() + generatorBlockEntity.getEnergy() + Formatting.FORMATTING_CODE_PREFIX + "r/" + Formatting.AQUA + generatorBlockEntity.getEnergyCapacity() + " EU"), euTooltipRect, mouseX, mouseY);
+        glassguis_tooltip(this, List.of(((generatorBlockEntity.getEnergyStored() < generatorBlockEntity.getEnergyCapacity() / 5) ? Formatting.RED : Formatting.AQUA).toString() + generatorBlockEntity.getEnergyStored() + Formatting.FORMATTING_CODE_PREFIX + "r/" + Formatting.AQUA + generatorBlockEntity.getEnergyCapacity() + " EU"), euTooltipRect, mouseX, mouseY);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class GeneratorScreen extends HandledScreen {
         GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
         GL11.glEnable(GL11.GL_BLEND);
         glassguis_drawImage(this, "/assets/glasstech/stationapi/textures/gui/energy_background.png", 80, 10);
-        glassguis_drawImagePercentage(this, "/assets/glasstech/stationapi/textures/gui/energy_bar.png", 82, 12, (((float) generatorBlockEntity.getEnergy()) / generatorBlockEntity.getEnergyCapacity()));
+        glassguis_drawImagePercentage(this, "/assets/glasstech/stationapi/textures/gui/energy_bar.png", 82, 12, (((float) generatorBlockEntity.getEnergyStored()) / generatorBlockEntity.getEnergyCapacity()));
         glassguis_drawImage(this, "/assets/glasstech/stationapi/textures/gui/energy_overlay.png", 80, 10);
 
         glassguis_drawSlots(this);

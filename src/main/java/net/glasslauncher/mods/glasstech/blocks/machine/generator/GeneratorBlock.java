@@ -1,5 +1,7 @@
-package net.glasslauncher.mods.glasstech.blocks.generator;
+package net.glasslauncher.mods.glasstech.blocks.machine.generator;
 
+import net.danygames2014.nyalib.block.DropInventoryOnBreak;
+import net.danygames2014.nyalib.energy.template.block.EnergySourceBlockTemplate;
 import net.glasslauncher.mods.glasstech.PlayerEntityUtil;
 import net.glasslauncher.mods.glasstech.events.init.InitListener;
 import net.minecraft.block.Block;
@@ -15,10 +17,8 @@ import net.modificationstation.stationapi.api.state.StateManager;
 import net.modificationstation.stationapi.api.state.property.Properties;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.math.Direction;
-import net.teamterminus.machineessentials.energy.electric.template.ElectricBlock;
-import net.teamterminus.machineessentials.network.NetworkType;
 
-public class GeneratorBlock extends ElectricBlock {
+public class GeneratorBlock extends EnergySourceBlockTemplate implements DropInventoryOnBreak {
 
     public GeneratorBlock(Identifier identifier, Material material) {
         super(identifier, material);
@@ -33,6 +33,7 @@ public class GeneratorBlock extends ElectricBlock {
 
     @Override
     public void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        builder.add(Properties.HORIZONTAL_FACING);
         builder.add(Properties.LIT);
         super.appendProperties(builder);
     }
@@ -59,11 +60,6 @@ public class GeneratorBlock extends ElectricBlock {
             new GeneratorScreenHandler(player.inventory, generatorBlockEntity)
         );
         return true;
-    }
-
-    @Override
-    public NetworkType getType() {
-        return NetworkType.ELECTRIC;
     }
 
     @Override

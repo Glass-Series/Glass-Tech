@@ -1,38 +1,32 @@
-package net.glasslauncher.mods.glasstech.blocks.generator;
+package net.glasslauncher.mods.glasstech.blocks.machine.generator;
 
+import net.glasslauncher.mods.glasstech.VoltageTier;
+import net.glasslauncher.mods.glasstech.blocks.machine.GeneratorBlockEntityTemplate;
 import net.minecraft.block.FurnaceBlock;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtInt;
-import net.minecraft.screen.slot.Slot;
 import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.recipe.FuelRegistry;
 import net.modificationstation.stationapi.api.state.property.Properties;
-import net.teamterminus.machineessentials.energy.electric.template.ElectricDeviceBlockEntity;
 
-public class GeneratorBlockEntity extends ElectricDeviceBlockEntity implements Inventory {
+public class GeneratorBlockEntity extends GeneratorBlockEntityTemplate implements Inventory {
     protected int fuelTicks = 0;
 
     protected ItemStack[] slots = new ItemStack[2];
 
-    @Override
-    public void onOvervoltage(long l) {
-    }
-
     public GeneratorBlockEntity() {
-        super();
-        capacity = 19200*4; // 4 coal worth
-        maxVoltageOut = 12;
-        maxAmpsOut = 1; // tl;dr 12 eu/t out
+        super(VoltageTier.LV);
+        setEnergyCapacity(19200*4); // 4 coal worth
+        setMaxEnergyOutput(12);
     }
 
     @Override
     public void tick() {
         super.tick();
-        if (slots[0] != null && fuelTicks < 1 && energy < capacity) {
+        if (slots[0] != null && fuelTicks < 1 && energy < getEnergyCapacity()) {
             int fuelTime = FuelRegistry.getFuelTime(slots[0]);
             if (fuelTime < 1) {
                 return;
@@ -58,8 +52,8 @@ public class GeneratorBlockEntity extends ElectricDeviceBlockEntity implements I
             world.setBlockStateWithNotify(x, y, z, state.with(Properties.LIT, false));
             FurnaceBlock.ignoreBlockRemoval = false;
         }
-        if (energy > capacity) {
-            energy = capacity;
+        if (energy > getEnergyCapacity()) {
+            energy = getEnergyCapacity();
         }
 
         markDirty();
@@ -69,11 +63,12 @@ public class GeneratorBlockEntity extends ElectricDeviceBlockEntity implements I
     public void writeNbt(NbtCompound tag) {
         super.writeNbt(tag);
         tag.put("fuelTicks", new NbtInt(fuelTicks));
-        for (ItemStack slot : slots) {
+        for (int i = 0; i < slots.length; i++) {
+            ItemStack slot = slots[i];
             if (slot != null) {
                 NbtCompound item = new NbtCompound();
                 slot.writeNbt(item);
-                tag.put("item$i", item);
+                tag.put("item" + i, item);
             }
         }
     }
@@ -83,8 +78,8 @@ public class GeneratorBlockEntity extends ElectricDeviceBlockEntity implements I
         super.readNbt(tag);
         fuelTicks = tag.getInt("fuelTicks");
         for (int i = 0; i < slots.length; i++) {
-            if (tag.contains("item$i")) {
-                slots[i] = new ItemStack(tag.getCompound("item$i"));
+            if (tag.contains("item" + i)) {
+                slots[i] = new ItemStack(tag.getCompound("item" + i));
             }
         }
     }
@@ -134,11 +129,5 @@ public class GeneratorBlockEntity extends ElectricDeviceBlockEntity implements I
     @Override
     public boolean canPlayerUse(PlayerEntity player) {
         return player.getSquaredDistance(x + 0.5, y + 0.5, z + 0.5) <= 64;
-    }
-
-    @Override
-    public void markRemoved() {
-        super.markRemoved();
-        System.out.println("got removed");
     }
 }
