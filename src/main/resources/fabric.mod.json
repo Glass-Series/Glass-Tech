@@ -19,10 +19,7 @@
   "environment": "*",
   "entrypoints": {
     "stationapi:event_bus": [
-      {
-        "adapter": "kotlin",
-        "value": "net.glasslauncher.mods.glasstech.events.init.InitListener"
-      }
+      "net.glasslauncher.mods.glasstech.events.init.InitListener"
     ],
     "stationapi:event_bus_client": [
     ],

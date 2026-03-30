@@ -1,12 +1,8 @@
 import net.glasslauncher.gradleplugin.resourcegen.CableResourceGenHelper
-import net.glasslauncher.gradleplugin.resourcegen.ResourceGenPatternOutputFile
-import net.glasslauncher.gradleplugin.resourcegen.ResourceGenPatternTargetFile
 import net.glasslauncher.gradleplugin.resourcegen.ResourceGenPatternTargets
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import java.net.URI
 
 plugins {
-	kotlin("jvm") version "2.1.20"
 	id("maven-publish")
 	id("fabric-loom") version "1.15.3"
 	id("babric-loom-extension") version "1.15.3"
@@ -16,7 +12,6 @@ plugins {
 //noinspection GroovyUnusedAssignment
 java.sourceCompatibility = JavaVersion.VERSION_17
 java.targetCompatibility = JavaVersion.VERSION_17
-kotlin.compilerOptions.jvmTarget.set(JvmTarget.JVM_17)
 
 base.archivesName = project.properties["archives_base_name"] as String
 version = project.properties["mod_version"] as String
@@ -114,10 +109,6 @@ dependencies {
 	modImplementation("net.glasslauncher.mods:GlassGUIs:${project.properties["gguis_version"]}") {
 		isTransitive = false
 	}
-
-	transitiveImplementation(modImplementation("net.fabricmc:fabric-language-kotlin:1.13.2+kotlin.2.1.20") {
-		exclude("net.fabricmc")
-	} as Dependency)
 
 }
 
