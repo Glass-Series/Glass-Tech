@@ -8,8 +8,8 @@ import java.net.URI
 plugins {
 	kotlin("jvm") version "2.1.20"
 	id("maven-publish")
-	id("fabric-loom") version "1.9.2"
-	id("babric-loom-extension") version "1.9.4"
+	id("fabric-loom") version "1.15.3"
+	id("babric-loom-extension") version "1.15.3"
 	id("resourceGen")
 }
 
@@ -105,11 +105,13 @@ dependencies {
 	// https://github.com/calmilamsy/glass-config-api
 	modImplementation("net.glasslauncher.mods:GlassConfigAPI:${project.properties["gcapi_version"]}")
 	// https://github.com/calmilamsy/modmenu
-	modImplementation("net.glasslauncher.mods:ModMenu:${project.properties["modmenu_version"]}")
+	modImplementation("net.danygames2014:modmenu:${project.properties["modmenu_version"]}")
 	// https://github.com/Glass-Series/Always-More-Items
 	modImplementation("net.glasslauncher.mods:AlwaysMoreItems:${project.properties["alwaysmoreitems_version"]}")
 
-	modImplementation(project(":Glass-GUIs")) {
+	modImplementation("net.danygames2014:NyaLib:${project.properties["nyalib_version"]}")
+
+	modImplementation("net.glasslauncher.mods:GlassGUIs:${project.properties["gguis_version"]}") {
 		isTransitive = false
 	}
 

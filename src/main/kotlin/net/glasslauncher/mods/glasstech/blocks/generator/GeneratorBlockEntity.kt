@@ -15,7 +15,7 @@ import net.teamterminus.machineessentials.energy.electric.template.ElectricGener
 open class GeneratorBlockEntity : ElectricGeneratorBlockEntity(), Inventory {
     protected var fuelTicks = 0
 
-    protected var slots: Array<ItemStack?> = arrayOfNulls(3)
+    protected var slots: Array<ItemStack?> = arrayOfNulls(2)
 
     override fun onOvervoltage(l: Long) {
     }

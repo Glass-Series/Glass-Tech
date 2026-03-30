@@ -1,8 +1,6 @@
 package net.glasslauncher.mods.glasstech.blocks.furnace
 
-import net.glasslauncher.mods.glassguis.ExtendedScreenHandler
-import net.glasslauncher.mods.glassguis.ScreenHandlerPropertyUpdateLongS2CPacket
-import net.glasslauncher.mods.glasstech.blocks.generator.GeneratorScreen.Companion.additions
+import net.glasslauncher.mods.glassguis.packet.s2c.ScreenHandlerPropertyUpdateLongS2CPacket
 import net.glasslauncher.mods.glasstech.gui.BatterySlot
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.entity.player.PlayerInventory
@@ -11,12 +9,12 @@ import net.minecraft.screen.ScreenHandler
 import net.minecraft.screen.ScreenHandlerListener
 import net.minecraft.screen.slot.Slot
 
-class FurnaceScreenHandler(val playerInventory: PlayerInventory, val furnaceBlockEntity: FurnaceBlockEntity) : ScreenHandler(), ExtendedScreenHandler {
+class FurnaceScreenHandler(val playerInventory: PlayerInventory, val furnaceBlockEntity: FurnaceBlockEntity) : ScreenHandler() {
 
     init {
         addSlot(Slot(furnaceBlockEntity, 0, 10, 40))
         addSlot(BatterySlot(furnaceBlockEntity, 1, 32, 40))
-        additions.setupPlayerInventory(this, playerInventory) // Only actually ran on server
+        glassguis_setupPlayerInventory(8, 167, playerInventory)
     }
 
     override fun canUse(player: PlayerEntity): Boolean {
@@ -30,7 +28,7 @@ class FurnaceScreenHandler(val playerInventory: PlayerInventory, val furnaceBloc
         player.networkHandler.sendPacket(ScreenHandlerPropertyUpdateLongS2CPacket(syncId, 0, furnaceBlockEntity.energy))
     }
 
-    override fun setProperty(syncID: Int, long: Long) {
+    override fun glassguis_setProperty(syncID: Int, long: Long) {
         if (syncID == 0) {
             furnaceBlockEntity.energy = long
         }
