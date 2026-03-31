@@ -1,5 +1,6 @@
 package net.glasslauncher.mods.glasstech.blocks.machine.furnace;
 
+import lombok.Getter;
 import net.glasslauncher.mods.glasstech.FuelValues;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.glasslauncher.mods.glasstech.blocks.machine.ConsumerBlockEntityTemplate;
@@ -14,8 +15,10 @@ import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.state.property.Properties;
 
 public class FurnaceBlockEntity extends ConsumerBlockEntityTemplate implements Inventory {
+    @Getter
     protected int smeltTime = 6 * 20;
 
+    @Getter
     protected int currentSmeltTime = -1;
 
     protected ItemStack[] slots = new ItemStack[2];
@@ -43,9 +46,7 @@ public class FurnaceBlockEntity extends ConsumerBlockEntityTemplate implements I
             ++this.currentSmeltTime;
             energy -= 4;
             if (state.contains(Properties.LIT) && !state.get(Properties.LIT)) {
-                FurnaceBlock.ignoreBlockRemoval = true;
                 world.setBlockStateWithNotify(x, y, z, state.with(Properties.LIT, true));
-                FurnaceBlock.ignoreBlockRemoval = false;
             }
             if (this.currentSmeltTime == smeltTime) {
                 this.currentSmeltTime = 0;
@@ -53,13 +54,12 @@ public class FurnaceBlockEntity extends ConsumerBlockEntityTemplate implements I
                 markDirty();
             }
         }
-        else if (state.get(Properties.LIT) && !canAcceptRecipeOutput()) {
-            FurnaceBlock.ignoreBlockRemoval = true;
+        else if (state.get(Properties.LIT) && !canSmelt() && canAcceptRecipeOutput()) {
             world.setBlockStateWithNotify(x, y, z, state.with(Properties.LIT, false));
-            FurnaceBlock.ignoreBlockRemoval = false;
-            this.currentSmeltTime = 0;
+            // Don't reset progress if we only ran out of power
         }
         else {
+            world.setBlockStateWithNotify(x, y, z, state.with(Properties.LIT, false));
             this.currentSmeltTime = 0;
         }
     }

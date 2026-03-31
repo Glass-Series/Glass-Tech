@@ -62,18 +62,4 @@ public class Furnace extends EnergyConsumerBlockTemplate implements DropInventor
         GuiHelper.openGUI(player, InitListener.NAMESPACE.id("furnace"), furnaceBlockEntity, new FurnaceScreenHandler(player.inventory, furnaceBlockEntity));
         return true;
     }
-
-    @Override
-    public void onBreak(World world, int x, int y, int z) {
-        if (!FurnaceBlock.ignoreBlockRemoval) {
-            world.removeBlockEntity(x, y, z);
-        }
-    }
-
-    @Override
-    public void onPlaced(World world, int x, int y, int z) {
-        if (!FurnaceBlock.ignoreBlockRemoval) {
-            world.setBlockEntity(x, y, z, createBlockEntity());
-        }
-    }
 }

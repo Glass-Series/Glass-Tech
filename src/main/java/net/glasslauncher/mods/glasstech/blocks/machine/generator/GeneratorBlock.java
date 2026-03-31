@@ -61,18 +61,4 @@ public class GeneratorBlock extends EnergySourceBlockTemplate implements DropInv
         );
         return true;
     }
-
-    @Override
-    public void onBreak(World world, int x, int y, int z) {
-        if (!FurnaceBlock.ignoreBlockRemoval) {
-            world.removeBlockEntity(x, y, z);
-        }
-    }
-
-    @Override
-    public void onPlaced(World world, int x, int y, int z) {
-        if (!FurnaceBlock.ignoreBlockRemoval) {
-            world.setBlockEntity(x, y, z, createBlockEntity());
-        }
-    }
 }

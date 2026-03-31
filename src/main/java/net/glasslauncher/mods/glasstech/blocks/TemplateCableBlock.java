@@ -3,12 +3,16 @@ package net.glasslauncher.mods.glasstech.blocks;
 import lombok.Setter;
 import net.danygames2014.nyalib.energy.EnergyConductor;
 import net.danygames2014.nyalib.network.*;
+import net.danygames2014.nyalib.network.energy.EnergyNetwork;
 import net.danygames2014.nyalib.particle.ParticleHelper;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.glasslauncher.mods.glasstech.WireProperties;
 import net.minecraft.block.Block;
 import net.minecraft.block.FurnaceBlock;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
@@ -17,6 +21,7 @@ import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.block.States;
 import net.modificationstation.stationapi.api.item.ItemPlacementContext;
+import net.modificationstation.stationapi.api.recipe.FuelRegistry;
 import net.modificationstation.stationapi.api.state.StateManager;
 import net.modificationstation.stationapi.api.state.property.BooleanProperty;
 import net.modificationstation.stationapi.api.state.property.Properties;
@@ -29,7 +34,7 @@ import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComponent, EnergyConductor {
+public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComponent, EnergyConductor, LossyEnergyConductor {
     public static final float PIXEL_SIZE = 1f / 16;
     // Fucking beta directions
     public static final Map<BooleanProperty, Direction> DIR_PROPS = Map.of(
@@ -42,17 +47,10 @@ public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComp
     );
 
     private final WireProperties wireProperties;
-    @Setter
-    private int breakdownVoltage;
-    @Setter
-    private int breakdownPower;
 
     public TemplateCableBlock(Identifier identifier, WireProperties wireProperties) {
         super(identifier, Material.WOOL);
         this.wireProperties = wireProperties;
-        VoltageTier voltageTier = wireProperties.wireMaterial.voltageTier;
-        breakdownPower = voltageTier.maxVoltage; // I know this looks wrong, but this is how ic2 acts.
-        breakdownVoltage = voltageTier.maxVoltage;
         resistance = 1f;
         hardness = 0.5f;
         setDefaultState(getDefaultState()
@@ -63,6 +61,12 @@ public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComp
             .with(Properties.UP, false)
             .with(Properties.DOWN, false)
         );
+        if (wireProperties.insulated) {
+            setSoundGroup(Block.WOOL_SOUND_GROUP);
+        }
+        else {
+            setSoundGroup(Block.METAL_SOUND_GROUP);
+        }
     }
 
     public BlockState getPlacementState(ItemPlacementContext context) {
@@ -198,6 +202,15 @@ public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComp
         return getBoundingBox(world, x, y, z);
     }
 
+//    @Override
+//    public void onEntityCollision(World world, int x, int y, int z, Entity entity) {
+//        if (wireProperties.insulated || !(entity instanceof LivingEntity)) {
+//            return;
+//        }
+//
+//        // Shock entity here
+//    }
+
     // Energy Conductor
     @Override
     public void onBreakdownVoltage(World world, NetworkComponentEntry networkComponentEntry, int voltage) {
@@ -206,20 +219,25 @@ public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComp
 
     @Override
     public void onBreakdownPower(World world, NetworkComponentEntry networkComponentEntry, int voltage, int power) {
+        Vec3i pos = networkComponentEntry.pos();
         for (int particle = 0; particle < 4; particle++) {
-            Vec3i pos = networkComponentEntry.pos();
             ParticleHelper.addParticle(world, "smoke", pos.x + 0.5D + (world.random.nextDouble() - 0.5D), pos.y + 0.5D, pos.z + 0.5D + (world.random.nextDouble() - 0.5D));
-            world.setBlockState(pos.x, pos.y, pos.z, States.AIR.get());
         }
+        world.setBlockStateWithNotify(pos.x, pos.y, pos.z, States.AIR.get());
     }
 
     @Override
     public int getBreakdownVoltage(World world, NetworkComponentEntry networkComponentEntry) {
-        return breakdownVoltage;
+        return Integer.MAX_VALUE; // IC2 doesn't use real voltage
     }
 
     @Override
     public int getBreakdownPower(World world, NetworkComponentEntry networkComponentEntry) {
-        return breakdownPower;
+        return wireProperties.wireMaterial.maxVoltage;
+    }
+
+    @Override
+    public float getLossPerBlock() {
+        return wireProperties.wireMaterial.lossPerBlock;
     }
 }

@@ -5,43 +5,40 @@ import net.minecraft.client.resource.language.TranslationStorage;
 import net.modificationstation.stationapi.api.util.Formatting;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Voltage tiers from ULV (24V) to IV (22kV+), with their colors and names.
  */
-public class VoltageTier {
-    public static final List<VoltageTier> VOLTAGE_TIERS = new ArrayList<>();
+public enum VoltageTier {
+    ULV("voltage.ulv.name", 8, 0xFF5555),
+    LV("voltage.lv.name", 32, 0x778899),
+    MV("voltage.mv.name", 128, 0xFF8C00),
+    HV("voltage.hv.name", 512, 0xFFD700),
+    EV("voltage.ev.name", 2048, 0x696969),
+    IV("voltage.iv.name", 8192, 0x4169E1),
+    LuV("voltage.luv.name", 32768, 0xFF00FF),
+    ZPM("voltage.zpm.name", 131072, 0x00CED1),
+    UV("voltage.uv.name", 524288, 0x008000),
+    UHV("voltage.uhv.name", 2097152, 0x8B0000),
+    UEV("voltage.uev.name", 8388608, 0x8B008B),
+    UIV("voltage.uiv.name", 33554432, 0x0000CD),
+    UMV("voltage.umv.name", 134217728, 0xDC143C),
+    UXV("voltage.uxv.name", 536870912, 0xFF4500),
+    MAX("voltage.max.name", Integer.MAX_VALUE, 0xBDB76B),
+    ;
 
-    public static final VoltageTier ULV = new VoltageTier("voltage.ulv.name", 1, 24, Formatting.GRAY, 0x555555);
-    public static final VoltageTier LV = new VoltageTier("voltage.lv.name", 25, 60, Formatting.RED, 0xFF5555);
-    public static final VoltageTier SV = new VoltageTier("voltage.sv.name", 61, 160, Formatting.GOLD, 0xFFAA00);
-    public static final VoltageTier MV = new VoltageTier("voltage.mv.name", 161, 280, Formatting.YELLOW, 0xFFFF55);
-    public static final VoltageTier HV = new VoltageTier("voltage.hv.name", 281, 480, Formatting.GREEN, 0x55FF55);
-    public static final VoltageTier VHV = new VoltageTier("voltage.vhv.name", 481, 1500, Formatting.AQUA, 0x8C0000);
-    public static final VoltageTier EV = new VoltageTier("voltage.ev.name", 1501, 22000, Formatting.DARK_PURPLE, 0x8C0000);
-    public static final VoltageTier IV = new VoltageTier("voltage.iv.name", 22001, Integer.MAX_VALUE, Formatting.LIGHT_PURPLE, 0xFF55FF);
 
     public final String translationKey;
-    public final int minVoltage;
     public final int maxVoltage;
-    public final String textColor;
     public final int color;
 
     // cope mine diver
-    private static final Int2ObjectOpenHashMap<VoltageTier> cache = new Int2ObjectOpenHashMap<>();
+    private static final Int2ObjectOpenHashMap<VoltageTier> CACHE = new Int2ObjectOpenHashMap<>();
 
-    VoltageTier(String translationKey, int minVoltage, int maxVoltage, String textColor, int color) {
+    VoltageTier(String translationKey, int maxVoltage, int color) {
         this.translationKey = translationKey;
-        this.minVoltage = minVoltage;
         this.maxVoltage = maxVoltage;
-        this.textColor = textColor;
         this.color = color;
-        VOLTAGE_TIERS.add(this);
-    }
-
-    VoltageTier(String translationKey, int minVoltage, int maxVoltage, Formatting textColor, int color) {
-        this(translationKey, minVoltage, maxVoltage, textColor.toString(), color);
     }
 
     public String getName() {
@@ -49,15 +46,19 @@ public class VoltageTier {
     }
 
     public static VoltageTier get(int voltage) {
-        return cache.computeIfAbsent(voltage, VoltageTier::internalGet);
+        return CACHE.computeIfAbsent(voltage, VoltageTier::internalGet);
     }
 
     private static VoltageTier internalGet(int voltage) {
-        for (VoltageTier tier : VoltageTier.VOLTAGE_TIERS) {
-            if (voltage >= tier.minVoltage && voltage <= tier.maxVoltage) {
-                return tier;
+        VoltageTier usableTier = ULV;
+        for (VoltageTier tier : VoltageTier.values()) {
+            if (voltage <= tier.maxVoltage) {
+                usableTier = tier;
+            }
+            else {
+                return usableTier;
             }
         }
-        return null;
+        return usableTier;
     }
 }

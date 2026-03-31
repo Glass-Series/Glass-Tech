@@ -4,7 +4,8 @@
   "package": "net.glasslauncher.mods.glasstech.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "TooltipHelperMixin"
+    "TooltipHelperMixin",
+    "nyalib.EnergyNetworkMixin"
   ],
   "server": [
   ],

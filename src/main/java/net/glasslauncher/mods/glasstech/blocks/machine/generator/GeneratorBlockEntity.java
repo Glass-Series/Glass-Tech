@@ -1,5 +1,6 @@
 package net.glasslauncher.mods.glasstech.blocks.machine.generator;
 
+import lombok.Getter;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.glasslauncher.mods.glasstech.blocks.machine.GeneratorBlockEntityTemplate;
 import net.minecraft.block.FurnaceBlock;
@@ -13,7 +14,10 @@ import net.modificationstation.stationapi.api.recipe.FuelRegistry;
 import net.modificationstation.stationapi.api.state.property.Properties;
 
 public class GeneratorBlockEntity extends GeneratorBlockEntityTemplate implements Inventory {
-    protected int fuelTicks = 0;
+    @Getter
+    protected int initialFuelTicks;
+    @Getter
+    protected int fuelTicks;
 
     protected ItemStack[] slots = new ItemStack[2];
 
@@ -31,6 +35,7 @@ public class GeneratorBlockEntity extends GeneratorBlockEntityTemplate implement
             if (fuelTime < 1) {
                 return;
             }
+            initialFuelTicks = fuelTime;
             fuelTicks = fuelTime;
             slots[0].count--;
             if (slots[0].count < 1) {
@@ -63,6 +68,7 @@ public class GeneratorBlockEntity extends GeneratorBlockEntityTemplate implement
     public void writeNbt(NbtCompound tag) {
         super.writeNbt(tag);
         tag.put("fuelTicks", new NbtInt(fuelTicks));
+        tag.put("initialFuelTicks", new NbtInt(initialFuelTicks));
         for (int i = 0; i < slots.length; i++) {
             ItemStack slot = slots[i];
             if (slot != null) {
@@ -77,6 +83,7 @@ public class GeneratorBlockEntity extends GeneratorBlockEntityTemplate implement
     public void readNbt(NbtCompound tag) {
         super.readNbt(tag);
         fuelTicks = tag.getInt("fuelTicks");
+        initialFuelTicks = tag.getInt("initialFuelTicks");
         for (int i = 0; i < slots.length; i++) {
             if (tag.contains("item" + i)) {
                 slots[i] = new ItemStack(tag.getCompound("item" + i));

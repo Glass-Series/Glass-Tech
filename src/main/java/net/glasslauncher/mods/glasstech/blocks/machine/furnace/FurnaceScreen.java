@@ -1,5 +1,6 @@
 package net.glasslauncher.mods.glasstech.blocks.machine.furnace;
 
+import net.glasslauncher.mods.glassguis.DrawDirection;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.modificationstation.stationapi.api.util.Formatting;
@@ -38,8 +39,13 @@ public class FurnaceScreen extends HandledScreen {
         GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
         GL11.glEnable(GL11.GL_BLEND);
         glassguis_drawImage(this, "/assets/glasstech/stationapi/textures/gui/energy_background.png", 80, 10);
-        glassguis_drawImagePercentage(this, "/assets/glasstech/stationapi/textures/gui/energy_bar.png", 82, 12, (((float) furnaceBlockEntity.getEnergyStored()) / furnaceBlockEntity.getEnergyCapacity()));
+        glassguis_drawImagePercentage(this, "/assets/glasstech/stationapi/textures/gui/energy_bar.png", 82, 12, (((float) furnaceBlockEntity.getEnergyStored()) / furnaceBlockEntity.getEnergyCapacity()), DrawDirection.RIGHT);
         glassguis_drawImage(this, "/assets/glasstech/stationapi/textures/gui/energy_overlay.png", 80, 10);
+
+        glassguis_drawImage(this, "/assets/glasstech/stationapi/textures/gui/arrow_bg.png", 81, 41);
+        glassguis_drawImagePercentage(this, "/assets/glasstech/stationapi/textures/gui/arrow_fg.png", 80, 40, furnaceBlockEntity.getCurrentSmeltTime() / (float) furnaceBlockEntity.getSmeltTime(), DrawDirection.RIGHT);
+
+
 
         glassguis_drawSlots(this);
         GL11.glDisable(GL11.GL_BLEND);
