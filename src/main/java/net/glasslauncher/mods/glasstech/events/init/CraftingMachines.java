@@ -1,6 +1,12 @@
 package net.glasslauncher.mods.glasstech.events.init;
 
 import com.mojang.datafixers.util.Either;
+import net.glasslauncher.mods.glasstech.recipe.machine.BasicMachineRecipe;
+import net.glasslauncher.mods.glasstech.recipe.machine.MaceratorRecipeRegistry;
+import net.glasslauncher.mods.glasstech.recipe.machine.input.BlockRecipeInput;
+import net.glasslauncher.mods.glasstech.recipe.machine.input.ItemRecipeInput;
+import net.glasslauncher.mods.glasstech.recipe.machine.input.RecipeInput;
+import net.glasslauncher.mods.glasstech.recipe.machine.output.RecipeOutput;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -11,15 +17,23 @@ import net.modificationstation.stationapi.api.tag.TagKey;
 import net.modificationstation.stationapi.impl.recipe.StationShapedRecipe;
 
 public class CraftingMachines {
-    public static final Either<TagKey<Item>, ItemStack> I = Either.right(new ItemStack(Item.IRON_INGOT));
-    public static final Either<TagKey<Item>, ItemStack> W = Either.right(new ItemStack(Block.PLANKS));
-    public static final Either<TagKey<Item>, ItemStack> WB = Either.right(new ItemStack(Item.WATER_BUCKET));
-    public static final Either<TagKey<Item>, ItemStack> BAT = Either.right(new ItemStack(Item.REDSTONE));
-    public static final Either<TagKey<Item>, ItemStack> S = Either.right(new ItemStack(Block.STONE));
-    public static final Either<TagKey<Item>, ItemStack> F = Either.right(new ItemStack(Block.FURNACE));
+    public static Either<TagKey<Item>, ItemStack> I;
+    public static Either<TagKey<Item>, ItemStack> W;
+    public static Either<TagKey<Item>, ItemStack> WB;
+    public static Either<TagKey<Item>, ItemStack> BAT;
+    public static Either<TagKey<Item>, ItemStack> S;
+    public static Either<TagKey<Item>, ItemStack> F;
 
     @EventListener
     public static void registerRecipes(RecipeRegisterEvent event) {
+        if (I == null) {
+            I = Either.right(new ItemStack(Item.IRON_INGOT));
+            W = Either.right(new ItemStack(Block.PLANKS));
+            WB = Either.right(new ItemStack(Item.WATER_BUCKET));
+            BAT = Either.right(new ItemStack(Item.REDSTONE));
+            S = Either.right(new ItemStack(Block.STONE));
+            F = Either.right(new ItemStack(Block.FURNACE));
+        }
 
         if (event.recipeId.equals(RecipeRegisterEvent.Vanilla.CRAFTING_SHAPED.type())) {
 
@@ -32,6 +46,9 @@ public class CraftingMachines {
                     }
                     , new ItemStack(InitListener.generatorBlock))
             );
+        }
+        if (event.recipeId.equals(InitListener.NAMESPACE.id("macerator"))) {
+            MaceratorRecipeRegistry.INSTANCE.register(InitListener.NAMESPACE.id("iron"), new BasicMachineRecipe(new RecipeInput[]{new BlockRecipeInput(Block.IRON_ORE)}, new RecipeOutput[]{new RecipeOutput(new ItemStack(Item.IRON_INGOT))}));
         }
     }
 }

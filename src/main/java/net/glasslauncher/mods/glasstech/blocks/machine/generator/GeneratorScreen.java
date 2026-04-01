@@ -5,7 +5,8 @@ import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.modificationstation.stationapi.api.util.Formatting;
 import org.lwjgl.opengl.GL11;
-import java.awt.Rectangle;
+
+import java.awt.*;
 import java.util.List;
 
 public class GeneratorScreen extends HandledScreen {

@@ -3,6 +3,7 @@ package net.glasslauncher.mods.glasstech.blocks.machine.generator;
 import lombok.Getter;
 import lombok.Setter;
 import net.glasslauncher.mods.glassguis.screen.ServerSyncedField;
+import net.glasslauncher.mods.glasstech.FuelValues;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.glasslauncher.mods.glasstech.blocks.machine.GeneratorBlockEntityTemplate;
 import net.minecraft.block.FurnaceBlock;
@@ -25,7 +26,7 @@ public class GeneratorBlockEntity extends GeneratorBlockEntityTemplate implement
 
     public GeneratorBlockEntity() {
         super(VoltageTier.LV);
-        setEnergyCapacity(19200*4); // 4 coal worth
+        setEnergyCapacity(FuelValues.COAL*4); // 4 coal worth
         setMaxEnergyOutput(12);
     }
 
@@ -36,7 +37,7 @@ public class GeneratorBlockEntity extends GeneratorBlockEntityTemplate implement
             return;
         }
         if (slots[0] != null && fuelTicks < 1 && energy < getEnergyCapacity()) {
-            int fuelTime = FuelRegistry.getFuelTime(slots[0]);
+            int fuelTime = FuelRegistry.getFuelTime(slots[0]) / 2;
             if (fuelTime < 1) {
                 return;
             }

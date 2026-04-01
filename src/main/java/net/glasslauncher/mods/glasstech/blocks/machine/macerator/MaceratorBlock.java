@@ -1,4 +1,4 @@
-package net.glasslauncher.mods.glasstech.blocks.machine.generator;
+package net.glasslauncher.mods.glasstech.blocks.machine.macerator;
 
 import net.glasslauncher.mods.glasstech.blocks.machine.MachineBlockTemplate;
 import net.glasslauncher.mods.glasstech.events.init.InitListener;
@@ -9,25 +9,25 @@ import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.gui.screen.container.GuiHelper;
 import net.modificationstation.stationapi.api.util.Identifier;
 
-public class GeneratorBlock extends MachineBlockTemplate {
+public class MaceratorBlock extends MachineBlockTemplate {
 
-    public GeneratorBlock(Identifier identifier, Material material) {
+    public MaceratorBlock(Identifier identifier, Material material) {
         super(identifier, material);
     }
 
     @Override
-    public BlockEntity createBlockEntity() {
-        return new GeneratorBlockEntity();
+    protected BlockEntity createBlockEntity() {
+        return new MaceratorBlockEntity();
     }
 
     @Override
     public boolean onUse(World world, int x, int y, int z, PlayerEntity player) {
-        GeneratorBlockEntity generatorBlockEntity = (GeneratorBlockEntity) world.getBlockEntity(x, y, z);
+        MaceratorBlockEntity maceratorBlockEntity = (MaceratorBlockEntity) world.getBlockEntity(x, y, z);
         GuiHelper.openGUI(
-            player,
-            InitListener.NAMESPACE.id("generator"),
-            generatorBlockEntity,
-            new GeneratorScreenHandler(player.inventory, generatorBlockEntity)
+                player,
+                InitListener.NAMESPACE.id("macerator"),
+                maceratorBlockEntity,
+                new MaceratorScreenHandler(player.inventory, maceratorBlockEntity)
         );
         return true;
     }

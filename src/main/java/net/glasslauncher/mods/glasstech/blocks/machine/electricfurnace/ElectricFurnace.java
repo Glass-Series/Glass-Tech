@@ -1,5 +1,6 @@
-package net.glasslauncher.mods.glasstech.blocks.machine.generator;
+package net.glasslauncher.mods.glasstech.blocks.machine.electricfurnace;
 
+import net.danygames2014.nyalib.block.DropInventoryOnBreak;
 import net.glasslauncher.mods.glasstech.blocks.machine.MachineBlockTemplate;
 import net.glasslauncher.mods.glasstech.events.init.InitListener;
 import net.minecraft.block.entity.BlockEntity;
@@ -9,25 +10,25 @@ import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.gui.screen.container.GuiHelper;
 import net.modificationstation.stationapi.api.util.Identifier;
 
-public class GeneratorBlock extends MachineBlockTemplate {
+public class ElectricFurnace extends MachineBlockTemplate implements DropInventoryOnBreak {
 
-    public GeneratorBlock(Identifier identifier, Material material) {
+    public ElectricFurnace(Identifier identifier, Material material) {
         super(identifier, material);
     }
 
     @Override
     public BlockEntity createBlockEntity() {
-        return new GeneratorBlockEntity();
+        return new ElectricFurnaceBlockEntity();
     }
 
     @Override
     public boolean onUse(World world, int x, int y, int z, PlayerEntity player) {
-        GeneratorBlockEntity generatorBlockEntity = (GeneratorBlockEntity) world.getBlockEntity(x, y, z);
+        ElectricFurnaceBlockEntity electricFurnaceBlockEntity = (ElectricFurnaceBlockEntity) world.getBlockEntity(x, y, z);
         GuiHelper.openGUI(
-            player,
-            InitListener.NAMESPACE.id("generator"),
-            generatorBlockEntity,
-            new GeneratorScreenHandler(player.inventory, generatorBlockEntity)
+                player,
+                InitListener.NAMESPACE.id("furnace"),
+                electricFurnaceBlockEntity,
+                new ElectricFurnaceScreenHandler(player.inventory, electricFurnaceBlockEntity)
         );
         return true;
     }
