@@ -2,6 +2,7 @@ package net.glasslauncher.mods.glasstech.blocks.machine.generator;
 
 import lombok.Getter;
 import lombok.Setter;
+import net.glasslauncher.mods.glassguis.screen.ServerSyncedField;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.glasslauncher.mods.glasstech.blocks.machine.GeneratorBlockEntityTemplate;
 import net.minecraft.block.FurnaceBlock;
@@ -15,9 +16,9 @@ import net.modificationstation.stationapi.api.recipe.FuelRegistry;
 import net.modificationstation.stationapi.api.state.property.Properties;
 
 public class GeneratorBlockEntity extends GeneratorBlockEntityTemplate implements Inventory {
-    @Getter @Setter
+    @Getter @Setter @ServerSyncedField
     protected int initialFuelTicks;
-    @Getter @Setter
+    @Getter @Setter @ServerSyncedField
     protected int fuelTicks;
 
     protected ItemStack[] slots = new ItemStack[2];
@@ -31,6 +32,9 @@ public class GeneratorBlockEntity extends GeneratorBlockEntityTemplate implement
     @Override
     public void tick() {
         super.tick();
+        if (world.isRemote) {
+            return;
+        }
         if (slots[0] != null && fuelTicks < 1 && energy < getEnergyCapacity()) {
             int fuelTime = FuelRegistry.getFuelTime(slots[0]);
             if (fuelTime < 1) {

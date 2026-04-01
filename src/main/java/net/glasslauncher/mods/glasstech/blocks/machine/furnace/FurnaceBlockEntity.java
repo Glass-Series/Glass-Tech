@@ -2,6 +2,7 @@ package net.glasslauncher.mods.glasstech.blocks.machine.furnace;
 
 import lombok.Getter;
 import lombok.Setter;
+import net.glasslauncher.mods.glassguis.screen.ServerSyncedField;
 import net.glasslauncher.mods.glasstech.FuelValues;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.glasslauncher.mods.glasstech.blocks.machine.ConsumerBlockEntityTemplate;
@@ -16,10 +17,10 @@ import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.state.property.Properties;
 
 public class FurnaceBlockEntity extends ConsumerBlockEntityTemplate implements Inventory {
-    @Getter
+    @Getter @ServerSyncedField
     protected int smeltTime = 6 * 20;
 
-    @Getter @Setter
+    @Getter @Setter @ServerSyncedField
     protected int currentSmeltTime = -1;
 
     protected ItemStack[] slots = new ItemStack[2];

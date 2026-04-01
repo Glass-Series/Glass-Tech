@@ -25,6 +25,10 @@ import org.apache.logging.log4j.Logger;
 import java.lang.invoke.MethodHandles;
 
 public class InitListener {
+    static {
+        EntrypointManager.registerLookup(MethodHandles.lookup());
+    }
+
     @SuppressWarnings("UnstableApiUsage")
     public static final Namespace NAMESPACE = Namespace.resolve();
     public static final Logger LOGGER = NAMESPACE.getLogger("GlassTech");
@@ -32,12 +36,6 @@ public class InitListener {
     public static Block generatorBlock;
     public static Block furnaceBlock;
     public static Block ironCableBlock;
-
-    public static Atlas.Sprite energySlotIndex = null;
-
-    static {
-        EntrypointManager.registerLookup(MethodHandles.lookup());
-    }
 
     @EventListener
     private static void init(InitEvent event) {
@@ -55,16 +53,5 @@ public class InitListener {
     private static void tileEntityInit(BlockEntityRegisterEvent event) {
         event.register(GeneratorBlockEntity.class, NAMESPACE.id("generator").toString());
         event.register(FurnaceBlockEntity.class, NAMESPACE.id("furnace").toString());
-    }
-
-    @EventListener
-    private static void screenInit(GuiHandlerRegistryEvent event) {
-        event.register(NAMESPACE.id("generator"), new GuiHandler((player, inventory, packet) -> new GeneratorScreen(player.inventory, (GeneratorBlockEntity) inventory), GeneratorBlockEntity::new));
-        event.register(NAMESPACE.id("furnace"), new GuiHandler((player, inventory, packet) -> new FurnaceScreen(player.inventory, (FurnaceBlockEntity) inventory), FurnaceBlockEntity::new));
-    }
-
-    @EventListener
-    private static void textureInit(TextureRegisterEvent event) {
-        energySlotIndex = Atlases.getGuiItems().addTexture(NAMESPACE.id("item/battery_slot"));
     }
 }

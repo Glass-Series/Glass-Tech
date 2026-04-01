@@ -40,11 +40,6 @@ public class Furnace extends EnergyConsumerBlockTemplate implements DropInventor
     }
 
     @Override
-    public Box getBoundingBox(World world, int x, int y, int z) {
-        return super.getBoundingBox(world, x, y, z);
-    }
-
-    @Override
     public BlockState getPlacementState(ItemPlacementContext context) {
         return getDefaultState()
             .with(Properties.HORIZONTAL_FACING, PlayerEntityUtil.placementFacing(context.getPlayer()))
