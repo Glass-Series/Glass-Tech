@@ -1,6 +1,7 @@
 package net.glasslauncher.mods.glasstech.blocks.machine.furnace;
 
 import lombok.Getter;
+import lombok.Setter;
 import net.glasslauncher.mods.glasstech.FuelValues;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.glasslauncher.mods.glasstech.blocks.machine.ConsumerBlockEntityTemplate;
@@ -18,7 +19,7 @@ public class FurnaceBlockEntity extends ConsumerBlockEntityTemplate implements I
     @Getter
     protected int smeltTime = 6 * 20;
 
-    @Getter
+    @Getter @Setter
     protected int currentSmeltTime = -1;
 
     protected ItemStack[] slots = new ItemStack[2];

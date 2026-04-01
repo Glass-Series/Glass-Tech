@@ -33,12 +33,16 @@ class FurnaceScreenHandler extends ScreenHandler {
         // Ah yes, cursed shit, my favourite
         ServerPlayerEntity player = (ServerPlayerEntity) listener;
         player.networkHandler.sendPacket(new ScreenHandlerPropertyUpdateIntegerS2CPacket(syncId, 0, furnaceBlockEntity.getEnergyStored()));
+        player.networkHandler.sendPacket(new ScreenHandlerPropertyUpdateIntegerS2CPacket(syncId, 1, furnaceBlockEntity.getCurrentSmeltTime()));
     }
 
     @Override
     public void setProperty(int syncID, int int_) {
-        if (syncID == 0) {
-            furnaceBlockEntity.setEnergy(int_);
+        switch (syncID) {
+            case 0:
+                furnaceBlockEntity.setEnergy(int_);
+            case 1:
+                furnaceBlockEntity.setCurrentSmeltTime(int_);
         }
     }
 }

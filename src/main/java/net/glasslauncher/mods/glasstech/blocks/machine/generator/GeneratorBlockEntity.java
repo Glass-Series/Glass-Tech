@@ -1,6 +1,7 @@
 package net.glasslauncher.mods.glasstech.blocks.machine.generator;
 
 import lombok.Getter;
+import lombok.Setter;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.glasslauncher.mods.glasstech.blocks.machine.GeneratorBlockEntityTemplate;
 import net.minecraft.block.FurnaceBlock;
@@ -14,9 +15,9 @@ import net.modificationstation.stationapi.api.recipe.FuelRegistry;
 import net.modificationstation.stationapi.api.state.property.Properties;
 
 public class GeneratorBlockEntity extends GeneratorBlockEntityTemplate implements Inventory {
-    @Getter
+    @Getter @Setter
     protected int initialFuelTicks;
-    @Getter
+    @Getter @Setter
     protected int fuelTicks;
 
     protected ItemStack[] slots = new ItemStack[2];
