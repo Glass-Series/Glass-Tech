@@ -7,6 +7,6 @@ import net.minecraft.entity.player.PlayerInventory;
 class MaceratorScreenHandler extends ConsumerScreenHandlerTemplate<MaceratorBlockEntity> {
     public MaceratorScreenHandler(PlayerInventory playerInventory, MaceratorBlockEntity blockEntity) {
         super(playerInventory, blockEntity, true);
-        SlotLayout.createBasic(this, blockEntity);
+        SlotLayout.createBasic(this, playerInventory.player, blockEntity);
     }
 }

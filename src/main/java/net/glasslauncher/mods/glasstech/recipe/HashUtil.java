@@ -1,4 +1,4 @@
-package net.glasslauncher.mods.glasstech.recipe.machine;
+package net.glasslauncher.mods.glasstech.recipe;
 
 import net.minecraft.item.ItemStack;
 

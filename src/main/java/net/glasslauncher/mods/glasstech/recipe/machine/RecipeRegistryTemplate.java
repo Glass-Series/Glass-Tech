@@ -2,6 +2,7 @@ package net.glasslauncher.mods.glasstech.recipe.machine;
 
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import net.glasslauncher.mods.glasstech.events.init.InitListener;
+import net.glasslauncher.mods.glasstech.recipe.HashUtil;
 import net.minecraft.item.ItemStack;
 import net.modificationstation.stationapi.api.util.Identifier;
 
