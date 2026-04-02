@@ -46,7 +46,8 @@ loom {
 
 glassResourceGen {
 	patternTargets = ResourceGenPatternTargets.create {
-		it.addAll(CableResourceGenHelper.create("iron"))
+		it.addAll(CableResourceGenHelper.create("copper"))
+		it.addAll(CableResourceGenHelper.create("copper", "insulated"))
 	}
 }
 

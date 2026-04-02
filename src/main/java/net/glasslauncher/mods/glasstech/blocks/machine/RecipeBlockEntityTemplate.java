@@ -15,7 +15,7 @@ public abstract class RecipeBlockEntityTemplate<R extends BasicMachineRecipe> ex
     /**
      * This is the current recipe being processed. <code>null</code> if no recipe is being processed
      */
-    public BasicMachineRecipe currentRecipe = null;
+    public R currentRecipe = null;
 
     /**
      * This is the output that the current recipe will yield
@@ -74,7 +74,7 @@ public abstract class RecipeBlockEntityTemplate<R extends BasicMachineRecipe> ex
     /**
      * Fetches the current recipe according to the input
      */
-    public abstract BasicMachineRecipe fetchRecipe(ItemStack[] input);
+    public abstract R fetchRecipe(ItemStack[] input);
 
     @Override
     public void craftRecipe() {
