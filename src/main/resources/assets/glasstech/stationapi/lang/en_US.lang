@@ -9,3 +9,15 @@ tile.@.induction_furnace.name=Induction Furnace
 tile.@.canner.name=Canner
 tile.@.copper_cable.name=Copper Cable (LV)
 tile.@.insulated_copper_cable.name=Insulated Copper Cable (LV)
+
+tile.@.bronze_block.name=Bronze Block
+tile.@.copper_block.name=Copper Block
+tile.@.copper_ore.name=Copper Ore
+tile.@.reinforced_glass.name=Reinforced Glass
+tile.@.reinforced_stone.name=Reinforced Stone
+tile.@.resin_sheet.name=Resin Sheet
+tile.@.rubber_sheet.name=Rubber Sheet
+tile.@.tin_block.name=Tin Block
+tile.@.tin_ore.name=Tin Ore
+tile.@.uranium_block.name=Uranium Block
+tile.@.uranium_ore.name=Uranium Ore
