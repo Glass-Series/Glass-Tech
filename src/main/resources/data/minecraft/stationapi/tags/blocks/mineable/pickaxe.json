@@ -1,6 +1,11 @@
 {
   "values": [
     "glasstech:generator",
-    "glasstech:furnace"
+    "glasstech:furnace",
+    "glasstech:induction_furnace",
+    "glasstech:macerator",
+    "glasstech:extractor",
+    "glasstech:canner",
+    "glasstech:electrolyzer"
   ]
 }

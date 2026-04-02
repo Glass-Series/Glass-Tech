@@ -4,7 +4,7 @@
     "casing": "glasstech:block/lv_hull",
     "casingtop": "glasstech:block/mv",
     "casingbottom": "glasstech:block/lv",
-    "frontoverlay": "glasstech:block/furnace_front_lit",
+    "frontoverlay": "glasstech:block/canner_front_lit",
     "particle": "#casing"
   }
 }

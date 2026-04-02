@@ -3,5 +3,9 @@
 tile.@.generator.name=Generator
 tile.@.furnace.name=Electric Furnace
 tile.@.macerator.name=Macerator
+tile.@.extractor.name=Extractor
+tile.@.electrolyzer.name=Electrolyzer
+tile.@.induction_furnace.name=Induction Furnace
+tile.@.canner.name=Canner
 tile.@.copper_cable.name=Copper Cable (LV)
 tile.@.insulated_copper_cable.name=Insulated Copper Cable (LV)

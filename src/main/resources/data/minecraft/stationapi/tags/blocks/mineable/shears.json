@@ -1,5 +1,6 @@
 {
   "values": [
-    "glasstech:iron_cable"
+    "glasstech:copper_cable",
+    "glasstech:copper_cable_insulated"
   ]
 }

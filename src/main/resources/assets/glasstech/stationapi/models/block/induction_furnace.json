@@ -2,9 +2,9 @@
 {
   "parent": "glasstech:block/machine_front",
   "textures": {
-    "casing": "glasstech:block/lv_hull",
+    "casing": "glasstech:block/mv",
     "casingtop": "glasstech:block/mv",
-    "casingbottom": "glasstech:block/lv",
+    "casingbottom": "glasstech:block/mv",
     "frontoverlay": "glasstech:block/furnace_front",
     "particle": "#casing"
   }
