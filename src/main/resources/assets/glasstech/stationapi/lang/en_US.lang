@@ -1,5 +1,7 @@
 # @ is a shorthand for the current mod id, which is glasstech. E.g: tile.@.redclay.name
 
 tile.@.generator.name=Generator
-tile.@.furnace.name=Furnace
-tile.@.iron_cable.name=Iron Cable (LV)
+tile.@.furnace.name=Electric Furnace
+tile.@.macerator.name=Macerator
+tile.@.copper_cable.name=Copper Cable (LV)
+tile.@.insulated_copper_cable.name=Insulated Copper Cable (LV)
