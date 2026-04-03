@@ -5,10 +5,10 @@ import net.danygames2014.nyalib.block.DropInventoryOnBreak;
 import net.danygames2014.nyalib.capability.CapabilityHelper;
 import net.danygames2014.nyalib.capability.item.energyhandler.EnergyStorageItemCapability;
 import net.glasslauncher.mods.glasstech.VoltageTier;
+import net.glasslauncher.mods.glasstech.item.SingleUsePowerCapability;
 import net.glasslauncher.mods.glasstech.recipe.machine.output.RecipeOutputType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
@@ -123,16 +123,23 @@ public abstract class MachineBlockEntityTemplate extends ConsumerBlockEntityTemp
                 continue;
             }
 
-            // Redstone
-            if (fuelStack.getItem() == Item.REDSTONE) {
-                if (energy + 10 < getEnergyCapacity()) { //NyaTec.MACHINE_CONFIG.redstoneEnergyValue <= getEnergyCapacity()) {
+            // Single use energy item
+            SingleUsePowerCapability singleUsePowerCapability = CapabilityHelper.getCapability(fuelStack, SingleUsePowerCapability.IDENTIFIER);
+            if (singleUsePowerCapability != null) {
+                int powerProvided = singleUsePowerCapability.getPowerProvided();
+                if (powerProvided < 1) {
+                    return;
+                }
+
+                if (energy + powerProvided < getEnergyCapacity()) {
                     fuelStack.count--;
-                    energy += 10; //NyaTec.MACHINE_CONFIG.redstoneEnergyValue;
+                    energy += singleUsePowerCapability.getPowerProvided();
                 }
 
                 if (fuelStack.count <= 0) {
                     setSlot(SlotType.FUEL, i, null);
                 }
+                return;
             }
 
             // Energy Storage Item
