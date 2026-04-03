@@ -2,6 +2,7 @@ package net.glasslauncher.mods.glasstech.blocks.machine.generator;
 
 import net.glasslauncher.mods.glasstech.blocks.machine.GeneratorScreenHandlerTemplate;
 import net.glasslauncher.mods.glasstech.gui.BatterySlot;
+import net.glasslauncher.mods.glasstech.gui.FuelSlot;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.screen.slot.Slot;
 
@@ -9,7 +10,7 @@ class GeneratorScreenHandler extends GeneratorScreenHandlerTemplate<GeneratorBlo
 
     public GeneratorScreenHandler(PlayerInventory playerInventory, GeneratorBlockEntity generatorBlockEntity) {
         super(playerInventory, generatorBlockEntity, true);
-        addSlot(new Slot(generatorBlockEntity, 0, 10, 40));
-        addSlot(new BatterySlot(generatorBlockEntity, 1, 32, 40));
+        addSlot(new FuelSlot(generatorBlockEntity, 0, 80, 58));
+        addSlot(new BatterySlot(generatorBlockEntity, 1, 80, 22));
     }
 }

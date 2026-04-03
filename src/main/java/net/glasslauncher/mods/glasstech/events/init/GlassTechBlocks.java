@@ -3,6 +3,8 @@ package net.glasslauncher.mods.glasstech.events.init;
 import net.glasslauncher.mods.glasstech.WireMaterial;
 import net.glasslauncher.mods.glasstech.WireProperties;
 import net.glasslauncher.mods.glasstech.blocks.TemplateCableBlock;
+import net.glasslauncher.mods.glasstech.blocks.ironfurnace.IronFurnaceBlock;
+import net.glasslauncher.mods.glasstech.blocks.ironfurnace.IronFurnaceBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.canner.CannerBlock;
 import net.glasslauncher.mods.glasstech.blocks.machine.canner.CannerBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.electricfurnace.ElectricFurnace;
@@ -45,6 +47,8 @@ public class GlassTechBlocks {
     public static Block electrolyzerBlock;
     public static Block extractorBlock;
 
+    public static Block ironFurnaceBlock;
+
     public static Block copperCableBlock;
     public static Block insulatedCopperCableBlock;
 
@@ -64,6 +68,8 @@ public class GlassTechBlocks {
         electrolyzerBlock = new ElectrolyzerBlock(NAMESPACE.id("electrolyzer"), Material.METAL).setTranslationKey(NAMESPACE.id("electrolyzer"));
         extractorBlock = new ExtractorBlock(NAMESPACE.id("extractor"), Material.METAL).setTranslationKey(NAMESPACE.id("extractor"));
 
+        extractorBlock = new IronFurnaceBlock(NAMESPACE.id("iron_furnace"), Material.METAL).setTranslationKey(NAMESPACE.id("iron_furnace"));
+
         copperCableBlock = new TemplateCableBlock(NAMESPACE.id("copper_cable"), WireProperties.createIfAbsent(NAMESPACE.id("copper"), PIXEL_SIZE * 2, false, WireMaterial.COPPER)).setTranslationKey(NAMESPACE.id("copper_cable"));
         insulatedCopperCableBlock = new TemplateCableBlock(NAMESPACE.id("copper_cable_insulated"), WireProperties.createIfAbsent(NAMESPACE.id("insulated_copper"), PIXEL_SIZE * 6, true, WireMaterial.COPPER)).setTranslationKey(NAMESPACE.id("insulated_copper_cable"));
     }
@@ -77,5 +83,7 @@ public class GlassTechBlocks {
         event.register(CannerBlockEntity.class, NAMESPACE.id("canner").toString());
         event.register(ElectrolyzerBlockEntity.class, NAMESPACE.id("electrolyzer").toString());
         event.register(ExtractorBlockEntity.class, NAMESPACE.id("extractor").toString());
+
+        event.register(IronFurnaceBlockEntity.class, NAMESPACE.id("iron_furnace").toString());
     }
 }

@@ -6,6 +6,9 @@ import net.modificationstation.stationapi.api.util.math.Direction;
 public class PlayerEntityUtil {
 
     public static Direction placementFacing(PlayerEntity player) {
+        if (player == null) {
+            return Direction.NORTH;
+        }
 
         int direction = ((int) Math.floor((player.yaw * 4.0f / 360.0d) + 0.5)) & 3;
         return switch (direction) {

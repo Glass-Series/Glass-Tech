@@ -1,0 +1,10 @@
+{
+  "parent": "glasstech:block/machine_front",
+  "textures": {
+    "casing": "glasstech:block/iron_furnace_side",
+    "casingtop": "glasstech:block/iron_furnace_top_lit",
+    "casingbottom": "glasstech:block/iron_furnace_bottom",
+    "frontoverlay": "glasstech:block/iron_furnace_lit",
+    "particle": "#casing"
+  }
+}

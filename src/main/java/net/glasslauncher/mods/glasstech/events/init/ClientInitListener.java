@@ -1,5 +1,7 @@
 package net.glasslauncher.mods.glasstech.events.init;
 
+import net.glasslauncher.mods.glasstech.blocks.ironfurnace.IronFurnaceBlockEntity;
+import net.glasslauncher.mods.glasstech.blocks.ironfurnace.IronFurnaceScreen;
 import net.glasslauncher.mods.glasstech.blocks.machine.canner.CannerBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.canner.CannerScreen;
 import net.glasslauncher.mods.glasstech.blocks.machine.electricfurnace.ElectricFurnaceBlockEntity;
@@ -32,19 +34,23 @@ public class ClientInitListener {
     }
 
     public static Atlas.Sprite energySlotIndex = null;
+    public static Atlas.Sprite fuelSlotIndex = null;
 
     public static Atlas.Sprite emptyBattery;
     public static Atlas.Sprite emptyEnergyCrystal;
     public static Atlas.Sprite emptyLapotronCrystal;
     public static Atlas.Sprite emptyBatteryPack;
+
     public static Atlas.Sprite almostEmptyBattery;
     public static Atlas.Sprite almostEmptyEnergyCrystal;
     public static Atlas.Sprite almostEmptyLapotronCrystal;
     public static Atlas.Sprite almostEmptyBatteryPack;
+
     public static Atlas.Sprite almostFullBattery;
     public static Atlas.Sprite almostFullEnergyCrystal;
     public static Atlas.Sprite almostFullLapotronCrystal;
     public static Atlas.Sprite almostFullBatteryPack;
+
     public static Atlas.Sprite fullBattery;
     public static Atlas.Sprite fullEnergyCrystal;
     public static Atlas.Sprite fullLapotronCrystal;
@@ -59,11 +65,13 @@ public class ClientInitListener {
         event.register(NAMESPACE.id("canner"), new GuiHandler((player, inventory, packet) -> new CannerScreen(player.inventory, (CannerBlockEntity) inventory), CannerBlockEntity::new));
         event.register(NAMESPACE.id("electrolyzer"), new GuiHandler((player, inventory, packet) -> new ElectrolyzerScreen(player.inventory, (ElectrolyzerBlockEntity) inventory), ElectrolyzerBlockEntity::new));
         event.register(NAMESPACE.id("extractor"), new GuiHandler((player, inventory, packet) -> new ExtractorScreen(player.inventory, (ExtractorBlockEntity) inventory), ExtractorBlockEntity::new));
+        event.register(NAMESPACE.id("iron_furnace"), new GuiHandler((player, inventory, packet) -> new IronFurnaceScreen(player.inventory, (IronFurnaceBlockEntity) inventory), IronFurnaceBlockEntity::new));
     }
 
     @EventListener
     private static void textureInit(TextureRegisterEvent event) {
-        energySlotIndex = Atlases.getGuiItems().addTexture(NAMESPACE.id("item/battery_slot"));
+        energySlotIndex = Atlases.getGuiItems().addTexture(NAMESPACE.id("item/gui/battery_slot"));
+        fuelSlotIndex = Atlases.getGuiItems().addTexture(NAMESPACE.id("item/gui/fuel_slot"));
 
         GlassTechItems.copperIngot.setTexture(NAMESPACE.id("item/resource/copper_ingot"));
         GlassTechItems.advancedAlloy.setTexture(NAMESPACE.id("item/resource/advanced_alloy"));

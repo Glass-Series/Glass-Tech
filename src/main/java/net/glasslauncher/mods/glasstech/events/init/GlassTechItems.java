@@ -1,13 +1,22 @@
 package net.glasslauncher.mods.glasstech.events.init;
 
+import net.danygames2014.nyalib.event.ItemCapabilityProviderRegisterEvent;
+import net.glasslauncher.mods.glasstech.item.SingleUsePowerCapability;
+import net.glasslauncher.mods.glasstech.item.SingleUsePowerCapabilityProvider;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.item.Item;
 import net.modificationstation.stationapi.api.event.registry.ItemRegistryEvent;
+import net.modificationstation.stationapi.api.mod.entrypoint.EntrypointManager;
 import net.modificationstation.stationapi.api.template.item.TemplateItem;
+
+import java.lang.invoke.MethodHandles;
 
 import static net.glasslauncher.mods.glasstech.GlassTech.NAMESPACE;
 
 public class GlassTechItems {
+    static {
+        EntrypointManager.registerLookup(MethodHandles.lookup());
+    }
 
     public static Item copperIngot;
     public static Item advancedAlloy;
@@ -92,5 +101,11 @@ public class GlassTechItems {
         diamondChainsaw = new TemplateItem(NAMESPACE.id("diamond_chainsaw")).setTranslationKey(NAMESPACE.id("diamond_chainsaw"));
         drill = new TemplateItem(NAMESPACE.id("drill")).setTranslationKey(NAMESPACE.id("drill"));
         diamondDrill = new TemplateItem(NAMESPACE.id("diamond_drill")).setTranslationKey(NAMESPACE.id("diamond_drill"));
+    }
+
+    @EventListener
+    private static void registerCapabilities(ItemCapabilityProviderRegisterEvent event) {
+        event.register(SingleUsePowerCapability.IDENTIFIER, new SingleUsePowerCapabilityProvider());
+
     }
 }

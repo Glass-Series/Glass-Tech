@@ -102,6 +102,10 @@ dependencies {
 		isTransitive = false
 	}
 
+	modImplementation("net.danygames2014:UniWrench:${project.properties["uniwrench_version"]}") {
+		isTransitive = false;
+	}
+
 	// Extra mods.
 	// https://github.com/calmilamsy/glass-config-api
 	modImplementation("net.glasslauncher.mods:GlassConfigAPI:${project.properties["gcapi_version"]}")
@@ -109,6 +113,9 @@ dependencies {
 	modImplementation("net.danygames2014:modmenu:${project.properties["modmenu_version"]}")
 	// https://github.com/Glass-Series/Always-More-Items
 	modImplementation("net.glasslauncher.mods:AlwaysMoreItems:${project.properties["alwaysmoreitems_version"]}")
+	modRuntimeOnly("net.danygames2014:DebugUtilities:${project.properties["debugutilities_version"]}") {
+		isTransitive = false
+	}
 }
 
 tasks.withType<ProcessResources> {
