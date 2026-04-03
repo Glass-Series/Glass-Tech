@@ -2,9 +2,6 @@ package net.glasslauncher.mods.glasstech;
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.minecraft.client.resource.language.TranslationStorage;
-import net.modificationstation.stationapi.api.util.Formatting;
-
-import java.util.ArrayList;
 
 /**
  * Voltage tiers from ULV (24V) to IV (22kV+), with their colors and names.

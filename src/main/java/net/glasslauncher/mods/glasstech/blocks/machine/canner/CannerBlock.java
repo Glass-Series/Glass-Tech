@@ -1,7 +1,7 @@
 package net.glasslauncher.mods.glasstech.blocks.machine.canner;
 
+import net.glasslauncher.mods.glasstech.GlassTech;
 import net.glasslauncher.mods.glasstech.blocks.machine.MachineBlockTemplate;
-import net.glasslauncher.mods.glasstech.events.init.InitListener;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.PlayerEntity;
@@ -25,7 +25,7 @@ public class CannerBlock extends MachineBlockTemplate {
         CannerBlockEntity cannerBlockEntity = (CannerBlockEntity) world.getBlockEntity(x, y, z);
         GuiHelper.openGUI(
                 player,
-                InitListener.NAMESPACE.id("canner"),
+                GlassTech.NAMESPACE.id("canner"),
                 cannerBlockEntity,
                 new CannerScreenHandler(player.inventory, cannerBlockEntity)
         );

@@ -1,7 +1,6 @@
 package net.glasslauncher.mods.glasstech.blocks.machine.inductionfurnace;
 
 import net.glasslauncher.mods.glasstech.blocks.machine.ConsumerScreenHandlerTemplate;
-import net.glasslauncher.mods.glasstech.blocks.machine.SlotLayout;
 import net.glasslauncher.mods.glasstech.gui.BatterySlot;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.screen.slot.FurnaceOutputSlot;

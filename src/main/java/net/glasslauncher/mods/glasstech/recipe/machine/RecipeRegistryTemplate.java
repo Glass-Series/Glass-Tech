@@ -1,7 +1,7 @@
 package net.glasslauncher.mods.glasstech.recipe.machine;
 
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import net.glasslauncher.mods.glasstech.events.init.InitListener;
+import net.glasslauncher.mods.glasstech.GlassTech;
 import net.glasslauncher.mods.glasstech.recipe.HashUtil;
 import net.minecraft.item.ItemStack;
 import net.modificationstation.stationapi.api.util.Identifier;
@@ -15,7 +15,7 @@ public class RecipeRegistryTemplate<T extends BasicMachineRecipe> {
 
     public boolean register(Identifier identifier, T recipe) {
         if (registry.containsKey(identifier)) {
-            InitListener.LOGGER.warn("Recipe {} already exists in {}!", identifier, getClass().getName());
+            GlassTech.LOGGER.warn("Recipe {} already exists in {}!", identifier, getClass().getName());
             return false;
         }
 

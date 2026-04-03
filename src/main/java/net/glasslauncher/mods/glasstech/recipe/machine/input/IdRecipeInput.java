@@ -1,7 +1,6 @@
 package net.glasslauncher.mods.glasstech.recipe.machine.input;
 
 import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 import java.util.List;

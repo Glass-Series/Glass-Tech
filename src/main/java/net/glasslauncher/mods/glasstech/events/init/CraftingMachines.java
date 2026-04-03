@@ -1,10 +1,10 @@
 package net.glasslauncher.mods.glasstech.events.init;
 
 import com.mojang.datafixers.util.Either;
+import net.glasslauncher.mods.glasstech.GlassTech;
 import net.glasslauncher.mods.glasstech.recipe.machine.BasicMachineRecipe;
 import net.glasslauncher.mods.glasstech.recipe.machine.MaceratorRecipeRegistry;
 import net.glasslauncher.mods.glasstech.recipe.machine.input.BlockRecipeInput;
-import net.glasslauncher.mods.glasstech.recipe.machine.input.ItemRecipeInput;
 import net.glasslauncher.mods.glasstech.recipe.machine.input.RecipeInput;
 import net.glasslauncher.mods.glasstech.recipe.machine.output.RecipeOutput;
 import net.mine_diver.unsafeevents.listener.EventListener;
@@ -44,11 +44,11 @@ public class CraftingMachines {
                             I, BAT, I,
                             S, F, S
                     }
-                    , new ItemStack(InitListener.generatorBlock))
+                    , new ItemStack(GlassTechBlocks.generatorBlock))
             );
         }
-        if (event.recipeId.equals(InitListener.NAMESPACE.id("macerator"))) {
-            MaceratorRecipeRegistry.INSTANCE.register(InitListener.NAMESPACE.id("iron"), new BasicMachineRecipe(new RecipeInput[]{new BlockRecipeInput(Block.IRON_ORE)}, new RecipeOutput[]{new RecipeOutput(new ItemStack(Item.IRON_INGOT))}));
+        if (event.recipeId.equals(GlassTech.NAMESPACE.id("macerator"))) {
+            MaceratorRecipeRegistry.INSTANCE.register(GlassTech.NAMESPACE.id("iron"), new BasicMachineRecipe(new RecipeInput[]{new BlockRecipeInput(Block.IRON_ORE)}, new RecipeOutput[]{new RecipeOutput(new ItemStack(Item.IRON_INGOT))}));
         }
     }
 }

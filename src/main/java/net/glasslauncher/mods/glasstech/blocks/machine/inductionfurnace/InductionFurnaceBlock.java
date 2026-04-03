@@ -1,8 +1,8 @@
 package net.glasslauncher.mods.glasstech.blocks.machine.inductionfurnace;
 
 import net.danygames2014.nyalib.block.DropInventoryOnBreak;
+import net.glasslauncher.mods.glasstech.GlassTech;
 import net.glasslauncher.mods.glasstech.blocks.machine.MachineBlockTemplate;
-import net.glasslauncher.mods.glasstech.events.init.InitListener;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.PlayerEntity;
@@ -26,7 +26,7 @@ public class InductionFurnaceBlock extends MachineBlockTemplate implements DropI
         InductionFurnaceBlockEntity inductionFurnaceBlockEntity = (InductionFurnaceBlockEntity) world.getBlockEntity(x, y, z);
         GuiHelper.openGUI(
                 player,
-                InitListener.NAMESPACE.id("induction_furnace"),
+                GlassTech.NAMESPACE.id("induction_furnace"),
                 inductionFurnaceBlockEntity,
                 new InductionFurnaceScreenHandler(player.inventory, inductionFurnaceBlockEntity)
         );

@@ -1,7 +1,7 @@
 package net.glasslauncher.mods.glasstech.blocks.machine.electrolyzer;
 
+import net.glasslauncher.mods.glasstech.GlassTech;
 import net.glasslauncher.mods.glasstech.blocks.machine.MachineBlockTemplate;
-import net.glasslauncher.mods.glasstech.events.init.InitListener;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.PlayerEntity;
@@ -25,7 +25,7 @@ public class ElectrolyzerBlock extends MachineBlockTemplate {
         ElectrolyzerBlockEntity electrolyzerBlockEntity = (ElectrolyzerBlockEntity) world.getBlockEntity(x, y, z);
         GuiHelper.openGUI(
                 player,
-                InitListener.NAMESPACE.id("electrolyzer"),
+                GlassTech.NAMESPACE.id("electrolyzer"),
                 electrolyzerBlockEntity,
                 new ElectrolyzerScreenHandler(player.inventory, electrolyzerBlockEntity)
         );

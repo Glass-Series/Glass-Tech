@@ -1,6 +1,6 @@
 package net.glasslauncher.mods.glasstech.mixin;
 
-import net.glasslauncher.mods.glasstech.events.init.InitListener;
+import net.glasslauncher.mods.glasstech.GlassTech;
 import net.minecraft.recipe.CraftingRecipeManager;
 import net.modificationstation.stationapi.api.StationAPI;
 import net.modificationstation.stationapi.api.event.recipe.RecipeRegisterEvent;
@@ -20,6 +20,6 @@ public class CraftingRecipeManagerMixin {
 
     @Unique
     private void postRecipes(String id) {
-        StationAPI.EVENT_BUS.post(RecipeRegisterEvent.builder().recipeId(InitListener.NAMESPACE.id(id)).build());
+        StationAPI.EVENT_BUS.post(RecipeRegisterEvent.builder().recipeId(GlassTech.NAMESPACE.id(id)).build());
     }
 }

@@ -1,18 +1,12 @@
 package net.glasslauncher.mods.glasstech.blocks;
 
-import lombok.Setter;
 import net.danygames2014.nyalib.energy.EnergyConductor;
 import net.danygames2014.nyalib.network.*;
-import net.danygames2014.nyalib.network.energy.EnergyNetwork;
 import net.danygames2014.nyalib.particle.ParticleHelper;
-import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.glasslauncher.mods.glasstech.WireProperties;
 import net.minecraft.block.Block;
 import net.minecraft.block.FurnaceBlock;
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
@@ -21,7 +15,6 @@ import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.block.States;
 import net.modificationstation.stationapi.api.item.ItemPlacementContext;
-import net.modificationstation.stationapi.api.recipe.FuelRegistry;
 import net.modificationstation.stationapi.api.state.StateManager;
 import net.modificationstation.stationapi.api.state.property.BooleanProperty;
 import net.modificationstation.stationapi.api.state.property.Properties;
@@ -30,8 +23,6 @@ import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.math.Direction;
 
 import javax.annotation.Nullable;
-
-import java.util.ArrayList;
 import java.util.Map;
 
 public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComponent, EnergyConductor, LossyEnergyConductor {

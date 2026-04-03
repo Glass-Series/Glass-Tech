@@ -19,7 +19,8 @@
   "environment": "*",
   "entrypoints": {
     "stationapi:event_bus": [
-      "net.glasslauncher.mods.glasstech.events.init.InitListener",
+      "net.glasslauncher.mods.glasstech.events.init.GlassTechBlocks",
+      "net.glasslauncher.mods.glasstech.events.init.GlassTechItems",
       "net.glasslauncher.mods.glasstech.events.init.CraftingMachines"
     ],
     "stationapi:event_bus_client": [

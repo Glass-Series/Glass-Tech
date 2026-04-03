@@ -6,7 +6,6 @@ import net.glasslauncher.mods.glasstech.blocks.machine.RecipeBlockEntityTemplate
 import net.glasslauncher.mods.glasstech.blocks.machine.SlotLayout;
 import net.glasslauncher.mods.glasstech.recipe.machine.BasicMachineRecipe;
 import net.glasslauncher.mods.glasstech.recipe.machine.CannerRecipeRegistry;
-import net.glasslauncher.mods.glasstech.recipe.machine.MaceratorRecipeRegistry;
 import net.minecraft.item.ItemStack;
 
 public class CannerBlockEntity extends RecipeBlockEntityTemplate<BasicMachineRecipe> {
