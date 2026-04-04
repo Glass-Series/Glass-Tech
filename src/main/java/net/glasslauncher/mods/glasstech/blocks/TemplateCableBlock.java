@@ -103,7 +103,7 @@ public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComp
         super.neighborUpdate(world, x, y, z, id);
 
         FurnaceBlock.ignoreBlockRemoval = true;
-        world.setBlockState(x, y, z, updateModel(world, x, y, z));
+        world.setBlockStateWithNotify(x, y, z, updateModel(world, x, y, z));
         FurnaceBlock.ignoreBlockRemoval = false;
     }
 
