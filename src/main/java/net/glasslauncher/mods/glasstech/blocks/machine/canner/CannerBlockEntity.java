@@ -11,10 +11,8 @@ import net.minecraft.item.ItemStack;
 public class CannerBlockEntity extends RecipeBlockEntityTemplate<BasicMachineRecipe> {
 
     public CannerBlockEntity() {
-        super(VoltageTier.LV, 200, 4);
+        super(VoltageTier.LV, 200, 3, 300);
         SlotLayout.createBasic(this);
-        setEnergyCapacity((int) (FuelValues.COAL * 0.5));
-        setMaxEnergyInput(24);
     }
 
     @Override

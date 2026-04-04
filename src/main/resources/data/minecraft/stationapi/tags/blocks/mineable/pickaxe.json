@@ -2,6 +2,7 @@
   "values": [
     "glasstech:generator",
     "glasstech:furnace",
+    "glasstech:compressor",
     "glasstech:iron_furnace",
     "glasstech:induction_furnace",
     "glasstech:macerator",

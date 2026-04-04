@@ -2,6 +2,9 @@ package net.glasslauncher.mods.glasstech.blocks.machine.inductionfurnace;
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import lombok.Getter;
+import lombok.Setter;
+import net.glasslauncher.mods.glassguis.screen.ServerSyncedField;
 import net.glasslauncher.mods.glasstech.FuelValues;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.glasslauncher.mods.glasstech.blocks.machine.RecipeBlockEntityTemplate;
@@ -19,15 +22,18 @@ import net.minecraft.recipe.SmeltingRecipeManager;
 public class InductionFurnaceBlockEntity extends RecipeBlockEntityTemplate<BasicMachineRecipe> implements Inventory {
     public static Int2ObjectMap<BasicMachineRecipe> CACHE = new Int2ObjectOpenHashMap<>();
 
+    @Getter @Setter @ServerSyncedField
+    private int maxHeat = 10000;
+    @Getter @Setter @ServerSyncedField
+    private int heat;
+
     public InductionFurnaceBlockEntity() {
-        super(VoltageTier.LV, 200, 4);
+        super(VoltageTier.LV, 4000, 15, 10000);
         addInput();
         addInput();
         addOutput(RecipeOutputType.PRIMARY);
         addOutput(RecipeOutputType.PRIMARY);
         addSlot(SlotType.FUEL);
-        setEnergyCapacity((int) (FuelValues.COAL * 0.5)); // .2 coal worth
-        setMaxEnergyInput(24); // 2 generators
     }
 
     @Override

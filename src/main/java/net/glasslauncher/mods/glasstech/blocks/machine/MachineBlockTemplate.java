@@ -19,6 +19,7 @@ public abstract class MachineBlockTemplate extends EnergySourceBlockTemplate imp
         setHardness(5f);
         setResistance(10f);
         setSoundGroup(METAL_SOUND_GROUP);
+        setTranslationKey(identifier);
         setDefaultState(getDefaultState()
                 .with(Properties.HORIZONTAL_FACING, Direction.NORTH)
                 .with(Properties.LIT, false)

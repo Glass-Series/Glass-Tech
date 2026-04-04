@@ -21,13 +21,16 @@ public class GeneratorBlockEntity extends GeneratorBlockEntityTemplate implement
     protected int initialFuelTicks;
     @Getter @Setter @ServerSyncedField
     protected int fuelTicks;
+    @Getter @Setter
+    protected int generationAmount = 10; // eu/t
+    @Getter @Setter
+    protected float fuelEfficiency = 0.25f;
 
     protected ItemStack[] slots = new ItemStack[2];
 
     public GeneratorBlockEntity() {
         super(VoltageTier.LV);
-        setEnergyCapacity(FuelValues.COAL*4); // 4 coal worth
-        setMaxEnergyOutput(12);
+        setEnergyCapacity(4000);
     }
 
     @Override
@@ -37,7 +40,7 @@ public class GeneratorBlockEntity extends GeneratorBlockEntityTemplate implement
             return;
         }
         if (slots[0] != null && fuelTicks < 1 && energy < getEnergyCapacity()) {
-            int fuelTime = FuelRegistry.getFuelTime(slots[0]) / 2;
+            int fuelTime = (int) (FuelRegistry.getFuelTime(slots[0]) * fuelEfficiency);
             if (fuelTime < 1) {
                 return;
             }
@@ -51,7 +54,7 @@ public class GeneratorBlockEntity extends GeneratorBlockEntityTemplate implement
         BlockState state = world.getBlockState(x, y, z);
         if (fuelTicks > 0) {
             fuelTicks--;
-            energy += 8; // 8 eu/t
+            energy += generationAmount; // in eu/t
             if (state.contains(Properties.LIT) && !state.get(Properties.LIT)) {
                 FurnaceBlock.ignoreBlockRemoval = true;
                 world.setBlockStateWithNotify(x, y, z, state.with(Properties.LIT, true));

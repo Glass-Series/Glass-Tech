@@ -1,27 +1,28 @@
-package net.glasslauncher.mods.glasstech.blocks.machine.extractor;
+package net.glasslauncher.mods.glasstech.blocks.machine.compressor;
 
 import net.glasslauncher.mods.glasstech.FuelValues;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.glasslauncher.mods.glasstech.blocks.machine.RecipeBlockEntityTemplate;
 import net.glasslauncher.mods.glasstech.blocks.machine.SlotLayout;
 import net.glasslauncher.mods.glasstech.recipe.machine.BasicMachineRecipe;
+import net.glasslauncher.mods.glasstech.recipe.machine.CompressorRecipeRegistry;
 import net.glasslauncher.mods.glasstech.recipe.machine.ExtractorRecipeRegistry;
 import net.minecraft.item.ItemStack;
 
-public class ExtractorBlockEntity extends RecipeBlockEntityTemplate<BasicMachineRecipe> {
+public class CompressorBlockEntity extends RecipeBlockEntityTemplate<BasicMachineRecipe> {
 
-    public ExtractorBlockEntity() {
+    public CompressorBlockEntity() {
         super(VoltageTier.LV, 200, 4, 300);
         SlotLayout.createBasic(this);
     }
 
     @Override
     public String getName() {
-        return "Extractor";
+        return "Compressor";
     }
 
     @Override
     public BasicMachineRecipe fetchRecipe(ItemStack[] input) {
-        return ExtractorRecipeRegistry.INSTANCE.get(input);
+        return CompressorRecipeRegistry.INSTANCE.get(input);
     }
 }

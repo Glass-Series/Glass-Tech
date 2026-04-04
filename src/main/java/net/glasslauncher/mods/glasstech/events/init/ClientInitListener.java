@@ -4,6 +4,8 @@ import net.glasslauncher.mods.glasstech.blocks.ironfurnace.IronFurnaceBlockEntit
 import net.glasslauncher.mods.glasstech.blocks.ironfurnace.IronFurnaceScreen;
 import net.glasslauncher.mods.glasstech.blocks.machine.canner.CannerBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.canner.CannerScreen;
+import net.glasslauncher.mods.glasstech.blocks.machine.compressor.CompressorBlockEntity;
+import net.glasslauncher.mods.glasstech.blocks.machine.compressor.CompressorScreen;
 import net.glasslauncher.mods.glasstech.blocks.machine.electricfurnace.ElectricFurnaceBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.electricfurnace.ElectricFurnaceScreen;
 import net.glasslauncher.mods.glasstech.blocks.machine.electrolyzer.ElectrolyzerBlockEntity;
@@ -59,6 +61,7 @@ public class ClientInitListener {
     @EventListener
     private static void screenInit(GuiHandlerRegistryEvent event) {
         event.register(NAMESPACE.id("generator"), new GuiHandler((player, inventory, packet) -> new GeneratorScreen(player.inventory, (GeneratorBlockEntity) inventory), GeneratorBlockEntity::new));
+        event.register(NAMESPACE.id("compressor"), new GuiHandler((player, inventory, packet) -> new CompressorScreen(player.inventory, (CompressorBlockEntity) inventory), CompressorBlockEntity::new));
         event.register(NAMESPACE.id("furnace"), new GuiHandler((player, inventory, packet) -> new ElectricFurnaceScreen(player.inventory, (ElectricFurnaceBlockEntity) inventory), ElectricFurnaceBlockEntity::new));
         event.register(NAMESPACE.id("induction_furnace"), new GuiHandler((player, inventory, packet) -> new InductionFurnaceScreen(player.inventory, (InductionFurnaceBlockEntity) inventory), InductionFurnaceBlockEntity::new));
         event.register(NAMESPACE.id("macerator"), new GuiHandler((player, inventory, packet) -> new MaceratorScreen(player.inventory, (MaceratorBlockEntity) inventory), MaceratorBlockEntity::new));

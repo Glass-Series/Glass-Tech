@@ -1,5 +1,6 @@
 package net.glasslauncher.mods.glasstech.blocks.machine;
 
+import lombok.Getter;
 import lombok.Setter;
 import net.danygames2014.nyalib.energy.template.block.entity.EnergyConsumerBlockEntityTemplate;
 import net.glasslauncher.mods.glassguis.screen.ServerSyncedField;
@@ -11,13 +12,20 @@ import org.jetbrains.annotations.Nullable;
 public class ConsumerBlockEntityTemplate extends EnergyConsumerBlockEntityTemplate {
     @Setter @ServerSyncedField
     private int energyCapacity;
-    @Setter
     private int maxEnergyInput;
     @Setter
     private int maxInputVoltage;
+    @Getter
+    private int maxInputAmps = 1;
 
     public ConsumerBlockEntityTemplate(VoltageTier voltageTier) {
         maxInputVoltage = voltageTier.maxVoltage;
+        maxEnergyInput = voltageTier.maxVoltage * maxInputAmps;
+    }
+
+    public void setMaxInputAmps(int amps) {
+        maxInputAmps = amps;
+        maxEnergyInput = amps * maxInputVoltage;
     }
 
     @Override

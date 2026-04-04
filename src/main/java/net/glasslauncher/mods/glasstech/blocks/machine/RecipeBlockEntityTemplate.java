@@ -32,8 +32,8 @@ public abstract class RecipeBlockEntityTemplate<R extends BasicMachineRecipe> ex
      */
     public final Map<RecipeOutputType, ItemStack[]> lastOutputStacks = new HashMap<>();
 
-    public RecipeBlockEntityTemplate(VoltageTier tier, int maxProgress, int energyConsumption) {
-        super(tier, maxProgress, energyConsumption);
+    public RecipeBlockEntityTemplate(VoltageTier tier, int maxProgress, int energyConsumption, int energyCapacity) {
+        super(tier, maxProgress, energyConsumption, energyCapacity);
     }
 
     boolean canOutput = false;

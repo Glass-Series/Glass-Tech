@@ -19,10 +19,8 @@ public class ElectricFurnaceBlockEntity extends RecipeBlockEntityTemplate<BasicM
     public static Int2ObjectMap<BasicMachineRecipe> CACHE = new Int2ObjectOpenHashMap<>();
 
     public ElectricFurnaceBlockEntity() {
-        super(VoltageTier.LV, 200, 4);
+        super(VoltageTier.LV, 200, 4, 100);
         SlotLayout.createBasic(this);
-        setEnergyCapacity((int) (FuelValues.COAL * 0.5)); // .2 coal worth
-        setMaxEnergyInput(24); // 2 generators
     }
 
     @Override

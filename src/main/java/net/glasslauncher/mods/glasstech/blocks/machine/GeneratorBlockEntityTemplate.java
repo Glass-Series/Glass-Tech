@@ -1,5 +1,6 @@
 package net.glasslauncher.mods.glasstech.blocks.machine;
 
+import lombok.Getter;
 import lombok.Setter;
 import net.danygames2014.nyalib.energy.template.block.entity.EnergySourceBlockEntityTemplate;
 import net.glasslauncher.mods.glassguis.screen.ServerSyncedField;
@@ -16,10 +17,17 @@ public class GeneratorBlockEntityTemplate extends EnergySourceBlockEntityTemplat
     private int outputVoltage;
     @Setter
     private int maxOutputVoltage;
+    @Getter
+    private int maxInputAmps = 1;
 
     public GeneratorBlockEntityTemplate(VoltageTier voltageTier) {
         outputVoltage = voltageTier.maxVoltage;
-        maxOutputVoltage = voltageTier.maxVoltage;
+        maxEnergyOutput = outputVoltage * maxInputAmps;
+    }
+
+    public void setMaxInputAmps(int amps) {
+        maxInputAmps = amps;
+        maxEnergyOutput = amps * maxOutputVoltage;
     }
 
     @Override

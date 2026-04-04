@@ -11,10 +11,8 @@ import net.minecraft.item.ItemStack;
 public class ElectrolyzerBlockEntity extends RecipeBlockEntityTemplate<BasicMachineRecipe> {
 
     public ElectrolyzerBlockEntity() {
-        super(VoltageTier.LV, 200, 4);
+        super(VoltageTier.LV, 150000, 10, 15000);
         SlotLayout.createBasic(this);
-        setEnergyCapacity((int) (FuelValues.COAL * 0.5));
-        setMaxEnergyInput(24);
     }
 
     @Override

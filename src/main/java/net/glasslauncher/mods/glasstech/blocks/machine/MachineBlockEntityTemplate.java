@@ -35,7 +35,7 @@ public abstract class MachineBlockEntityTemplate extends ConsumerBlockEntityTemp
     // Lit State
     boolean lit = false;
 
-    public MachineBlockEntityTemplate(VoltageTier tier, int maxProgress, int energyConsumption) {
+    public MachineBlockEntityTemplate(VoltageTier tier, int maxProgress, int energyConsumption, int energyCapacity) {
         super(tier);
         // Progress
         this.progress = 0;
@@ -43,6 +43,7 @@ public abstract class MachineBlockEntityTemplate extends ConsumerBlockEntityTemp
 
         // Properties
         this.energyConsumption = energyConsumption;
+        setEnergyCapacity(energyCapacity);
 
         // Random
         this.random = new Random();

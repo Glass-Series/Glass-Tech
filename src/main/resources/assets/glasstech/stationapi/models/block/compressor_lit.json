@@ -1,0 +1,10 @@
+{
+  "parent": "glasstech:block/machine_front",
+  "textures": {
+    "casing": "glasstech:block/lv_hull",
+    "casingtop": "glasstech:block/mv",
+    "casingbottom": "glasstech:block/lv",
+    "frontoverlay": "glasstech:block/compressor_front_lit",
+    "particle": "#casing"
+  }
+}

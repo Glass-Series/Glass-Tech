@@ -7,6 +7,8 @@ import net.glasslauncher.mods.glasstech.blocks.ironfurnace.IronFurnaceBlock;
 import net.glasslauncher.mods.glasstech.blocks.ironfurnace.IronFurnaceBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.canner.CannerBlock;
 import net.glasslauncher.mods.glasstech.blocks.machine.canner.CannerBlockEntity;
+import net.glasslauncher.mods.glasstech.blocks.machine.compressor.CompressorBlock;
+import net.glasslauncher.mods.glasstech.blocks.machine.compressor.CompressorBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.electricfurnace.ElectricFurnace;
 import net.glasslauncher.mods.glasstech.blocks.machine.electricfurnace.ElectricFurnaceBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.electrolyzer.ElectrolyzerBlock;
@@ -41,6 +43,7 @@ public class GlassTechBlocks {
     public static Block generatorBlock;
 
     public static Block furnaceBlock;
+    public static Block compressorBlock;
     public static Block inductionFurnaceBlock;
     public static Block maceratorBlock;
     public static Block cannerBlock;
@@ -59,16 +62,17 @@ public class GlassTechBlocks {
 
     @EventListener
     private static void blockInit(BlockRegistryEvent event) {
-        generatorBlock = new GeneratorBlock(NAMESPACE.id("generator"), Material.METAL).setTranslationKey(NAMESPACE.id("generator"));
+        generatorBlock = new GeneratorBlock(NAMESPACE.id("generator"), Material.METAL);
 
-        furnaceBlock = new ElectricFurnace(NAMESPACE.id("furnace"), Material.METAL).setTranslationKey(NAMESPACE.id("furnace"));
-        inductionFurnaceBlock = new InductionFurnaceBlock(NAMESPACE.id("induction_furnace"), Material.METAL).setTranslationKey(NAMESPACE.id("induction_furnace"));
-        maceratorBlock = new MaceratorBlock(NAMESPACE.id("macerator"), Material.METAL).setTranslationKey(NAMESPACE.id("macerator"));
-        cannerBlock = new CannerBlock(NAMESPACE.id("canner"), Material.METAL).setTranslationKey(NAMESPACE.id("canner"));
-        electrolyzerBlock = new ElectrolyzerBlock(NAMESPACE.id("electrolyzer"), Material.METAL).setTranslationKey(NAMESPACE.id("electrolyzer"));
-        extractorBlock = new ExtractorBlock(NAMESPACE.id("extractor"), Material.METAL).setTranslationKey(NAMESPACE.id("extractor"));
+        furnaceBlock = new ElectricFurnace(NAMESPACE.id("furnace"), Material.METAL);
+        compressorBlock = new CompressorBlock(NAMESPACE.id("compressor"), Material.METAL);
+        inductionFurnaceBlock = new InductionFurnaceBlock(NAMESPACE.id("induction_furnace"), Material.METAL);
+        maceratorBlock = new MaceratorBlock(NAMESPACE.id("macerator"), Material.METAL);
+        cannerBlock = new CannerBlock(NAMESPACE.id("canner"), Material.METAL);
+        electrolyzerBlock = new ElectrolyzerBlock(NAMESPACE.id("electrolyzer"), Material.METAL);
+        extractorBlock = new ExtractorBlock(NAMESPACE.id("extractor"), Material.METAL);
 
-        extractorBlock = new IronFurnaceBlock(NAMESPACE.id("iron_furnace"), Material.METAL).setTranslationKey(NAMESPACE.id("iron_furnace"));
+        ironFurnaceBlock = new IronFurnaceBlock(NAMESPACE.id("iron_furnace"), Material.METAL);
 
         copperCableBlock = new TemplateCableBlock(NAMESPACE.id("copper_cable"), WireProperties.createIfAbsent(NAMESPACE.id("copper"), PIXEL_SIZE * 2, false, WireMaterial.COPPER)).setTranslationKey(NAMESPACE.id("copper_cable"));
         insulatedCopperCableBlock = new TemplateCableBlock(NAMESPACE.id("copper_cable_insulated"), WireProperties.createIfAbsent(NAMESPACE.id("insulated_copper"), PIXEL_SIZE * 6, true, WireMaterial.COPPER)).setTranslationKey(NAMESPACE.id("insulated_copper_cable"));
@@ -77,6 +81,7 @@ public class GlassTechBlocks {
     @EventListener
     private static void tileEntityInit(BlockEntityRegisterEvent event) {
         event.register(GeneratorBlockEntity.class, NAMESPACE.id("generator").toString());
+        event.register(CompressorBlockEntity.class, NAMESPACE.id("compressor").toString());
         event.register(ElectricFurnaceBlockEntity.class, NAMESPACE.id("furnace").toString());
         event.register(InductionFurnaceBlockEntity.class, NAMESPACE.id("induction_furnace").toString());
         event.register(MaceratorBlockEntity.class, NAMESPACE.id("macerator").toString());
