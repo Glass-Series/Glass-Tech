@@ -4,7 +4,7 @@
   "version": "${version}",
 
   "name": "Glass Tech",
-  "description": "A total conversion mod aiming to add new features and revitalize beta 1.7.3. Incompatible with everything, including StationAPI.",
+  "description": "A total conversion mod aiming to add new features and revitalize beta 1.7.3. Incompatible with everything, including StationAPI.\nI can't believe it's not IC2!",
   "authors": [
     "calmilamsy"
   ],
