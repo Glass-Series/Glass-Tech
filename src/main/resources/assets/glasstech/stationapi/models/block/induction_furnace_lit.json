@@ -4,7 +4,7 @@
     "casing": "glasstech:block/mv",
     "casingtop": "glasstech:block/mv",
     "casingbottom": "glasstech:block/mv",
-    "frontoverlay": "glasstech:block/furnace_front_lit",
+    "frontoverlay": "glasstech:block/electric_furnace_front_lit",
     "particle": "#casing"
   }
 }

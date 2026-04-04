@@ -1,5 +1,7 @@
 package net.glasslauncher.mods.glasstech.events.init;
 
+import net.glasslauncher.mods.glasstech.blocks.batbox.BatBoxBlockEntity;
+import net.glasslauncher.mods.glasstech.blocks.batbox.BatBoxScreen;
 import net.glasslauncher.mods.glasstech.blocks.ironfurnace.IronFurnaceBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.ironfurnace.IronFurnaceScreen;
 import net.glasslauncher.mods.glasstech.blocks.machine.canner.CannerBlockEntity;
@@ -35,7 +37,8 @@ public class ClientInitListener {
         EntrypointManager.registerLookup(MethodHandles.lookup());
     }
 
-    public static Atlas.Sprite energySlotIndex = null;
+    public static Atlas.Sprite batterySlotIndex = null;
+    public static Atlas.Sprite batteryChargeSlotIndex = null;
     public static Atlas.Sprite fuelSlotIndex = null;
 
     public static Atlas.Sprite emptyBattery;
@@ -61,19 +64,24 @@ public class ClientInitListener {
     @EventListener
     private static void screenInit(GuiHandlerRegistryEvent event) {
         event.register(NAMESPACE.id("generator"), new GuiHandler((player, inventory, packet) -> new GeneratorScreen(player.inventory, (GeneratorBlockEntity) inventory), GeneratorBlockEntity::new));
+
         event.register(NAMESPACE.id("compressor"), new GuiHandler((player, inventory, packet) -> new CompressorScreen(player.inventory, (CompressorBlockEntity) inventory), CompressorBlockEntity::new));
-        event.register(NAMESPACE.id("furnace"), new GuiHandler((player, inventory, packet) -> new ElectricFurnaceScreen(player.inventory, (ElectricFurnaceBlockEntity) inventory), ElectricFurnaceBlockEntity::new));
+        event.register(NAMESPACE.id("electric_furnace"), new GuiHandler((player, inventory, packet) -> new ElectricFurnaceScreen(player.inventory, (ElectricFurnaceBlockEntity) inventory), ElectricFurnaceBlockEntity::new));
         event.register(NAMESPACE.id("induction_furnace"), new GuiHandler((player, inventory, packet) -> new InductionFurnaceScreen(player.inventory, (InductionFurnaceBlockEntity) inventory), InductionFurnaceBlockEntity::new));
         event.register(NAMESPACE.id("macerator"), new GuiHandler((player, inventory, packet) -> new MaceratorScreen(player.inventory, (MaceratorBlockEntity) inventory), MaceratorBlockEntity::new));
         event.register(NAMESPACE.id("canner"), new GuiHandler((player, inventory, packet) -> new CannerScreen(player.inventory, (CannerBlockEntity) inventory), CannerBlockEntity::new));
         event.register(NAMESPACE.id("electrolyzer"), new GuiHandler((player, inventory, packet) -> new ElectrolyzerScreen(player.inventory, (ElectrolyzerBlockEntity) inventory), ElectrolyzerBlockEntity::new));
         event.register(NAMESPACE.id("extractor"), new GuiHandler((player, inventory, packet) -> new ExtractorScreen(player.inventory, (ExtractorBlockEntity) inventory), ExtractorBlockEntity::new));
+
         event.register(NAMESPACE.id("iron_furnace"), new GuiHandler((player, inventory, packet) -> new IronFurnaceScreen(player.inventory, (IronFurnaceBlockEntity) inventory), IronFurnaceBlockEntity::new));
+
+        event.register(NAMESPACE.id("battery_box"), new GuiHandler((player, inventory, packet) -> new BatBoxScreen(player.inventory, (BatBoxBlockEntity) inventory), BatBoxBlockEntity::new));
     }
 
     @EventListener
     private static void textureInit(TextureRegisterEvent event) {
-        energySlotIndex = Atlases.getGuiItems().addTexture(NAMESPACE.id("item/gui/battery_slot"));
+        batterySlotIndex = Atlases.getGuiItems().addTexture(NAMESPACE.id("item/gui/battery_slot"));
+        batteryChargeSlotIndex = Atlases.getGuiItems().addTexture(NAMESPACE.id("item/gui/battery_charge_slot"));
         fuelSlotIndex = Atlases.getGuiItems().addTexture(NAMESPACE.id("item/gui/fuel_slot"));
 
         GlassTechItems.copperIngot.setTexture(NAMESPACE.id("item/resource/copper_ingot"));

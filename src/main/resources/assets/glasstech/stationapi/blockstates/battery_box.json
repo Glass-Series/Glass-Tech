@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "glasstech:block/battery_box"
+    },
+    "facing=east": {
+      "model": "glasstech:block/battery_box",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "glasstech:block/battery_box",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "glasstech:block/battery_box",
+      "y": 270
+    },
+    "facing=up": {
+      "model": "glasstech:block/battery_box",
+      "x": -90
+    },
+    "facing=down": {
+      "model": "glasstech:block/battery_box",
+      "x": 90
+    }
+  }
+}

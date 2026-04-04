@@ -3,6 +3,8 @@ package net.glasslauncher.mods.glasstech.events.init;
 import net.glasslauncher.mods.glasstech.WireMaterial;
 import net.glasslauncher.mods.glasstech.WireProperties;
 import net.glasslauncher.mods.glasstech.blocks.TemplateCableBlock;
+import net.glasslauncher.mods.glasstech.blocks.batbox.BatBoxBlock;
+import net.glasslauncher.mods.glasstech.blocks.batbox.BatBoxBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.ironfurnace.IronFurnaceBlock;
 import net.glasslauncher.mods.glasstech.blocks.ironfurnace.IronFurnaceBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.canner.CannerBlock;
@@ -52,6 +54,8 @@ public class GlassTechBlocks {
 
     public static Block ironFurnaceBlock;
 
+    public static Block batBoxBlock;
+
     public static Block copperCableBlock;
     public static Block insulatedCopperCableBlock;
 
@@ -64,7 +68,7 @@ public class GlassTechBlocks {
     private static void blockInit(BlockRegistryEvent event) {
         generatorBlock = new GeneratorBlock(NAMESPACE.id("generator"), Material.METAL);
 
-        furnaceBlock = new ElectricFurnace(NAMESPACE.id("furnace"), Material.METAL);
+        furnaceBlock = new ElectricFurnace(NAMESPACE.id("electric_furnace"), Material.METAL);
         compressorBlock = new CompressorBlock(NAMESPACE.id("compressor"), Material.METAL);
         inductionFurnaceBlock = new InductionFurnaceBlock(NAMESPACE.id("induction_furnace"), Material.METAL);
         maceratorBlock = new MaceratorBlock(NAMESPACE.id("macerator"), Material.METAL);
@@ -74,6 +78,8 @@ public class GlassTechBlocks {
 
         ironFurnaceBlock = new IronFurnaceBlock(NAMESPACE.id("iron_furnace"), Material.METAL);
 
+        batBoxBlock = new BatBoxBlock(NAMESPACE.id("battery_box"), Material.METAL);
+
         copperCableBlock = new TemplateCableBlock(NAMESPACE.id("copper_cable"), WireProperties.createIfAbsent(NAMESPACE.id("copper"), PIXEL_SIZE * 2, false, WireMaterial.COPPER)).setTranslationKey(NAMESPACE.id("copper_cable"));
         insulatedCopperCableBlock = new TemplateCableBlock(NAMESPACE.id("copper_cable_insulated"), WireProperties.createIfAbsent(NAMESPACE.id("insulated_copper"), PIXEL_SIZE * 6, true, WireMaterial.COPPER)).setTranslationKey(NAMESPACE.id("insulated_copper_cable"));
     }
@@ -82,7 +88,7 @@ public class GlassTechBlocks {
     private static void tileEntityInit(BlockEntityRegisterEvent event) {
         event.register(GeneratorBlockEntity.class, NAMESPACE.id("generator").toString());
         event.register(CompressorBlockEntity.class, NAMESPACE.id("compressor").toString());
-        event.register(ElectricFurnaceBlockEntity.class, NAMESPACE.id("furnace").toString());
+        event.register(ElectricFurnaceBlockEntity.class, NAMESPACE.id("electric_furnace").toString());
         event.register(InductionFurnaceBlockEntity.class, NAMESPACE.id("induction_furnace").toString());
         event.register(MaceratorBlockEntity.class, NAMESPACE.id("macerator").toString());
         event.register(CannerBlockEntity.class, NAMESPACE.id("canner").toString());
@@ -90,5 +96,7 @@ public class GlassTechBlocks {
         event.register(ExtractorBlockEntity.class, NAMESPACE.id("extractor").toString());
 
         event.register(IronFurnaceBlockEntity.class, NAMESPACE.id("iron_furnace").toString());
+
+        event.register(BatBoxBlockEntity.class, NAMESPACE.id("battery_box").toString());
     }
 }

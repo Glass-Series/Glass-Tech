@@ -4,7 +4,6 @@ import net.danygames2014.nyalib.block.DropInventoryOnBreak;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.glasslauncher.mods.glasstech.GlassTech;
-import net.glasslauncher.mods.glasstech.PlayerEntityUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.material.Material;
@@ -42,7 +41,7 @@ public class IronFurnaceBlock extends TemplateBlockWithEntity implements DropInv
     @Override
     public BlockState getPlacementState(ItemPlacementContext context) {
         return getDefaultState()
-                .with(Properties.HORIZONTAL_FACING, PlayerEntityUtil.placementFacing(context.getPlayer()))
+                .with(Properties.HORIZONTAL_FACING, context.getHorizontalPlayerFacing().rotateYClockwise())
                 .with(Properties.LIT, false);
     }
 

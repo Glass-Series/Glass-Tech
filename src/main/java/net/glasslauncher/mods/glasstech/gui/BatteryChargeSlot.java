@@ -12,8 +12,8 @@ import net.minecraft.screen.slot.Slot;
 import net.modificationstation.stationapi.api.client.StationRenderAPI;
 import net.modificationstation.stationapi.api.client.texture.SpriteAtlasTexture;
 
-public class BatterySlot extends Slot implements GlassSlot {
-    public BatterySlot(Inventory inventory, int index, int x, int y) {
+public class BatteryChargeSlot extends Slot implements GlassSlot {
+    public BatteryChargeSlot(Inventory inventory, int index, int x, int y) {
         super(inventory, index, x, y);
     }
 
@@ -29,20 +29,20 @@ public class BatterySlot extends Slot implements GlassSlot {
 
     @Override
     public boolean canInsert(ItemStack stack) {
-        return CapabilityHelper.getCapability(stack, SingleUsePowerCapability.IDENTIFIER) != null || CapabilityHelper.getCapability(stack, NyaLib.NAMESPACE.id("energy_storage")) != null;
+        return CapabilityHelper.getCapability(stack, NyaLib.NAMESPACE.id("energy_storage")) != null;
     }
 
     @Override
     public boolean renderExtras() {
 
-        SpriteAtlasTexture atlas = StationRenderAPI.getBakedModelManager().getAtlas(ClientInitListener.batterySlotIndex.getSprite().getAtlasId());
+        SpriteAtlasTexture atlas = StationRenderAPI.getBakedModelManager().getAtlas(ClientInitListener.batteryChargeSlotIndex.getSprite().getAtlasId());
         atlas.bindTexture();
         StationAPICompat.drawSprite(
                 x,
                 y,
-                ClientInitListener.batterySlotIndex.getWidth(),
-                ClientInitListener.batterySlotIndex.getHeight(),
-                ClientInitListener.batterySlotIndex.getSprite()
+                ClientInitListener.batteryChargeSlotIndex.getWidth(),
+                ClientInitListener.batteryChargeSlotIndex.getHeight(),
+                ClientInitListener.batteryChargeSlotIndex.getSprite()
         );
         return true;
     }

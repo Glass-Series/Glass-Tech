@@ -1,0 +1,11 @@
+
+{
+  "parent": "glasstech:block/machine_front",
+  "textures": {
+    "casing": "glasstech:block/lv",
+    "casingtop": "glasstech:block/lv",
+    "casingbottom": "glasstech:block/lv",
+    "frontoverlay": "glasstech:block/power_plug",
+    "particle": "#casing"
+  }
+}

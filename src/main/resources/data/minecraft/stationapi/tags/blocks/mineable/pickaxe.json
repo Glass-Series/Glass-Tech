@@ -1,7 +1,8 @@
 {
   "values": [
     "glasstech:generator",
-    "glasstech:furnace",
+    "glasstech:electric_furnace",
+    "glasstech:battery_box",
     "glasstech:compressor",
     "glasstech:iron_furnace",
     "glasstech:induction_furnace",

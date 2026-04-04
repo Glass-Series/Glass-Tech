@@ -26,7 +26,7 @@ public class ElectricFurnace extends MachineBlockTemplate implements DropInvento
         ElectricFurnaceBlockEntity electricFurnaceBlockEntity = (ElectricFurnaceBlockEntity) world.getBlockEntity(x, y, z);
         GuiHelper.openGUI(
                 player,
-                GlassTech.NAMESPACE.id("furnace"),
+                GlassTech.NAMESPACE.id("electric_furnace"),
                 electricFurnaceBlockEntity,
                 new ElectricFurnaceScreenHandler(player.inventory, electricFurnaceBlockEntity)
         );
