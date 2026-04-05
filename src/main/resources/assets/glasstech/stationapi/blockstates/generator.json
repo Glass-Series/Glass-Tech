@@ -1,34 +1,34 @@
 {
   "variants": {
     "facing=north,lit=false": {
-      "model": "glasstech:block/generator"
+      "model": "glasstech:block/generator",
+      "y": -90
     },
     "facing=east,lit=false": {
-      "model": "glasstech:block/generator",
-      "y": 90
+      "model": "glasstech:block/generator"
     },
     "facing=south,lit=false": {
       "model": "glasstech:block/generator",
-      "y": 180
+      "y": 90
     },
     "facing=west,lit=false": {
       "model": "glasstech:block/generator",
-      "y": 270
+      "y": 180
     },
     "facing=north,lit=true": {
-      "model": "glasstech:block/generator_lit"
+      "model": "glasstech:block/generator_lit",
+      "y": -90
     },
     "facing=east,lit=true": {
-      "model": "glasstech:block/generator_lit",
-      "y": 90
+      "model": "glasstech:block/generator_lit"
     },
     "facing=south,lit=true": {
       "model": "glasstech:block/generator_lit",
-      "y": 180
+      "y": 90
     },
     "facing=west,lit=true": {
       "model": "glasstech:block/generator_lit",
-      "y": 270
+      "y": 180
     }
   }
 }

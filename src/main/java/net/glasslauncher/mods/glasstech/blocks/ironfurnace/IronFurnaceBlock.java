@@ -23,6 +23,7 @@ import java.util.Random;
 public class IronFurnaceBlock extends TemplateBlockWithEntity implements DropInventoryOnBreak {
     public IronFurnaceBlock(Identifier identifier, Material material) {
         super(identifier, material);
+        setTranslationKey(identifier);
         setHardness(2);
         setSoundGroup(METAL_SOUND_GROUP);
         setDefaultState(getDefaultState()
@@ -41,7 +42,7 @@ public class IronFurnaceBlock extends TemplateBlockWithEntity implements DropInv
     @Override
     public BlockState getPlacementState(ItemPlacementContext context) {
         return getDefaultState()
-                .with(Properties.HORIZONTAL_FACING, context.getHorizontalPlayerFacing().rotateYClockwise())
+                .with(Properties.HORIZONTAL_FACING, context.getHorizontalPlayerFacing().getOpposite())
                 .with(Properties.LIT, false);
     }
 
@@ -66,7 +67,7 @@ public class IronFurnaceBlock extends TemplateBlockWithEntity implements DropInv
     public void randomDisplayTick(World world, int x, int y, int z, Random random) {
         BlockState state = world.getBlockState(x, y, z);
         if (state.get(Properties.LIT)) {
-            int meta = state.get(Properties.HORIZONTAL_FACING).rotateYClockwise().getId();
+            int meta = state.get(Properties.HORIZONTAL_FACING).getOpposite().getId();
             float particleX = (float)x + 0.5F;
             float particleY = (float)y + 0.0F + random.nextFloat() * 6.0F / 16.0F;
             float particleZ = (float)z + 0.5F;

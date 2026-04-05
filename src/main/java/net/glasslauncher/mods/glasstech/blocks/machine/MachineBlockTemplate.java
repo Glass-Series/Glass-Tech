@@ -35,7 +35,7 @@ public abstract class MachineBlockTemplate extends EnergySourceBlockTemplate imp
     @Override
     public BlockState getPlacementState(ItemPlacementContext context) {
         return getDefaultState()
-                .with(Properties.HORIZONTAL_FACING, context.getHorizontalPlayerFacing().rotateYClockwise())
+                .with(Properties.HORIZONTAL_FACING, context.getHorizontalPlayerFacing().getOpposite())
                 .with(Properties.LIT, false);
     }
 }

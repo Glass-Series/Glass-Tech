@@ -25,13 +25,6 @@ public abstract class PowerStorageBlockTemplate extends EnergySourceConsumerBloc
 
     @Override
     public BlockState getPlacementState(ItemPlacementContext context) {
-        Direction direction = context.getPlayerLookDirection(); // ughghhh
-        if (direction.getAxis() != Direction.Axis.Y) {
-            direction = direction.rotateYClockwise();
-        }
-        else {
-            direction = direction.rotateClockwise(Direction.Axis.X).rotateClockwise(Direction.Axis.X);
-        }
-        return super.getDefaultState().with(Properties.FACING, direction);
+        return super.getDefaultState().with(Properties.FACING, context.getPlayerLookDirection().getOpposite());
     }
 }
