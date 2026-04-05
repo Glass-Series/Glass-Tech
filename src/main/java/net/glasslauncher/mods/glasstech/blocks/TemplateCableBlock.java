@@ -44,6 +44,7 @@ public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComp
         this.wireProperties = wireProperties;
         resistance = 1f;
         hardness = 0.5f;
+        setTranslationKey(identifier);
         setDefaultState(getDefaultState()
             .with(Properties.NORTH, false)
             .with(Properties.SOUTH, false)
@@ -224,7 +225,7 @@ public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComp
 
     @Override
     public int getBreakdownPower(World world, NetworkComponentEntry networkComponentEntry) {
-        return wireProperties.wireMaterial.maxVoltage;
+        return wireProperties.wireMaterial.getMaxPower();
     }
 
     @Override
