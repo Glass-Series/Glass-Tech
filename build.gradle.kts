@@ -46,8 +46,17 @@ loom {
 
 glassResourceGen {
 	patternTargets = ResourceGenPatternTargets.create {
-		it.addAll(CableResourceGenHelper.create("copper"))
-		it.addAll(CableResourceGenHelper.create("copper", "insulated"))
+		it.addAll(CableResourceGenHelper.create("tin_cable", "2x2"))
+		it.addAll(CableResourceGenHelper.create("copper_cable", "2x2"))
+		it.addAll(CableResourceGenHelper.create("copper_cable_insulated", "6x6"))
+		it.addAll(CableResourceGenHelper.create("gold_cable", "2x2"))
+		it.addAll(CableResourceGenHelper.create("gold_cable_insulated", "6x6"))
+		it.addAll(CableResourceGenHelper.create("gold_cable_insulated_x2", "10x10", "gold_cable_insulated"))
+		it.addAll(CableResourceGenHelper.create("refined_iron_cable", "2x2"))
+		it.addAll(CableResourceGenHelper.create("refined_iron_cable_insulated", "6x6"))
+		it.addAll(CableResourceGenHelper.create("refined_iron_cable_insulated_x2", "10x10", "refined_iron_cable_insulated"))
+		it.addAll(CableResourceGenHelper.create("refined_iron_cable_insulated_x4", "14x14", "refined_iron_cable_insulated"))
+		it.addAll(CableResourceGenHelper.create("glass_fibre_cable", "4x4"))
 	}
 }
 

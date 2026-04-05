@@ -1,7 +1,6 @@
 package net.glasslauncher.mods.glasstech.events.init;
 
 import net.glasslauncher.mods.glasstech.WireMaterial;
-import net.glasslauncher.mods.glasstech.WireProperties;
 import net.glasslauncher.mods.glasstech.blocks.TemplateCableBlock;
 import net.glasslauncher.mods.glasstech.blocks.batbox.BatBoxBlock;
 import net.glasslauncher.mods.glasstech.blocks.batbox.BatBoxBlockEntity;
@@ -96,7 +95,7 @@ public class GlassTechBlocks {
         megaEnergyStorageUnit = new BatBoxBlock(NAMESPACE.id("mega_energy_storage_unit"), Material.METAL);
 
         tinCableBlock = new TemplateCableBlock(NAMESPACE.id("tin_cable"), WireMaterial.TIN, PIXEL_SIZE * 2);
-        copperCableBlock = new TemplateCableBlock(NAMESPACE.id("copper_cable"), WireMaterial.COPPER, PIXEL_SIZE * 6);
+        copperCableBlock = new TemplateCableBlock(NAMESPACE.id("copper_cable"), WireMaterial.COPPER, PIXEL_SIZE * 2);
         copperInsulatedCableBlock = new TemplateCableBlock(NAMESPACE.id("copper_cable_insulated"), WireMaterial.COPPER_INSULATED, PIXEL_SIZE * 6);
         goldCableBlock = new TemplateCableBlock(NAMESPACE.id("gold_cable"), WireMaterial.GOLD, PIXEL_SIZE * 2);
         goldInsulatedCableBlock = new TemplateCableBlock(NAMESPACE.id("gold_cable_insulated"), WireMaterial.GOLD_INSULATED, PIXEL_SIZE * 6);

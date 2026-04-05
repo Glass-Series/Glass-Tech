@@ -1,31 +1,31 @@
 {
   "multipart": [
     {
-      "apply": { "model": "glasstech:block/cable/$0$/$0$_cable_core" }
+      "apply": { "model": "glasstech:block/cable/$0$/cable_core" }
     },
     {
       "when": { "north": "true" },
-      "apply": { "model": "glasstech:block/cable/$0$/$0$_cable_north" }
+      "apply": { "model": "glasstech:block/cable/$0$/cable_north" }
     },
     {
       "when": { "east": "true" },
-      "apply": { "model": "glasstech:block/cable/$0$/$0$_cable_east" }
+      "apply": { "model": "glasstech:block/cable/$0$/cable_east" }
     },
     {
       "when": { "south": "true" },
-      "apply": { "model": "glasstech:block/cable/$0$/$0$_cable_south" }
+      "apply": { "model": "glasstech:block/cable/$0$/cable_south" }
     },
     {
       "when": { "west": "true" },
-      "apply": { "model": "glasstech:block/cable/$0$/$0$_cable_west" }
+      "apply": { "model": "glasstech:block/cable/$0$/cable_west" }
     },
     {
       "when": { "up": "true" },
-      "apply": { "model": "glasstech:block/cable/$0$/$0$_cable_up" }
+      "apply": { "model": "glasstech:block/cable/$0$/cable_up" }
     },
     {
       "when": { "down": "true" },
-      "apply": { "model": "glasstech:block/cable/$0$/$0$_cable_down" }
+      "apply": { "model": "glasstech:block/cable/$0$/cable_down" }
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
-  "parent": "glasstech:block/cable/uninsulated/cable_uninsulated_east",
+  "parent": "glasstech:block/cable/$1$/cable_east",
   "textures": {
-    "core": "glasstech:block/$0$_cable",
+    "core": "glasstech:block/cable/$0$",
     "particle": "#core"
   }
 }

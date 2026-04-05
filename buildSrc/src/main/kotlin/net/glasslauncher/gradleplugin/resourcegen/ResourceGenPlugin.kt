@@ -22,7 +22,7 @@ class ResourceGenPlugin : Plugin<Project> {
 
                 val inPath = templateDir.resolve(v.resourcePath.replace(".", "/") + ".json")
                 v.outputs.forEach {
-                    val outPath = outDir.resolve(it.resourcePath.replace(".", "/")  + "_" + inPath.name)
+                    val outPath = it.processPath.invoke(outDir, it.resourcePath, inPath.name)
                     var text = inPath.readText()
                     it.patterns.forEach { replacement ->
                         text = text.replace("$$currentReplacer$", replacement)

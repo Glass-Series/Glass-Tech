@@ -1,7 +1,0 @@
-{
-  "parent": "glasstech:block/cable/insulated/cable_insulated_core",
-  "textures": {
-    "core": "glasstech:block/$0$_cable",
-    "particle": "#core"
-  }
-}
