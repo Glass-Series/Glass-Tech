@@ -1,14 +1,20 @@
 # @ is a shorthand for the current mod id, which is glasstech. E.g: tile.@.redclay.name
 
 tile.@.generator.name=Generator
-tile.@.furnace.name=Electric Furnace
+tile.@.electric_furnace.name=Electric Furnace
+tile.@.compressor.name=Compressor
 tile.@.macerator.name=Macerator
 tile.@.extractor.name=Extractor
 tile.@.electrolyzer.name=Electrolyzer
 tile.@.induction_furnace.name=Induction Furnace
 tile.@.canner.name=Canner
-tile.@.copper_cable.name=Copper Cable (LV)
-tile.@.insulated_copper_cable.name=Insulated Copper Cable (LV)
+
+tile.@.iron_furnace.name=Iron Furnace
+
+tile.@.battery_box.name=Battery Box
+
+tile.@.copper_cable.name=Copper Cable
+tile.@.insulated_copper_cable.name=Insulated Copper Cable
 
 tile.@.bronze_block.name=Bronze Block
 tile.@.copper_block.name=Copper Block
@@ -21,3 +27,41 @@ tile.@.tin_block.name=Tin Block
 tile.@.tin_ore.name=Tin Ore
 tile.@.uranium_block.name=Uranium Block
 tile.@.uranium_ore.name=Uranium Ore
+
+item.@.copper_ingot.name=Copper Ingot
+item.@.advanced_alloy.name=Advanced Alloy
+item.@.scrap.name=Scrap
+item.@.copper_dust.name=Copper Dust
+item.@.tin_ingot.name=Tin Ingot
+item.@.tin_dust.name=Tin Dust
+item.@.bronze_ingot.name=Bronze Ingot
+item.@.bronze_dust.name=Bronze Dust
+item.@.gold_dust.name=Gold Dust
+item.@.iron_dust.name=Iron Dust
+item.@.iridium.name=Iridium
+item.@.iridium_plate.name=Iridium Plate
+item.@.uranium_ingot.name=Uranium Ingot
+item.@.rubber.name=Rubber
+item.@.resin.name=Resin
+item.@.empty_cell.name=Empty Cell
+item.@.lava_cell.name=Lava Cell
+item.@.water_cell.name=Water Cell
+item.@.mixed_metal_ingot.name=Mixed Metal Ingot
+item.@.refined_iron_ingot.name=Refined Iron Ingot
+item.@.uranium.name=Uranium
+item.@.uu_matter.name=UU Matter
+item.@.coal_dust.name=Coal Dust
+item.@.fertilizer.name=Fertilizer
+item.@.circuit.name=Circuit
+item.@.advanced_circuit.name=Advanced Circuit
+item.@.scrap_box.name=Scrap Box
+item.@.re_battery.name=Rechargeable Battery
+item.@.energy_crystal.name=Energy Crystal
+item.@.lapotron_crystal.name=Lapotron Crystal
+item.@.battery_pack.name=Battery Pack
+item.@.wrench.name=Wrench
+item.@.electric_wrench.name=Electric Wrench
+item.@.chainsaw.name=Chainsaw
+item.@.diamond_chainsaw.name=Diamond Chainsaw
+item.@.drill.name=Drill
+item.@.diamond_drill.name=Diamond Drill
