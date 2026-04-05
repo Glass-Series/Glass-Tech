@@ -55,9 +55,22 @@ public class GlassTechBlocks {
     public static Block ironFurnaceBlock;
 
     public static Block batBoxBlock;
+    public static Block energyStorageUnit;
+    public static Block megaEnergyStorageUnit;
 
+    public static Block tinCableBlock;
     public static Block copperCableBlock;
-    public static Block insulatedCopperCableBlock;
+    public static Block copperInsulatedCableBlock;
+    public static Block goldCableBlock;
+    public static Block goldInsulatedCableBlock;
+    public static Block goldInsulatedX2CableBlock;
+    public static Block refinedIronCableBlock;
+    public static Block refinedIronInsulatedCableBlock;
+    public static Block refinedIronInsulatedX2CableBlock;
+    public static Block refinedIronInsulatedX4CableBlock;
+    public static Block glassFibreCableBlock;
+
+
 
     @EventListener
     private static void init(InitEvent event) {
@@ -79,9 +92,20 @@ public class GlassTechBlocks {
         ironFurnaceBlock = new IronFurnaceBlock(NAMESPACE.id("iron_furnace"), Material.METAL);
 
         batBoxBlock = new BatBoxBlock(NAMESPACE.id("battery_box"), Material.METAL);
+        energyStorageUnit = new BatBoxBlock(NAMESPACE.id("energy_storage_unit"), Material.METAL);
+        megaEnergyStorageUnit = new BatBoxBlock(NAMESPACE.id("mega_energy_storage_unit"), Material.METAL);
 
-        copperCableBlock = new TemplateCableBlock(NAMESPACE.id("copper_cable"), WireProperties.createIfAbsent(NAMESPACE.id("copper"), PIXEL_SIZE * 2, false, WireMaterial.COPPER)).setTranslationKey(NAMESPACE.id("copper_cable"));
-        insulatedCopperCableBlock = new TemplateCableBlock(NAMESPACE.id("copper_cable_insulated"), WireProperties.createIfAbsent(NAMESPACE.id("insulated_copper"), PIXEL_SIZE * 6, true, WireMaterial.COPPER)).setTranslationKey(NAMESPACE.id("insulated_copper_cable"));
+        tinCableBlock = new TemplateCableBlock(NAMESPACE.id("tin_cable"), WireMaterial.TIN, PIXEL_SIZE * 2);
+        copperCableBlock = new TemplateCableBlock(NAMESPACE.id("copper_cable"), WireMaterial.COPPER, PIXEL_SIZE * 6);
+        copperInsulatedCableBlock = new TemplateCableBlock(NAMESPACE.id("copper_cable_insulated"), WireMaterial.COPPER_INSULATED, PIXEL_SIZE * 6);
+        goldCableBlock = new TemplateCableBlock(NAMESPACE.id("gold_cable"), WireMaterial.GOLD, PIXEL_SIZE * 2);
+        goldInsulatedCableBlock = new TemplateCableBlock(NAMESPACE.id("gold_cable_insulated"), WireMaterial.GOLD_INSULATED, PIXEL_SIZE * 6);
+        goldInsulatedX2CableBlock = new TemplateCableBlock(NAMESPACE.id("gold_cable_insulated_x2"), WireMaterial.GOLD_INSULATED_X2, PIXEL_SIZE * 10);
+        refinedIronCableBlock = new TemplateCableBlock(NAMESPACE.id("refined_iron_cable"), WireMaterial.REFINED_IRON, PIXEL_SIZE * 2);
+        refinedIronInsulatedCableBlock = new TemplateCableBlock(NAMESPACE.id("refined_iron_cable_insulated"), WireMaterial.REFINED_IRON_INSULATED, PIXEL_SIZE * 6);
+        refinedIronInsulatedX2CableBlock = new TemplateCableBlock(NAMESPACE.id("refined_iron_cable_insulated_x2"), WireMaterial.REFINED_IRON_INSULATED_X2, PIXEL_SIZE * 10);
+        refinedIronInsulatedX4CableBlock = new TemplateCableBlock(NAMESPACE.id("refined_iron_cable_insulated_x4"), WireMaterial.REFINED_IRON_INSULATED_X4, PIXEL_SIZE * 14);
+        glassFibreCableBlock = new TemplateCableBlock(NAMESPACE.id("glass_fibre_cable"), WireMaterial.GLASS_FIBRE, PIXEL_SIZE * 4);
     }
 
     @EventListener

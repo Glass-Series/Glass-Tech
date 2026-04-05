@@ -3,10 +3,11 @@ package net.glasslauncher.mods.glasstech.blocks;
 import net.danygames2014.nyalib.energy.EnergyConductor;
 import net.danygames2014.nyalib.network.*;
 import net.danygames2014.nyalib.particle.ParticleHelper;
-import net.glasslauncher.mods.glasstech.WireProperties;
+import net.glasslauncher.mods.glasstech.WireMaterial;
 import net.minecraft.block.Block;
 import net.minecraft.block.FurnaceBlock;
 import net.minecraft.block.material.Material;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
@@ -37,11 +38,14 @@ public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComp
             Properties.DOWN, Direction.DOWN
     );
 
-    private final WireProperties wireProperties;
 
-    public TemplateCableBlock(Identifier identifier, WireProperties wireProperties) {
+    public final float size;
+    public final WireMaterial wireMaterial;
+
+    public TemplateCableBlock(Identifier identifier, WireMaterial wireMaterial, float size) {
         super(identifier, Material.WOOL);
-        this.wireProperties = wireProperties;
+        this.wireMaterial = wireMaterial;
+        this.size = size;
         resistance = 1f;
         hardness = 0.5f;
         setTranslationKey(identifier);
@@ -53,12 +57,6 @@ public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComp
             .with(Properties.UP, false)
             .with(Properties.DOWN, false)
         );
-        if (wireProperties.insulated) {
-            setSoundGroup(Block.WOOL_SOUND_GROUP);
-        }
-        else {
-            setSoundGroup(Block.METAL_SOUND_GROUP);
-        }
     }
 
     public BlockState getPlacementState(ItemPlacementContext context) {
@@ -134,8 +132,8 @@ public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComp
         }
 
         float center = (1f / 16) * 8;
-        float maxC = center + (wireProperties.size / 2);
-        float minC = center - (wireProperties.size / 2);
+        float maxC = center + (size / 2);
+        float minC = center - (size / 2);
 
         float minX = minC;
         float minY = minC;
@@ -225,11 +223,11 @@ public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComp
 
     @Override
     public int getBreakdownPower(World world, NetworkComponentEntry networkComponentEntry) {
-        return wireProperties.wireMaterial.getMaxPower();
+        return wireMaterial.getMaxPower();
     }
 
     @Override
     public float getLossPerBlock() {
-        return wireProperties.wireMaterial.lossPerBlock;
+        return wireMaterial.lossPerBlock;
     }
 }
