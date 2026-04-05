@@ -2,11 +2,13 @@ package net.glasslauncher.mods.glasstech.blocks;
 
 import net.danygames2014.nyalib.energy.EnergyConductor;
 import net.danygames2014.nyalib.network.*;
+import net.danygames2014.nyalib.network.energy.EnergyNetwork;
 import net.danygames2014.nyalib.particle.ParticleHelper;
 import net.glasslauncher.mods.glasstech.WireMaterial;
 import net.minecraft.block.Block;
 import net.minecraft.block.FurnaceBlock;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.Entity;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.Box;
@@ -229,5 +231,18 @@ public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComp
     @Override
     public float getLossPerBlock() {
         return wireMaterial.lossPerBlock;
+    }
+
+    @Override
+    public void onEntityCollision(World world, int x, int y, int z, Entity entity) {
+        if (!wireMaterial.canShock) {
+            return;
+        }
+        EnergyNetwork network = (EnergyNetwork) NetworkManager.getAt(world.dimension, x, y, z, NetworkType.ENERGY.getIdentifier());
+        if (network == null) {
+            return;
+        }
+
+        entity.damage(null, network.getFlowEntry(x, y, z).energyFlow);
     }
 }
