@@ -28,7 +28,7 @@ import net.modificationstation.stationapi.api.util.math.Direction;
 import javax.annotation.Nullable;
 import java.util.Map;
 
-public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComponent, EnergyConductor, LossyEnergyConductor {
+public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComponent, EnergyConductor {
     public static final float PIXEL_SIZE = 1f / 16;
     // Fucking beta directions
     public static final Map<BooleanProperty, Direction> DIR_PROPS = Map.of(
@@ -230,7 +230,7 @@ public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComp
     }
 
     @Override
-    public float getLossPerBlock() {
+    public double getEnergyLossPerBlock() {
         return wireMaterial.lossPerBlock;
     }
 
