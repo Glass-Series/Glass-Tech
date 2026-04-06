@@ -59,6 +59,27 @@ public class GlassTechItems {
     public static Item drill;
     public static Item diamondDrill;
 
+    public static Item carbonFiber;
+    public static Item clayDust;
+    public static Item carbonMesh;
+    public static Item coalBall;
+    public static Item industrialDiamond;
+    public static Item carbonPlate;
+    public static Item cfPellet;
+    public static Item compressedCoalBall;
+    public static Item coalChunk;
+    public static Item silverDust;
+    public static Item bronzeAxe;
+    public static Item bronzeHoe;
+    public static Item bronzePickaxe;
+    public static Item bronzeShovel;
+    public static Item bronzeSword;
+    public static Item cfSprayer;
+    public static Item frequencyTransmitter;
+    public static Item insulationCutter;
+    public static Item painter;
+    public static Item nanoSaber;
+
     @EventListener
     private static void itemInit(ItemRegistryEvent event) {
         copperIngot = new TemplateItem(NAMESPACE.id("copper_ingot")).setTranslationKey(NAMESPACE.id("copper_ingot"));
@@ -85,6 +106,16 @@ public class GlassTechItems {
         uuMatter = new TemplateItem(NAMESPACE.id("uu_matter")).setTranslationKey(NAMESPACE.id("uu_matter"));
         coalDust = new TemplateItem(NAMESPACE.id("coal_dust")).setTranslationKey(NAMESPACE.id("coal_dust"));
         fertilizer = new TemplateItem(NAMESPACE.id("fertilizer")).setTranslationKey(NAMESPACE.id("fertilizer"));
+        carbonFiber = new TemplateItem(NAMESPACE.id("carbon_fiber")).setTranslationKey(NAMESPACE.id("carbon_fiber"));
+        clayDust = new TemplateItem(NAMESPACE.id("clay_dust")).setTranslationKey(NAMESPACE.id("clay_dust"));
+        carbonMesh = new TemplateItem(NAMESPACE.id("carbon_mesh")).setTranslationKey(NAMESPACE.id("carbon_mesh"));
+        coalBall = new TemplateItem(NAMESPACE.id("coal_ball")).setTranslationKey(NAMESPACE.id("coal_ball"));
+        industrialDiamond = new TemplateItem(NAMESPACE.id("industrial_diamond")).setTranslationKey(NAMESPACE.id("industrial_diamond"));
+        carbonPlate = new TemplateItem(NAMESPACE.id("carbon_plate")).setTranslationKey(NAMESPACE.id("carbon_plate"));
+        cfPellet = new TemplateItem(NAMESPACE.id("cf_pellet")).setTranslationKey(NAMESPACE.id("cf_pellet"));
+        compressedCoalBall = new TemplateItem(NAMESPACE.id("compressed_coal_ball")).setTranslationKey(NAMESPACE.id("compressed_coal_ball"));
+        coalChunk = new TemplateItem(NAMESPACE.id("coal_chunk")).setTranslationKey(NAMESPACE.id("coal_chunk"));
+        silverDust = new TemplateItem(NAMESPACE.id("silver_dust")).setTranslationKey(NAMESPACE.id("silver_dust"));
 
         circuit = new TemplateItem(NAMESPACE.id("circuit")).setTranslationKey(NAMESPACE.id("circuit"));
         advancedCircuit = new TemplateItem(NAMESPACE.id("advanced_circuit")).setTranslationKey(NAMESPACE.id("advanced_circuit"));
@@ -101,6 +132,16 @@ public class GlassTechItems {
         diamondChainsaw = new TemplateItem(NAMESPACE.id("diamond_chainsaw")).setTranslationKey(NAMESPACE.id("diamond_chainsaw"));
         drill = new TemplateItem(NAMESPACE.id("drill")).setTranslationKey(NAMESPACE.id("drill"));
         diamondDrill = new TemplateItem(NAMESPACE.id("diamond_drill")).setTranslationKey(NAMESPACE.id("diamond_drill"));
+        bronzeAxe = new TemplateItem(NAMESPACE.id("bronze_axe")).setTranslationKey(NAMESPACE.id("bronze_axe"));
+        bronzeHoe = new TemplateItem(NAMESPACE.id("bronze_hoe")).setTranslationKey(NAMESPACE.id("bronze_hoe"));
+        bronzePickaxe = new TemplateItem(NAMESPACE.id("bronze_pickaxe")).setTranslationKey(NAMESPACE.id("bronze_pickaxe"));
+        bronzeShovel = new TemplateItem(NAMESPACE.id("bronze_shovel")).setTranslationKey(NAMESPACE.id("bronze_shovel"));
+        bronzeSword = new TemplateItem(NAMESPACE.id("bronze_sword")).setTranslationKey(NAMESPACE.id("bronze_sword"));
+        cfSprayer = new TemplateItem(NAMESPACE.id("cf_sprayer")).setTranslationKey(NAMESPACE.id("cf_sprayer"));
+        frequencyTransmitter = new TemplateItem(NAMESPACE.id("frequency_transmitter")).setTranslationKey(NAMESPACE.id("frequency_transmitter"));
+        insulationCutter = new TemplateItem(NAMESPACE.id("insulation_cutter")).setTranslationKey(NAMESPACE.id("insulation_cutter"));
+        painter = new TemplateItem(NAMESPACE.id("painter")).setTranslationKey(NAMESPACE.id("painter"));
+        nanoSaber = new TemplateItem(NAMESPACE.id("nano_saber")).setTranslationKey(NAMESPACE.id("nano_saber"));
     }
 
     @EventListener

@@ -108,6 +108,16 @@ public class ClientInitListener {
         GlassTechItems.uuMatter.setTexture(NAMESPACE.id("item/resource/uu_matter"));
         GlassTechItems.coalDust.setTexture(NAMESPACE.id("item/resource/coal_dust"));
         GlassTechItems.fertilizer.setTexture(NAMESPACE.id("item/resource/fertilizer"));
+        GlassTechItems.carbonFiber.setTexture(NAMESPACE.id("item/resource/carbon_fiber"));
+        GlassTechItems.clayDust.setTexture(NAMESPACE.id("item/resource/clay_dust"));
+        GlassTechItems.carbonMesh.setTexture(NAMESPACE.id("item/resource/carbon_mesh"));
+        GlassTechItems.coalBall.setTexture(NAMESPACE.id("item/resource/coal_ball"));
+        GlassTechItems.industrialDiamond.setTexture(NAMESPACE.id("item/resource/industrial_diamond"));
+        GlassTechItems.carbonPlate.setTexture(NAMESPACE.id("item/resource/carbon_plate"));
+        GlassTechItems.cfPellet.setTexture(NAMESPACE.id("item/resource/cf_pellet"));
+        GlassTechItems.compressedCoalBall.setTexture(NAMESPACE.id("item/resource/compressed_coal_ball"));
+        GlassTechItems.coalChunk.setTexture(NAMESPACE.id("item/resource/coal_chunk"));
+        GlassTechItems.silverDust.setTexture(NAMESPACE.id("item/resource/silver_dust"));
 
         GlassTechItems.circuit.setTexture(NAMESPACE.id("item/electronic_circuit"));
         GlassTechItems.advancedCircuit.setTexture(NAMESPACE.id("item/advanced_circuit"));
@@ -144,5 +154,15 @@ public class ClientInitListener {
         GlassTechItems.diamondChainsaw.setTexture(NAMESPACE.id("item/tool/diamond_chainsaw"));
         GlassTechItems.drill.setTexture(NAMESPACE.id("item/tool/drill"));
         GlassTechItems.diamondDrill.setTexture(NAMESPACE.id("item/tool/diamond_drill"));
+        GlassTechItems.bronzeAxe.setTexture(NAMESPACE.id("item/tool/bronze_axe"));
+        GlassTechItems.bronzeHoe.setTexture(NAMESPACE.id("item/tool/bronze_hoe"));
+        GlassTechItems.bronzePickaxe.setTexture(NAMESPACE.id("item/tool/bronze_pickaxe"));
+        GlassTechItems.bronzeShovel.setTexture(NAMESPACE.id("item/tool/bronze_shovel"));
+        GlassTechItems.bronzeSword.setTexture(NAMESPACE.id("item/tool/bronze_sword"));
+        GlassTechItems.cfSprayer.setTexture(NAMESPACE.id("item/tool/cf_sprayer"));
+        GlassTechItems.frequencyTransmitter.setTexture(NAMESPACE.id("item/tool/frequency_transmitter"));
+        GlassTechItems.insulationCutter.setTexture(NAMESPACE.id("item/tool/insulation_cutter"));
+        GlassTechItems.painter.setTexture(NAMESPACE.id("item/tool/painter"));
+        GlassTechItems.nanoSaber.setTexture(NAMESPACE.id("item/tool/nano_saber"));
     }
 }

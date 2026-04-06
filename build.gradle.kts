@@ -55,7 +55,7 @@ glassResourceGen {
 		it.addAll(CableResourceGenHelper.create("refined_iron_cable", "2x2"))
 		it.addAll(CableResourceGenHelper.create("refined_iron_cable_insulated", "6x6"))
 		it.addAll(CableResourceGenHelper.create("refined_iron_cable_insulated_x2", "10x10", "refined_iron_cable_insulated"))
-		it.addAll(CableResourceGenHelper.create("refined_iron_cable_insulated_x4", "14x14", "refined_iron_cable_insulated"))
+		it.addAll(CableResourceGenHelper.create("refined_iron_cable_insulated_x3", "14x14", "refined_iron_cable_insulated"))
 		it.addAll(CableResourceGenHelper.create("glass_fibre_cable", "4x4"))
 	}
 }

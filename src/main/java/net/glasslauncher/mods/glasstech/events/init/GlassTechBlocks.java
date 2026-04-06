@@ -103,7 +103,7 @@ public class GlassTechBlocks {
         refinedIronCableBlock = new TemplateCableBlock(NAMESPACE.id("refined_iron_cable"), WireMaterial.REFINED_IRON, PIXEL_SIZE * 2);
         refinedIronInsulatedCableBlock = new TemplateCableBlock(NAMESPACE.id("refined_iron_cable_insulated"), WireMaterial.REFINED_IRON_INSULATED, PIXEL_SIZE * 6);
         refinedIronInsulatedX2CableBlock = new TemplateCableBlock(NAMESPACE.id("refined_iron_cable_insulated_x2"), WireMaterial.REFINED_IRON_INSULATED_X2, PIXEL_SIZE * 10);
-        refinedIronInsulatedX4CableBlock = new TemplateCableBlock(NAMESPACE.id("refined_iron_cable_insulated_x4"), WireMaterial.REFINED_IRON_INSULATED_X4, PIXEL_SIZE * 14);
+        refinedIronInsulatedX4CableBlock = new TemplateCableBlock(NAMESPACE.id("refined_iron_cable_insulated_x3"), WireMaterial.REFINED_IRON_INSULATED_X3, PIXEL_SIZE * 14);
         glassFibreCableBlock = new TemplateCableBlock(NAMESPACE.id("glass_fibre_cable"), WireMaterial.GLASS_FIBRE, PIXEL_SIZE * 4);
     }
 

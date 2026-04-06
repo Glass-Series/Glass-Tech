@@ -1,6 +1,15 @@
 {
   "values": [
+    "glasstech:tin_cable",
     "glasstech:copper_cable",
-    "glasstech:copper_cable_insulated"
+    "glasstech:copper_cable_insulated",
+    "glasstech:gold_cable",
+    "glasstech:gold_cable_insulated",
+    "glasstech:gold_cable_insulated_x2",
+    "glasstech:refined_iron_cable",
+    "glasstech:refined_iron_cable_insulated",
+    "glasstech:refined_iron_cable_insulated_x2",
+    "glasstech:refined_iron_cable_insulated_x3",
+    "glasstech:glass_fibre_cable"
   ]
 }

@@ -50,6 +50,7 @@ public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComp
         this.size = size;
         resistance = 1f;
         hardness = 0.5f;
+        setSoundGroup(wireMaterial.soundGroup);
         setTranslationKey(identifier);
         setDefaultState(getDefaultState()
             .with(Properties.NORTH, false)
