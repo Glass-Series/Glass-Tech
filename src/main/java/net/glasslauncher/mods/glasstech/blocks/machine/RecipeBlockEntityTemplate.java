@@ -36,14 +36,29 @@ public abstract class RecipeBlockEntityTemplate<R extends BasicMachineRecipe> ex
         super(tier, maxProgress, energyConsumption, energyCapacity);
     }
 
-    boolean canOutput = false;
-    boolean recipeChanged = false;
+    protected boolean canOutput = false;
+    protected boolean recipeChanged = false;
+
+    public boolean multiInput = false;
 
     @Override
     public boolean canProcess() {
         // Check if a valid recipe exists. If not, we can't process
-        if (!checkRecipe()) {
-            return false;
+        if (multiInput) {
+            boolean canProcess = false;
+            for (int i = 0; i < getInputs().length; i++) {
+                if (checkRecipe(i)) {
+                    canProcess = true;
+                }
+            }
+            if (!canProcess) {
+                return false;
+            }
+        }
+        else {
+            if (!checkRecipe(-1)) {
+                return false;
+            }
         }
 
         // If the output changed, recalculate the outputAvailable field
@@ -56,9 +71,11 @@ public abstract class RecipeBlockEntityTemplate<R extends BasicMachineRecipe> ex
         return canOutput;
     }
 
-    public boolean checkRecipe() {
+    public boolean checkRecipe(int slot) {
+        ItemStack[] inputs = slot == -1 ? getInputs() : new ItemStack[]{getInputs()[0]};
+        
         if (inputChanged()) {
-            currentRecipe = fetchRecipe(getInputs());
+            currentRecipe = fetchRecipe(inputs);
             currentRecipeOutput = currentRecipe != null ? currentRecipe.getOutputs(random) : null;
             recipeChanged = true;
         }
@@ -82,18 +99,32 @@ public abstract class RecipeBlockEntityTemplate<R extends BasicMachineRecipe> ex
             return;
         }
 
-        currentRecipe.consume(getInputs());
+        ItemStack[] inputs = getInputs();
 
-        // Clear out stacks with zero (or less?) items
-        int[] inputIndexes = getInputIndexes();
-        //noinspection ForLoopReplaceableByForEach
-        for (int i = 0; i < inputIndexes.length; i++) {
-            if (inventory[inputIndexes[i]] != null && inventory[inputIndexes[i]].count <= 0) {
-                inventory[inputIndexes[i]] = null;
+        for (int itemIndex = 0; itemIndex < (multiInput ? inputs.length : 1); itemIndex++) {
+            if (multiInput) {
+                if (output(true)) {
+                    currentRecipe.consume(new ItemStack[]{getInputs()[itemIndex]});
+                }
+                else {
+                    continue;
+                }
             }
-        }
+            else {
+                currentRecipe.consume(getInputs());
+            }
 
-        output(false);
+            // Clear out stacks with zero (or less?) items
+            int[] inputIndexes = getInputIndexes();
+            //noinspection ForLoopReplaceableByForEach
+            for (int i = 0; i < inputIndexes.length; i++) {
+                if (inventory[inputIndexes[i]] != null && inventory[inputIndexes[i]].count <= 0) {
+                    inventory[inputIndexes[i]] = null;
+                }
+            }
+
+            output(false);
+        }
     }
 
     @Override

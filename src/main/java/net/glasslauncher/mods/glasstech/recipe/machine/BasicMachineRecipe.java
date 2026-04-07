@@ -32,6 +32,12 @@ public class BasicMachineRecipe {
         this.time = time;
     }
 
+    public BasicMachineRecipe(RecipeInput input, RecipeOutput output) {
+        this.inputs = new RecipeInput[]{input};
+        this.outputs = new RecipeOutput[]{output};
+        this.time = 200;
+    }
+
     public boolean matches(ItemStack[] inputs) {
         // This is used to keep track of whether an ingredient has already been "consumed"
         boolean[] used = new boolean[inputs.length];
