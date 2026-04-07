@@ -4,6 +4,8 @@ import net.danygames2014.nyalib.energy.EnergyConductor;
 import net.danygames2014.nyalib.network.*;
 import net.danygames2014.nyalib.network.energy.EnergyNetwork;
 import net.danygames2014.nyalib.particle.ParticleHelper;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.loader.api.FabricLoader;
 import net.glasslauncher.mods.glasstech.WireMaterial;
 import net.minecraft.block.Block;
 import net.minecraft.block.FurnaceBlock;
@@ -131,7 +133,7 @@ public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComp
 
     @Override
     public Box getBoundingBox(World world, int x, int y, int z) {
-        if (!ignoreSneaking && Minecraft.INSTANCE.player.isSneaking()) {
+        if (FabricLoader.getInstance().getEnvironmentType().equals(EnvType.CLIENT) && !ignoreSneaking && Minecraft.INSTANCE.player.isSneaking()) {
             return super.getBoundingBox(world, x, y, z);
         }
         BlockState state = world.getBlockState(x, y, z);
@@ -236,7 +238,7 @@ public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComp
 
     @Override
     public void onEntityCollision(World world, int x, int y, int z, Entity entity) {
-        if (!wireMaterial.canShock) {
+        if (world.isRemote || !wireMaterial.canShock) {
             return;
         }
         EnergyNetwork network = (EnergyNetwork) NetworkManager.getAt(world.dimension, x, y, z, NetworkType.ENERGY.getIdentifier());
