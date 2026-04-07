@@ -34,7 +34,6 @@ public class InductionFurnaceBlockEntity extends RecipeBlockEntityTemplate<Basic
         addOutput(RecipeOutputType.PRIMARY);
         addOutput(RecipeOutputType.PRIMARY);
         addSlot(SlotType.FUEL);
-        multiInput = true;
     }
 
     @Override
@@ -53,9 +52,6 @@ public class InductionFurnaceBlockEntity extends RecipeBlockEntityTemplate<Basic
             return null;
         }
 
-        ItemStack inputItem = input[0].copy();
-        inputItem.count = 1;
-
-        return new BasicMachineRecipe(new RecipeInput[]{new StackRecipeInput(inputItem)}, new RecipeOutput[]{new RecipeOutput(output)});
+        return new BasicMachineRecipe(new RecipeInput[]{new StackRecipeInput(input[0])}, new RecipeOutput[]{new RecipeOutput(output)});
     }
 }

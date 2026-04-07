@@ -36,29 +36,14 @@ public abstract class RecipeBlockEntityTemplate<R extends BasicMachineRecipe> ex
         super(tier, maxProgress, energyConsumption, energyCapacity);
     }
 
-    protected boolean canOutput = false;
-    protected boolean recipeChanged = false;
-
-    public boolean multiInput = false;
+    boolean canOutput = false;
+    boolean recipeChanged = false;
 
     @Override
     public boolean canProcess() {
         // Check if a valid recipe exists. If not, we can't process
-        if (multiInput) {
-            boolean canProcess = false;
-            for (int i = 0; i < getInputs().length; i++) {
-                if (checkRecipe(i)) {
-                    canProcess = true;
-                }
-            }
-            if (!canProcess) {
-                return false;
-            }
-        }
-        else {
-            if (!checkRecipe(-1)) {
-                return false;
-            }
+        if (!checkRecipe()) {
+            return false;
         }
 
         // If the output changed, recalculate the outputAvailable field
@@ -71,11 +56,9 @@ public abstract class RecipeBlockEntityTemplate<R extends BasicMachineRecipe> ex
         return canOutput;
     }
 
-    public boolean checkRecipe(int slot) {
-        ItemStack[] inputs = slot == -1 ? getInputs() : new ItemStack[]{getInputs()[0]};
-        
+    public boolean checkRecipe() {
         if (inputChanged()) {
-            currentRecipe = fetchRecipe(inputs);
+            currentRecipe = fetchRecipe(getInputs());
             currentRecipeOutput = currentRecipe != null ? currentRecipe.getOutputs(random) : null;
             recipeChanged = true;
         }
@@ -99,32 +82,18 @@ public abstract class RecipeBlockEntityTemplate<R extends BasicMachineRecipe> ex
             return;
         }
 
-        ItemStack[] inputs = getInputs();
+        currentRecipe.consume(getInputs());
 
-        for (int itemIndex = 0; itemIndex < (multiInput ? inputs.length : 1); itemIndex++) {
-            if (multiInput) {
-                if (output(true)) {
-                    currentRecipe.consume(new ItemStack[]{getInputs()[itemIndex]});
-                }
-                else {
-                    continue;
-                }
+        // Clear out stacks with zero (or less?) items
+        int[] inputIndexes = getInputIndexes();
+        //noinspection ForLoopReplaceableByForEach
+        for (int i = 0; i < inputIndexes.length; i++) {
+            if (inventory[inputIndexes[i]] != null && inventory[inputIndexes[i]].count <= 0) {
+                inventory[inputIndexes[i]] = null;
             }
-            else {
-                currentRecipe.consume(getInputs());
-            }
-
-            // Clear out stacks with zero (or less?) items
-            int[] inputIndexes = getInputIndexes();
-            //noinspection ForLoopReplaceableByForEach
-            for (int i = 0; i < inputIndexes.length; i++) {
-                if (inventory[inputIndexes[i]] != null && inventory[inputIndexes[i]].count <= 0) {
-                    inventory[inputIndexes[i]] = null;
-                }
-            }
-
-            output(false);
         }
+
+        output(false);
     }
 
     @Override
