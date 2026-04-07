@@ -8,6 +8,7 @@ import net.glasslauncher.mods.glasstech.WireMaterial;
 import net.minecraft.block.Block;
 import net.minecraft.block.FurnaceBlock;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.hit.HitResult;
@@ -39,6 +40,8 @@ public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComp
             Properties.UP, Direction.UP,
             Properties.DOWN, Direction.DOWN
     );
+
+    private static boolean ignoreSneaking = false;
 
 
     public final float size;
@@ -128,6 +131,9 @@ public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComp
 
     @Override
     public Box getBoundingBox(World world, int x, int y, int z) {
+        if (!ignoreSneaking && Minecraft.INSTANCE.player.isSneaking()) {
+            return super.getBoundingBox(world, x, y, z);
+        }
         BlockState state = world.getBlockState(x, y, z);
 
         if (state.getBlock() != this) {
@@ -192,17 +198,11 @@ public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComp
 
     @Override
     public Box getCollisionShape(World world, int x, int y, int z) {
-        return getBoundingBox(world, x, y, z);
+        ignoreSneaking = true;
+        Box box = getBoundingBox(world, x, y, z);
+        ignoreSneaking = false;
+        return box;
     }
-
-//    @Override
-//    public void onEntityCollision(World world, int x, int y, int z, Entity entity) {
-//        if (wireProperties.insulated || !(entity instanceof LivingEntity)) {
-//            return;
-//        }
-//
-//        // Shock entity here
-//    }
 
     // Energy Conductor
     @Override
