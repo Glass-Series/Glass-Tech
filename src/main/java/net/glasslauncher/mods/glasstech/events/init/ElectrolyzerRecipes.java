@@ -11,6 +11,6 @@ import static net.glasslauncher.mods.glasstech.GlassTech.NAMESPACE;
 public class ElectrolyzerRecipes {
     public static void initRecipes() {
         ElectrolyzerRecipeRegistry registry = ElectrolyzerRecipeRegistry.INSTANCE;
-        registry.register(NAMESPACE.id("electrolyzewater"), new BasicMachineRecipe(new StackRecipeInput(new ItemStack(GlassTechItems.waterCell)), 200, new RecipeOutput(new ItemStack(GlassTechItems.electrolyzedWaterCell))));
+//        registry.register(NAMESPACE.id("electrolyzewater"), new BasicMachineRecipe(new StackRecipeInput(new ItemStack(GlassTechItems.waterCell)), 200, new RecipeOutput(new ItemStack(GlassTechItems.electrolyzedWaterCell))));
     }
 }
