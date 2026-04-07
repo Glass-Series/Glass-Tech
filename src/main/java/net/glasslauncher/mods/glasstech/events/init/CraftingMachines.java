@@ -3,6 +3,7 @@ package net.glasslauncher.mods.glasstech.events.init;
 import com.mojang.datafixers.util.Either;
 import net.glasslauncher.mods.glasstech.GlassTech;
 import net.glasslauncher.mods.glasstech.recipe.machine.BasicMachineRecipe;
+import net.glasslauncher.mods.glasstech.recipe.machine.CompressorRecipeRegistry;
 import net.glasslauncher.mods.glasstech.recipe.machine.MaceratorRecipeRegistry;
 import net.glasslauncher.mods.glasstech.recipe.machine.input.BlockRecipeInput;
 import net.glasslauncher.mods.glasstech.recipe.machine.input.RecipeInput;
@@ -47,8 +48,20 @@ public class CraftingMachines {
                     , new ItemStack(GlassTechBlocks.generatorBlock))
             );
         }
-        if (event.recipeId.equals(GlassTech.NAMESPACE.id("macerator"))) {
+        else if (event.recipeId.equals(GlassTech.NAMESPACE.id("macerator"))) {
             MaceratorRecipeRegistry.INSTANCE.register(GlassTech.NAMESPACE.id("iron"), new BasicMachineRecipe(new RecipeInput[]{new BlockRecipeInput(Block.IRON_ORE)}, new RecipeOutput[]{new RecipeOutput(new ItemStack(Item.IRON_INGOT))}));
+        }
+        else if (event.recipeId.equals(GlassTech.NAMESPACE.id("compressor"))) {
+            CompressorRecipes.initRecipes();
+        }
+        else if (event.recipeId.equals(GlassTech.NAMESPACE.id("canner"))) {
+            CannerRecipes.initRecipes();
+        }
+        else if (event.recipeId.equals(GlassTech.NAMESPACE.id("electrolyzer"))) {
+            ElectrolyzerRecipes.initRecipes();
+        }
+        else if (event.recipeId.equals(GlassTech.NAMESPACE.id("extractor"))) {
+            ExtractorRecipes.initRecipes();
         }
     }
 }

@@ -16,6 +16,10 @@ public class CraftingRecipeManagerMixin {
     @Inject(method = "<init>", at = @At("RETURN"))
     private void initMachineRegistries(CallbackInfo ci) {
         postRecipes("macerator");
+        postRecipes("compressor");
+        postRecipes("canner");
+        postRecipes("electrolyzer");
+        postRecipes("extractor");
     }
 
     @Unique

@@ -21,12 +21,14 @@ import net.glasslauncher.mods.glasstech.blocks.machine.inductionfurnace.Inductio
 import net.glasslauncher.mods.glasstech.blocks.machine.macerator.MaceratorBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.macerator.MaceratorScreen;
 import net.mine_diver.unsafeevents.listener.EventListener;
+import net.minecraft.block.material.Material;
 import net.modificationstation.stationapi.api.client.event.texture.TextureRegisterEvent;
 import net.modificationstation.stationapi.api.client.gui.screen.GuiHandler;
 import net.modificationstation.stationapi.api.client.texture.atlas.Atlas;
 import net.modificationstation.stationapi.api.client.texture.atlas.Atlases;
 import net.modificationstation.stationapi.api.event.registry.GuiHandlerRegistryEvent;
 import net.modificationstation.stationapi.api.mod.entrypoint.EntrypointManager;
+import net.modificationstation.stationapi.api.template.block.TemplateBlock;
 
 import java.lang.invoke.MethodHandles;
 
@@ -164,5 +166,20 @@ public class ClientInitListener {
         GlassTechItems.insulationCutter.setTexture(NAMESPACE.id("item/tool/insulation_cutter"));
         GlassTechItems.painter.setTexture(NAMESPACE.id("item/tool/painter"));
         GlassTechItems.nanoSaber.setTexture(NAMESPACE.id("item/tool/nano_saber"));
+
+        GlassTechBlocks.copperOre.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("copper_ore")).index;
+        GlassTechBlocks.tinOre.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("tin_ore")).index;
+        GlassTechBlocks.uraniumOre.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("uranium_ore")).index;
+
+        GlassTechBlocks.bronzeBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("bronze_block")).index;
+        GlassTechBlocks.copperBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("copper_block")).index;
+        GlassTechBlocks.tinBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("tin_block")).index;
+        GlassTechBlocks.uraniumBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("uranium_block")).index;
+
+        GlassTechBlocks.reinforcedGlass.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("reinforced_glass")).index;
+        GlassTechBlocks.reinforcedStone.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("reinforced_stone")).index;
+
+        GlassTechBlocks.resinSheet.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("resin_sheet")).index;
+        GlassTechBlocks.rubberSheet.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("rubber_sheet")).index;
     }
 }

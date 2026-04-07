@@ -29,6 +29,7 @@ import net.modificationstation.stationapi.api.event.block.entity.BlockEntityRegi
 import net.modificationstation.stationapi.api.event.mod.InitEvent;
 import net.modificationstation.stationapi.api.event.registry.BlockRegistryEvent;
 import net.modificationstation.stationapi.api.mod.entrypoint.EntrypointManager;
+import net.modificationstation.stationapi.api.template.block.TemplateBlock;
 
 import java.lang.invoke.MethodHandles;
 
@@ -69,7 +70,17 @@ public class GlassTechBlocks {
     public static Block refinedIronInsulatedX4CableBlock;
     public static Block glassFibreCableBlock;
 
-
+    public static Block bronzeBlock;
+    public static Block copperBlock;
+    public static Block copperOre;
+    public static Block reinforcedGlass;
+    public static Block reinforcedStone;
+    public static Block resinSheet;
+    public static Block rubberSheet;
+    public static Block tinBlock;
+    public static Block tinOre;
+    public static Block uraniumBlock;
+    public static Block uraniumOre;
 
     @EventListener
     private static void init(InitEvent event) {
@@ -105,6 +116,21 @@ public class GlassTechBlocks {
         refinedIronInsulatedX2CableBlock = new TemplateCableBlock(NAMESPACE.id("refined_iron_cable_insulated_x2"), WireMaterial.REFINED_IRON_INSULATED_X2, PIXEL_SIZE * 10);
         refinedIronInsulatedX4CableBlock = new TemplateCableBlock(NAMESPACE.id("refined_iron_cable_insulated_x3"), WireMaterial.REFINED_IRON_INSULATED_X3, PIXEL_SIZE * 14);
         glassFibreCableBlock = new TemplateCableBlock(NAMESPACE.id("glass_fibre_cable"), WireMaterial.GLASS_FIBRE, PIXEL_SIZE * 4);
+
+        copperOre = new TemplateBlock(NAMESPACE.id("copper_ore"), Material.STONE);
+        tinOre = new TemplateBlock(NAMESPACE.id("tin_ore"), Material.STONE);
+        uraniumOre = new TemplateBlock(NAMESPACE.id("uranium_ore"), Material.STONE);
+
+        bronzeBlock = new TemplateBlock(NAMESPACE.id("bronze_block"), Material.METAL);
+        copperBlock = new TemplateBlock(NAMESPACE.id("copper_block"), Material.METAL);
+        tinBlock = new TemplateBlock(NAMESPACE.id("tin_block"), Material.METAL);
+        uraniumBlock = new TemplateBlock(NAMESPACE.id("uranium_block"), Material.METAL);
+
+        reinforcedGlass = new TemplateBlock(NAMESPACE.id("reinforced_glass"), Material.STONE);
+        reinforcedStone = new TemplateBlock(NAMESPACE.id("reinforced_stone"), Material.STONE);
+
+        resinSheet = new TemplateBlock(NAMESPACE.id("resin_sheet"), Material.WOOL);
+        rubberSheet = new TemplateBlock(NAMESPACE.id("rubber_sheet"), Material.WOOL);
     }
 
     @EventListener
