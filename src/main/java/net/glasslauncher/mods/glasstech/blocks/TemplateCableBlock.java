@@ -223,7 +223,7 @@ public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComp
 
     @Override
     public int getBreakdownVoltage(World world, NetworkComponentEntry networkComponentEntry) {
-        return Integer.MAX_VALUE; // IC2 doesn't use real voltage
+        return wireMaterial.voltageTier.maxVoltage;
     }
 
     @Override
