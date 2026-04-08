@@ -28,11 +28,6 @@ public class InductionFurnaceBlockEntity extends RecipeBlockEntityTemplate<Basic
         return canCraft;
     }
 
-    @Override
-    public boolean canProcessRecipe(int[] inputIndexes) {
-        return super.canProcessRecipe(inputIndexes);
-    }
-
     public InductionFurnaceBlockEntity() {
         super(VoltageTier.LV, 4000, 15, 10000);
         addInput();
