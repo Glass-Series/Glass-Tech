@@ -1,8 +1,6 @@
 package net.glasslauncher.mods.glasstech.blocks.ironfurnace;
 
 import net.danygames2014.nyalib.block.DropInventoryOnBreak;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.glasslauncher.mods.glasstech.GlassTech;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntity;

@@ -38,4 +38,7 @@ public abstract class MachineBlockTemplate extends EnergySourceBlockTemplate imp
                 .with(Properties.HORIZONTAL_FACING, context.getHorizontalPlayerFacing().getOpposite())
                 .with(Properties.LIT, false);
     }
+
+    @Override
+    public abstract MachineBlockEntityTemplate createBlockEntity();
 }

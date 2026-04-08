@@ -2,8 +2,8 @@ package net.glasslauncher.mods.glasstech.blocks.machine.electricfurnace;
 
 import net.danygames2014.nyalib.block.DropInventoryOnBreak;
 import net.glasslauncher.mods.glasstech.GlassTech;
+import net.glasslauncher.mods.glasstech.blocks.machine.MachineBlockEntityTemplate;
 import net.glasslauncher.mods.glasstech.blocks.machine.MachineBlockTemplate;
-import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
@@ -17,7 +17,7 @@ public class ElectricFurnace extends MachineBlockTemplate implements DropInvento
     }
 
     @Override
-    public BlockEntity createBlockEntity() {
+    public MachineBlockEntityTemplate createBlockEntity() {
         return new ElectricFurnaceBlockEntity();
     }
 

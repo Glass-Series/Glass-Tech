@@ -1,24 +1,18 @@
 package net.glasslauncher.mods.glasstech.blocks.machine.inductionfurnace;
 
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import lombok.Getter;
 import lombok.Setter;
 import net.glasslauncher.mods.glassguis.screen.ServerSyncedField;
-import net.glasslauncher.mods.glasstech.FuelValues;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.glasslauncher.mods.glasstech.blocks.machine.RecipeBlockEntityTemplate;
 import net.glasslauncher.mods.glasstech.blocks.machine.SlotType;
 import net.glasslauncher.mods.glasstech.recipe.machine.BasicMachineRecipe;
-import net.glasslauncher.mods.glasstech.recipe.machine.input.IdRecipeInput;
 import net.glasslauncher.mods.glasstech.recipe.machine.input.RecipeInput;
 import net.glasslauncher.mods.glasstech.recipe.machine.input.StackRecipeInput;
 import net.glasslauncher.mods.glasstech.recipe.machine.output.RecipeOutput;
 import net.glasslauncher.mods.glasstech.recipe.machine.output.RecipeOutputType;
 import net.minecraft.inventory.Inventory;
-import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
-import net.minecraft.recipe.SmeltingRecipeManager;
 import net.modificationstation.stationapi.api.recipe.SmeltingRegistry;
 
 public class InductionFurnaceBlockEntity extends RecipeBlockEntityTemplate<BasicMachineRecipe> implements Inventory {
@@ -26,6 +20,18 @@ public class InductionFurnaceBlockEntity extends RecipeBlockEntityTemplate<Basic
     private int maxHeat = 10000;
     @Getter @Setter @ServerSyncedField
     private int heat;
+
+    @Override
+    public boolean tryCraft(boolean simulate) {
+        boolean canCraft = craft(new int[]{0}, simulate);
+        canCraft |= craft(new int[]{1}, simulate);
+        return canCraft;
+    }
+
+    @Override
+    public boolean canProcessRecipe(int[] inputIndexes) {
+        return super.canProcessRecipe(inputIndexes);
+    }
 
     public InductionFurnaceBlockEntity() {
         super(VoltageTier.LV, 4000, 15, 10000);

@@ -1,8 +1,8 @@
 package net.glasslauncher.mods.glasstech.blocks.machine.extractor;
 
 import net.glasslauncher.mods.glasstech.GlassTech;
+import net.glasslauncher.mods.glasstech.blocks.machine.MachineBlockEntityTemplate;
 import net.glasslauncher.mods.glasstech.blocks.machine.MachineBlockTemplate;
-import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
@@ -16,7 +16,7 @@ public class ExtractorBlock extends MachineBlockTemplate {
     }
 
     @Override
-    protected BlockEntity createBlockEntity() {
+    public MachineBlockEntityTemplate createBlockEntity() {
         return new ExtractorBlockEntity();
     }
 

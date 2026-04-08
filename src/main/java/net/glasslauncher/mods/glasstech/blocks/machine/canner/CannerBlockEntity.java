@@ -1,6 +1,5 @@
 package net.glasslauncher.mods.glasstech.blocks.machine.canner;
 
-import net.glasslauncher.mods.glasstech.FuelValues;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.glasslauncher.mods.glasstech.blocks.machine.RecipeBlockEntityTemplate;
 import net.glasslauncher.mods.glasstech.blocks.machine.SlotLayout;

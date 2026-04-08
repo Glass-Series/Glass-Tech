@@ -3,7 +3,6 @@ package net.glasslauncher.mods.glasstech.blocks.machine.generator;
 import lombok.Getter;
 import lombok.Setter;
 import net.glasslauncher.mods.glassguis.screen.ServerSyncedField;
-import net.glasslauncher.mods.glasstech.FuelValues;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.glasslauncher.mods.glasstech.blocks.machine.GeneratorBlockEntityTemplate;
 import net.minecraft.block.FurnaceBlock;

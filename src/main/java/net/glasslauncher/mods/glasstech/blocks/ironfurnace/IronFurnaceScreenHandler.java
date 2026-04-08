@@ -5,7 +5,6 @@ import net.glasslauncher.mods.glasstech.gui.FuelSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.screen.ScreenHandler;
-import net.minecraft.screen.slot.FurnaceOutputSlot;
 import net.minecraft.screen.slot.Slot;
 
 public class IronFurnaceScreenHandler extends ScreenHandler {

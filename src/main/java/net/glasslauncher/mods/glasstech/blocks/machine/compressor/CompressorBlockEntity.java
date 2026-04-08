@@ -1,12 +1,10 @@
 package net.glasslauncher.mods.glasstech.blocks.machine.compressor;
 
-import net.glasslauncher.mods.glasstech.FuelValues;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.glasslauncher.mods.glasstech.blocks.machine.RecipeBlockEntityTemplate;
 import net.glasslauncher.mods.glasstech.blocks.machine.SlotLayout;
 import net.glasslauncher.mods.glasstech.recipe.machine.BasicMachineRecipe;
 import net.glasslauncher.mods.glasstech.recipe.machine.CompressorRecipeRegistry;
-import net.glasslauncher.mods.glasstech.recipe.machine.ExtractorRecipeRegistry;
 import net.minecraft.item.ItemStack;
 
 public class CompressorBlockEntity extends RecipeBlockEntityTemplate<BasicMachineRecipe> {

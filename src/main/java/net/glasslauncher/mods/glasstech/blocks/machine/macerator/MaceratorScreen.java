@@ -12,6 +12,6 @@ public class MaceratorScreen extends MachineScreenTemplate<MaceratorBlockEntity>
     @Override
     public void drawMachineForeground(float tickDelta) {
         drawGauge();
-        drawArrow(79, 34, blockEntity.progress / (float) (blockEntity.currentRecipe == null ? blockEntity.maxProgress : blockEntity.currentRecipe.time));
+        drawArrow(79, 34, blockEntity.progress / (float) blockEntity.getCurrentShortestTime());
     }
 }

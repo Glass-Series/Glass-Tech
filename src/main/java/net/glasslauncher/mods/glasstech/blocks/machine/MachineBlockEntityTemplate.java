@@ -495,8 +495,9 @@ public abstract class MachineBlockEntityTemplate extends ConsumerBlockEntityTemp
 
         for (int slot = 0; slot < itemsNbt.size(); slot++) {
             NbtCompound stackNbt = (NbtCompound) itemsNbt.get(slot);
-            if (slot < inventory.length) {
-                inventory[slot] = new ItemStack(stackNbt);
+            byte slotIndex = stackNbt.getByte("Slot");
+            if (slotIndex >= 0 && slotIndex < inventory.length) {
+                inventory[slotIndex] = new ItemStack(stackNbt);
             }
         }
     }
@@ -509,13 +510,14 @@ public abstract class MachineBlockEntityTemplate extends ConsumerBlockEntityTemp
         // Input
         NbtList itemsNbt = new NbtList();
 
-        for (ItemStack itemStack : inventory) {
-            if (itemStack == null) {
+        for (int slot = 0; slot < inventory.length; slot++) {
+            if (inventory[slot] == null) {
                 continue;
             }
 
             NbtCompound stackNbt = new NbtCompound();
-            itemStack.writeNbt(stackNbt);
+            stackNbt.putByte("Slot", (byte) slot);
+            inventory[slot].writeNbt(stackNbt);
             itemsNbt.add(stackNbt);
         }
 

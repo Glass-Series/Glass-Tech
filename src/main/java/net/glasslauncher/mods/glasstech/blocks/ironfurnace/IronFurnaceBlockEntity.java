@@ -1,22 +1,15 @@
 package net.glasslauncher.mods.glasstech.blocks.ironfurnace;
 
 import net.danygames2014.nyalib.NyaLib;
-import net.danygames2014.nyalib.block.DropInventoryOnBreak;
 import net.danygames2014.nyalib.item.HasSmeltingReturnStack;
 import net.danygames2014.nyalib.item.block.ItemHandler;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
-import net.minecraft.block.Block;
-import net.minecraft.block.FurnaceBlock;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
-import net.minecraft.recipe.SmeltingRecipeManager;
 import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.recipe.FuelRegistry;
 import net.modificationstation.stationapi.api.recipe.SmeltingRegistry;

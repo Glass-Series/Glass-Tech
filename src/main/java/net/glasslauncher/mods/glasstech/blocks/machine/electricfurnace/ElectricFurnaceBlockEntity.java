@@ -2,7 +2,6 @@ package net.glasslauncher.mods.glasstech.blocks.machine.electricfurnace;
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import net.glasslauncher.mods.glasstech.FuelValues;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.glasslauncher.mods.glasstech.blocks.machine.RecipeBlockEntityTemplate;
 import net.glasslauncher.mods.glasstech.blocks.machine.SlotLayout;

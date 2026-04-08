@@ -1,6 +1,5 @@
 package net.glasslauncher.mods.glasstech.blocks.machine;
 
-import net.danygames2014.nyalib.energy.template.block.entity.EnergySourceBlockEntityTemplate;
 import net.danygames2014.nyalib.network.Network;
 import net.danygames2014.nyalib.network.NetworkEdgeComponent;
 import net.danygames2014.nyalib.network.NetworkType;
