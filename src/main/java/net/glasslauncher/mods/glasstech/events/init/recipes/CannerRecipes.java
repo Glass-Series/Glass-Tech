@@ -1,15 +1,6 @@
-package net.glasslauncher.mods.glasstech.events.init;
+package net.glasslauncher.mods.glasstech.events.init.recipes;
 
-import net.glasslauncher.mods.glasstech.recipe.machine.BasicMachineRecipe;
 import net.glasslauncher.mods.glasstech.recipe.machine.CannerRecipeRegistry;
-import net.glasslauncher.mods.glasstech.recipe.machine.CompressorRecipeRegistry;
-import net.glasslauncher.mods.glasstech.recipe.machine.input.StackRecipeInput;
-import net.glasslauncher.mods.glasstech.recipe.machine.output.RecipeOutput;
-import net.minecraft.item.FoodItem;
-import net.minecraft.item.ItemStack;
-import net.modificationstation.stationapi.api.registry.ItemRegistry;
-
-import static net.glasslauncher.mods.glasstech.GlassTech.NAMESPACE;
 
 public class CannerRecipes {
     public static void initRecipes() {

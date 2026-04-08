@@ -1,5 +1,7 @@
-package net.glasslauncher.mods.glasstech.events.init;
+package net.glasslauncher.mods.glasstech.events.init.recipes;
 
+import net.glasslauncher.mods.glasstech.events.init.GlassTechBlocks;
+import net.glasslauncher.mods.glasstech.events.init.GlassTechItems;
 import net.glasslauncher.mods.glasstech.recipe.machine.BasicMachineRecipe;
 import net.glasslauncher.mods.glasstech.recipe.machine.MaceratorRecipeRegistry;
 import net.glasslauncher.mods.glasstech.recipe.machine.input.StackRecipeInput;

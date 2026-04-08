@@ -1,8 +1,8 @@
-package net.glasslauncher.mods.glasstech.events.init;
+package net.glasslauncher.mods.glasstech.events.init.recipes;
 
+import net.glasslauncher.mods.glasstech.events.init.GlassTechItems;
 import net.glasslauncher.mods.glasstech.recipe.machine.BasicMachineRecipe;
 import net.glasslauncher.mods.glasstech.recipe.machine.CompressorRecipeRegistry;
-import net.glasslauncher.mods.glasstech.recipe.machine.input.ItemRecipeInput;
 import net.glasslauncher.mods.glasstech.recipe.machine.input.StackRecipeInput;
 import net.glasslauncher.mods.glasstech.recipe.machine.output.RecipeOutput;
 import net.minecraft.block.Block;

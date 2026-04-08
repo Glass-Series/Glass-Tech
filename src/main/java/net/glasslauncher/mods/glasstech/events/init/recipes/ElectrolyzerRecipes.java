@@ -1,12 +1,6 @@
-package net.glasslauncher.mods.glasstech.events.init;
+package net.glasslauncher.mods.glasstech.events.init.recipes;
 
-import net.glasslauncher.mods.glasstech.recipe.machine.BasicMachineRecipe;
 import net.glasslauncher.mods.glasstech.recipe.machine.ElectrolyzerRecipeRegistry;
-import net.glasslauncher.mods.glasstech.recipe.machine.input.StackRecipeInput;
-import net.glasslauncher.mods.glasstech.recipe.machine.output.RecipeOutput;
-import net.minecraft.item.ItemStack;
-
-import static net.glasslauncher.mods.glasstech.GlassTech.NAMESPACE;
 
 public class ElectrolyzerRecipes {
     public static void initRecipes() {

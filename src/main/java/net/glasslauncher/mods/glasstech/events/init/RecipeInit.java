@@ -2,12 +2,7 @@ package net.glasslauncher.mods.glasstech.events.init;
 
 import com.mojang.datafixers.util.Either;
 import net.glasslauncher.mods.glasstech.GlassTech;
-import net.glasslauncher.mods.glasstech.recipe.machine.BasicMachineRecipe;
-import net.glasslauncher.mods.glasstech.recipe.machine.CompressorRecipeRegistry;
-import net.glasslauncher.mods.glasstech.recipe.machine.MaceratorRecipeRegistry;
-import net.glasslauncher.mods.glasstech.recipe.machine.input.BlockRecipeInput;
-import net.glasslauncher.mods.glasstech.recipe.machine.input.RecipeInput;
-import net.glasslauncher.mods.glasstech.recipe.machine.output.RecipeOutput;
+import net.glasslauncher.mods.glasstech.events.init.recipes.*;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -17,7 +12,7 @@ import net.modificationstation.stationapi.api.event.recipe.RecipeRegisterEvent;
 import net.modificationstation.stationapi.api.tag.TagKey;
 import net.modificationstation.stationapi.impl.recipe.StationShapedRecipe;
 
-public class CraftingMachines {
+public class RecipeInit {
     public static Either<TagKey<Item>, ItemStack> I;
     public static Either<TagKey<Item>, ItemStack> W;
     public static Either<TagKey<Item>, ItemStack> WB;
@@ -62,6 +57,9 @@ public class CraftingMachines {
         }
         else if (event.recipeId.equals(GlassTech.NAMESPACE.id("extractor"))) {
             ExtractorRecipes.initRecipes();
+        }
+        else if (event.recipeId.equals(RecipeRegisterEvent.Vanilla.SMELTING)) {
+            SmeltingRecipes.initRecipes();
         }
     }
 }
