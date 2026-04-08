@@ -49,7 +49,7 @@ public class CraftingMachines {
             );
         }
         else if (event.recipeId.equals(GlassTech.NAMESPACE.id("macerator"))) {
-            MaceratorRecipeRegistry.INSTANCE.register(GlassTech.NAMESPACE.id("iron"), new BasicMachineRecipe(new RecipeInput[]{new BlockRecipeInput(Block.IRON_ORE)}, new RecipeOutput[]{new RecipeOutput(new ItemStack(Item.IRON_INGOT))}));
+            MaceratorRecipes.initRecipes();
         }
         else if (event.recipeId.equals(GlassTech.NAMESPACE.id("compressor"))) {
             CompressorRecipes.initRecipes();

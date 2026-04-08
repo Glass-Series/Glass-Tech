@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 import static net.glasslauncher.mods.glasstech.GlassTech.NAMESPACE;
 
 public class MaceratorRecipes {
-    public void initRecipes() {
+    public static void initRecipes() {
         MaceratorRecipeRegistry registry = MaceratorRecipeRegistry.INSTANCE;
         registry.register(NAMESPACE.id("refinediron2dust"), new BasicMachineRecipe(new StackRecipeInput(new ItemStack(GlassTechItems.refinedIronIngot)), 200, new RecipeOutput(new ItemStack(GlassTechItems.ironDust, 2))));
         registry.register(NAMESPACE.id("iron2dust"), new BasicMachineRecipe(new StackRecipeInput(new ItemStack(Item.IRON_INGOT)), 200, new RecipeOutput(new ItemStack(GlassTechItems.ironDust, 2))));
