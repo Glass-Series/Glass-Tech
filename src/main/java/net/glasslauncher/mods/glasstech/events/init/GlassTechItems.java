@@ -59,7 +59,7 @@ public class GlassTechItems {
     public static Item drill;
     public static Item diamondDrill;
 
-    public static Item carbonFiber;
+    public static Item carbonFibre;
     public static Item clayDust;
     public static Item carbonMesh;
     public static Item coalBall;
@@ -79,6 +79,61 @@ public class GlassTechItems {
     public static Item insulationCutter;
     public static Item painter;
     public static Item nanoSaber;
+
+    public static Item compressedHydratedCoal;
+    public static Item compressedPlantBall;
+    public static Item coolantCell;
+    public static Item depletedUraniumCell;
+    public static Item hydratedCoalDust;
+    public static Item plantBall;
+    public static Item suBattery;
+    public static Item uraniumCell;
+
+    public static Item nanoBoots;
+    public static Item nanoChestplate;
+    public static Item nanoHelmet;
+    public static Item nanoLeggings;
+    public static Item quantumBoots;
+    public static Item quantumChestplate;
+    public static Item quantumHelmet;
+    public static Item quantumLeggings;
+    public static Item jetpack;
+    public static Item electricJetpack;
+    public static Item bronzeBoots;
+    public static Item bronzeChestplate;
+    public static Item bronzeHelmet;
+    public static Item bronzeLeggings;
+
+    public static Item reactorCooler;
+    public static Item reactorPlating;
+    public static Item emptyFuelCan;
+    public static Item dynamiteRemote;
+    public static Item reEnrichedUraniumCell;
+    public static Item bioCell;
+    public static Item coalfuelCell;
+    public static Item compressedHydratedCoalDust;
+    public static Item itemCellUranDepleted;
+    public static Item itemCellUranEmpty;
+
+    public static Item rubberSapling;
+//    public static Item reinforcedDoor;
+
+    public static Item biofuelCell;
+    public static Item fullFuelCan;
+    public static Item cannedFood;
+
+    public static Item scanner;
+    public static Item advancedScanner;
+//    public static Item dynamite;
+    public static Item stickyDynamite;
+    public static Item rubberBoots;
+    public static Item voltageMeter;
+    public static Item miningLaser;
+    public static Item lappack;
+    public static Item cfPack;
+    public static Item compositeChestplate;
+
+    public static Item treeTap;
 
     @EventListener
     private static void itemInit(ItemRegistryEvent event) {
@@ -106,7 +161,7 @@ public class GlassTechItems {
         uuMatter = new TemplateItem(NAMESPACE.id("uu_matter")).setTranslationKey(NAMESPACE.id("uu_matter"));
         coalDust = new TemplateItem(NAMESPACE.id("coal_dust")).setTranslationKey(NAMESPACE.id("coal_dust"));
         fertilizer = new TemplateItem(NAMESPACE.id("fertilizer")).setTranslationKey(NAMESPACE.id("fertilizer"));
-        carbonFiber = new TemplateItem(NAMESPACE.id("carbon_fiber")).setTranslationKey(NAMESPACE.id("carbon_fiber"));
+        carbonFibre = new TemplateItem(NAMESPACE.id("carbon_fiber")).setTranslationKey(NAMESPACE.id("carbon_fiber"));
         clayDust = new TemplateItem(NAMESPACE.id("clay_dust")).setTranslationKey(NAMESPACE.id("clay_dust"));
         carbonMesh = new TemplateItem(NAMESPACE.id("carbon_mesh")).setTranslationKey(NAMESPACE.id("carbon_mesh"));
         coalBall = new TemplateItem(NAMESPACE.id("coal_ball")).setTranslationKey(NAMESPACE.id("coal_ball"));
@@ -142,6 +197,59 @@ public class GlassTechItems {
         insulationCutter = new TemplateItem(NAMESPACE.id("insulation_cutter")).setTranslationKey(NAMESPACE.id("insulation_cutter"));
         painter = new TemplateItem(NAMESPACE.id("painter")).setTranslationKey(NAMESPACE.id("painter"));
         nanoSaber = new TemplateItem(NAMESPACE.id("nano_saber")).setTranslationKey(NAMESPACE.id("nano_saber"));
+
+        treeTap = new TemplateItem(NAMESPACE.id("tree_tap")).setTranslationKey(NAMESPACE.id("tree_tap"));
+
+        compressedHydratedCoal = new TemplateItem(NAMESPACE.id("compressed_hydrated_coal")).setTranslationKey(NAMESPACE.id("compressed_hydrated_coal"));
+        compressedPlantBall = new TemplateItem(NAMESPACE.id("compressed_plant_ball")).setTranslationKey(NAMESPACE.id("compressed_plant_ball"));
+        coolantCell = new TemplateItem(NAMESPACE.id("coolant_cell")).setTranslationKey(NAMESPACE.id("coolant_cell"));
+        depletedUraniumCell = new TemplateItem(NAMESPACE.id("depleted_uranium_cell")).setTranslationKey(NAMESPACE.id("depleted_uranium_cell"));
+        hydratedCoalDust = new TemplateItem(NAMESPACE.id("hydrated_coal_dust")).setTranslationKey(NAMESPACE.id("hydrated_coal_dust"));
+        plantBall = new TemplateItem(NAMESPACE.id("plant_ball")).setTranslationKey(NAMESPACE.id("plant_ball"));
+        suBattery = new TemplateItem(NAMESPACE.id("su_battery")).setTranslationKey(NAMESPACE.id("su_battery"));
+        uraniumCell = new TemplateItem(NAMESPACE.id("uranium_cell")).setTranslationKey(NAMESPACE.id("uranium_cell"));
+        nanoBoots = new TemplateItem(NAMESPACE.id("nano_boots")).setTranslationKey(NAMESPACE.id("nano_boots"));
+        nanoChestplate = new TemplateItem(NAMESPACE.id("nano_chestplate")).setTranslationKey(NAMESPACE.id("nano_chestplate"));
+        nanoHelmet = new TemplateItem(NAMESPACE.id("nano_helmet")).setTranslationKey(NAMESPACE.id("nano_helmet"));
+        nanoLeggings = new TemplateItem(NAMESPACE.id("nano_leggings")).setTranslationKey(NAMESPACE.id("nano_leggings"));
+        quantumBoots = new TemplateItem(NAMESPACE.id("quantum_boots")).setTranslationKey(NAMESPACE.id("quantum_boots"));
+        quantumChestplate = new TemplateItem(NAMESPACE.id("quantum_chestplate")).setTranslationKey(NAMESPACE.id("quantum_chestplate"));
+        quantumHelmet = new TemplateItem(NAMESPACE.id("quantum_helmet")).setTranslationKey(NAMESPACE.id("quantum_helmet"));
+        quantumLeggings = new TemplateItem(NAMESPACE.id("quantum_leggings")).setTranslationKey(NAMESPACE.id("quantum_leggings"));
+        jetpack = new TemplateItem(NAMESPACE.id("jetpack")).setTranslationKey(NAMESPACE.id("jetpack"));
+        electricJetpack = new TemplateItem(NAMESPACE.id("electric_jetpack")).setTranslationKey(NAMESPACE.id("electric_jetpack"));
+
+        bronzeBoots = new TemplateItem(NAMESPACE.id("bronze_boots")).setTranslationKey(NAMESPACE.id("bronze_boots"));
+        bronzeChestplate = new TemplateItem(NAMESPACE.id("bronze_chestplate")).setTranslationKey(NAMESPACE.id("bronze_chestplate"));
+        bronzeHelmet = new TemplateItem(NAMESPACE.id("bronze_helmet")).setTranslationKey(NAMESPACE.id("bronze_helmet"));
+        bronzeLeggings = new TemplateItem(NAMESPACE.id("bronze_leggings")).setTranslationKey(NAMESPACE.id("bronze_leggings"));
+
+        reactorCooler = new TemplateItem(NAMESPACE.id("reactor_cooler")).setTranslationKey(NAMESPACE.id("reactor_cooler"));
+        reactorPlating = new TemplateItem(NAMESPACE.id("reactor_plating")).setTranslationKey(NAMESPACE.id("reactor_plating"));
+        emptyFuelCan = new TemplateItem(NAMESPACE.id("empty_fuel_can")).setTranslationKey(NAMESPACE.id("empty_fuel_can"));
+        dynamiteRemote = new TemplateItem(NAMESPACE.id("dynamite_remote")).setTranslationKey(NAMESPACE.id("dynamite_remote"));
+        reEnrichedUraniumCell = new TemplateItem(NAMESPACE.id("re_enriched_uranium_cell")).setTranslationKey(NAMESPACE.id("re_enriched_uranium_cell"));
+        bioCell = new TemplateItem(NAMESPACE.id("bio_cell")).setTranslationKey(NAMESPACE.id("bio_cell"));
+        coalfuelCell = new TemplateItem(NAMESPACE.id("coalfuel_cell")).setTranslationKey(NAMESPACE.id("coalfuel_cell"));
+        compressedHydratedCoalDust = new TemplateItem(NAMESPACE.id("compressed_hydrated_coal_dust")).setTranslationKey(NAMESPACE.id("compressed_hydrated_coal_dust"));
+        itemCellUranDepleted = new TemplateItem(NAMESPACE.id("item_cell_uran_depleted")).setTranslationKey(NAMESPACE.id("item_cell_uran_depleted"));
+        itemCellUranEmpty = new TemplateItem(NAMESPACE.id("item_cell_uran_empty")).setTranslationKey(NAMESPACE.id("item_cell_uran_empty"));
+        rubberSapling = new TemplateItem(NAMESPACE.id("rubber_sapling")).setTranslationKey(NAMESPACE.id("rubber_sapling"));
+//        reinforcedDoor = new TemplateItem(NAMESPACE.id("reinforced_door")).setTranslationKey(NAMESPACE.id("reinforced_door"));
+        biofuelCell = new TemplateItem(NAMESPACE.id("biofuel_cell")).setTranslationKey(NAMESPACE.id("biofuel_cell"));
+        fullFuelCan = new TemplateItem(NAMESPACE.id("full_fuel_can")).setTranslationKey(NAMESPACE.id("full_fuel_can"));
+        cannedFood = new TemplateItem(NAMESPACE.id("canned_food")).setTranslationKey(NAMESPACE.id("canned_food"));
+
+        scanner = new TemplateItem(NAMESPACE.id("scanner")).setTranslationKey(NAMESPACE.id("scanner"));
+        advancedScanner = new TemplateItem(NAMESPACE.id("advanced_scanner")).setTranslationKey(NAMESPACE.id("advanced_scanner"));
+//        dynamite = new TemplateItem(NAMESPACE.id("dynamite")).setTranslationKey(NAMESPACE.id("dynamite"));
+        stickyDynamite = new TemplateItem(NAMESPACE.id("sticky_dynamite")).setTranslationKey(NAMESPACE.id("sticky_dynamite"));
+        rubberBoots = new TemplateItem(NAMESPACE.id("rubber_boots")).setTranslationKey(NAMESPACE.id("rubber_boots"));
+        voltageMeter = new TemplateItem(NAMESPACE.id("voltage_meter")).setTranslationKey(NAMESPACE.id("voltage_meter"));
+        miningLaser = new TemplateItem(NAMESPACE.id("mining_laser")).setTranslationKey(NAMESPACE.id("mining_laser"));
+        lappack = new TemplateItem(NAMESPACE.id("lappack")).setTranslationKey(NAMESPACE.id("lappack"));
+        cfPack = new TemplateItem(NAMESPACE.id("cf_pack")).setTranslationKey(NAMESPACE.id("cf_pack"));
+        compositeChestplate = new TemplateItem(NAMESPACE.id("composite_chestplate")).setTranslationKey(NAMESPACE.id("composite_chestplate"));
     }
 
     @EventListener

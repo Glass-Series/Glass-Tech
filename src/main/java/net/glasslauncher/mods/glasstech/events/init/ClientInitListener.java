@@ -21,14 +21,12 @@ import net.glasslauncher.mods.glasstech.blocks.machine.inductionfurnace.Inductio
 import net.glasslauncher.mods.glasstech.blocks.machine.macerator.MaceratorBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.macerator.MaceratorScreen;
 import net.mine_diver.unsafeevents.listener.EventListener;
-import net.minecraft.block.material.Material;
 import net.modificationstation.stationapi.api.client.event.texture.TextureRegisterEvent;
 import net.modificationstation.stationapi.api.client.gui.screen.GuiHandler;
 import net.modificationstation.stationapi.api.client.texture.atlas.Atlas;
 import net.modificationstation.stationapi.api.client.texture.atlas.Atlases;
 import net.modificationstation.stationapi.api.event.registry.GuiHandlerRegistryEvent;
 import net.modificationstation.stationapi.api.mod.entrypoint.EntrypointManager;
-import net.modificationstation.stationapi.api.template.block.TemplateBlock;
 
 import java.lang.invoke.MethodHandles;
 
@@ -110,7 +108,7 @@ public class ClientInitListener {
         GlassTechItems.uuMatter.setTexture(NAMESPACE.id("item/resource/uu_matter"));
         GlassTechItems.coalDust.setTexture(NAMESPACE.id("item/resource/coal_dust"));
         GlassTechItems.fertilizer.setTexture(NAMESPACE.id("item/resource/fertilizer"));
-        GlassTechItems.carbonFiber.setTexture(NAMESPACE.id("item/resource/carbon_fiber"));
+        GlassTechItems.carbonFibre.setTexture(NAMESPACE.id("item/resource/carbon_fiber"));
         GlassTechItems.clayDust.setTexture(NAMESPACE.id("item/resource/clay_dust"));
         GlassTechItems.carbonMesh.setTexture(NAMESPACE.id("item/resource/carbon_mesh"));
         GlassTechItems.coalBall.setTexture(NAMESPACE.id("item/resource/coal_ball"));
@@ -167,19 +165,19 @@ public class ClientInitListener {
         GlassTechItems.painter.setTexture(NAMESPACE.id("item/tool/painter"));
         GlassTechItems.nanoSaber.setTexture(NAMESPACE.id("item/tool/nano_saber"));
 
-        GlassTechBlocks.copperOre.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("copper_ore")).index;
-        GlassTechBlocks.tinOre.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("tin_ore")).index;
-        GlassTechBlocks.uraniumOre.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("uranium_ore")).index;
+        GlassTechBlocks.copperOreBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("copper_ore")).index;
+        GlassTechBlocks.tinOreBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("tin_ore")).index;
+        GlassTechBlocks.uraniumOreBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("uranium_ore")).index;
 
         GlassTechBlocks.bronzeBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("bronze_block")).index;
         GlassTechBlocks.copperBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("copper_block")).index;
         GlassTechBlocks.tinBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("tin_block")).index;
         GlassTechBlocks.uraniumBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("uranium_block")).index;
 
-        GlassTechBlocks.reinforcedGlass.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("reinforced_glass")).index;
-        GlassTechBlocks.reinforcedStone.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("reinforced_stone")).index;
+        GlassTechBlocks.reinforcedGlassBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("reinforced_glass")).index;
+        GlassTechBlocks.reinforcedStoneBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("reinforced_stone")).index;
 
-        GlassTechBlocks.resinSheet.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("resin_sheet")).index;
-        GlassTechBlocks.rubberSheet.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("rubber_sheet")).index;
+        GlassTechBlocks.resinSheetBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("resin_sheet")).index;
+        GlassTechBlocks.rubberSheetBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("rubber_sheet")).index;
     }
 }

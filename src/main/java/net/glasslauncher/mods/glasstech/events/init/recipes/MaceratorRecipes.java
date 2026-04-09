@@ -22,8 +22,8 @@ public class MaceratorRecipes {
         registry.register(NAMESPACE.id("copper2dust"), new BasicMachineRecipe(new StackRecipeInput(new ItemStack(GlassTechItems.copperIngot)), 200, new RecipeOutput(new ItemStack(GlassTechItems.copperDust, 2))));
         registry.register(NAMESPACE.id("ironore2dust"), new BasicMachineRecipe(new StackRecipeInput(new ItemStack(Block.IRON_ORE)), 200, new RecipeOutput(new ItemStack(GlassTechItems.ironDust, 2))));
         registry.register(NAMESPACE.id("goldore2dust"), new BasicMachineRecipe(new StackRecipeInput(new ItemStack(Block.GOLD_ORE)), 200, new RecipeOutput(new ItemStack(GlassTechItems.goldDust, 2))));
-        registry.register(NAMESPACE.id("tinore2dust"), new BasicMachineRecipe(new StackRecipeInput(new ItemStack(GlassTechBlocks.tinOre)), 200, new RecipeOutput(new ItemStack(GlassTechItems.tinDust, 2))));
-        registry.register(NAMESPACE.id("copperore2dust"), new BasicMachineRecipe(new StackRecipeInput(new ItemStack(GlassTechBlocks.copperOre)), 200, new RecipeOutput(new ItemStack(GlassTechItems.copperDust, 2))));
+        registry.register(NAMESPACE.id("tinore2dust"), new BasicMachineRecipe(new StackRecipeInput(new ItemStack(GlassTechBlocks.tinOreBlock)), 200, new RecipeOutput(new ItemStack(GlassTechItems.tinDust, 2))));
+        registry.register(NAMESPACE.id("copperore2dust"), new BasicMachineRecipe(new StackRecipeInput(new ItemStack(GlassTechBlocks.copperOreBlock)), 200, new RecipeOutput(new ItemStack(GlassTechItems.copperDust, 2))));
         registry.register(NAMESPACE.id("coal2dust"), new BasicMachineRecipe(new StackRecipeInput(new ItemStack(Item.COAL)), 200, new RecipeOutput(new ItemStack(GlassTechItems.coalDust))));
         registry.register(NAMESPACE.id("bronze2dust"), new BasicMachineRecipe(new StackRecipeInput(new ItemStack(GlassTechItems.bronzeIngot)), 200, new RecipeOutput(new ItemStack(GlassTechItems.bronzeDust))));
         registry.register(NAMESPACE.id("cobble2sand"), new BasicMachineRecipe(new StackRecipeInput(new ItemStack(Block.COBBLESTONE)), 200, new RecipeOutput(new ItemStack(Block.SAND))));
