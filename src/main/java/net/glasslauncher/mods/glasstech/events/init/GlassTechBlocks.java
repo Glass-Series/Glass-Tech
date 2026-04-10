@@ -3,6 +3,7 @@ package net.glasslauncher.mods.glasstech.events.init;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.glasslauncher.mods.glasstech.WireMaterial;
 import net.glasslauncher.mods.glasstech.blocks.GTGlassBlock;
+import net.glasslauncher.mods.glasstech.blocks.GTSheetBlock;
 import net.glasslauncher.mods.glasstech.blocks.GTTemplateBlock;
 import net.glasslauncher.mods.glasstech.blocks.TemplateCableBlock;
 import net.glasslauncher.mods.glasstech.blocks.batbox.BatBoxBlock;
@@ -32,7 +33,6 @@ import net.modificationstation.stationapi.api.event.block.entity.BlockEntityRegi
 import net.modificationstation.stationapi.api.event.mod.InitEvent;
 import net.modificationstation.stationapi.api.event.registry.BlockRegistryEvent;
 import net.modificationstation.stationapi.api.mod.entrypoint.EntrypointManager;
-import net.modificationstation.stationapi.api.template.block.TemplateBlock;
 
 import java.lang.invoke.MethodHandles;
 
@@ -174,8 +174,8 @@ public class GlassTechBlocks {
         reinforcedGlassBlock = new GTGlassBlock(NAMESPACE.id("reinforced_glass"));
         reinforcedStoneBlock = new GTTemplateBlock(NAMESPACE.id("reinforced_stone"), Material.STONE, STONE_SOUND_GROUP);
 
-        resinSheetBlock = new GTSheetBlock(NAMESPACE.id("resin_sheet"));
-        rubberSheetBlock = new GTSheetBlock(NAMESPACE.id("rubber_sheet"));
+        resinSheetBlock = new GTSheetBlock(NAMESPACE.id("resin_sheet"), GTSheetBlock.Type.STICKY);
+        rubberSheetBlock = new GTSheetBlock(NAMESPACE.id("rubber_sheet"), GTSheetBlock.Type.BOUNCY);
 
         machineBlock = new GTTemplateBlock(NAMESPACE.id("machine_block"), Material.METAL, METAL_SOUND_GROUP);
         advancedMachineBlock = new GTTemplateBlock(NAMESPACE.id("advanced_machine_block"), Material.METAL, METAL_SOUND_GROUP);
