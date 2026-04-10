@@ -57,7 +57,7 @@ public class BlockRecipes {
         add(reactorCoreBlock, "AcA", "CGC", "AcA", 'A', advancedAlloy, 'C', reactorChamberBlock, 'c', advancedCircuit, 'G', generatorBlock);
         add(massFabricatorBlock, "GCG", "ALA", "GCG", 'A', advancedMachineBlock, 'L', lapotronCrystal, 'G', Item.GLOWSTONE_DUST, 'C', advancedCircuit);
 
-        addN(woodScaffoldBlock, 16, "PPP", " s ", "s s", 'P', Block.PLANKS, 's', Item.STICK);
+        addN(woodenScaffoldBlock, 16, "PPP", " s ", "s s", 'P', Block.PLANKS, 's', Item.STICK);
 
         add(personalSafeBlock, "C", "M", "H", 'C', circuit, 'H', Block.CHEST, 'M', machineBlock);
 

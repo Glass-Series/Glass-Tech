@@ -1,6 +1,9 @@
 package net.glasslauncher.mods.glasstech.events.init;
 
+import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.glasslauncher.mods.glasstech.WireMaterial;
+import net.glasslauncher.mods.glasstech.blocks.GTGlassBlock;
+import net.glasslauncher.mods.glasstech.blocks.GTTemplateBlock;
 import net.glasslauncher.mods.glasstech.blocks.TemplateCableBlock;
 import net.glasslauncher.mods.glasstech.blocks.batbox.BatBoxBlock;
 import net.glasslauncher.mods.glasstech.blocks.batbox.BatBoxBlockEntity;
@@ -36,6 +39,7 @@ import java.lang.invoke.MethodHandles;
 import static net.glasslauncher.mods.glasstech.GlassTech.LOGGER;
 import static net.glasslauncher.mods.glasstech.GlassTech.NAMESPACE;
 import static net.glasslauncher.mods.glasstech.blocks.TemplateCableBlock.PIXEL_SIZE;
+import static net.minecraft.block.Block.*;
 
 public class GlassTechBlocks {
     static {
@@ -116,7 +120,6 @@ public class GlassTechBlocks {
     public static Block reactorChamberBlock;
     public static Block reactorCoreBlock;
     public static Block massFabricatorBlock;
-    public static Block woodScaffoldBlock;
     public static Block industrialTNTBlock;
     public static Block nukeBlock;
 
@@ -158,61 +161,60 @@ public class GlassTechBlocks {
         refinedIronInsulatedX3CableBlock = new TemplateCableBlock(NAMESPACE.id("refined_iron_cable_insulated_x3"), WireMaterial.REFINED_IRON_INSULATED_X3, PIXEL_SIZE * 14);
         glassFibreCableBlock = new TemplateCableBlock(NAMESPACE.id("glass_fibre_cable"), WireMaterial.GLASS_FIBRE, PIXEL_SIZE * 4);
 
-        copperOreBlock = new TemplateBlock(NAMESPACE.id("copper_ore"), Material.STONE).setTranslationKey(NAMESPACE.id("copper_ore"));
-        tinOreBlock = new TemplateBlock(NAMESPACE.id("tin_ore"), Material.STONE).setTranslationKey(NAMESPACE.id("tin_ore"));
-        uraniumOreBlock = new TemplateBlock(NAMESPACE.id("uranium_ore"), Material.STONE).setTranslationKey(NAMESPACE.id("uranium_ore"));
+        copperOreBlock = new GTTemplateBlock(NAMESPACE.id("copper_ore"), Material.STONE, STONE_SOUND_GROUP);
+        tinOreBlock = new GTTemplateBlock(NAMESPACE.id("tin_ore"), Material.STONE, STONE_SOUND_GROUP);
+        uraniumOreBlock = new GTTemplateBlock(NAMESPACE.id("uranium_ore"), Material.STONE, STONE_SOUND_GROUP);
 
-        bronzeBlock = new TemplateBlock(NAMESPACE.id("bronze_block"), Material.METAL).setTranslationKey(NAMESPACE.id("bronze"));
-        copperBlock = new TemplateBlock(NAMESPACE.id("copper_block"), Material.METAL).setTranslationKey(NAMESPACE.id("copper"));
-        tinBlock = new TemplateBlock(NAMESPACE.id("tin_block"), Material.METAL).setTranslationKey(NAMESPACE.id("tin"));
-        uraniumBlock = new TemplateBlock(NAMESPACE.id("uranium_block"), Material.METAL).setTranslationKey(NAMESPACE.id("uranium"));
-        refinedIronBlock = new TemplateBlock(NAMESPACE.id("refined_iron"), Material.METAL).setTranslationKey(NAMESPACE.id("refined_iron"));
+        bronzeBlock = new GTTemplateBlock(NAMESPACE.id("bronze_block"), Material.METAL, METAL_SOUND_GROUP);
+        copperBlock = new GTTemplateBlock(NAMESPACE.id("copper_block"), Material.METAL, METAL_SOUND_GROUP);
+        tinBlock = new GTTemplateBlock(NAMESPACE.id("tin_block"), Material.METAL, METAL_SOUND_GROUP);
+        uraniumBlock = new GTTemplateBlock(NAMESPACE.id("uranium_block"), Material.METAL, METAL_SOUND_GROUP);
+        refinedIronBlock = new GTTemplateBlock(NAMESPACE.id("refined_iron"), Material.METAL, METAL_SOUND_GROUP);
 
-        reinforcedGlassBlock = new TemplateBlock(NAMESPACE.id("reinforced_glass"), Material.STONE).setTranslationKey(NAMESPACE.id("reinforced_glass"));
-        reinforcedStoneBlock = new TemplateBlock(NAMESPACE.id("reinforced_stone"), Material.STONE).setTranslationKey(NAMESPACE.id("reinforced_stone"));
+        reinforcedGlassBlock = new GTGlassBlock(NAMESPACE.id("reinforced_glass"));
+        reinforcedStoneBlock = new GTTemplateBlock(NAMESPACE.id("reinforced_stone"), Material.STONE, STONE_SOUND_GROUP);
 
-        resinSheetBlock = new TemplateBlock(NAMESPACE.id("resin_sheet"), Material.WOOL).setTranslationKey(NAMESPACE.id("resin_sheet"));
-        rubberSheetBlock = new TemplateBlock(NAMESPACE.id("rubber_sheet"), Material.WOOL).setTranslationKey(NAMESPACE.id("rubber_sheet"));
+        resinSheetBlock = new GTSheetBlock(NAMESPACE.id("resin_sheet"));
+        rubberSheetBlock = new GTSheetBlock(NAMESPACE.id("rubber_sheet"));
 
-        machineBlock = new TemplateBlock(NAMESPACE.id("machine_block"), Material.METAL).setTranslationKey(NAMESPACE.id("machine"));
-        advancedMachineBlock = new TemplateBlock(NAMESPACE.id("advanced_machine_block"), Material.METAL).setTranslationKey(NAMESPACE.id("advanced_machine"));
+        machineBlock = new GTTemplateBlock(NAMESPACE.id("machine_block"), Material.METAL, METAL_SOUND_GROUP);
+        advancedMachineBlock = new GTTemplateBlock(NAMESPACE.id("advanced_machine_block"), Material.METAL, METAL_SOUND_GROUP);
 
-        constructionFoamBlock = new TemplateBlock(NAMESPACE.id("construction_foam"), Material.METAL).setTranslationKey(NAMESPACE.id("construction_foam"));
-        hardenedConstructionFoamBlock = new TemplateBlock(NAMESPACE.id("hardened_construction_foam"), Material.METAL).setTranslationKey(NAMESPACE.id("hardened_construction_foam"));
-        dynamiteBlock = new TemplateBlock(NAMESPACE.id("dynamite"), Material.METAL).setTranslationKey(NAMESPACE.id("dynamite"));
-        metalScaffoldBlock = new TemplateBlock(NAMESPACE.id("metal_scaffold"), Material.METAL).setTranslationKey(NAMESPACE.id("metal_scaffold"));
-        miningPipeBlock = new TemplateBlock(NAMESPACE.id("mining_pipe"), Material.METAL).setTranslationKey(NAMESPACE.id("mining_pipe"));
-        personalSafeBlock = new TemplateBlock(NAMESPACE.id("personal_safe"), Material.METAL).setTranslationKey(NAMESPACE.id("personal_safe"));
-        reinforcedDoorBlock = new TemplateBlock(NAMESPACE.id("reinforced_door"), Material.METAL).setTranslationKey(NAMESPACE.id("reinforced_door"));
-        teleporterBlock = new TemplateBlock(NAMESPACE.id("teleporter"), Material.METAL).setTranslationKey(NAMESPACE.id("teleporter"));
-        teslaCoilBlock = new TemplateBlock(NAMESPACE.id("tesla_coil"), Material.METAL).setTranslationKey(NAMESPACE.id("tesla_coil"));
-        woodenScaffoldBlock = new TemplateBlock(NAMESPACE.id("wooden_scaffold"), Material.WOOD).setTranslationKey(NAMESPACE.id("wooden_scaffold"));
+        constructionFoamBlock = new GTFoamBlock(NAMESPACE.id("construction_foam"));
+        hardenedConstructionFoamBlock = new GTHardenedFoamBlock(NAMESPACE.id("hardened_construction_foam"));
+        dynamiteBlock = new GTDynamiteBlock(NAMESPACE.id("dynamite"));
+        metalScaffoldBlock = new GTScaffoldBlock(NAMESPACE.id("metal_scaffold"), Material.METAL, METAL_SOUND_GROUP);
+        miningPipeBlock = new GTTemplateBlock(NAMESPACE.id("mining_pipe"), Material.METAL, METAL_SOUND_GROUP);
+        personalSafeBlock = new GTSafeBlock(NAMESPACE.id("personal_safe"));
+        reinforcedDoorBlock = new GTDoorBlock(NAMESPACE.id("reinforced_door"));
+        teleporterBlock = new TeleporterBlock(NAMESPACE.id("teleporter"));
+        teslaCoilBlock = new TeslaCoilBlock(NAMESPACE.id("tesla_coil"));
+        woodenScaffoldBlock = new GTScaffoldBlock(NAMESPACE.id("wooden_scaffold"), Material.WOOD);
 
-        lvTransformerBlock = new TemplateBlock(NAMESPACE.id("lv_transformer"), Material.WOOD).setTranslationKey(NAMESPACE.id("lv_transformer"));
-        mvTransformerBlock = new TemplateBlock(NAMESPACE.id("mv_transformer"), Material.METAL).setTranslationKey(NAMESPACE.id("mv_transformer"));
-        hvTransformerBlock = new TemplateBlock(NAMESPACE.id("hv_transformer"), Material.METAL).setTranslationKey(NAMESPACE.id("hv_transformer"));
+        lvTransformerBlock = new GTTransformerBlock(NAMESPACE.id("lv_transformer"), Material.WOOD, VoltageTier.LV);
+        mvTransformerBlock = new GTTransformerBlock(NAMESPACE.id("mv_transformer"), Material.METAL, VoltageTier.MV);
+        hvTransformerBlock = new GTTransformerBlock(NAMESPACE.id("hv_transformer"), Material.METAL, VoltageTier.HV);
 
-        geothermalGeneratorBlock = new TemplateBlock(NAMESPACE.id("geothermal_generator"), Material.METAL).setTranslationKey(NAMESPACE.id("geothermal_generator"));
-        waterGeneratorBlock = new TemplateBlock(NAMESPACE.id("water_generator"), Material.METAL).setTranslationKey(NAMESPACE.id("water_generator"));
-        solarGeneratorBlock = new TemplateBlock(NAMESPACE.id("solar_generator"), Material.METAL).setTranslationKey(NAMESPACE.id("solar_generator"));
-        windGeneratorBlock = new TemplateBlock(NAMESPACE.id("wind_generator"), Material.METAL).setTranslationKey(NAMESPACE.id("wind_generator"));
+        geothermalGeneratorBlock = new GTGeothermalGeneratorBlock(NAMESPACE.id("geothermal_generator"));
+        waterGeneratorBlock = new GTWaterMillBlock(NAMESPACE.id("water_generator"));
+        solarGeneratorBlock = new GTSolarPanelBlock(NAMESPACE.id("solar_generator"));
+        windGeneratorBlock = new GTWindMillBlock(NAMESPACE.id("wind_generator"));
 
-        refinedIronFenceBlock = new TemplateBlock(NAMESPACE.id("refined_iron_fence"), Material.METAL).setTranslationKey(NAMESPACE.id("refined_iron_fence"));
+        refinedIronFenceBlock = new GTFenceBlock(NAMESPACE.id("refined_iron_fence"));
 
-        recyclerBlock = new TemplateBlock(NAMESPACE.id("recycler"), Material.METAL).setTranslationKey(NAMESPACE.id("recycler"));
-        illuminatorBlock = new TemplateBlock(NAMESPACE.id("illuminator"), Material.METAL).setTranslationKey(NAMESPACE.id("illuminator"));
-        minerBlock = new TemplateBlock(NAMESPACE.id("miner"), Material.METAL).setTranslationKey(NAMESPACE.id("miner"));
-        pumpBlock = new TemplateBlock(NAMESPACE.id("pump"), Material.METAL).setTranslationKey(NAMESPACE.id("pump"));
-        magnetizerBlock = new TemplateBlock(NAMESPACE.id("magnetizer"), Material.METAL).setTranslationKey(NAMESPACE.id("magnetizer"));
-        reactorChamberBlock = new TemplateBlock(NAMESPACE.id("reactor_chamber"), Material.METAL).setTranslationKey(NAMESPACE.id("reactor_chamber"));
-        reactorCoreBlock = new TemplateBlock(NAMESPACE.id("reactor_core"), Material.METAL).setTranslationKey(NAMESPACE.id("reactor_core"));
-        massFabricatorBlock = new TemplateBlock(NAMESPACE.id("mass_fabricator"), Material.METAL).setTranslationKey(NAMESPACE.id("mass_fabricator"));
-        woodScaffoldBlock = new TemplateBlock(NAMESPACE.id("wood_scaffold"), Material.WOOD).setTranslationKey(NAMESPACE.id("wood_scaffold"));
-        industrialTNTBlock = new TemplateBlock(NAMESPACE.id("industrial_tnt"), Material.TNT).setTranslationKey(NAMESPACE.id("industrial_t_n_t"));
-        nukeBlock = new TemplateBlock(NAMESPACE.id("nuke"), Material.TNT).setTranslationKey(NAMESPACE.id("nuke"));
+        recyclerBlock = new RecyclerBlock(NAMESPACE.id("recycler"));
+        illuminatorBlock = new IlluminatorBlock(NAMESPACE.id("illuminator"));
+        minerBlock = new MinerBlock(NAMESPACE.id("miner"));
+        pumpBlock = new PumpBlock(NAMESPACE.id("pump"));
+        magnetizerBlock = new MagnetizerBlock(NAMESPACE.id("magnetizer"));
+        reactorChamberBlock = new ReactorChamberBlock(NAMESPACE.id("reactor_chamber"));
+        reactorCoreBlock = new ReactorCoreBlock(NAMESPACE.id("reactor_core"));
+        massFabricatorBlock = new MassFabricatorBlock(NAMESPACE.id("mass_fabricator"));
+        industrialTNTBlock = new GTExplosiveBlock(NAMESPACE.id("industrial_tnt"), Material.TNT);
+        nukeBlock = new GTExplosiveBlock(NAMESPACE.id("nuke"), Material.TNT);
 
-        rubberLogBlock = new TemplateBlock(NAMESPACE.id("rubber_log_block"), Material.WOOD).setTranslationKey(NAMESPACE.id("rubber_log_block"));
-        rubberLeavesBlock = new TemplateBlock(NAMESPACE.id("rubber_leaves_block"), Material.LEAVES).setTranslationKey(NAMESPACE.id("rubber_leaves_block"));
+        rubberLogBlock = new RubberLogBlock(NAMESPACE.id("rubber_log_block"));
+        rubberLeavesBlock = new RubberLeavesBlock(NAMESPACE.id("rubber_leaves_block"));
     }
 
     @EventListener
