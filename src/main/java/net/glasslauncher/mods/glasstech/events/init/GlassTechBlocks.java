@@ -2,10 +2,7 @@ package net.glasslauncher.mods.glasstech.events.init;
 
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.glasslauncher.mods.glasstech.WireMaterial;
-import net.glasslauncher.mods.glasstech.blocks.GTGlassBlock;
-import net.glasslauncher.mods.glasstech.blocks.GTSheetBlock;
-import net.glasslauncher.mods.glasstech.blocks.GTTemplateBlock;
-import net.glasslauncher.mods.glasstech.blocks.TemplateCableBlock;
+import net.glasslauncher.mods.glasstech.blocks.*;
 import net.glasslauncher.mods.glasstech.blocks.batbox.BatBoxBlock;
 import net.glasslauncher.mods.glasstech.blocks.batbox.BatBoxBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.ironfurnace.IronFurnaceBlock;
