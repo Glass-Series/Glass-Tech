@@ -9,6 +9,7 @@
     "glasstech:macerator",
     "glasstech:extractor",
     "glasstech:canner",
-    "glasstech:electrolyzer"
+    "glasstech:electrolyzer",
+    "glasstech:hardened_construction_foam"
   ]
 }
