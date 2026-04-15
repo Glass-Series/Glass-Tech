@@ -1,10 +1,12 @@
 package net.glasslauncher.mods.glasstech.events.init;
 
 import net.danygames2014.nyalib.event.ItemCapabilityProviderRegisterEvent;
+import net.glasslauncher.mods.glasstech.blocks.GTDoorBlock;
 import net.glasslauncher.mods.glasstech.item.PainterItem;
 import net.glasslauncher.mods.glasstech.item.SingleUsePowerCapability;
 import net.glasslauncher.mods.glasstech.item.SingleUsePowerCapabilityProvider;
 import net.mine_diver.unsafeevents.listener.EventListener;
+import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.modificationstation.stationapi.api.event.registry.ItemRegistryEvent;
 import net.modificationstation.stationapi.api.mod.entrypoint.EntrypointManager;
@@ -117,7 +119,7 @@ public class GlassTechItems {
     public static Item itemCellUranEmpty;
 
     public static Item rubberSapling;
-//    public static Item reinforcedDoor;
+    public static Item reinforcedDoor;
 
     public static Item biofuelCell;
     public static Item fullFuelCan;
@@ -236,7 +238,7 @@ public class GlassTechItems {
         itemCellUranDepleted = new TemplateItem(NAMESPACE.id("item_cell_uran_depleted")).setTranslationKey(NAMESPACE.id("item_cell_uran_depleted"));
         itemCellUranEmpty = new TemplateItem(NAMESPACE.id("item_cell_uran_empty")).setTranslationKey(NAMESPACE.id("item_cell_uran_empty"));
         rubberSapling = new TemplateItem(NAMESPACE.id("rubber_sapling")).setTranslationKey(NAMESPACE.id("rubber_sapling"));
-//        reinforcedDoor = new TemplateItem(NAMESPACE.id("reinforced_door")).setTranslationKey(NAMESPACE.id("reinforced_door"));
+        reinforcedDoor = new GTDoorBlock.GTDoorItem(NAMESPACE.id("reinforced_door"), Material.METAL, GlassTechBlocks.reinforcedDoorBlock).setTranslationKey(NAMESPACE.id("reinforced_door"));
         biofuelCell = new TemplateItem(NAMESPACE.id("biofuel_cell")).setTranslationKey(NAMESPACE.id("biofuel_cell"));
         fullFuelCan = new TemplateItem(NAMESPACE.id("full_fuel_can")).setTranslationKey(NAMESPACE.id("full_fuel_can"));
         cannedFood = new TemplateItem(NAMESPACE.id("canned_food")).setTranslationKey(NAMESPACE.id("canned_food"));

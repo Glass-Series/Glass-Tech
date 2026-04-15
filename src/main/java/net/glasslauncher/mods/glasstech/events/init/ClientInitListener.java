@@ -182,5 +182,8 @@ public class ClientInitListener {
 
         GlassTechBlocks.constructionFoamBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/construction_foam")).index;
         GlassTechBlocks.hardenedConstructionFoamBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/hardened_construction_foam")).index;
+
+        GlassTechBlocks.reinforcedDoorBlock.topTextureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/reinforced_door_top")).index;
+        GlassTechBlocks.reinforcedDoorBlock.bottomTextureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/reinforced_door_bottom")).index;
     }
 }
