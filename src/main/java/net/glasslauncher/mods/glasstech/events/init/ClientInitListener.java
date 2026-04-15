@@ -1,7 +1,5 @@
 package net.glasslauncher.mods.glasstech.events.init;
 
-import net.glasslauncher.mods.glasstech.blocks.GTHardenedFoamBlock;
-import net.glasslauncher.mods.glasstech.blocks.GTHardenedFoamBlockColorProvider;
 import net.glasslauncher.mods.glasstech.blocks.batbox.BatBoxBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.batbox.BatBoxScreen;
 import net.glasslauncher.mods.glasstech.blocks.ironfurnace.IronFurnaceBlockEntity;
@@ -24,7 +22,6 @@ import net.glasslauncher.mods.glasstech.blocks.machine.macerator.MaceratorBlockE
 import net.glasslauncher.mods.glasstech.blocks.machine.macerator.MaceratorScreen;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.modificationstation.stationapi.api.client.event.texture.TextureRegisterEvent;
-import net.modificationstation.stationapi.api.client.event.color.block.BlockColorsRegisterEvent;
 import net.modificationstation.stationapi.api.client.gui.screen.GuiHandler;
 import net.modificationstation.stationapi.api.client.texture.atlas.Atlas;
 import net.modificationstation.stationapi.api.client.texture.atlas.Atlases;
@@ -168,24 +165,22 @@ public class ClientInitListener {
         GlassTechItems.painter.setTexture(NAMESPACE.id("item/tool/painter"));
         GlassTechItems.nanoSaber.setTexture(NAMESPACE.id("item/tool/nano_saber"));
 
-        GlassTechBlocks.copperOreBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("copper_ore")).index;
-        GlassTechBlocks.tinOreBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("tin_ore")).index;
-        GlassTechBlocks.uraniumOreBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("uranium_ore")).index;
+        GlassTechBlocks.copperOreBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/resource/copper_ore")).index;
+        GlassTechBlocks.tinOreBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/resource/tin_ore")).index;
+        GlassTechBlocks.uraniumOreBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/resource/uranium_ore")).index;
 
-        GlassTechBlocks.bronzeBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("bronze_block")).index;
-        GlassTechBlocks.copperBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("copper_block")).index;
-        GlassTechBlocks.tinBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("tin_block")).index;
-        GlassTechBlocks.uraniumBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("uranium_block")).index;
+        GlassTechBlocks.bronzeBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/resource/bronze_block")).index;
+        GlassTechBlocks.copperBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/resource/copper_block")).index;
+        GlassTechBlocks.tinBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/resource/tin_block")).index;
+        GlassTechBlocks.uraniumBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/resource/uranium_block")).index;
 
-        GlassTechBlocks.reinforcedGlassBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("reinforced_glass")).index;
-        GlassTechBlocks.reinforcedStoneBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("reinforced_stone")).index;
+        GlassTechBlocks.reinforcedGlassBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/resource/reinforced_glass")).index;
+        GlassTechBlocks.reinforcedStoneBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/resource/reinforced_stone")).index;
 
-        GlassTechBlocks.resinSheetBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("resin_sheet")).index;
-        GlassTechBlocks.rubberSheetBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("rubber_sheet")).index;
-    }
+        GlassTechBlocks.resinSheetBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/resource/resin_sheet")).index;
+        GlassTechBlocks.rubberSheetBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/resource/rubber_sheet")).index;
 
-    @EventListener
-    private static void registerBlockColors(BlockColorsRegisterEvent event) {
-        event.blockColors.registerColorProvider(new GTHardenedFoamBlockColorProvider(), GlassTechBlocks.hardenedConstructionFoamBlock);
+        GlassTechBlocks.constructionFoamBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/construction_foam")).index;
+        GlassTechBlocks.hardenedConstructionFoamBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/hardened_construction_foam")).index;
     }
 }

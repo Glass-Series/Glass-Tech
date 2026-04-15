@@ -1,7 +1,7 @@
 package net.glasslauncher.mods.glasstech.recipe;
 
 import com.mojang.datafixers.util.Either;
-import net.glasslauncher.mods.glasstech.blocks.GTHardenedFoamBlockColorProvider;
+import net.glasslauncher.mods.glasstech.blocks.FoamColor;
 import net.glasslauncher.mods.glasstech.events.init.GlassTechItems;
 import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.item.Item;
@@ -62,7 +62,7 @@ public class PainterRecipe implements CraftingRecipe {
                             boolean ignoreDamage = item.getDamage() == -1 && (item.getItem() != Item.DYE || currentColor.isEmpty());
                             if (ignoreDamage) item.setDamage(itemToTest.getDamage());
                             if (item.getItem() == Item.DYE) {
-                                equals = currentColor.isEmpty() || GTHardenedFoamBlockColorProvider.FoamColor.valueOf(currentColor).dyeMeta == item.getDamage();
+                                equals = currentColor.isEmpty() || FoamColor.valueOf(currentColor).dyeMeta == item.getDamage();
                             }
                             else {
                                 equals = item.getDamage() == itemToTest.getDamage() && item.getItem() == itemToTest.getItem();

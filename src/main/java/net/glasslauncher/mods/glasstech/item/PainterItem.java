@@ -1,6 +1,6 @@
 package net.glasslauncher.mods.glasstech.item;
 
-import net.glasslauncher.mods.glasstech.blocks.GTHardenedFoamBlockColorProvider;
+import net.glasslauncher.mods.glasstech.blocks.FoamColor;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -39,9 +39,9 @@ public class PainterItem extends TemplateItem {
             return false;
         }
 
-        GTHardenedFoamBlockColorProvider.FoamColor foamColor;
+        FoamColor foamColor;
         try {
-            foamColor = GTHardenedFoamBlockColorProvider.FoamColor.valueOf(color);
+            foamColor = FoamColor.valueOf(color);
         } catch (Exception e) {
             LOGGER.error("Painter has invalid color?", e);
             foamColor = null;
@@ -51,8 +51,8 @@ public class PainterItem extends TemplateItem {
             return false;
         }
 
-        if (state.contains(GTHardenedFoamBlockColorProvider.FOAM_COLOR_PROPERTY)) {
-            state = state.with(GTHardenedFoamBlockColorProvider.FOAM_COLOR_PROPERTY, foamColor);
+        if (state.contains(FoamColor.FOAM_COLOR_PROPERTY)) {
+            state = state.with(FoamColor.FOAM_COLOR_PROPERTY, foamColor);
             world.setBlockStateWithNotify(x, y, z, state);
             world.playSound(player, "random.click", 0.5f, 1);
             stack.damage(1, player);

@@ -16,3 +16,5 @@ accessible method net/minecraft/screen/ScreenHandler addSlot (Lnet/minecraft/scr
 accessible field net/minecraft/block/FurnaceBlock ignoreBlockRemoval Z
 
 accessible field net/minecraft/nbt/NbtCompound entries Ljava/util/Map;
+
+accessible field net/minecraft/world/WorldRegion world Lnet/minecraft/world/World;

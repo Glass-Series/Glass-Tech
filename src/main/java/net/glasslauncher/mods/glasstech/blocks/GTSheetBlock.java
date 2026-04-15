@@ -62,8 +62,11 @@ public class GTSheetBlock extends GTTemplateBlock {
                 if (entity.velocityY > 0) {
                     entity.velocityY += 0.1;
                 }
+                break;
             case STICKY:
-                entity.slowed = true;
+                entity.velocityX *= 0.7;
+                entity.velocityY *= 0.7;
+                entity.velocityZ *= 0.7;
         }
     }
 

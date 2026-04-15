@@ -2,13 +2,12 @@ package net.glasslauncher.mods.glasstech.events.init;
 
 import com.mojang.datafixers.util.Either;
 import net.glasslauncher.mods.glasstech.GlassTech;
-import net.glasslauncher.mods.glasstech.blocks.GTHardenedFoamBlockColorProvider;
+import net.glasslauncher.mods.glasstech.blocks.FoamColor;
 import net.glasslauncher.mods.glasstech.events.init.recipes.*;
 import net.glasslauncher.mods.glasstech.recipe.PainterRecipe;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
 import net.minecraft.inventory.Inventory;
-import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
@@ -81,7 +80,7 @@ public class RecipeInit {
             if (itemUsed.getItem() == Item.DYE) {
                 int colorMeta = itemUsed.getDamage();
                 NbtCompound nbt = output.getStationNbt();
-                nbt.putString("color", GTHardenedFoamBlockColorProvider.DYE_TO_FOAM_COLOR[colorMeta].name());
+                nbt.putString("color", FoamColor.DYE_TO_FOAM_COLOR[colorMeta].name());
                 usedPainter.setDamage(Math.max(0, usedPainter.getDamage() - 8));
                 addedDye = true;
             }
