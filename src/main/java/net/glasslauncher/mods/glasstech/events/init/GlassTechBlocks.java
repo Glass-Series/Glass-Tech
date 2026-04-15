@@ -26,10 +26,15 @@ import net.glasslauncher.mods.glasstech.blocks.machine.macerator.MaceratorBlockE
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.event.block.entity.BlockEntityRegisterEvent;
 import net.modificationstation.stationapi.api.event.mod.InitEvent;
 import net.modificationstation.stationapi.api.event.registry.BlockRegistryEvent;
+import net.modificationstation.stationapi.api.item.ItemPlacementContext;
 import net.modificationstation.stationapi.api.mod.entrypoint.EntrypointManager;
+import net.modificationstation.stationapi.api.state.StateManager;
+import net.modificationstation.stationapi.api.state.property.Properties;
+import net.modificationstation.stationapi.api.util.math.Direction;
 
 import java.lang.invoke.MethodHandles;
 
@@ -123,6 +128,8 @@ public class GlassTechBlocks {
     public static Block rubberLogBlock;
     public static Block rubberLeavesBlock;
 
+    public static Block waterWheelBlock;
+
     @EventListener
     private static void init(InitEvent event) {
         LOGGER.info(NAMESPACE.toString());
@@ -212,6 +219,20 @@ public class GlassTechBlocks {
 
         rubberLogBlock = new RubberLogBlock(NAMESPACE.id("rubber_log_block"));
         rubberLeavesBlock = new RubberLeavesBlock(NAMESPACE.id("rubber_leaves_block"));
+
+        waterWheelBlock = new GTTemplateBlock(NAMESPACE.id("water_wheel"), Material.WOOD, WOOD_SOUND_GROUP) {
+            @Override
+            public BlockState getPlacementState(ItemPlacementContext context) {
+                return super.getPlacementState(context).with(Properties.FACING, context.getHorizontalPlayerFacing().getOpposite());
+            }
+
+            @Override
+            public void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+                super.appendProperties(builder);
+                builder.add(Properties.FACING);
+            }
+        };
+        waterWheelBlock.setDefaultState(waterWheelBlock.getDefaultState().with(Properties.FACING, Direction.NORTH));
     }
 
     @EventListener

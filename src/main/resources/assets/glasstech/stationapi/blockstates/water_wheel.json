@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "glasstech:block/water_wheel",
+      "y": -90
+    },
+    "facing=east": {
+      "model": "glasstech:block/water_wheel"
+    },
+    "facing=south": {
+      "model": "glasstech:block/water_wheel",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "glasstech:block/water_wheel",
+      "y": 180
+    }
+  }
+}
