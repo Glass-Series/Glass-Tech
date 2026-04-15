@@ -186,7 +186,7 @@ public class GlassTechBlocks {
         reinforcedDoorBlock = new GTDoorBlock(NAMESPACE.id("reinforced_door"));
         teleporterBlock = new TeleporterBlock(NAMESPACE.id("teleporter"));
         teslaCoilBlock = new TeslaCoilBlock(NAMESPACE.id("tesla_coil"));
-        woodenScaffoldBlock = new GTScaffoldBlock(NAMESPACE.id("wooden_scaffold"), Material.WOOD);
+        woodenScaffoldBlock = new GTScaffoldBlock(NAMESPACE.id("wooden_scaffold"), Material.WOOD, WOOD_SOUND_GROUP);
 
         lvTransformerBlock = new GTTransformerBlock(NAMESPACE.id("lv_transformer"), Material.WOOD, VoltageTier.LV);
         mvTransformerBlock = new GTTransformerBlock(NAMESPACE.id("mv_transformer"), Material.METAL, VoltageTier.MV);

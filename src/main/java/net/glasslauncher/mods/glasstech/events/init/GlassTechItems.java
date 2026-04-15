@@ -1,6 +1,7 @@
 package net.glasslauncher.mods.glasstech.events.init;
 
 import net.danygames2014.nyalib.event.ItemCapabilityProviderRegisterEvent;
+import net.glasslauncher.mods.glasstech.item.PainterItem;
 import net.glasslauncher.mods.glasstech.item.SingleUsePowerCapability;
 import net.glasslauncher.mods.glasstech.item.SingleUsePowerCapabilityProvider;
 import net.mine_diver.unsafeevents.listener.EventListener;
@@ -195,7 +196,7 @@ public class GlassTechItems {
         cfSprayer = new TemplateItem(NAMESPACE.id("cf_sprayer")).setTranslationKey(NAMESPACE.id("cf_sprayer"));
         frequencyTransmitter = new TemplateItem(NAMESPACE.id("frequency_transmitter")).setTranslationKey(NAMESPACE.id("frequency_transmitter"));
         insulationCutter = new TemplateItem(NAMESPACE.id("insulation_cutter")).setTranslationKey(NAMESPACE.id("insulation_cutter"));
-        painter = new TemplateItem(NAMESPACE.id("painter")).setTranslationKey(NAMESPACE.id("painter"));
+        painter = new PainterItem(NAMESPACE.id("painter")).setTranslationKey(NAMESPACE.id("painter"));
         nanoSaber = new TemplateItem(NAMESPACE.id("nano_saber")).setTranslationKey(NAMESPACE.id("nano_saber"));
 
         treeTap = new TemplateItem(NAMESPACE.id("tree_tap")).setTranslationKey(NAMESPACE.id("tree_tap"));
