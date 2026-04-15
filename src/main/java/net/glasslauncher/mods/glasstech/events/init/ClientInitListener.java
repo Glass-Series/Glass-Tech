@@ -185,5 +185,6 @@ public class ClientInitListener {
 
         GlassTechBlocks.reinforcedDoorBlock.topTextureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/reinforced_door_top")).index;
         GlassTechBlocks.reinforcedDoorBlock.bottomTextureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/reinforced_door_bottom")).index;
+//        GlassTechBlocks.rubberLogBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/rubber_log_block")).index;
     }
 }
