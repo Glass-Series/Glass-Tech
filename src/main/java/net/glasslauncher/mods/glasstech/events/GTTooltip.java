@@ -5,6 +5,7 @@ import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.glasslauncher.mods.glasstech.blocks.machine.MachineBlockEntityTemplate;
 import net.glasslauncher.mods.glasstech.blocks.machine.MachineBlockTemplate;
+import net.glasslauncher.mods.glasstech.item.PainterItem;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.item.BlockItem;
 import net.modificationstation.stationapi.api.client.event.gui.screen.container.TooltipBuildEvent;
@@ -24,6 +25,13 @@ public class GTTooltip {
             int amperage = MACHINE_TO_AMPS_CACHE.getInt(machineBlockTemplate);
             event.add("Max Voltage: " + voltage);
             event.add("Max Amperage: " + amperage);
+        }
+        else if (event.itemStack.getItem() instanceof PainterItem) {
+            String color = event.itemStack.getStationNbt().getString("color");
+            if (color.isEmpty()) {
+                return;
+            }
+            event.add(color);
         }
     }
 }

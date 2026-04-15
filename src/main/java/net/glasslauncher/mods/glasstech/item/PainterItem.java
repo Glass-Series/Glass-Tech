@@ -55,16 +55,16 @@ public class PainterItem extends TemplateItem {
             state = state.with(GTHardenedFoamBlockColorProvider.FOAM_COLOR_PROPERTY, foamColor);
             world.setBlockStateWithNotify(x, y, z, state);
             world.playSound(player, "random.click", 0.5f, 1);
-            stack.damage(1, null);
+            stack.damage(1, player);
             if (stack.getDamage() == stack.getMaxDamage() - 1) {
-                nbt.putString("color", null);
+                nbt.putString("color", "");
             }
             return true;
         }
         else if (state.getBlock() == Block.WOOL) {
-            world.setBlockMeta(x, y, z, foamColor.meta);
+            world.setBlockMeta(x, y, z, foamColor.woolMeta);
             world.playSound(player, "random.click", 0.5f, 1);
-            stack.damage(1, null);
+            stack.damage(1, player);
             if (stack.getDamage() == stack.getMaxDamage() - 1) {
                 nbt.entries.remove("color");
             }
