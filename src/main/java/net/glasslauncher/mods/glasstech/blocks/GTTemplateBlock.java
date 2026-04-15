@@ -17,15 +17,4 @@ public class GTTemplateBlock extends TemplateBlock implements GTTextureInit {
         setTranslationKey(identifier);
         setSoundGroup(soundGroup);
     }
-
-    @Override
-    public void initTexture() {
-        Atlas.Sprite sprite = Atlases.getTerrain().getTexture(identifier);
-        if (sprite == null) {
-            textureId = Atlases.getTerrain().addTexture(identifier).index;
-        }
-        else {
-            textureId = sprite.index;
-        }
-    }
 }
