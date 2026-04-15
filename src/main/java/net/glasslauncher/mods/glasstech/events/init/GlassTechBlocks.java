@@ -93,7 +93,7 @@ public class GlassTechBlocks {
     public static Block metalScaffoldBlock;
     public static Block miningPipeBlock;
     public static Block personalSafeBlock;
-    public static Block reinforcedDoorBlock;
+    public static GTDoorBlock reinforcedDoorBlock;
     public static Block teleporterBlock;
     public static Block teslaCoilBlock;
     public static Block woodenScaffoldBlock;
@@ -183,7 +183,7 @@ public class GlassTechBlocks {
         metalScaffoldBlock = new GTScaffoldBlock(NAMESPACE.id("metal_scaffold"), Material.METAL, METAL_SOUND_GROUP);
         miningPipeBlock = new GTTemplateBlock(NAMESPACE.id("mining_pipe"), Material.METAL, METAL_SOUND_GROUP);
         personalSafeBlock = new GTSafeBlock(NAMESPACE.id("personal_safe"));
-        reinforcedDoorBlock = new GTDoorBlock(NAMESPACE.id("reinforced_door"));
+        reinforcedDoorBlock = new GTDoorBlock(NAMESPACE.id("reinforced_door_block"));
         teleporterBlock = new TeleporterBlock(NAMESPACE.id("teleporter"));
         teslaCoilBlock = new TeslaCoilBlock(NAMESPACE.id("tesla_coil"));
         woodenScaffoldBlock = new GTScaffoldBlock(NAMESPACE.id("wooden_scaffold"), Material.WOOD, WOOD_SOUND_GROUP);
