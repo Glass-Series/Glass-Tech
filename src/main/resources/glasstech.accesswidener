@@ -14,3 +14,5 @@ accessible field net/minecraft/client/gui/screen/ingame/HandledScreen background
 accessible method net/minecraft/screen/ScreenHandler addSlot (Lnet/minecraft/screen/slot/Slot;)V
 
 accessible field net/minecraft/block/FurnaceBlock ignoreBlockRemoval Z
+
+accessible field net/minecraft/nbt/NbtCompound entries Ljava/util/Map;
