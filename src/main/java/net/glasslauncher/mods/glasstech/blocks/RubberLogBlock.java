@@ -11,6 +11,7 @@ public class RubberLogBlock extends TemplateLogBlock {
     public RubberLogBlock(Identifier identifier) {
         super(identifier);
         setSoundGroup(Block.WOOD_SOUND_GROUP);
+        setTranslationKey(identifier);
     }
 
     public int getTexture(int side, int meta) {

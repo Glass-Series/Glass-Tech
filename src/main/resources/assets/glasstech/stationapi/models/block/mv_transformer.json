@@ -1,0 +1,10 @@
+
+{
+  "parent": "glasstech:block/transformer",
+  "textures": {
+    "casing": "glasstech:block/mv",
+    "frontoverlay": "glasstech:block/power_plug_transformer",
+    "overlay": "glasstech:block/power_plug",
+    "particle": "#casing"
+  }
+}e

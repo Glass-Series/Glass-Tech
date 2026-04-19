@@ -1,0 +1,10 @@
+
+{
+  "parent": "glasstech:block/cube_inner_bottom_top",
+  "textures": {
+    "top": "glasstech:block/wooden_scaffold_top",
+    "bottom": "glasstech:block/wooden_scaffold_bottom",
+    "side": "glasstech:block/wooden_scaffold_side",
+    "particle": "#top"
+  }
+}

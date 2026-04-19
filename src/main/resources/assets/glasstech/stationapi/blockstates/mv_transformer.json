@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "glasstech:block/mv_transformer",
+      "y": -90
+    },
+    "facing=east": {
+      "model": "glasstech:block/mv_transformer"
+    },
+    "facing=south": {
+      "model": "glasstech:block/mv_transformer",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "glasstech:block/mv_transformer",
+      "y": 180
+    },
+    "facing=up": {
+      "model": "glasstech:block/mv_transformer",
+      "x": -90
+    },
+    "facing=down": {
+      "model": "glasstech:block/mv_transformer",
+      "x": 90
+    }
+  }
+}

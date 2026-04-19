@@ -1,5 +1,8 @@
 {
   "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "#casing"
+  },
   "elements": [
     {
       "from": [ 0, 0, 0 ],
@@ -17,8 +20,12 @@
       "from": [ 0, 0, 0 ],
       "to": [ 16, 16, 16 ],
       "faces": {
+        "down":  { "texture": "#bottomoverlay", "cullface": "down" },
         "up":    { "texture": "#topoverlay", "cullface": "up" },
-        "north": { "texture": "#frontoverlay", "cullface": "north" }
+        "north": { "texture": "#frontoverlay", "cullface": "north" },
+        "south": { "texture": "#backoverlay", "cullface": "south" },
+        "west":  { "texture": "#leftoverlay", "cullface": "west" },
+        "east":  { "texture": "#rightoverlay", "cullface": "east" }
       }
     }
   ]

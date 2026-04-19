@@ -1,0 +1,12 @@
+{
+  "parent": "glasstech:block/cube_inner",
+  "textures": {
+    "up": "#top",
+    "down": "#bottom",
+    "north": "#side",
+    "east": "#side",
+    "west": "#side",
+    "south": "#side",
+    "particle": "#top"
+  }
+}

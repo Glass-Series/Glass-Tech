@@ -1,0 +1,10 @@
+{
+  "parent": "glasstech:block/machine_top",
+  "textures": {
+    "casing": "glasstech:block/mv",
+    "casingtop": "glasstech:block/mv",
+    "casingbottom": "glasstech:block/mv",
+    "topoverlay": "glasstech:block/solar_panel",
+    "particle": "#casing"
+  }
+}

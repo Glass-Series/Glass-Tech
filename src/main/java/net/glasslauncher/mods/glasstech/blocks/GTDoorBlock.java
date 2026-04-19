@@ -10,6 +10,7 @@ public class GTDoorBlock extends TemplateDoorBlock {
     public GTDoorBlock(Identifier identifier) {
         super(identifier, Material.METAL);
         setSoundGroup(Block.METAL_SOUND_GROUP);
+        setTranslationKey(identifier);
     }
 
     public static class GTDoorItem extends TemplateDoorItem {

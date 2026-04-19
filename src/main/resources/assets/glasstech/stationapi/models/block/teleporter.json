@@ -1,0 +1,10 @@
+
+{
+  "parent": "glasstech:block/machine",
+  "textures": {
+    "casing": "glasstech:block/teleporter_side",
+    "casingtop": "glasstech:block/teleporter_top",
+    "casingbottom": "glasstech:block/teleporter_bottom",
+    "particle": "#casing"
+  }
+}

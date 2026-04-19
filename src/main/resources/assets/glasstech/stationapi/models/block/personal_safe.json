@@ -1,0 +1,13 @@
+
+{
+  "parent": "block/cube",
+  "textures": {
+    "up": "glasstech:block/personal_safe_top",
+    "down": "glasstech:block/personal_safe_top",
+    "north": "glasstech:block/personal_safe_front",
+    "east": "glasstech:block/personal_safe_side",
+    "west": "glasstech:block/personal_safe_side",
+    "south": "glasstech:block/personal_safe_side",
+    "particle": "#north"
+  }
+}

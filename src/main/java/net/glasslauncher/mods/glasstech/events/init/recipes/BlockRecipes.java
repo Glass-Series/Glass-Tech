@@ -25,7 +25,7 @@ public class BlockRecipes {
         add(advancedMachineBlock, " A ", "CMC", " A ", 'A', advancedAlloy, 'C', carbonPlate, 'M', machineBlock);
 
         add(generatorBlock, " B ", "III", " F ", 'I', refinedIronIngot, 'B', reBattery, 'F', ironFurnaceBlock);
-        add(geothermalGeneratorBlock, "GCG", "GCG", "IEI", 'I', refinedIronIngot, 'G', Block.GLASS, 'E', generatorBlock);
+        add(thermalGeneratorBlock, "GCG", "GCG", "IEI", 'I', refinedIronIngot, 'G', Block.GLASS, 'E', generatorBlock);
         addN(waterGeneratorBlock, 2, "SPS", "PGP", "SPS", 'S', Item.STICK, 'P', Block.PLANKS, 'G', generatorBlock);
         add(solarGeneratorBlock, "CgC", "gCg", "cGc", 'G', generatorBlock, 'C', coalDust, 'g', Block.GLASS, 'c', circuit);
         // Maybe?

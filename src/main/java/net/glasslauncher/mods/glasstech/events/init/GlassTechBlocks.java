@@ -34,6 +34,7 @@ import net.modificationstation.stationapi.api.item.ItemPlacementContext;
 import net.modificationstation.stationapi.api.mod.entrypoint.EntrypointManager;
 import net.modificationstation.stationapi.api.state.StateManager;
 import net.modificationstation.stationapi.api.state.property.Properties;
+import net.modificationstation.stationapi.api.template.block.TemplateFenceBlock;
 import net.modificationstation.stationapi.api.util.math.Direction;
 
 import java.lang.invoke.MethodHandles;
@@ -107,7 +108,7 @@ public class GlassTechBlocks {
     public static Block mvTransformerBlock;
     public static Block hvTransformerBlock;
 
-    public static Block geothermalGeneratorBlock;
+    public static Block thermalGeneratorBlock;
     public static Block waterGeneratorBlock;
     public static Block solarGeneratorBlock;
     public static Block windGeneratorBlock;
@@ -199,7 +200,7 @@ public class GlassTechBlocks {
         mvTransformerBlock = new GTTransformerBlock(NAMESPACE.id("mv_transformer"), Material.METAL, VoltageTier.MV);
         hvTransformerBlock = new GTTransformerBlock(NAMESPACE.id("hv_transformer"), Material.METAL, VoltageTier.HV);
 
-        geothermalGeneratorBlock = new GTGeothermalGeneratorBlock(NAMESPACE.id("geothermal_generator"));
+        thermalGeneratorBlock = new GTThermalGeneratorBlock(NAMESPACE.id("thermal_generator"));
         waterGeneratorBlock = new GTWaterMillBlock(NAMESPACE.id("water_generator"));
         solarGeneratorBlock = new GTSolarPanelBlock(NAMESPACE.id("solar_generator"));
         windGeneratorBlock = new GTWindMillBlock(NAMESPACE.id("wind_generator"));
@@ -218,7 +219,7 @@ public class GlassTechBlocks {
         nukeBlock = new GTExplosiveBlock(NAMESPACE.id("nuke"), Material.TNT);
 
         rubberLogBlock = new RubberLogBlock(NAMESPACE.id("rubber_log_block"));
-        rubberLeavesBlock = new RubberLeavesBlock(NAMESPACE.id("rubber_leaves_block"));
+        rubberLeavesBlock = new LeavesBlockTemplate(NAMESPACE.id("rubber_leaves_block"));
 
         waterWheelBlock = new GTTemplateBlock(NAMESPACE.id("water_wheel"), Material.WOOD, WOOD_SOUND_GROUP) {
             @Override
