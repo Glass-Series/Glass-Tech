@@ -1,7 +1,6 @@
 package net.glasslauncher.mods.glasstech;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.sound.BlockSoundGroup;
 
 public class WireMaterial {

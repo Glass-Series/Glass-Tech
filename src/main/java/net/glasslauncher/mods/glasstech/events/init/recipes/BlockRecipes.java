@@ -5,8 +5,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.modificationstation.stationapi.api.recipe.CraftingRegistry;
 
-import static net.glasslauncher.mods.glasstech.events.init.GlassTechItems.*;
 import static net.glasslauncher.mods.glasstech.events.init.GlassTechBlocks.*;
+import static net.glasslauncher.mods.glasstech.events.init.GlassTechItems.*;
 
 public class BlockRecipes {
     public static void initRecipes() {

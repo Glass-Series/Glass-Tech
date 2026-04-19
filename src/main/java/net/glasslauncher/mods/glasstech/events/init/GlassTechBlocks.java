@@ -34,7 +34,6 @@ import net.modificationstation.stationapi.api.item.ItemPlacementContext;
 import net.modificationstation.stationapi.api.mod.entrypoint.EntrypointManager;
 import net.modificationstation.stationapi.api.state.StateManager;
 import net.modificationstation.stationapi.api.state.property.Properties;
-import net.modificationstation.stationapi.api.template.block.TemplateFenceBlock;
 import net.modificationstation.stationapi.api.util.math.Direction;
 
 import java.lang.invoke.MethodHandles;

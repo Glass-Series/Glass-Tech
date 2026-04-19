@@ -4,7 +4,6 @@ import net.glasslauncher.mods.glasstech.events.init.RecipeInit;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.slot.CraftingResultSlot;
-import net.modificationstation.stationapi.api.StationAPI;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;

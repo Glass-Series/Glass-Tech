@@ -5,8 +5,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.modificationstation.stationapi.api.recipe.CraftingRegistry;
 
+import static net.glasslauncher.mods.glasstech.events.init.GlassTechBlocks.copperOreBlock;
+import static net.glasslauncher.mods.glasstech.events.init.GlassTechBlocks.tinOreBlock;
 import static net.glasslauncher.mods.glasstech.events.init.GlassTechItems.*;
-import static net.glasslauncher.mods.glasstech.events.init.GlassTechBlocks.*;
 
 public class MassFabricatorRecipes {
     public static void initRecipes() {

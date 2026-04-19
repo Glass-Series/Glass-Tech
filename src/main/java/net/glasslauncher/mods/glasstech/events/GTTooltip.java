@@ -1,6 +1,5 @@
 package net.glasslauncher.mods.glasstech.events;
 
-import com.github.benmanes.caffeine.cache.Cache;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.glasslauncher.mods.glasstech.blocks.machine.MachineBlockEntityTemplate;
