@@ -188,13 +188,13 @@ public class GlassTechBlocks {
         constructionFoamBlock = new GTFoamBlock(NAMESPACE.id("construction_foam"));
         hardenedConstructionFoamBlock = new GTHardenedFoamBlock(NAMESPACE.id("hardened_construction_foam"));
         dynamiteBlock = new GTDynamiteBlock(NAMESPACE.id("dynamite"));
-        metalScaffoldBlock = new GTScaffoldBlock(NAMESPACE.id("metal_scaffold"), Material.METAL, METAL_SOUND_GROUP);
+        metalScaffoldBlock = new GTScaffoldBlock(NAMESPACE.id("metal_scaffold"), new Material(Material.METAL.mapColor).setDestroyPistonBehavior(), METAL_SOUND_GROUP, 7);
         miningPipeBlock = new GTTemplateBlock(NAMESPACE.id("mining_pipe"), Material.METAL, METAL_SOUND_GROUP);
         personalSafeBlock = new GTSafeBlock(NAMESPACE.id("personal_safe"));
         reinforcedDoorBlock = new GTDoorBlock(NAMESPACE.id("reinforced_door_block"));
         teleporterBlock = new TeleporterBlock(NAMESPACE.id("teleporter"));
         teslaCoilBlock = new TeslaCoilBlock(NAMESPACE.id("tesla_coil"));
-        woodenScaffoldBlock = new GTScaffoldBlock(NAMESPACE.id("wooden_scaffold"), Material.WOOD, WOOD_SOUND_GROUP);
+        woodenScaffoldBlock = new GTScaffoldBlock(NAMESPACE.id("wooden_scaffold"), Material.LEAVES, WOOD_SOUND_GROUP, 3);
 
         lvTransformerBlock = new GTTransformerBlock(NAMESPACE.id("lv_transformer"), Material.WOOD, VoltageTier.LV);
         mvTransformerBlock = new GTTransformerBlock(NAMESPACE.id("mv_transformer"), Material.METAL, VoltageTier.MV);

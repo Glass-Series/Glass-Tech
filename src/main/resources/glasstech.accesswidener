@@ -18,3 +18,7 @@ accessible field net/minecraft/block/FurnaceBlock ignoreBlockRemoval Z
 accessible field net/minecraft/nbt/NbtCompound entries Ljava/util/Map;
 
 accessible field net/minecraft/world/WorldRegion world Lnet/minecraft/world/World;
+
+accessible field net/minecraft/entity/Entity fallDistance F
+
+accessible method net/minecraft/block/material/Material setDestroyPistonBehavior ()Lnet/minecraft/block/material/Material;
