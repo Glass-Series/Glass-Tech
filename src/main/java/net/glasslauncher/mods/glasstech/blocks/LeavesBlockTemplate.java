@@ -18,11 +18,11 @@ import net.modificationstation.stationapi.api.util.math.Direction;
 
 import java.util.Random;
 
+import static net.glasslauncher.mods.glasstech.GTProperties.LEAVES_DISTANCE;
+import static net.modificationstation.stationapi.api.state.property.Properties.PERSISTENT;
+
 
 public class LeavesBlockTemplate extends TemplateBlock {
-    public static final IntProperty DISTANCE = IntProperty.of("distance", 0, 8);
-    public static final BooleanProperty PERSISTENT = BooleanProperty.of("persistent");
-
     public int maxDistance = 7;
     public int fastTextureId = 1;
 
@@ -30,7 +30,7 @@ public class LeavesBlockTemplate extends TemplateBlock {
         super(identifier, Material.LEAVES);
         setSoundGroup(DIRT_SOUND_GROUP);
         setTickRandomly(true);
-        setDefaultState(getDefaultState().with(DISTANCE, 0).with(PERSISTENT, false));
+        setDefaultState(getDefaultState().with(LEAVES_DISTANCE, 0).with(PERSISTENT, false));
         setTranslationKey(identifier);
     }
 
@@ -47,7 +47,7 @@ public class LeavesBlockTemplate extends TemplateBlock {
     @Override
     public void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         super.appendProperties(builder);
-        builder.add(DISTANCE);
+        builder.add(LEAVES_DISTANCE);
         builder.add(PERSISTENT);
     }
 
@@ -90,11 +90,11 @@ public class LeavesBlockTemplate extends TemplateBlock {
             return;
         }
 
-        int prevDistance = state.get(DISTANCE);
+        int prevDistance = state.get(LEAVES_DISTANCE);
         if (distance != prevDistance) {
-            world.setBlockState(x, y, z, state.with(DISTANCE, distance));
+            world.setBlockState(x, y, z, state.with(LEAVES_DISTANCE, distance));
             for (Direction side : Direction.values()) {
-                if (world.getBlockState(x + side.getOffsetX(), y + side.getOffsetY(), z + side.getOffsetZ()).contains(DISTANCE)) {
+                if (world.getBlockState(x + side.getOffsetX(), y + side.getOffsetY(), z + side.getOffsetZ()).contains(LEAVES_DISTANCE)) {
                     updateDecay(world, x + side.getOffsetX(), y + side.getOffsetY(), z + side.getOffsetZ(), decay);
                 }
             }
@@ -106,8 +106,8 @@ public class LeavesBlockTemplate extends TemplateBlock {
         BlockState state = world.getBlockState(x, y, z);
         if (state.isIn(BlockTags.LOGS)) {
             return 0;
-        } else if (state.contains(DISTANCE)) {
-            return state.get(DISTANCE);
+        } else if (state.contains(LEAVES_DISTANCE)) {
+            return state.get(LEAVES_DISTANCE);
         }
         return maxDistance;
     }

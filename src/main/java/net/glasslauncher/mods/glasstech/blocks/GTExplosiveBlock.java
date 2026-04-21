@@ -13,8 +13,19 @@ import net.modificationstation.stationapi.api.util.Identifier;
 import java.util.Random;
 
 public class GTExplosiveBlock extends GTTemplateBlock {
-    public GTExplosiveBlock(Identifier identifier, Material material) {
+    public final int fuse;
+    public final float power;
+    public final boolean nukesplosion;
+
+    public GTExplosiveBlock(Identifier identifier, Material material, int fuse, float power) {
+        this(identifier, material, fuse, power, false);
+    }
+
+    public GTExplosiveBlock(Identifier identifier, Material material, int fuse, float power, boolean nukesplosion) {
         super(identifier, material, Block.DIRT_SOUND_GROUP);
+        this.fuse = fuse;
+        this.power = power;
+        this.nukesplosion = nukesplosion;
     }
 
     @Override
@@ -24,7 +35,6 @@ public class GTExplosiveBlock extends GTTemplateBlock {
             this.onMetadataChange(world, x, y, z, 1);
             world.setBlock(x, y, z, 0);
         }
-
     }
 
     @Override
@@ -43,7 +53,7 @@ public class GTExplosiveBlock extends GTTemplateBlock {
 
     @Override
     public void onDestroyedByExplosion(World world, int x, int y, int z) {
-        TntEntity tntEntity = new GTTntEntity(world, (float)x + 0.5F, (float)y + 0.5F, (float)z + 0.5F);
+        TntEntity tntEntity = createTntEntity(world, x, y, z);
         tntEntity.fuse = world.random.nextInt(tntEntity.fuse / 4) + tntEntity.fuse / 8;
         world.spawnEntity(tntEntity);
     }
@@ -54,12 +64,15 @@ public class GTExplosiveBlock extends GTTemplateBlock {
             if ((meta & 1) == 0) {
                 this.dropStack(world, x, y, z, new ItemStack(Block.TNT.id, 1, 0));
             } else {
-                TntEntity tntEntity = new GTTntEntity(world, (float)x + 0.5F, (float)y + 0.5F, (float)z + 0.5F);
+                TntEntity tntEntity = createTntEntity(world, x, y, z);
                 world.spawnEntity(tntEntity);
                 world.playSound(tntEntity, "random.fuse", 1.0F, 1.0F);
             }
-
         }
+    }
+
+    public TntEntity createTntEntity(World world, int x, int y, int z) {
+        return new GTTntEntity(world, (float)x + 0.5F, (float)y + 0.5F, (float)z + 0.5F);
     }
 
     @Override

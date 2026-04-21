@@ -22,10 +22,11 @@
       "net.glasslauncher.mods.glasstech.events.init.GlassTechBlocks",
       "net.glasslauncher.mods.glasstech.events.init.GlassTechItems",
       "net.glasslauncher.mods.glasstech.events.init.RecipeInit",
+      "net.glasslauncher.mods.glasstech.events.init.GlassTechEntities",
       "net.glasslauncher.mods.glasstech.events.GTTooltip"
     ],
     "stationapi:event_bus_client": [
-      "net.glasslauncher.mods.glasstech.events.init.ClientInitListener"
+      "net.glasslauncher.mods.glasstech.events.init.GlassTechClient"
     ],
     "stationapi:event_bus_server": [
     ]

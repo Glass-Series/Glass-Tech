@@ -4,7 +4,7 @@ import net.danygames2014.nyalib.NyaLib;
 import net.danygames2014.nyalib.capability.CapabilityHelper;
 import net.glasslauncher.mods.glassguis.compat.StationAPICompat;
 import net.glasslauncher.mods.glassguis.screen.widget.slot.GlassSlot;
-import net.glasslauncher.mods.glasstech.events.init.ClientInitListener;
+import net.glasslauncher.mods.glasstech.events.init.GlassTechClient;
 import net.glasslauncher.mods.glasstech.item.SingleUsePowerCapability;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
@@ -35,14 +35,14 @@ public class BatterySlot extends Slot implements GlassSlot {
     @Override
     public boolean renderExtras() {
 
-        SpriteAtlasTexture atlas = StationRenderAPI.getBakedModelManager().getAtlas(ClientInitListener.batterySlotIndex.getSprite().getAtlasId());
+        SpriteAtlasTexture atlas = StationRenderAPI.getBakedModelManager().getAtlas(GlassTechClient.batterySlotIndex.getSprite().getAtlasId());
         atlas.bindTexture();
         StationAPICompat.drawSprite(
                 x,
                 y,
-                ClientInitListener.batterySlotIndex.getWidth(),
-                ClientInitListener.batterySlotIndex.getHeight(),
-                ClientInitListener.batterySlotIndex.getSprite()
+                GlassTechClient.batterySlotIndex.getWidth(),
+                GlassTechClient.batterySlotIndex.getHeight(),
+                GlassTechClient.batterySlotIndex.getSprite()
         );
         return true;
     }

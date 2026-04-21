@@ -10,6 +10,7 @@ import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.template.item.TemplateItem;
 import net.modificationstation.stationapi.api.util.Identifier;
 
+import static net.glasslauncher.mods.glasstech.GTProperties.FOAM_COLOR;
 import static net.glasslauncher.mods.glasstech.GlassTech.LOGGER;
 
 public class PainterItem extends TemplateItem {
@@ -51,8 +52,8 @@ public class PainterItem extends TemplateItem {
             return false;
         }
 
-        if (state.contains(FoamColor.FOAM_COLOR_PROPERTY)) {
-            state = state.with(FoamColor.FOAM_COLOR_PROPERTY, foamColor);
+        if (state.contains(FOAM_COLOR)) {
+            state = state.with(FOAM_COLOR, foamColor);
             world.setBlockStateWithNotify(x, y, z, state);
             world.playSound(player, "random.click", 0.5f, 1);
             stack.damage(1, player);

@@ -2,7 +2,7 @@ package net.glasslauncher.mods.glasstech.gui;
 
 import net.glasslauncher.mods.glassguis.compat.StationAPICompat;
 import net.glasslauncher.mods.glassguis.screen.widget.slot.GlassSlot;
-import net.glasslauncher.mods.glasstech.events.init.ClientInitListener;
+import net.glasslauncher.mods.glasstech.events.init.GlassTechClient;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.slot.Slot;
@@ -33,14 +33,14 @@ public class FuelSlot extends Slot implements GlassSlot {
     @Override
     public boolean renderExtras() {
 
-        SpriteAtlasTexture atlas = StationRenderAPI.getBakedModelManager().getAtlas(ClientInitListener.fuelSlotIndex.getSprite().getAtlasId());
+        SpriteAtlasTexture atlas = StationRenderAPI.getBakedModelManager().getAtlas(GlassTechClient.fuelSlotIndex.getSprite().getAtlasId());
         atlas.bindTexture();
         StationAPICompat.drawSprite(
                 x,
                 y,
-                ClientInitListener.fuelSlotIndex.getWidth(),
-                ClientInitListener.fuelSlotIndex.getHeight(),
-                ClientInitListener.fuelSlotIndex.getSprite()
+                GlassTechClient.fuelSlotIndex.getWidth(),
+                GlassTechClient.fuelSlotIndex.getHeight(),
+                GlassTechClient.fuelSlotIndex.getSprite()
         );
         return true;
     }

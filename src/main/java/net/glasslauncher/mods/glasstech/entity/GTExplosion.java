@@ -45,12 +45,12 @@ public class GTExplosion extends Explosion {
             }
 
             if (blockId > 0) {
-                dropStacks(blockPos.x, blockPos.y, blockPos.z, blockId);
+                breakBlock(blockPos.x, blockPos.y, blockPos.z, blockId);
             }
         }
     }
 
-    public void dropStacks(int x, int y, int z, int id) {
+    public void breakBlock(int x, int y, int z, int id) {
         Block.BLOCKS[id].dropStacks(this.world, x, y, z, this.world.getBlockMeta(x, y, z));
         this.world.setBlock(x, y, z, 0);
         Block.BLOCKS[id].onDestroyedByExplosion(this.world, x, y, z);

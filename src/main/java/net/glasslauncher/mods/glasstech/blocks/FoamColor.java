@@ -6,7 +6,6 @@ import net.modificationstation.stationapi.api.state.property.EnumProperty;
 import net.modificationstation.stationapi.api.util.StringIdentifiable;
 
 // I hate making new color objects like this but I gotta have easy reading of the colors
-@Environment(EnvType.CLIENT)
 public enum FoamColor implements StringIdentifiable {
     WHITE(0xFFFFFF, 0, 15),
     ORANGE(0xFFA500, 1, 14),
@@ -41,8 +40,6 @@ public enum FoamColor implements StringIdentifiable {
     public String asString() {
         return name().toLowerCase();
     }
-
-    public static final EnumProperty<FoamColor> FOAM_COLOR_PROPERTY = EnumProperty.of("foam_color", FoamColor.class);
 
     public static final FoamColor[] DYE_TO_FOAM_COLOR = {
             FoamColor.BLACK,

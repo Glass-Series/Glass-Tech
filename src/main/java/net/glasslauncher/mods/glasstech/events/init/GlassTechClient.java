@@ -32,7 +32,7 @@ import java.lang.invoke.MethodHandles;
 
 import static net.glasslauncher.mods.glasstech.GlassTech.NAMESPACE;
 
-public class ClientInitListener {
+public class GlassTechClient {
     static {
         EntrypointManager.registerLookup(MethodHandles.lookup());
     }

@@ -214,8 +214,8 @@ public class GlassTechBlocks {
         reactorChamberBlock = new ReactorChamberBlock(NAMESPACE.id("reactor_chamber"));
         reactorCoreBlock = new ReactorCoreBlock(NAMESPACE.id("reactor_core"));
         massFabricatorBlock = new MassFabricatorBlock(NAMESPACE.id("mass_fabricator"));
-        industrialTNTBlock = new GTExplosiveBlock(NAMESPACE.id("industrial_tnt"), Material.TNT);
-        nukeBlock = new GTExplosiveBlock(NAMESPACE.id("nuke"), Material.TNT);
+        industrialTNTBlock = new GTExplosiveBlock(NAMESPACE.id("industrial_tnt"), Material.TNT, 40, 4);
+        nukeBlock = new GTExplosiveBlock(NAMESPACE.id("nuke"), Material.TNT, 120, 55, true);
 
         rubberLogBlock = new RubberLogBlock(NAMESPACE.id("rubber_log_block"));
         rubberLeavesBlock = new LeavesBlockTemplate(NAMESPACE.id("rubber_leaves_block"));

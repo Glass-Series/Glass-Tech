@@ -14,31 +14,30 @@ import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.item.ItemPlacementContext;
 import net.modificationstation.stationapi.api.state.StateManager;
-import net.modificationstation.stationapi.api.state.property.BooleanProperty;
-import net.modificationstation.stationapi.api.state.property.IntProperty;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.math.Direction;
 import org.lwjgl.input.Keyboard;
 
 import java.util.Random;
 
+import static net.glasslauncher.mods.glasstech.GTProperties.SCAFFOLD_DISTANCE;
+import static net.modificationstation.stationapi.api.state.property.Properties.BOTTOM;
+
 public class GTScaffoldBlock extends GTTemplateBlock {
-    public static final IntProperty DISTANCE = IntProperty.of("distance", 0, 16);
-    public static final BooleanProperty BOTTOM = BooleanProperty.of("bottom");
 
     public final int maxDistance;
 
     public GTScaffoldBlock(Identifier identifier, Material material, BlockSoundGroup soundGroup, int maxDistance) {
         super(identifier, material, soundGroup);
         this.maxDistance = maxDistance;
-        setDefaultState(getDefaultState().with(BOTTOM, false).with(DISTANCE, maxDistance));
+        setDefaultState(getDefaultState().with(BOTTOM, false).with(SCAFFOLD_DISTANCE, maxDistance));
         hardness = 0.1f;
     }
 
     @Override
     public void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         super.appendProperties(builder);
-        builder.add(DISTANCE, BOTTOM);
+        builder.add(SCAFFOLD_DISTANCE, BOTTOM);
     }
 
     @Override
@@ -46,7 +45,7 @@ public class GTScaffoldBlock extends GTTemplateBlock {
         BlockPos pos = context.getBlockPos();
         int dist = calculateDistance(context.getWorld(), pos.x, pos.y, pos.z);
         return getDefaultState()
-                .with(DISTANCE, dist)
+                .with(SCAFFOLD_DISTANCE, dist)
                 .with(BOTTOM, shouldBeBottom(context.getWorld(), pos.x, pos.y, pos.z, dist))
                 ;
     }
@@ -66,7 +65,7 @@ public class GTScaffoldBlock extends GTTemplateBlock {
         BlockState state = world.getBlockState(x, y, z);
 
         int dist = calculateDistance(world, x, y, z);
-        BlockState newState = state.with(DISTANCE, dist).with(BOTTOM, shouldBeBottom(world, x, y, z, dist));
+        BlockState newState = state.with(SCAFFOLD_DISTANCE, dist).with(BOTTOM, shouldBeBottom(world, x, y, z, dist));
         if (dist >= maxDistance) {
             world.scheduleBlockUpdate(x, y, z, id, 1);
         }
@@ -84,7 +83,7 @@ public class GTScaffoldBlock extends GTTemplateBlock {
         BlockState blockState = world.getBlockState(x, y - 1, z);
         int currentDistance = maxDistance;
         if (blockState.getBlock() instanceof GTScaffoldBlock) {
-            currentDistance = blockState.get(DISTANCE);
+            currentDistance = blockState.get(SCAFFOLD_DISTANCE);
         } else if (!blockState.isAir() && blockState.getBlock().isSolidFace(world, x, y, z, Direction.UP.getId()) && blockState.getBlock().material.isSolid()) {
             return 0;
         }
@@ -92,7 +91,7 @@ public class GTScaffoldBlock extends GTTemplateBlock {
         for (Direction direction : Direction.Type.HORIZONTAL) {
             BlockState blockState2 = world.getBlockState(x + direction.getOffsetX(), y, z + direction.getOffsetZ());
             if (blockState2.getBlock() instanceof GTScaffoldBlock) {
-                currentDistance = Math.min(currentDistance, blockState2.get(DISTANCE) + 1);
+                currentDistance = Math.min(currentDistance, blockState2.get(SCAFFOLD_DISTANCE) + 1);
                 if (currentDistance == 1) {
                     break;
                 }
