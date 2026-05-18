@@ -55,7 +55,7 @@ public class WaterWheelBlockEntityRenderer extends BlockEntityRenderer {
         GL11.glPushMatrix();
         GL11.glTranslated(x + 0.5, y + 0.5, z + 0.5);
         if (wheelEntity.waterFlow != null) {
-            GL11.glRotatef(wheelEntity.rot, (float) wheelEntity.waterFlow.z * wheelEntity.wheelDir.x, 0, (float) wheelEntity.waterFlow.x * wheelEntity.wheelDir.y);
+            GL11.glRotatef(wheelEntity.rot, (float) wheelEntity.waterFlow.x, 0, (float) wheelEntity.waterFlow.z);
         }
         GL11.glTranslated(-0.5, -0.5, -0.5);
         GL11.glColor4d(1, 1, 1, 1);

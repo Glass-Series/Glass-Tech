@@ -18,18 +18,18 @@ public class WaterWheelBlock extends TemplateBlockWithEntity {
         super(identifier, material);
         setSoundGroup(WOOD_SOUND_GROUP);
         setTranslationKey(identifier);
-        setDefaultState(getDefaultState().with(Properties.FACING, Direction.NORTH));
+        setDefaultState(getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH));
     }
 
     @Override
     public BlockState getPlacementState(ItemPlacementContext context) {
-        return super.getPlacementState(context).with(Properties.FACING, context.getHorizontalPlayerFacing().getOpposite());
+        return super.getPlacementState(context).with(Properties.HORIZONTAL_FACING, context.getHorizontalPlayerFacing().getOpposite());
     }
 
     @Override
     public void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         super.appendProperties(builder);
-        builder.add(Properties.FACING);
+        builder.add(Properties.HORIZONTAL_FACING);
     }
 
     @Override

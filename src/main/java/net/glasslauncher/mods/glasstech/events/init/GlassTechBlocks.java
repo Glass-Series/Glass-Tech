@@ -19,6 +19,8 @@ import net.glasslauncher.mods.glasstech.blocks.machine.extractor.ExtractorBlock;
 import net.glasslauncher.mods.glasstech.blocks.machine.extractor.ExtractorBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.generator.GeneratorBlock;
 import net.glasslauncher.mods.glasstech.blocks.machine.generator.GeneratorBlockEntity;
+import net.glasslauncher.mods.glasstech.blocks.machine.generator.WaterMillBlock;
+import net.glasslauncher.mods.glasstech.blocks.machine.generator.WaterMillBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.inductionfurnace.InductionFurnaceBlock;
 import net.glasslauncher.mods.glasstech.blocks.machine.inductionfurnace.InductionFurnaceBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.macerator.MaceratorBlock;
@@ -201,7 +203,7 @@ public class GlassTechBlocks {
         hvTransformerBlock = new GTTransformerBlock(NAMESPACE.id("hv_transformer"), Material.METAL, VoltageTier.HV);
 
         thermalGeneratorBlock = new GTThermalGeneratorBlock(NAMESPACE.id("thermal_generator"));
-        waterGeneratorBlock = new GTWaterMillBlock(NAMESPACE.id("water_generator"));
+        waterGeneratorBlock = new WaterMillBlock(NAMESPACE.id("water_generator"), Material.METAL);
         solarGeneratorBlock = new GTSolarPanelBlock(NAMESPACE.id("solar_generator"));
         windGeneratorBlock = new GTWindMillBlock(NAMESPACE.id("wind_generator"));
 
@@ -239,6 +241,7 @@ public class GlassTechBlocks {
 
         event.register(BatBoxBlockEntity.class, NAMESPACE.id("battery_box").toString());
 
+        event.register(WaterMillBlockEntity.class, NAMESPACE.id("water_mill").toString());
         event.register(WaterWheelBlockEntity.class, NAMESPACE.id("water_wheel").toString());
     }
 }
