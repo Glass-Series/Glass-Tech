@@ -23,6 +23,7 @@ import net.glasslauncher.mods.glasstech.blocks.machine.inductionfurnace.Inductio
 import net.glasslauncher.mods.glasstech.blocks.machine.inductionfurnace.InductionFurnaceBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.macerator.MaceratorBlock;
 import net.glasslauncher.mods.glasstech.blocks.machine.macerator.MaceratorBlockEntity;
+import net.glasslauncher.mods.glasstech.blocks.renderer.WaterWheelBlockEntity;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -220,19 +221,7 @@ public class GlassTechBlocks {
         rubberLogBlock = new RubberLogBlock(NAMESPACE.id("rubber_log_block"));
         rubberLeavesBlock = new LeavesBlockTemplate(NAMESPACE.id("rubber_leaves_block"));
 
-        waterWheelBlock = new GTTemplateBlock(NAMESPACE.id("water_wheel"), Material.WOOD, WOOD_SOUND_GROUP) {
-            @Override
-            public BlockState getPlacementState(ItemPlacementContext context) {
-                return super.getPlacementState(context).with(Properties.FACING, context.getHorizontalPlayerFacing().getOpposite());
-            }
-
-            @Override
-            public void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-                super.appendProperties(builder);
-                builder.add(Properties.FACING);
-            }
-        };
-        waterWheelBlock.setDefaultState(waterWheelBlock.getDefaultState().with(Properties.FACING, Direction.NORTH));
+        waterWheelBlock = new WaterWheelBlock(NAMESPACE.id("water_wheel"), Material.WOOD);
     }
 
     @EventListener
@@ -249,5 +238,7 @@ public class GlassTechBlocks {
         event.register(IronFurnaceBlockEntity.class, NAMESPACE.id("iron_furnace").toString());
 
         event.register(BatBoxBlockEntity.class, NAMESPACE.id("battery_box").toString());
+
+        event.register(WaterWheelBlockEntity.class, NAMESPACE.id("water_wheel").toString());
     }
 }

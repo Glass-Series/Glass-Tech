@@ -1,17 +1,23 @@
 package net.glasslauncher.mods.glasstech.blocks;
 
+import net.glasslauncher.mods.glasstech.blocks.renderer.WaterWheelBlockEntity;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockWithEntity;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.material.Material;
 import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.item.ItemPlacementContext;
 import net.modificationstation.stationapi.api.state.StateManager;
 import net.modificationstation.stationapi.api.state.property.Properties;
+import net.modificationstation.stationapi.api.template.block.TemplateBlockWithEntity;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.math.Direction;
 
-public class GTWaterMillBlock extends GTTemplateBlock {
-    public GTWaterMillBlock(Identifier identifier) {
-        super(identifier, Material.WOOD, Block.WOOD_SOUND_GROUP);
+public class WaterWheelBlock extends TemplateBlockWithEntity {
+    public WaterWheelBlock(Identifier identifier, Material material) {
+        super(identifier, material);
+        setSoundGroup(WOOD_SOUND_GROUP);
+        setTranslationKey(identifier);
         setDefaultState(getDefaultState().with(Properties.FACING, Direction.NORTH));
     }
 
@@ -25,4 +31,21 @@ public class GTWaterMillBlock extends GTTemplateBlock {
         super.appendProperties(builder);
         builder.add(Properties.FACING);
     }
+
+    @Override
+    public boolean isOpaque() {
+        return false;
+    }
+
+    @Override
+    protected BlockEntity createBlockEntity() {
+        return new WaterWheelBlockEntity();
+    }
+
+    @Override
+    public int getRenderLayer() {
+        return -1;
+    }
+
+
 }

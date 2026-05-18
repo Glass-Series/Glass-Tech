@@ -20,7 +20,10 @@ import net.glasslauncher.mods.glasstech.blocks.machine.inductionfurnace.Inductio
 import net.glasslauncher.mods.glasstech.blocks.machine.inductionfurnace.InductionFurnaceScreen;
 import net.glasslauncher.mods.glasstech.blocks.machine.macerator.MaceratorBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.macerator.MaceratorScreen;
+import net.glasslauncher.mods.glasstech.blocks.renderer.WaterWheelBlockEntity;
+import net.glasslauncher.mods.glasstech.blocks.renderer.WaterWheelBlockEntityRenderer;
 import net.mine_diver.unsafeevents.listener.EventListener;
+import net.modificationstation.stationapi.api.client.event.block.entity.BlockEntityRendererRegisterEvent;
 import net.modificationstation.stationapi.api.client.event.texture.TextureRegisterEvent;
 import net.modificationstation.stationapi.api.client.gui.screen.GuiHandler;
 import net.modificationstation.stationapi.api.client.texture.atlas.Atlas;
@@ -190,5 +193,11 @@ public class GlassTechClient {
         GlassTechBlocks.advancedMachineBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/hv")).index;
 
 //        GlassTechBlocks.rubberLogBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/rubber_log_block")).index;
+    }
+
+    @EventListener
+    public static void blockEntityRendererInit(BlockEntityRendererRegisterEvent event) {
+        event.renderers.put(WaterWheelBlockEntity.class, new WaterWheelBlockEntityRenderer());
+
     }
 }
