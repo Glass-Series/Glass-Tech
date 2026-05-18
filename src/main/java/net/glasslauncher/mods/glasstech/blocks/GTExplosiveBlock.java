@@ -53,9 +53,11 @@ public class GTExplosiveBlock extends GTTemplateBlock {
 
     @Override
     public void onDestroyedByExplosion(World world, int x, int y, int z) {
-        TntEntity tntEntity = createTntEntity(world, x, y, z);
-        tntEntity.fuse = world.random.nextInt(tntEntity.fuse / 4) + tntEntity.fuse / 8;
-        world.spawnEntity(tntEntity);
+        if (!world.isRemote) {
+            TntEntity tntEntity = createTntEntity(world, x, y, z);
+            tntEntity.fuse = world.random.nextInt(tntEntity.fuse / 4) + tntEntity.fuse / 8;
+            world.spawnEntity(tntEntity);
+        }
     }
 
     @Override
