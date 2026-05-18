@@ -8,4 +8,9 @@ public class MinerBlock extends GTTemplateBlock {
     public MinerBlock(Identifier identifier) {
         super(identifier, Material.METAL, Block.METAL_SOUND_GROUP);
     }
+
+    @Override
+    public boolean isFullCube() {
+        return false;
+    }
 }

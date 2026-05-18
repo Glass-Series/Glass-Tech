@@ -188,7 +188,7 @@ public class GlassTechBlocks {
         hardenedConstructionFoamBlock = new GTHardenedFoamBlock(NAMESPACE.id("hardened_construction_foam"));
         dynamiteBlock = new GTDynamiteBlock(NAMESPACE.id("dynamite"));
         metalScaffoldBlock = new GTScaffoldBlock(NAMESPACE.id("metal_scaffold"), new Material(Material.METAL.mapColor).setDestroyPistonBehavior(), METAL_SOUND_GROUP, 7);
-        miningPipeBlock = new GTTemplateBlock(NAMESPACE.id("mining_pipe"), Material.METAL, METAL_SOUND_GROUP);
+        miningPipeBlock = new MiningPipeBlock(NAMESPACE.id("mining_pipe"), Material.METAL, METAL_SOUND_GROUP);
         personalSafeBlock = new GTSafeBlock(NAMESPACE.id("personal_safe"));
         reinforcedDoorBlock = new GTDoorBlock(NAMESPACE.id("reinforced_door_block"));
         teleporterBlock = new TeleporterBlock(NAMESPACE.id("teleporter"));
