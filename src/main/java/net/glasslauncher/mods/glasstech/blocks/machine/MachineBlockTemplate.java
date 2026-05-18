@@ -3,6 +3,7 @@ package net.glasslauncher.mods.glasstech.blocks.machine;
 import net.danygames2014.nyalib.block.DropInventoryOnBreak;
 import net.danygames2014.nyalib.energy.template.block.EnergySourceBlockTemplate;
 import net.minecraft.block.Block;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.material.Material;
 import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.item.ItemPlacementContext;
@@ -40,5 +41,5 @@ public abstract class MachineBlockTemplate extends EnergySourceBlockTemplate imp
     }
 
     @Override
-    public abstract MachineBlockEntityTemplate createBlockEntity();
+    public abstract BlockEntity createBlockEntity();
 }

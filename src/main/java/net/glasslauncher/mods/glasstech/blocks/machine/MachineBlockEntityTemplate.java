@@ -5,6 +5,7 @@ import net.danygames2014.nyalib.block.DropInventoryOnBreak;
 import net.danygames2014.nyalib.capability.CapabilityHelper;
 import net.danygames2014.nyalib.capability.item.energyhandler.EnergyStorageItemCapability;
 import net.glasslauncher.mods.glasstech.VoltageTier;
+import net.glasslauncher.mods.glasstech.blocks.GTTooltipInfo;
 import net.glasslauncher.mods.glasstech.item.SingleUsePowerCapability;
 import net.glasslauncher.mods.glasstech.recipe.machine.output.RecipeOutputType;
 import net.minecraft.entity.player.PlayerEntity;
@@ -19,7 +20,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
-public abstract class MachineBlockEntityTemplate extends ConsumerBlockEntityTemplate implements Inventory, DropInventoryOnBreak {
+public abstract class MachineBlockEntityTemplate extends ConsumerBlockEntityTemplate implements Inventory, DropInventoryOnBreak, GTTooltipInfo {
 
     // Progress
     public int progress;
