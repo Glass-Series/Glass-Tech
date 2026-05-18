@@ -4,7 +4,8 @@
 	"credit": "Made with Blockbench",
 	"textures": {
 		"side": "glasstech:block/mining_pipe_side",
-		"end": "glasstech:block/mining_pipe_top"
+		"end": "glasstech:block/mining_pipe_top",
+		"particle": "#side"
 	},
 	"elements": [
 		{
