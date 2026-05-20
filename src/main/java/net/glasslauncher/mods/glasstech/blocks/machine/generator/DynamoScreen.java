@@ -1,14 +1,13 @@
 package net.glasslauncher.mods.glasstech.blocks.machine.generator;
 
-import net.glasslauncher.mods.glassguis.DrawDirection;
 import net.glasslauncher.mods.glasstech.blocks.machine.GeneratorScreenTemplate;
 import net.minecraft.entity.player.PlayerInventory;
 
-public class WaterMillScreen extends GeneratorScreenTemplate<WaterMillBlockEntity> {
+public class DynamoScreen extends GeneratorScreenTemplate<DynamoBlockEntity> {
 
-    public WaterMillScreen(PlayerInventory playerInventory, WaterMillBlockEntity waterMillBlockEntity) {
-        super(new WaterMillScreenHandler(playerInventory, waterMillBlockEntity), playerInventory, waterMillBlockEntity);
-        glassguis_setName(waterMillBlockEntity.getName());
+    public DynamoScreen(PlayerInventory playerInventory, DynamoBlockEntity dynamoBlockEntity) {
+        super(new DynamoScreenHandler(playerInventory, dynamoBlockEntity), playerInventory, dynamoBlockEntity);
+        glassguis_setName(dynamoBlockEntity.getName());
     }
 
     @Override

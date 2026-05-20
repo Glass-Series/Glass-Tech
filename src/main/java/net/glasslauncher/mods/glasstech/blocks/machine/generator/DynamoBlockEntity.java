@@ -2,34 +2,26 @@ package net.glasslauncher.mods.glasstech.blocks.machine.generator;
 
 import lombok.Getter;
 import lombok.Setter;
-import net.glasslauncher.mods.glassguis.screen.ServerSyncedField;
 import net.glasslauncher.mods.glasstech.VoltageTier;
-import net.glasslauncher.mods.glasstech.blocks.WaterWheelBlock;
 import net.glasslauncher.mods.glasstech.blocks.machine.GeneratorBlockEntityTemplate;
-import net.glasslauncher.mods.glasstech.blocks.renderer.WaterWheelBlockEntity;
 import net.minecraft.block.FurnaceBlock;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.nbt.NbtInt;
 import net.modificationstation.stationapi.api.block.BlockState;
-import net.modificationstation.stationapi.api.recipe.FuelRegistry;
 import net.modificationstation.stationapi.api.state.property.Properties;
 import net.modificationstation.stationapi.api.util.math.Direction;
 
-import static net.modificationstation.stationapi.api.state.property.Properties.FACING;
 import static net.modificationstation.stationapi.api.state.property.Properties.HORIZONTAL_FACING;
 
-public class WaterMillBlockEntity extends GeneratorBlockEntityTemplate implements Inventory {
-    @Getter @Setter
-    protected int generationAmount = 10; // eu/t
+public class DynamoBlockEntity extends GeneratorBlockEntityTemplate implements Inventory {
     @Getter @Setter
     protected float fuelEfficiency = 0.25f;
 
     protected ItemStack[] slots = new ItemStack[2];
 
-    public WaterMillBlockEntity() {
+    public DynamoBlockEntity() {
         super(VoltageTier.LV);
         setEnergyCapacity(4000);
     }
@@ -42,9 +34,8 @@ public class WaterMillBlockEntity extends GeneratorBlockEntityTemplate implement
         }
         BlockState state = world.getBlockState(x, y, z);
         Direction looking = state.get(HORIZONTAL_FACING);
-        BlockState wheelState = world.getBlockState(x + looking.getOffsetX(), y, z + looking.getOffsetZ());
-        if (wheelState.getBlock() instanceof WaterWheelBlock && world.getBlockEntity(x + looking.getOffsetX(), y, z + looking.getOffsetZ()) instanceof WaterWheelBlockEntity waterWheelBlockEntity && waterWheelBlockEntity.hasWater) {
-            energy += generationAmount; // in eu/t
+        if (world.getBlockEntity(x + looking.getOffsetX(), y, z + looking.getOffsetZ()) instanceof DynamoComponent dynamoComponent && dynamoComponent.isConnected(looking) && dynamoComponent.isGenerating()) {
+            energy += dynamoComponent.getOutput(); // in eu/t
             if (state.contains(Properties.LIT) && !state.get(Properties.LIT)) {
                 FurnaceBlock.ignoreBlockRemoval = true;
                 world.setBlockStateWithNotify(x, y, z, state.with(Properties.LIT, true));
@@ -115,7 +106,7 @@ public class WaterMillBlockEntity extends GeneratorBlockEntityTemplate implement
 
     @Override
     public String getName() {
-        return "Water Mill";
+        return "Dynamo";
     }
 
     @Override

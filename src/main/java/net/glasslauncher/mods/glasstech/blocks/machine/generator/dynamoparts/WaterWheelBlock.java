@@ -1,8 +1,6 @@
-package net.glasslauncher.mods.glasstech.blocks;
+package net.glasslauncher.mods.glasstech.blocks.machine.generator.dynamoparts;
 
-import net.glasslauncher.mods.glasstech.blocks.renderer.WaterWheelBlockEntity;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.material.Material;
 import net.modificationstation.stationapi.api.block.BlockState;

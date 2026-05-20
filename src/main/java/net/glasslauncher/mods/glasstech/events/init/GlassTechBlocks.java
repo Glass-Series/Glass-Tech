@@ -19,25 +19,23 @@ import net.glasslauncher.mods.glasstech.blocks.machine.extractor.ExtractorBlock;
 import net.glasslauncher.mods.glasstech.blocks.machine.extractor.ExtractorBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.generator.GeneratorBlock;
 import net.glasslauncher.mods.glasstech.blocks.machine.generator.GeneratorBlockEntity;
-import net.glasslauncher.mods.glasstech.blocks.machine.generator.WaterMillBlock;
-import net.glasslauncher.mods.glasstech.blocks.machine.generator.WaterMillBlockEntity;
+import net.glasslauncher.mods.glasstech.blocks.machine.generator.DynamoBlock;
+import net.glasslauncher.mods.glasstech.blocks.machine.generator.DynamoBlockEntity;
+import net.glasslauncher.mods.glasstech.blocks.machine.generator.dynamoparts.WaterWheelBlock;
+import net.glasslauncher.mods.glasstech.blocks.machine.generator.dynamoparts.WindSailsBlock;
+import net.glasslauncher.mods.glasstech.blocks.machine.generator.dynamoparts.WindSailsBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.inductionfurnace.InductionFurnaceBlock;
 import net.glasslauncher.mods.glasstech.blocks.machine.inductionfurnace.InductionFurnaceBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.macerator.MaceratorBlock;
 import net.glasslauncher.mods.glasstech.blocks.machine.macerator.MaceratorBlockEntity;
-import net.glasslauncher.mods.glasstech.blocks.renderer.WaterWheelBlockEntity;
+import net.glasslauncher.mods.glasstech.blocks.machine.generator.dynamoparts.WaterWheelBlockEntity;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.event.block.entity.BlockEntityRegisterEvent;
 import net.modificationstation.stationapi.api.event.mod.InitEvent;
 import net.modificationstation.stationapi.api.event.registry.BlockRegistryEvent;
-import net.modificationstation.stationapi.api.item.ItemPlacementContext;
 import net.modificationstation.stationapi.api.mod.entrypoint.EntrypointManager;
-import net.modificationstation.stationapi.api.state.StateManager;
-import net.modificationstation.stationapi.api.state.property.Properties;
-import net.modificationstation.stationapi.api.util.math.Direction;
 
 import java.lang.invoke.MethodHandles;
 
@@ -132,6 +130,7 @@ public class GlassTechBlocks {
     public static Block rubberLeavesBlock;
 
     public static Block waterWheelBlock;
+    public static Block windSailsBlock;
 
     @EventListener
     private static void init(InitEvent event) {
@@ -203,7 +202,7 @@ public class GlassTechBlocks {
         hvTransformerBlock = new GTTransformerBlock(NAMESPACE.id("hv_transformer"), Material.METAL, VoltageTier.HV);
 
         thermalGeneratorBlock = new GTThermalGeneratorBlock(NAMESPACE.id("thermal_generator"));
-        waterGeneratorBlock = new WaterMillBlock(NAMESPACE.id("water_generator"), Material.METAL);
+        waterGeneratorBlock = new DynamoBlock(NAMESPACE.id("dynamo"), Material.METAL);
         solarGeneratorBlock = new GTSolarPanelBlock(NAMESPACE.id("solar_generator"));
         windGeneratorBlock = new GTWindMillBlock(NAMESPACE.id("wind_generator"));
 
@@ -224,6 +223,7 @@ public class GlassTechBlocks {
         rubberLeavesBlock = new LeavesBlockTemplate(NAMESPACE.id("rubber_leaves_block"));
 
         waterWheelBlock = new WaterWheelBlock(NAMESPACE.id("water_wheel"), Material.WOOD);
+        windSailsBlock = new WindSailsBlock(NAMESPACE.id("wind_sails"), Material.WOOD);
     }
 
     @EventListener
@@ -241,7 +241,8 @@ public class GlassTechBlocks {
 
         event.register(BatBoxBlockEntity.class, NAMESPACE.id("battery_box").toString());
 
-        event.register(WaterMillBlockEntity.class, NAMESPACE.id("water_mill").toString());
+        event.register(DynamoBlockEntity.class, NAMESPACE.id("water_mill").toString());
         event.register(WaterWheelBlockEntity.class, NAMESPACE.id("water_wheel").toString());
+        event.register(WindSailsBlockEntity.class, NAMESPACE.id("wind_sails").toString());
     }
 }

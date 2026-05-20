@@ -1,19 +1,16 @@
-package net.glasslauncher.mods.glasstech.blocks.renderer;
+package net.glasslauncher.mods.glasstech.blocks.machine.generator.dynamoparts;
 
+import net.glasslauncher.mods.glasstech.blocks.machine.generator.DynamoComponent;
 import net.minecraft.block.Block;
 import net.minecraft.block.LiquidBlock;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.material.Material;
-import net.minecraft.client.Minecraft;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.math.Vec3i;
 import net.modificationstation.stationapi.api.util.math.Direction;
 import net.modificationstation.stationapi.api.util.math.Vec2f;
 
-import static net.modificationstation.stationapi.api.state.property.Properties.FACING;
 import static net.modificationstation.stationapi.api.state.property.Properties.HORIZONTAL_FACING;
 
-public class WaterWheelBlockEntity extends BlockEntity {
+public class WaterWheelBlockEntity extends BlockEntity implements DynamoComponent {
     public float rot;
     public int ticks = 0;
     public boolean hasWater = false;
@@ -36,12 +33,40 @@ public class WaterWheelBlockEntity extends BlockEntity {
         Block potentialWater = Block.BLOCKS[world.getBlockId(x, y - 1, z)];
         if (potentialWater instanceof LiquidBlock liquidBlock) {
             waterFlow = liquidBlock.getFlow(world, x, y - 1, z);
-            waterFlow = Vec3d.createCached((float) waterFlow.z * wheelDir.x, 0, (float) waterFlow.x * wheelDir.y);
+            waterFlow = Vec3d.create((float) waterFlow.z * wheelDir.x, 0, (float) waterFlow.x * wheelDir.y);
             if (waterFlow.x != 0 || waterFlow.z != 0) {
                 hasWater = true;
+                rot = ticks % 360;
             }
         }
 
         ticks++;
+    }
+
+    @Override
+    public boolean isGenerating() {
+        return hasWater;
+    }
+
+    @Override
+    public int getOutput() {
+        int wheels = getConnectedWheels(1);
+        return (wheels * 3) - wheels; // Last wheel only provides 1 eu/t, with a total cap of
+    }
+
+    public int getConnectedWheels(int currentDepth) {
+        if (currentDepth >= 4) {
+            return currentDepth;
+        }
+        Direction scanDir = world.getBlockState(x, y, z).get(HORIZONTAL_FACING);
+        if (world.getBlockEntity(x + scanDir.getOffsetX(), y, z + scanDir.getOffsetZ()) instanceof WaterWheelBlockEntity waterWheelBlockEntity && waterWheelBlockEntity.isConnected(scanDir)) {
+            return currentDepth + 1;
+        }
+        return currentDepth;
+    }
+
+    @Override
+    public boolean isConnected(Direction dynamoDirection) {
+        return world.getBlockState(x, y, z).get(HORIZONTAL_FACING) == dynamoDirection && isGenerating();
     }
 }

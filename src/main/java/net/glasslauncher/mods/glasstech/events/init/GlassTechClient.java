@@ -16,14 +16,16 @@ import net.glasslauncher.mods.glasstech.blocks.machine.extractor.ExtractorBlockE
 import net.glasslauncher.mods.glasstech.blocks.machine.extractor.ExtractorScreen;
 import net.glasslauncher.mods.glasstech.blocks.machine.generator.GeneratorBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.generator.GeneratorScreen;
-import net.glasslauncher.mods.glasstech.blocks.machine.generator.WaterMillBlockEntity;
-import net.glasslauncher.mods.glasstech.blocks.machine.generator.WaterMillScreen;
+import net.glasslauncher.mods.glasstech.blocks.machine.generator.DynamoBlockEntity;
+import net.glasslauncher.mods.glasstech.blocks.machine.generator.DynamoScreen;
+import net.glasslauncher.mods.glasstech.blocks.machine.generator.dynamoparts.WindSailsBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.inductionfurnace.InductionFurnaceBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.inductionfurnace.InductionFurnaceScreen;
 import net.glasslauncher.mods.glasstech.blocks.machine.macerator.MaceratorBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.macerator.MaceratorScreen;
-import net.glasslauncher.mods.glasstech.blocks.renderer.WaterWheelBlockEntity;
+import net.glasslauncher.mods.glasstech.blocks.machine.generator.dynamoparts.WaterWheelBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.renderer.WaterWheelBlockEntityRenderer;
+import net.glasslauncher.mods.glasstech.blocks.renderer.WindSailsBlockEntityRenderer;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.modificationstation.stationapi.api.client.event.block.entity.BlockEntityRendererRegisterEvent;
 import net.modificationstation.stationapi.api.client.event.texture.TextureRegisterEvent;
@@ -69,7 +71,7 @@ public class GlassTechClient {
     @EventListener
     private static void screenInit(GuiHandlerRegistryEvent event) {
         event.register(NAMESPACE.id("generator"), new GuiHandler((player, inventory, packet) -> new GeneratorScreen(player.inventory, (GeneratorBlockEntity) inventory), GeneratorBlockEntity::new));
-        event.register(NAMESPACE.id("water_mill"), new GuiHandler((player, inventory, packet) -> new WaterMillScreen(player.inventory, (WaterMillBlockEntity) inventory), WaterMillBlockEntity::new));
+        event.register(NAMESPACE.id("dynamo"), new GuiHandler((player, inventory, packet) -> new DynamoScreen(player.inventory, (DynamoBlockEntity) inventory), DynamoBlockEntity::new));
 
         event.register(NAMESPACE.id("compressor"), new GuiHandler((player, inventory, packet) -> new CompressorScreen(player.inventory, (CompressorBlockEntity) inventory), CompressorBlockEntity::new));
         event.register(NAMESPACE.id("electric_furnace"), new GuiHandler((player, inventory, packet) -> new ElectricFurnaceScreen(player.inventory, (ElectricFurnaceBlockEntity) inventory), ElectricFurnaceBlockEntity::new));
@@ -201,6 +203,6 @@ public class GlassTechClient {
     @EventListener
     public static void blockEntityRendererInit(BlockEntityRendererRegisterEvent event) {
         event.renderers.put(WaterWheelBlockEntity.class, new WaterWheelBlockEntityRenderer());
-
+        event.renderers.put(WindSailsBlockEntity.class, new WindSailsBlockEntityRenderer());
     }
 }
