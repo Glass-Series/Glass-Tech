@@ -57,7 +57,7 @@ public class WindSailsBlockEntityRenderer extends BlockEntityRenderer {
 
         Minecraft.INSTANCE.textureManager.bindTexture(Minecraft.INSTANCE.textureManager.getTextureId("/assets/glasstech/stationapi/textures/block/wind_sails.png"));
         for (int partIndex = 4; partIndex < 8; partIndex++) {
-            int[] color = sailsEntity.color;
+            float[] color = sailsEntity.color;
             GL11.glColor3f(blockBrightness * color[0], blockBrightness * color[1], blockBrightness * color[2]);
             windSailsParts[partIndex].render(NOTCH_MAGIC_SCALE_NUMBER);
         }

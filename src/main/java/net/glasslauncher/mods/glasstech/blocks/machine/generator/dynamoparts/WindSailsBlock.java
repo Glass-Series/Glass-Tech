@@ -3,6 +3,11 @@ package net.glasslauncher.mods.glasstech.blocks.machine.generator.dynamoparts;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.passive.SheepEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.item.ItemPlacementContext;
 import net.modificationstation.stationapi.api.state.StateManager;
@@ -45,5 +50,18 @@ public class WindSailsBlock extends TemplateBlockWithEntity {
         return -1;
     }
 
+    @Override
+    public boolean onUse(World world, int x, int y, int z, PlayerEntity player) {
+        ItemStack item = player.getHand();
+        if (item.getItem() != Item.DYE) {
+            return false;
+        }
 
+        ((WindSailsBlockEntity) world.getBlockEntity(x, y, z)).color = SheepEntity.COLORS[15 - item.getDamage()]; // NOOOOTCH
+        item.count--;
+        if (item.count <= 0) {
+            player.inventory.main[player.inventory.selectedSlot] = null;
+        }
+        return true;
+    }
 }

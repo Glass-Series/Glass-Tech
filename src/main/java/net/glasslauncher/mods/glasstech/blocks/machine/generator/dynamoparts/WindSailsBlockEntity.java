@@ -17,7 +17,7 @@ public class WindSailsBlockEntity extends BlockEntity implements DynamoComponent
     public boolean hasAir = false;
     public float brightness = 0;
     public Direction wheelDir;
-    public int[] color = {1, 1, 1};
+    public float[] color = {1, 1, 1};
     public boolean showScan = false;
 
     @Override
@@ -81,16 +81,16 @@ public class WindSailsBlockEntity extends BlockEntity implements DynamoComponent
     @Override
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
-        color[0] = nbt.getInt("color1");
-        color[1] = nbt.getInt("color2");
-        color[2] = nbt.getInt("color3");
+        color[0] = nbt.getFloat("color1");
+        color[1] = nbt.getFloat("color2");
+        color[2] = nbt.getFloat("color3");
     }
 
     @Override
     public void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
-        nbt.putInt("color1", color[0]);
-        nbt.putInt("color2", color[1]);
-        nbt.putInt("color3", color[2]);
+        nbt.putFloat("color1", color[0]);
+        nbt.putFloat("color2", color[1]);
+        nbt.putFloat("color3", color[2]);
     }
 }
