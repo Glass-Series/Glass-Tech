@@ -11,6 +11,7 @@ import net.modificationstation.stationapi.api.util.math.Vec2f;
 import static net.modificationstation.stationapi.api.state.property.Properties.HORIZONTAL_FACING;
 
 public class WaterWheelBlockEntity extends BlockEntity implements DynamoComponent {
+    public float lastRot;
     public float rot;
     public int ticks = 0;
     public boolean hasWater = false;
@@ -20,8 +21,8 @@ public class WaterWheelBlockEntity extends BlockEntity implements DynamoComponen
 
     @Override
     public void tick() {
+        lastRot = rot;
         hasWater = false;
-        waterFlow = null;
         if (wheelDir == null) {
             Direction dir = world.getBlockState(x, y, z).get(HORIZONTAL_FACING);
             boolean northSouth = dir == Direction.NORTH || dir == Direction.SOUTH;
@@ -36,7 +37,7 @@ public class WaterWheelBlockEntity extends BlockEntity implements DynamoComponen
             waterFlow = Vec3d.create((float) waterFlow.z * wheelDir.x, 0, (float) waterFlow.x * wheelDir.y);
             if (waterFlow.x != 0 || waterFlow.z != 0) {
                 hasWater = true;
-                rot = ticks % 360;
+                rot = (rot + 1) % 360;
             }
         }
 

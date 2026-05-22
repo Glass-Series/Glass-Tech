@@ -19,13 +19,16 @@ public class WindSailsBlockEntityRenderer extends BlockEntityRenderer {
 
     public WindSailsBlockEntityRenderer() {
         // Partly stolen from btw
-        windSailsParts = new ModelPart[8];
+        windSailsParts = new ModelPart[9];
         for (int i = 0; i < 4; i++) {
             windSailsParts[i] = new ModelPart(0, 0);
             windSailsParts[i].addCuboid(2.5F, -2F, -2F, 110, 4, 4);
             windSailsParts[i].setPivot(0.0F, 0.0F, 0.0F);
             windSailsParts[i].roll = (3.141593F * (float) (i - 4)) / 2.0F;
         }
+        windSailsParts[8] = new ModelPart(0, 0);
+        windSailsParts[8].addCuboid(-3, -3, -4, 6, 6, 12);
+        windSailsParts[8].setPivot(0.0F, 0.0F, 0.0F);
 
         for (int j = 4; j < 8; j++) {
             windSailsParts[j] = new ModelPart(0, 0);
@@ -50,15 +53,16 @@ public class WindSailsBlockEntityRenderer extends BlockEntityRenderer {
         Minecraft.INSTANCE.textureManager.bindTexture(Minecraft.INSTANCE.textureManager.getTextureId("/assets/glasstech/stationapi/textures/block/wind_sails_wood.png"));
         float blockBrightness = sailsEntity.brightness * 0.8f; // x0.8 cause it looks better
 
+        GL11.glColor3f(blockBrightness, blockBrightness, blockBrightness);
         for (int partIndex = 0; partIndex < 4; partIndex++) {
-            GL11.glColor3f(blockBrightness, blockBrightness, blockBrightness);
-            windSailsParts[partIndex].render(NOTCH_MAGIC_SCALE_NUMBER); // Scale isn't exact, but I don't care
+            windSailsParts[partIndex].render(NOTCH_MAGIC_SCALE_NUMBER);
         }
+        windSailsParts[8].render(NOTCH_MAGIC_SCALE_NUMBER); // center bit
 
         Minecraft.INSTANCE.textureManager.bindTexture(Minecraft.INSTANCE.textureManager.getTextureId("/assets/glasstech/stationapi/textures/block/wind_sails.png"));
+        float[] color = sailsEntity.color;
+        GL11.glColor3f(blockBrightness * color[0], blockBrightness * color[1], blockBrightness * color[2]);
         for (int partIndex = 4; partIndex < 8; partIndex++) {
-            float[] color = sailsEntity.color;
-            GL11.glColor3f(blockBrightness * color[0], blockBrightness * color[1], blockBrightness * color[2]);
             windSailsParts[partIndex].render(NOTCH_MAGIC_SCALE_NUMBER);
         }
 

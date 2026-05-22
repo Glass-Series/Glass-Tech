@@ -53,7 +53,7 @@ public class WindSailsBlock extends TemplateBlockWithEntity {
     @Override
     public boolean onUse(World world, int x, int y, int z, PlayerEntity player) {
         ItemStack item = player.getHand();
-        if (item.getItem() != Item.DYE) {
+        if (item == null || item.getItem() != Item.DYE) {
             return false;
         }
 
