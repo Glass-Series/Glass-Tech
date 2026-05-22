@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "glasstech:block/mega_energy_storage_unit",
+      "y": -90
+    },
+    "facing=east": {
+      "model": "glasstech:block/mega_energy_storage_unit"
+    },
+    "facing=south": {
+      "model": "glasstech:block/mega_energy_storage_unit",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "glasstech:block/mega_energy_storage_unit",
+      "y": 180
+    },
+    "facing=up": {
+      "model": "glasstech:block/mega_energy_storage_unit",
+      "x": -90
+    },
+    "facing=down": {
+      "model": "glasstech:block/mega_energy_storage_unit",
+      "x": 90
+    }
+  }
+}

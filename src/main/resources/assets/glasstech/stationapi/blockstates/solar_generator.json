@@ -1,19 +1,7 @@
 {
   "variants": {
-    "facing=north": {
-      "model": "glasstech:block/solar_generator",
-      "y": -90
-    },
-    "facing=east": {
+    "": {
       "model": "glasstech:block/solar_generator"
-    },
-    "facing=south": {
-      "model": "glasstech:block/solar_generator",
-      "y": 90
-    },
-    "facing=west": {
-      "model": "glasstech:block/solar_generator",
-      "y": 180
     }
   }
 }

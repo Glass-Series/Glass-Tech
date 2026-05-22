@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "glasstech:block/dynamo",
+      "y": -90
+    },
+    "facing=east": {
+      "model": "glasstech:block/dynamo"
+    },
+    "facing=south": {
+      "model": "glasstech:block/dynamo",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "glasstech:block/dynamo",
+      "y": 180
+    }
+  }
+}
