@@ -109,9 +109,8 @@ public class GlassTechBlocks {
     public static Block hvTransformerBlock;
 
     public static Block thermalGeneratorBlock;
-    public static Block waterGeneratorBlock;
+    public static Block dynamoBlock;
     public static Block solarGeneratorBlock;
-    public static Block windGeneratorBlock;
 
     public static Block refinedIronFenceBlock;
 
@@ -202,9 +201,11 @@ public class GlassTechBlocks {
         hvTransformerBlock = new GTTransformerBlock(NAMESPACE.id("hv_transformer"), Material.METAL, VoltageTier.HV);
 
         thermalGeneratorBlock = new GTThermalGeneratorBlock(NAMESPACE.id("thermal_generator"));
-        waterGeneratorBlock = new DynamoBlock(NAMESPACE.id("dynamo"), Material.METAL);
+        dynamoBlock = new DynamoBlock(NAMESPACE.id("dynamo"), Material.METAL);
         solarGeneratorBlock = new GTSolarPanelBlock(NAMESPACE.id("solar_generator"));
-        windGeneratorBlock = new GTWindMillBlock(NAMESPACE.id("wind_generator"));
+
+        waterWheelBlock = new WaterWheelBlock(NAMESPACE.id("water_wheel"), Material.WOOD);
+        windSailsBlock = new WindSailsBlock(NAMESPACE.id("wind_sails"), Material.WOOD);
 
         refinedIronFenceBlock = new GTFenceBlock(NAMESPACE.id("refined_iron_fence"));
 
@@ -221,9 +222,6 @@ public class GlassTechBlocks {
 
         rubberLogBlock = new RubberLogBlock(NAMESPACE.id("rubber_log_block"));
         rubberLeavesBlock = new LeavesBlockTemplate(NAMESPACE.id("rubber_leaves_block"));
-
-        waterWheelBlock = new WaterWheelBlock(NAMESPACE.id("water_wheel"), Material.WOOD);
-        windSailsBlock = new WindSailsBlock(NAMESPACE.id("wind_sails"), Material.WOOD);
     }
 
     @EventListener

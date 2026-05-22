@@ -26,10 +26,10 @@ public class BlockRecipes {
 
         add(generatorBlock, " B ", "III", " F ", 'I', refinedIronIngot, 'B', reBattery, 'F', ironFurnaceBlock);
         add(thermalGeneratorBlock, "GCG", "GCG", "IEI", 'I', refinedIronIngot, 'G', Block.GLASS, 'E', generatorBlock);
-        addN(waterGeneratorBlock, 2, "SPS", "PGP", "SPS", 'S', Item.STICK, 'P', Block.PLANKS, 'G', generatorBlock);
+        addN(dynamoBlock, 2, "SPS", "PGP", "SPS", 'S', Item.STICK, 'P', Block.PLANKS, 'G', generatorBlock);
         add(solarGeneratorBlock, "CgC", "gCg", "cGc", 'G', generatorBlock, 'C', coalDust, 'g', Block.GLASS, 'c', circuit);
         // Maybe?
-        add(windGeneratorBlock, "I I", " G ", "I I", 'I', Item.IRON_INGOT, 'G', machineBlock);
+//        add(windGeneratorBlock, "I I", " G ", "I I", 'I', Item.IRON_INGOT, 'G', machineBlock);
 
         add(lvTransformerBlock, "PCP", "ccc", "PCP", 'P', Block.PLANKS, 'C', copperInsulatedCableBlock, 'c', copperIngot);
         add(mvTransformerBlock, " C ", " M ", " C ", 'M', machineBlock, 'C', copperInsulatedCableBlock);
