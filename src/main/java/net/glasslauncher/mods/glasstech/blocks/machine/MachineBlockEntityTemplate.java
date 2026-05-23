@@ -21,12 +21,6 @@ import java.util.HashMap;
 import java.util.Random;
 
 public abstract class MachineBlockEntityTemplate extends ConsumerBlockEntityTemplate implements Inventory, DropInventoryOnBreak, GTTooltipInfo {
-
-    // Progress
-    public int progress;
-    @Getter
-    public int maxProgress;
-
     // Properties
     public int energyConsumption;
 
@@ -36,11 +30,8 @@ public abstract class MachineBlockEntityTemplate extends ConsumerBlockEntityTemp
     // Lit State
     boolean lit = false;
 
-    public MachineBlockEntityTemplate(VoltageTier tier, int maxProgress, int energyConsumption, int energyCapacity) {
+    public MachineBlockEntityTemplate(VoltageTier tier, int energyConsumption, int energyCapacity) {
         super(tier);
-        // Progress
-        this.progress = 0;
-        this.maxProgress = maxProgress;
 
         // Properties
         this.energyConsumption = energyConsumption;
@@ -84,33 +75,7 @@ public abstract class MachineBlockEntityTemplate extends ConsumerBlockEntityTemp
         }
     }
 
-    public void processTick() {
-        // Check if we can process the current input
-        if (canProcess()) {
-            if (this.energy > 0) {
-                // If we can process and have the energy, process the recipe
-                progress += removeEnergy(energyConsumption);
-                lit = true;
-            } else {
-                // If we can process but don't have the energy, slowly revert
-                progress -= 2;
-                lit = false;
-            }
-        } else {
-            // If we can't process, revert progress to 0
-            progress = 0;
-            lit = false;
-        }
-
-        if (progress < 0) {
-            // If progress is less than zero, clamp it to zero
-            progress = 0;
-        } else if (progress >= getMaxProgress()) {
-            // If the progress has reached maximum, craft the recipe
-            progress = 0;
-            craftRecipe();
-        }
-    }
+    public abstract void processTick();
 
     public void consumeFuel() {
         if (energy == getEnergyCapacity()) {
@@ -153,8 +118,6 @@ public abstract class MachineBlockEntityTemplate extends ConsumerBlockEntityTemp
     }
 
     public abstract boolean canProcess();
-
-    public abstract void craftRecipe();
 
     // Machine Inventory
     public ItemStack[] inventory;

@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack;
 
 import java.util.ArrayList;
 
-public abstract class RecipeBlockEntityTemplate<R extends BasicMachineRecipe> extends MachineBlockEntityTemplate {
+public abstract class RecipeBlockEntityTemplate<R extends BasicMachineRecipe> extends ProgressMachineBlockEntityTemplate {
     @Getter
     private int currentShortestTime = Integer.MAX_VALUE;
 
