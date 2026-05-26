@@ -5,6 +5,8 @@ import net.glasslauncher.mods.glasstech.blocks.machine.MachineBlockTemplate;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.gui.screen.container.GuiHelper;
 import net.modificationstation.stationapi.api.util.Identifier;
@@ -22,6 +24,10 @@ public class DynamoBlock extends MachineBlockTemplate {
 
     @Override
     public boolean onUse(World world, int x, int y, int z, PlayerEntity player) {
+        ItemStack hand = player.getHand();
+        if (hand != null && hand.getItem() instanceof BlockItem blockItem && blockItem.getBlock().getClass().isAnnotationPresent(DynamoComponentBlock.class)) {
+            return false;
+        }
         DynamoBlockEntity dynamoBlockEntity = (DynamoBlockEntity) world.getBlockEntity(x, y, z);
         GuiHelper.openGUI(
             player,

@@ -1,5 +1,6 @@
 package net.glasslauncher.mods.glasstech.blocks.machine.generator.dynamoparts;
 
+import net.glasslauncher.mods.glasstech.blocks.machine.generator.DynamoComponentBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.material.Material;
@@ -16,6 +17,7 @@ import net.modificationstation.stationapi.api.template.block.TemplateBlockWithEn
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.math.Direction;
 
+@DynamoComponentBlock
 public class WindSailsBlock extends TemplateBlockWithEntity {
     public WindSailsBlock(Identifier identifier, Material material) {
         super(identifier, material);
