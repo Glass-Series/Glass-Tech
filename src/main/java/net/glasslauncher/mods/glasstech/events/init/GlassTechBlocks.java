@@ -5,6 +5,10 @@ import net.glasslauncher.mods.glasstech.WireMaterial;
 import net.glasslauncher.mods.glasstech.blocks.*;
 import net.glasslauncher.mods.glasstech.blocks.batbox.BatBoxBlock;
 import net.glasslauncher.mods.glasstech.blocks.batbox.BatBoxBlockEntity;
+import net.glasslauncher.mods.glasstech.blocks.batbox.esu.ESUBlock;
+import net.glasslauncher.mods.glasstech.blocks.batbox.esu.ESUBlockEntity;
+import net.glasslauncher.mods.glasstech.blocks.batbox.mesu.MESUBlock;
+import net.glasslauncher.mods.glasstech.blocks.batbox.mesu.MESUBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.ironfurnace.IronFurnaceBlock;
 import net.glasslauncher.mods.glasstech.blocks.ironfurnace.IronFurnaceBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.canner.CannerBlock;
@@ -153,8 +157,8 @@ public class GlassTechBlocks {
         ironFurnaceBlock = new IronFurnaceBlock(NAMESPACE.id("iron_furnace"), Material.METAL);
 
         batBoxBlock = new BatBoxBlock(NAMESPACE.id("battery_box"), Material.METAL);
-        energyStorageUnitBlock = new BatBoxBlock(NAMESPACE.id("energy_storage_unit"), Material.METAL);
-        megaEnergyStorageUnitBlock = new BatBoxBlock(NAMESPACE.id("mega_energy_storage_unit"), Material.METAL);
+        energyStorageUnitBlock = new ESUBlock(NAMESPACE.id("energy_storage_unit"), Material.METAL);
+        megaEnergyStorageUnitBlock = new MESUBlock(NAMESPACE.id("mega_energy_storage_unit"), Material.METAL);
 
         tinCableBlock = new TemplateCableBlock(NAMESPACE.id("tin_cable"), WireMaterial.TIN, PIXEL_SIZE * 2);
         copperCableBlock = new TemplateCableBlock(NAMESPACE.id("copper_cable"), WireMaterial.COPPER, PIXEL_SIZE * 2);
@@ -241,6 +245,8 @@ public class GlassTechBlocks {
         event.register(IronFurnaceBlockEntity.class, NAMESPACE.id("iron_furnace").toString());
 
         event.register(BatBoxBlockEntity.class, NAMESPACE.id("battery_box").toString());
+        event.register(ESUBlockEntity.class, NAMESPACE.id("esu").toString());
+        event.register(MESUBlockEntity.class, NAMESPACE.id("mesu").toString());
 
         event.register(DynamoBlockEntity.class, NAMESPACE.id("water_mill").toString());
         event.register(WaterWheelBlockEntity.class, NAMESPACE.id("water_wheel").toString());

@@ -2,6 +2,10 @@ package net.glasslauncher.mods.glasstech.events.init;
 
 import net.glasslauncher.mods.glasstech.blocks.batbox.BatBoxBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.batbox.BatBoxScreen;
+import net.glasslauncher.mods.glasstech.blocks.batbox.esu.ESUBlockEntity;
+import net.glasslauncher.mods.glasstech.blocks.batbox.esu.ESUScreen;
+import net.glasslauncher.mods.glasstech.blocks.batbox.mesu.MESUBlockEntity;
+import net.glasslauncher.mods.glasstech.blocks.batbox.mesu.MESUScreen;
 import net.glasslauncher.mods.glasstech.blocks.ironfurnace.IronFurnaceBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.ironfurnace.IronFurnaceScreen;
 import net.glasslauncher.mods.glasstech.blocks.machine.canner.CannerBlockEntity;
@@ -87,6 +91,8 @@ public class GlassTechClient {
         event.register(NAMESPACE.id("iron_furnace"), new GuiHandler((player, inventory, packet) -> new IronFurnaceScreen(player.inventory, (IronFurnaceBlockEntity) inventory), IronFurnaceBlockEntity::new));
 
         event.register(NAMESPACE.id("battery_box"), new GuiHandler((player, inventory, packet) -> new BatBoxScreen(player.inventory, (BatBoxBlockEntity) inventory), BatBoxBlockEntity::new));
+        event.register(NAMESPACE.id("esu"), new GuiHandler((player, inventory, packet) -> new ESUScreen(player.inventory, (ESUBlockEntity) inventory), ESUBlockEntity::new));
+        event.register(NAMESPACE.id("mesu"), new GuiHandler((player, inventory, packet) -> new MESUScreen(player.inventory, (MESUBlockEntity) inventory), MESUBlockEntity::new));
     }
 
     @EventListener
