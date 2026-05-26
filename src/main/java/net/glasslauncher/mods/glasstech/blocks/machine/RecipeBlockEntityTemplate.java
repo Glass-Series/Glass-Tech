@@ -104,47 +104,6 @@ public abstract class RecipeBlockEntityTemplate<R extends BasicMachineRecipe> ex
         return true;
     }
 
-    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
-    public boolean pushOutput(RecipeOutputType type, ItemStack output, boolean simulate) {
-        int[] slotIndexes = getOutputIndexes(type);
-        ItemStack[] slots = getOutputs(type, simulate);
-
-        // Existing stacks? Fill those first.
-        for (ItemStack slot : slots) {
-            if (slot == null) {
-                continue;
-            }
-            if (slot.isItemEqual(output)) {
-                int amountTransferred = Math.min(Math.min(getMaxCountPerStack(), slot.getMaxCount()), slot.count + output.count) - slot.count;
-                output.count -= amountTransferred;
-                slot.count += amountTransferred;
-                if (output.count == 0) {
-                    return true;
-                }
-            }
-        }
-        // Okay now just dump the item
-        for (int i = 0; i < slots.length; i++) {
-            ItemStack slot = slots[i];
-            if (slot == null) {
-                if (!simulate) {
-                    inventory[slotIndexes[i]] = output;
-                }
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public ItemStack[] getInputs(int[] inputIndexes) {
-        ArrayList<ItemStack> out = new ArrayList<>();
-        for (int inputSlot : inputIndexes) {
-            out.add(inventory[inputSlot]);
-        }
-
-        return out.toArray(new ItemStack[0]);
-    }
-
     @Override
     public int getMaxProgress() {
         return currentShortestTime;

@@ -10,8 +10,8 @@ public class ElectricFurnaceScreen extends MachineScreenTemplate<ElectricFurnace
     }
 
     @Override
-    public void drawMachineForeground(float tickDelta) {
-        drawGauge();
+    public void drawMachineForeground(float tickDelta, int mouseX, int mouseY) {
+        drawGauge(mouseX, mouseY);
         drawArrow(80, 40, blockEntity.progress / (float) blockEntity.getMaxProgress());
     }
 }

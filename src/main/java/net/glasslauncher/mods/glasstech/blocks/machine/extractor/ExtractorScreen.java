@@ -10,8 +10,8 @@ public class ExtractorScreen extends MachineScreenTemplate<ExtractorBlockEntity>
     }
 
     @Override
-    public void drawMachineForeground(float tickDelta) {
-        drawGauge();
+    public void drawMachineForeground(float tickDelta, int mouseX, int mouseY) {
+        drawGauge(mouseX, mouseY);
         drawArrow(79, 34, blockEntity.progress / (float) blockEntity.getCurrentShortestTime());
     }
 }

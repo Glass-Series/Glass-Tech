@@ -2,6 +2,11 @@ package net.glasslauncher.mods.glasstech.blocks.machine;
 
 import lombok.Getter;
 import net.glasslauncher.mods.glasstech.VoltageTier;
+import net.glasslauncher.mods.glasstech.recipe.machine.output.RecipeOutputType;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
+
+import java.util.ArrayList;
 
 public abstract class ProgressMachineBlockEntityTemplate extends MachineBlockEntityTemplate {
 
@@ -9,6 +14,7 @@ public abstract class ProgressMachineBlockEntityTemplate extends MachineBlockEnt
     public int progress;
     @Getter
     public int maxProgress;
+    public boolean autoResetProgress = true;
 
     public ProgressMachineBlockEntityTemplate(VoltageTier tier, int maxProgress, int energyConsumption, int energyCapacity) {
         super(tier, energyConsumption, energyCapacity);
@@ -28,12 +34,14 @@ public abstract class ProgressMachineBlockEntityTemplate extends MachineBlockEnt
                 // If we can process and have the energy, process the recipe
                 progress += removeEnergy(energyConsumption);
                 lit = true;
-            } else {
+            }
+            else {
                 // If we can process but don't have the energy, slowly revert
                 progress -= 2;
                 lit = false;
             }
-        } else {
+        }
+        else {
             // If we can't process, revert progress to 0
             progress = 0;
             lit = false;
@@ -42,10 +50,28 @@ public abstract class ProgressMachineBlockEntityTemplate extends MachineBlockEnt
         if (progress < 0) {
             // If progress is less than zero, clamp it to zero
             progress = 0;
-        } else if (progress >= getMaxProgress()) {
+        }
+        else if (progress >= getMaxProgress()) {
             // If the progress has reached maximum, craft the recipe
-            progress = 0;
+            if (autoResetProgress) {
+                progress = 0;
+            }
+            else {
+                progress = getMaxProgress();
+            }
             craftRecipe();
         }
+    }
+
+    @Override
+    public void readNbt(NbtCompound nbt) {
+        super.readNbt(nbt);
+        progress = nbt.getInt("progress");
+    }
+
+    @Override
+    public void writeNbt(NbtCompound nbt) {
+        super.writeNbt(nbt);
+        nbt.putInt("progress", progress);
     }
 }

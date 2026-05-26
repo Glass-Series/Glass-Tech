@@ -29,6 +29,8 @@ import net.glasslauncher.mods.glasstech.blocks.machine.inductionfurnace.Inductio
 import net.glasslauncher.mods.glasstech.blocks.machine.macerator.MaceratorBlock;
 import net.glasslauncher.mods.glasstech.blocks.machine.macerator.MaceratorBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.generator.dynamoparts.WaterWheelBlockEntity;
+import net.glasslauncher.mods.glasstech.blocks.machine.pump.PumpBlock;
+import net.glasslauncher.mods.glasstech.blocks.machine.pump.PumpBlockEntity;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -212,7 +214,7 @@ public class GlassTechBlocks {
         recyclerBlock = new RecyclerBlock(NAMESPACE.id("recycler"));
         illuminatorBlock = new IlluminatorBlock(NAMESPACE.id("illuminator"));
         minerBlock = new MinerBlock(NAMESPACE.id("miner"));
-        pumpBlock = new PumpBlock(NAMESPACE.id("pump"));
+        pumpBlock = new PumpBlock(NAMESPACE.id("pump"), Material.METAL);
         magnetizerBlock = new MagnetizerBlock(NAMESPACE.id("magnetizer"));
         reactorChamberBlock = new ReactorChamberBlock(NAMESPACE.id("reactor_chamber"));
         reactorCoreBlock = new ReactorCoreBlock(NAMESPACE.id("reactor_core"));
@@ -234,6 +236,7 @@ public class GlassTechBlocks {
         event.register(CannerBlockEntity.class, NAMESPACE.id("canner").toString());
         event.register(ElectrolyzerBlockEntity.class, NAMESPACE.id("electrolyzer").toString());
         event.register(ExtractorBlockEntity.class, NAMESPACE.id("extractor").toString());
+        event.register(PumpBlockEntity.class, NAMESPACE.id("pump").toString());
 
         event.register(IronFurnaceBlockEntity.class, NAMESPACE.id("iron_furnace").toString());
 
