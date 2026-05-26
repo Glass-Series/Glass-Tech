@@ -10,6 +10,21 @@
     "glasstech:extractor",
     "glasstech:canner",
     "glasstech:electrolyzer",
-    "glasstech:hardened_construction_foam"
+    "glasstech:hardened_construction_foam",
+    "glasstech:mega_energy_storage_unit",
+    "glasstech:energy_storage_unit",
+    "glasstech:bronze_block",
+    "glasstech:copper_block",
+    "glasstech:tin_block",
+    "glasstech:uranium_block",
+    "glasstech:refined_iron",
+    "glasstech:machine_block",
+    "glasstech:advanced_machine_block",
+    "glasstech:metal_scaffold",
+    "glasstech:mining_pipe",
+    "glasstech:mv_transformer",
+    "glasstech:hv_transformer",
+    "glasstech:dynamo",
+    "glasstech:pump"
   ]
 }
