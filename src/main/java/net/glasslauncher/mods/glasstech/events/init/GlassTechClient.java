@@ -53,6 +53,7 @@ public class GlassTechClient {
     public static Atlas.Sprite batterySlotIndex = null;
     public static Atlas.Sprite batteryChargeSlotIndex = null;
     public static Atlas.Sprite fuelSlotIndex = null;
+    public static Atlas.Sprite bucketSlotIndex = null;
 
     public static Atlas.Sprite emptyBattery;
     public static Atlas.Sprite emptyEnergyCrystal;
@@ -100,6 +101,7 @@ public class GlassTechClient {
         batterySlotIndex = Atlases.getGuiItems().addTexture(NAMESPACE.id("item/gui/battery_slot"));
         batteryChargeSlotIndex = Atlases.getGuiItems().addTexture(NAMESPACE.id("item/gui/battery_charge_slot"));
         fuelSlotIndex = Atlases.getGuiItems().addTexture(NAMESPACE.id("item/gui/fuel_slot"));
+        bucketSlotIndex = Atlases.getGuiItems().addTexture(NAMESPACE.id("item/gui/bucket_slot"));
 
         GlassTechItems.copperIngot.setTexture(NAMESPACE.id("item/resource/copper_ingot"));
         GlassTechItems.advancedAlloy.setTexture(NAMESPACE.id("item/resource/advanced_alloy"));
