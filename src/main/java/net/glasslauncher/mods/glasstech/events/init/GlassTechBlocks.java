@@ -35,6 +35,7 @@ import net.glasslauncher.mods.glasstech.blocks.machine.macerator.MaceratorBlockE
 import net.glasslauncher.mods.glasstech.blocks.machine.generator.dynamoparts.WaterWheelBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.pump.PumpBlock;
 import net.glasslauncher.mods.glasstech.blocks.machine.pump.PumpBlockEntity;
+import net.glasslauncher.mods.glasstech.blocks.transformer.*;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -202,9 +203,9 @@ public class GlassTechBlocks {
         teslaCoilBlock = new TeslaCoilBlock(NAMESPACE.id("tesla_coil"));
         woodenScaffoldBlock = new GTScaffoldBlock(NAMESPACE.id("wooden_scaffold"), Material.LEAVES, WOOD_SOUND_GROUP, 3);
 
-        lvTransformerBlock = new GTTransformerBlock(NAMESPACE.id("lv_transformer"), Material.WOOD, VoltageTier.LV);
-        mvTransformerBlock = new GTTransformerBlock(NAMESPACE.id("mv_transformer"), Material.METAL, VoltageTier.MV);
-        hvTransformerBlock = new GTTransformerBlock(NAMESPACE.id("hv_transformer"), Material.METAL, VoltageTier.HV);
+        lvTransformerBlock = new TransformerBlock(NAMESPACE.id("lv_transformer"), Material.WOOD, LVTransformerBlockEntity.class);
+        mvTransformerBlock = new TransformerBlock(NAMESPACE.id("mv_transformer"), Material.METAL, MVTransformerBlockEntity.class);
+        hvTransformerBlock = new TransformerBlock(NAMESPACE.id("hv_transformer"), Material.METAL, HVTransformerBlockEntity.class);
 
         thermalGeneratorBlock = new GTThermalGeneratorBlock(NAMESPACE.id("thermal_generator"));
         dynamoBlock = new DynamoBlock(NAMESPACE.id("dynamo"), Material.METAL);
@@ -226,8 +227,8 @@ public class GlassTechBlocks {
         industrialTNTBlock = new GTExplosiveBlock(NAMESPACE.id("industrial_tnt"), Material.TNT, 40, 4);
         nukeBlock = new GTExplosiveBlock(NAMESPACE.id("nuke"), Material.TNT, 120, 55, true);
 
-        rubberLogBlock = new RubberLogBlock(NAMESPACE.id("rubber_log_block"));
-        rubberLeavesBlock = new LeavesBlockTemplate(NAMESPACE.id("rubber_leaves_block"));
+        rubberLogBlock = new RubberLogBlock(NAMESPACE.id("rubber_log"));
+        rubberLeavesBlock = new LeavesBlockTemplate(NAMESPACE.id("rubber_leaves"));
     }
 
     @EventListener
@@ -243,6 +244,10 @@ public class GlassTechBlocks {
         event.register(PumpBlockEntity.class, NAMESPACE.id("pump").toString());
 
         event.register(IronFurnaceBlockEntity.class, NAMESPACE.id("iron_furnace").toString());
+
+        event.register(LVTransformerBlockEntity.class, NAMESPACE.id("lv_transformer").toString());
+        event.register(MVTransformerBlockEntity.class, NAMESPACE.id("mv_transformer").toString());
+        event.register(HVTransformerBlockEntity.class, NAMESPACE.id("hv_transformer").toString());
 
         event.register(BatBoxBlockEntity.class, NAMESPACE.id("battery_box").toString());
         event.register(ESUBlockEntity.class, NAMESPACE.id("esu").toString());

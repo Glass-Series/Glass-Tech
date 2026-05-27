@@ -18,15 +18,15 @@ public class GeneratorBlockEntityTemplate extends EnergySourceBlockEntityTemplat
     @Setter
     private int maxOutputVoltage;
     @Getter
-    private int maxInputAmps = 1;
+    private int maxOutputAmps = 1;
 
     public GeneratorBlockEntityTemplate(VoltageTier voltageTier) {
         outputVoltage = voltageTier.maxVoltage;
-        maxEnergyOutput = outputVoltage * maxInputAmps;
+        setMaxOutputAmps(maxOutputAmps);
     }
 
-    public void setMaxInputAmps(int amps) {
-        maxInputAmps = amps;
+    public void setMaxOutputAmps(int amps) {
+        maxOutputAmps = amps;
         maxEnergyOutput = amps * maxOutputVoltage;
     }
 

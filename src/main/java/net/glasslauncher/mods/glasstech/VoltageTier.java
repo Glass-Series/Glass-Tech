@@ -38,8 +38,12 @@ public enum VoltageTier {
         this.color = color;
     }
 
-    public String getName() {
+    public String fullName() {
         return TranslationStorage.getInstance().getClientTranslation(translationKey);
+    }
+
+    public VoltageTier stepUp() {
+        return get(maxVoltage + 1);
     }
 
     public static VoltageTier get(int voltage) {
@@ -47,15 +51,12 @@ public enum VoltageTier {
     }
 
     private static VoltageTier internalGet(int voltage) {
-        VoltageTier usableTier = ULV;
         for (VoltageTier tier : VoltageTier.values()) {
-            if (voltage <= tier.maxVoltage) {
-                usableTier = tier;
+            if (voltage > tier.maxVoltage) {
+                continue;
             }
-            else {
-                return usableTier;
-            }
+            return tier;
         }
-        return usableTier;
+        return ULV;
     }
 }

@@ -20,7 +20,7 @@ public abstract class PowerStorageBlockEntityTemplate extends EnergySourceConsum
     private int maxVoltage;
     @Setter
     private int maxEnergyTransfer;
-    @ServerSyncedField
+    @ServerSyncedField @Setter
     private int capacity;
     @Getter
     private int amps = 1;
@@ -29,8 +29,8 @@ public abstract class PowerStorageBlockEntityTemplate extends EnergySourceConsum
 
     public PowerStorageBlockEntityTemplate(VoltageTier voltageTier, int energyCapacity) {
         maxVoltage = voltageTier.maxVoltage;
-        maxEnergyTransfer = voltageTier.maxVoltage * amps;
         capacity = energyCapacity;
+        setAmps(amps);
     }
 
     public void setAmps(int amps) {
