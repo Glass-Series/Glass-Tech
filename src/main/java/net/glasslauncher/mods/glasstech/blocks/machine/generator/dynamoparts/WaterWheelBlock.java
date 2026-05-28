@@ -4,16 +4,20 @@ import net.glasslauncher.mods.glasstech.blocks.machine.generator.DynamoComponent
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.material.Material;
+import net.minecraft.item.ItemStack;
 import net.modificationstation.stationapi.api.block.BlockState;
+import net.modificationstation.stationapi.api.client.item.CustomTooltipProvider;
 import net.modificationstation.stationapi.api.item.ItemPlacementContext;
 import net.modificationstation.stationapi.api.state.StateManager;
 import net.modificationstation.stationapi.api.state.property.Properties;
 import net.modificationstation.stationapi.api.template.block.TemplateBlockWithEntity;
+import net.modificationstation.stationapi.api.util.Formatting;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.math.Direction;
+import org.jetbrains.annotations.NotNull;
 
 @DynamoComponentBlock
-public class WaterWheelBlock extends TemplateBlockWithEntity {
+public class WaterWheelBlock extends TemplateBlockWithEntity implements CustomTooltipProvider {
     public WaterWheelBlock(Identifier identifier, Material material) {
         super(identifier, material);
         setSoundGroup(WOOD_SOUND_GROUP);
@@ -48,4 +52,12 @@ public class WaterWheelBlock extends TemplateBlockWithEntity {
     }
 
 
+    @Override
+    public @NotNull String[] getTooltip(ItemStack stack, String originalTooltip) {
+        return new String[] {
+                originalTooltip,
+                Formatting.GRAY + "Can be stacked on the same dynamo",
+                Formatting.GRAY + "but has diminishing returns."
+        };
+    }
 }

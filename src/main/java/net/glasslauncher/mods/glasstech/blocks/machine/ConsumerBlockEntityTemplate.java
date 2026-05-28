@@ -5,11 +5,12 @@ import lombok.Setter;
 import net.danygames2014.nyalib.energy.template.block.entity.EnergyConsumerBlockEntityTemplate;
 import net.glasslauncher.mods.glassguis.screen.ServerSyncedField;
 import net.glasslauncher.mods.glasstech.VoltageTier;
+import net.glasslauncher.mods.glasstech.blocks.GTTooltipInfo;
 import net.minecraft.world.explosion.Explosion;
 import net.modificationstation.stationapi.api.util.math.Direction;
 import org.jetbrains.annotations.Nullable;
 
-public class ConsumerBlockEntityTemplate extends EnergyConsumerBlockEntityTemplate {
+public class ConsumerBlockEntityTemplate extends EnergyConsumerBlockEntityTemplate implements GTTooltipInfo {
     @Setter @ServerSyncedField
     private int energyCapacity;
     private int maxEnergyInput;

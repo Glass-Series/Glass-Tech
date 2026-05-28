@@ -248,7 +248,7 @@ public class GlassTechItems {
 //        dynamite = new TemplateItem(NAMESPACE.id("dynamite")).setTranslationKey(NAMESPACE.id("dynamite"));
         stickyDynamite = new TemplateItem(NAMESPACE.id("sticky_dynamite")).setTranslationKey(NAMESPACE.id("sticky_dynamite"));
         rubberBoots = new TemplateItem(NAMESPACE.id("rubber_boots")).setTranslationKey(NAMESPACE.id("rubber_boots"));
-        voltageMeter = new TemplateItem(NAMESPACE.id("voltage_meter")).setTranslationKey(NAMESPACE.id("voltage_meter"));
+        voltageMeter = new VoltMeterItem(NAMESPACE.id("voltage_meter")).setTranslationKey(NAMESPACE.id("voltage_meter"));
         miningLaser = new TemplateItem(NAMESPACE.id("mining_laser")).setTranslationKey(NAMESPACE.id("mining_laser"));
         lappack = new TemplateItem(NAMESPACE.id("lappack")).setTranslationKey(NAMESPACE.id("lappack"));
         cfPack = new TemplateItem(NAMESPACE.id("cf_pack")).setTranslationKey(NAMESPACE.id("cf_pack"));

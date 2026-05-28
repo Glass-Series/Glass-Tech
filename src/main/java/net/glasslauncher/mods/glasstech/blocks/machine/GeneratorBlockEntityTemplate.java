@@ -5,10 +5,11 @@ import lombok.Setter;
 import net.danygames2014.nyalib.energy.template.block.entity.EnergySourceBlockEntityTemplate;
 import net.glasslauncher.mods.glassguis.screen.ServerSyncedField;
 import net.glasslauncher.mods.glasstech.VoltageTier;
+import net.glasslauncher.mods.glasstech.blocks.GTTooltipInfo;
 import net.modificationstation.stationapi.api.util.math.Direction;
 import org.jetbrains.annotations.Nullable;
 
-public abstract class GeneratorBlockEntityTemplate extends EnergySourceBlockEntityTemplate {
+public abstract class GeneratorBlockEntityTemplate extends EnergySourceBlockEntityTemplate implements GTTooltipInfo {
     @Setter @ServerSyncedField
     private int energyCapacity;
     @Setter
@@ -61,5 +62,15 @@ public abstract class GeneratorBlockEntityTemplate extends EnergySourceBlockEnti
     @Override
     public int getEnergyCapacity() {
         return energyCapacity;
+    }
+
+    @Override
+    public int getMaxInputVoltage(@Nullable Direction direction) {
+        return maxOutputVoltage;
+    }
+
+    @Override
+    public int getMaxInputAmps() {
+        return maxOutputAmps;
     }
 }

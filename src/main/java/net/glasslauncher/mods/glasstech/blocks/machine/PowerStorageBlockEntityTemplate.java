@@ -56,7 +56,7 @@ public abstract class PowerStorageBlockEntityTemplate extends EnergySourceConsum
 
     @Override
     public boolean canExtractEnergy(@Nullable Direction direction) {
-        return direction == world.getBlockState(x, y, z).get(Properties.FACING);
+        return direction == null || direction == world.getBlockState(x, y, z).get(Properties.FACING);
     }
 
     @Override
@@ -85,7 +85,7 @@ public abstract class PowerStorageBlockEntityTemplate extends EnergySourceConsum
         if (!state.contains(Properties.FACING)) {
             return false; // Ruh roh stapi broke again
         }
-        return direction != state.get(Properties.FACING);
+        return direction == null || direction != state.get(Properties.FACING);
     }
 
     @Override

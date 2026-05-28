@@ -5,6 +5,7 @@ import net.danygames2014.nyalib.energy.EnergyConsumer;
 import net.danygames2014.nyalib.energy.EnergySource;
 import net.danygames2014.nyalib.network.Network;
 import net.danygames2014.nyalib.network.energy.EnergyNetwork;
+import net.glasslauncher.mods.glasstech.blocks.GTTooltipInfo;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.Vec3i;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class EnergySourceConsumerBlockEntityTemplate extends BlockEntity implements EnergySource, EnergyConsumer {
+public abstract class EnergySourceConsumerBlockEntityTemplate extends BlockEntity implements EnergySource, EnergyConsumer, GTTooltipInfo {
     public int energy;
 
     private final HashMap<EnergyNetwork, Direction> energyNets = new HashMap<>(2);
@@ -219,5 +220,10 @@ public abstract class EnergySourceConsumerBlockEntityTemplate extends BlockEntit
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
         energy = nbt.getInt("energy");
+    }
+
+    @Override
+    public int getMaxInputAmps() {
+        return 1;
     }
 }
