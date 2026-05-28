@@ -12,7 +12,7 @@ public class SingleUsePowerCapabilityProvider extends ItemCapabilityProvider<Sin
             return new SingleUsePowerCapability(singleusePowerItem.getSingleUsePowerProvided());
         }
         if (stack.getItem() == Item.REDSTONE) {
-            return new SingleUsePowerCapability(500);
+            return new SingleUsePowerCapability(100);
         }
         return null;
     }
