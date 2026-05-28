@@ -52,7 +52,11 @@ public class WaterWheelBlockEntity extends BlockEntity implements DynamoComponen
     @Override
     public int getOutput() {
         int wheels = getConnectedWheels(1);
-        return (wheels * 3) - wheels; // Last wheel only provides 1 eu/t, with a total cap of
+        int penalty = 0;
+        for (int i = 0; i < wheels; i++) {
+            penalty += i;
+        }
+        return (wheels * 4) - penalty; // Last wheel only provides 1 eu/t, with a total cap of 10eu/t
     }
 
     public int getConnectedWheels(int currentDepth) {
@@ -61,7 +65,7 @@ public class WaterWheelBlockEntity extends BlockEntity implements DynamoComponen
         }
         Direction scanDir = world.getBlockState(x, y, z).get(HORIZONTAL_FACING);
         if (world.getBlockEntity(x + scanDir.getOffsetX(), y, z + scanDir.getOffsetZ()) instanceof WaterWheelBlockEntity waterWheelBlockEntity && waterWheelBlockEntity.isConnected(scanDir)) {
-            return currentDepth + 1;
+            return waterWheelBlockEntity.getConnectedWheels(currentDepth + 1);
         }
         return currentDepth;
     }
