@@ -98,9 +98,9 @@ public abstract class MachineBlockEntityTemplate extends ConsumerBlockEntityTemp
                     return;
                 }
 
-                if (energy + powerProvided < getEnergyCapacity()) {
+                if (energy + powerProvided <= getEnergyCapacity()) {
                     fuelStack.count--;
-                    energy += singleUsePowerCapability.getPowerProvided();
+                    energy += powerProvided;
                 }
 
                 if (fuelStack.count <= 0) {
