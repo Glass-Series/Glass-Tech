@@ -1,5 +1,6 @@
 package net.glasslauncher.mods.glasstech.events.init.recipes;
 
+import net.glasslauncher.mods.glasstech.events.init.GlassTechItems;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -26,10 +27,10 @@ public class BlockRecipes {
 
         add(generatorBlock, " B ", "III", " F ", 'I', refinedIronIngot, 'B', reBattery, 'F', ironFurnaceBlock);
         add(thermalGeneratorBlock, "GCG", "GCG", "IEI", 'I', refinedIronIngot, 'G', Block.GLASS, 'E', generatorBlock);
-        addN(dynamoBlock, 2, "SPS", "PGP", "SPS", 'S', Item.STICK, 'P', Block.PLANKS, 'G', generatorBlock);
+        add(dynamoBlock, "SPS", "BGB", "SPS", 'S', carbonFibre, 'P', copperIngot, 'B', copperBlock, 'G', generatorBlock);
         add(solarGeneratorBlock, "CgC", "gCg", "cGc", 'G', generatorBlock, 'C', coalDust, 'g', Block.GLASS, 'c', circuit);
-        // Maybe?
-//        add(windGeneratorBlock, "I I", " G ", "I I", 'I', Item.IRON_INGOT, 'G', machineBlock);
+
+        add(waterWheelBlock, "PPP", "PIP", "PPP", 'P', sealedPlanksBlock, 'I', refinedIronIngot);
 
         add(lvTransformerBlock, "PCP", "ccc", "PCP", 'P', Block.PLANKS, 'C', copperInsulatedCableBlock, 'c', copperIngot);
         add(mvTransformerBlock, " C ", " M ", " C ", 'M', machineBlock, 'C', copperInsulatedCableBlock);
@@ -51,6 +52,7 @@ public class BlockRecipes {
         add(compressorBlock, "S S", "SMS", "SCS", 'S', Block.STONE, 'M', machineBlock, 'C', circuit);
         add(minerBlock, "CMC", " P ", " P ", 'P', miningPipeBlock, 'M', machineBlock, 'C', circuit);
         add(pumpBlock, "cCc", "cMc", "PTP", 'c', emptyCell, 'T', treeTap, 'P', miningPipeBlock, 'M', machineBlock, 'C', circuit);
+        add(magnetizerBlock, "RFR", "RMR", "RFR", 'R', Item.REDSTONE, 'F', refinedIronBlock, 'M', machineBlock);
         add(magnetizerBlock, "RFR", "RMR", "RFR", 'R', Item.REDSTONE, 'F', refinedIronBlock, 'M', machineBlock);
         add(electrolyzerBlock, "c c", "cCc", "EME", 'E', emptyCell, 'c', copperInsulatedCableBlock, 'M', machineBlock, 'C', circuit);
         add(reactorChamberBlock, "ACA", "PMP", "APA", 'A', advancedAlloy, 'C', reactorCooler, 'P', reactorPlating, 'M', machineBlock);
