@@ -10,15 +10,18 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.block.BlockState;
+import net.modificationstation.stationapi.api.client.item.CustomTooltipProvider;
 import net.modificationstation.stationapi.api.item.ItemPlacementContext;
 import net.modificationstation.stationapi.api.state.StateManager;
 import net.modificationstation.stationapi.api.state.property.Properties;
 import net.modificationstation.stationapi.api.template.block.TemplateBlockWithEntity;
+import net.modificationstation.stationapi.api.util.Formatting;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.math.Direction;
+import org.jetbrains.annotations.NotNull;
 
 @DynamoComponentBlock
-public class WindSailsBlock extends TemplateBlockWithEntity {
+public class WindSailsBlock extends TemplateBlockWithEntity implements CustomTooltipProvider {
     public WindSailsBlock(Identifier identifier, Material material) {
         super(identifier, material);
         setSoundGroup(WOOD_SOUND_GROUP);
@@ -65,5 +68,13 @@ public class WindSailsBlock extends TemplateBlockWithEntity {
             player.inventory.main[player.inventory.selectedSlot] = null;
         }
         return true;
+    }
+
+    @Override
+    public @NotNull String[] getTooltip(ItemStack stack, String originalTooltip) {
+        return new String[] {
+                originalTooltip,
+                Formatting.RED + "Requires an empty 15x15 area to work!"
+        };
     }
 }
