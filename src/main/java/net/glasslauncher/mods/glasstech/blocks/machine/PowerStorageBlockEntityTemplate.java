@@ -10,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.world.explosion.Explosion;
+import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.state.property.Properties;
 import net.modificationstation.stationapi.api.util.math.Direction;
 import org.jetbrains.annotations.Nullable;
@@ -80,7 +81,11 @@ public abstract class PowerStorageBlockEntityTemplate extends EnergySourceConsum
 
     @Override
     public boolean canReceiveEnergy(@Nullable Direction direction) {
-        return direction != world.getBlockState(x, y, z).get(Properties.FACING);
+        BlockState state = world.getBlockState(x, y, z);
+        if (!state.contains(Properties.FACING)) {
+            return false; // Ruh roh stapi broke again
+        }
+        return direction != state.get(Properties.FACING);
     }
 
     @Override
