@@ -5,6 +5,7 @@ import net.glasslauncher.mods.glasstech.blocks.GTDoorBlock;
 import net.glasslauncher.mods.glasstech.item.PainterItem;
 import net.glasslauncher.mods.glasstech.item.SingleUsePowerCapability;
 import net.glasslauncher.mods.glasstech.item.SingleUsePowerCapabilityProvider;
+import net.glasslauncher.mods.glasstech.item.VoltMeterItem;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
@@ -112,11 +113,10 @@ public class GlassTechItems {
     public static Item emptyFuelCan;
     public static Item dynamiteRemote;
     public static Item reEnrichedUraniumCell;
+    public static Item nearDepletedUraniumCell;
     public static Item bioCell;
     public static Item coalfuelCell;
     public static Item compressedHydratedCoalDust;
-    public static Item itemCellUranDepleted;
-    public static Item itemCellUranEmpty;
 
     public static Item rubberSapling;
     public static Item reinforcedDoor;
@@ -164,7 +164,7 @@ public class GlassTechItems {
         uuMatter = new TemplateItem(NAMESPACE.id("uu_matter")).setTranslationKey(NAMESPACE.id("uu_matter"));
         coalDust = new TemplateItem(NAMESPACE.id("coal_dust")).setTranslationKey(NAMESPACE.id("coal_dust"));
         fertilizer = new TemplateItem(NAMESPACE.id("fertilizer")).setTranslationKey(NAMESPACE.id("fertilizer"));
-        carbonFibre = new TemplateItem(NAMESPACE.id("carbon_fiber")).setTranslationKey(NAMESPACE.id("carbon_fiber"));
+        carbonFibre = new TemplateItem(NAMESPACE.id("carbon_fibre")).setTranslationKey(NAMESPACE.id("carbon_fibre"));
         clayDust = new TemplateItem(NAMESPACE.id("clay_dust")).setTranslationKey(NAMESPACE.id("clay_dust"));
         carbonMesh = new TemplateItem(NAMESPACE.id("carbon_mesh")).setTranslationKey(NAMESPACE.id("carbon_mesh"));
         coalBall = new TemplateItem(NAMESPACE.id("coal_ball")).setTranslationKey(NAMESPACE.id("coal_ball"));
@@ -232,11 +232,10 @@ public class GlassTechItems {
         emptyFuelCan = new TemplateItem(NAMESPACE.id("empty_fuel_can")).setTranslationKey(NAMESPACE.id("empty_fuel_can"));
         dynamiteRemote = new TemplateItem(NAMESPACE.id("dynamite_remote")).setTranslationKey(NAMESPACE.id("dynamite_remote"));
         reEnrichedUraniumCell = new TemplateItem(NAMESPACE.id("re_enriched_uranium_cell")).setTranslationKey(NAMESPACE.id("re_enriched_uranium_cell"));
+        nearDepletedUraniumCell = new TemplateItem(NAMESPACE.id("near_depleted_uranium_cell")).setTranslationKey(NAMESPACE.id("near_depleted_uranium_cell"));
         bioCell = new TemplateItem(NAMESPACE.id("bio_cell")).setTranslationKey(NAMESPACE.id("bio_cell"));
         coalfuelCell = new TemplateItem(NAMESPACE.id("coalfuel_cell")).setTranslationKey(NAMESPACE.id("coalfuel_cell"));
         compressedHydratedCoalDust = new TemplateItem(NAMESPACE.id("compressed_hydrated_coal_dust")).setTranslationKey(NAMESPACE.id("compressed_hydrated_coal_dust"));
-        itemCellUranDepleted = new TemplateItem(NAMESPACE.id("item_cell_uran_depleted")).setTranslationKey(NAMESPACE.id("item_cell_uran_depleted"));
-        itemCellUranEmpty = new TemplateItem(NAMESPACE.id("item_cell_uran_empty")).setTranslationKey(NAMESPACE.id("item_cell_uran_empty"));
         rubberSapling = new TemplateItem(NAMESPACE.id("rubber_sapling")).setTranslationKey(NAMESPACE.id("rubber_sapling"));
         reinforcedDoor = new GTDoorBlock.GTDoorItem(NAMESPACE.id("reinforced_door"), Material.METAL, GlassTechBlocks.reinforcedDoorBlock).setTranslationKey(NAMESPACE.id("reinforced_door"));
         biofuelCell = new TemplateItem(NAMESPACE.id("biofuel_cell")).setTranslationKey(NAMESPACE.id("biofuel_cell"));

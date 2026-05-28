@@ -46,7 +46,7 @@ public class ItemRecipes {
         addS(hydratedCoalDust, coalDust, Item.WATER_BUCKET);
         addS(hydratedCoalDust, coalDust, waterCell);
 
-        addS(new ItemStack(itemCellUranDepleted, 1, 9999), new ItemStack(itemCellUranEmpty), coalDust);
+        addS(new ItemStack(nearDepletedUraniumCell, 1, 9999), new ItemStack(nearDepletedUraniumCell), coalDust);
 
         add(iridiumPlate, "IAI", "ADA", "IAI", 'I', iridium, 'A', advancedAlloy, 'D', Item.DIAMOND);
         add(iridiumPlate, "IAI", "ADA", "IAI", 'I', iridium, 'A', advancedAlloy, 'D', industrialDiamond);

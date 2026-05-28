@@ -208,10 +208,56 @@ public class GlassTechClient {
         GlassTechBlocks.machineBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/mv")).index;
         GlassTechBlocks.advancedMachineBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/hv")).index;
 
-//        GlassTechBlocks.rubberLogBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/rubber_log_block")).index;
         GlassTechBlocks.sealedPlanksBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/sealed_planks")).index;
         GlassTechBlocks.rubberLogBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/rubber_log")).index;
         GlassTechBlocks.rubberLogBlock.endTextureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/rubber_log_top")).index;
+
+        GlassTechItems.compressedHydratedCoal.setTexture(NAMESPACE.id("item/resource/compressed_hydrated_coal"));
+        GlassTechItems.compressedPlantBall.setTexture(NAMESPACE.id("item/resource/compressed_plant_ball"));
+        GlassTechItems.coolantCell.setTexture(NAMESPACE.id("item/resource/coolant_cell"));
+        GlassTechItems.depletedUraniumCell.setTexture(NAMESPACE.id("item/resource/depleted_uranium_cell"));
+        GlassTechItems.hydratedCoalDust.setTexture(NAMESPACE.id("item/resource/hydrated_coal"));
+        GlassTechItems.plantBall.setTexture(NAMESPACE.id("item/resource/plant_ball"));
+        GlassTechItems.suBattery.setTexture(NAMESPACE.id("item/resource/single_use_battery"));
+        GlassTechItems.uraniumCell.setTexture(NAMESPACE.id("item/resource/uranium_cell"));
+        GlassTechItems.nanoBoots.setTexture(NAMESPACE.id("item/armor/nano_boots"));
+        GlassTechItems.nanoChestplate.setTexture(NAMESPACE.id("item/armor/nano_chestplate"));
+        GlassTechItems.nanoHelmet.setTexture(NAMESPACE.id("item/armor/nano_helmet"));
+        GlassTechItems.nanoLeggings.setTexture(NAMESPACE.id("item/armor/nano_leggings"));
+        GlassTechItems.quantumBoots.setTexture(NAMESPACE.id("item/armor/quantum_boots"));
+        GlassTechItems.quantumChestplate.setTexture(NAMESPACE.id("item/armor/quantum_chestplate"));
+        GlassTechItems.quantumHelmet.setTexture(NAMESPACE.id("item/armor/quantum_helmet"));
+        GlassTechItems.quantumLeggings.setTexture(NAMESPACE.id("item/armor/quantum_leggings"));
+        GlassTechItems.jetpack.setTexture(NAMESPACE.id("item/armor/jetpack"));
+        GlassTechItems.electricJetpack.setTexture(NAMESPACE.id("item/armor/electric_jetpack"));
+        GlassTechItems.bronzeBoots.setTexture(NAMESPACE.id("item/armor/bronze_boots"));
+        GlassTechItems.bronzeChestplate.setTexture(NAMESPACE.id("item/armor/bronze_chestplate"));
+        GlassTechItems.bronzeHelmet.setTexture(NAMESPACE.id("item/armor/bronze_helmet"));
+        GlassTechItems.bronzeLeggings.setTexture(NAMESPACE.id("item/armor/bronze_leggings"));
+        GlassTechItems.reactorCooler.setTexture(NAMESPACE.id("item/resource/reactor_cooler"));
+        GlassTechItems.reactorPlating.setTexture(NAMESPACE.id("item/resource/reactor_plating"));
+        GlassTechItems.emptyFuelCan.setTexture(NAMESPACE.id("item/resource/empty_fuel_can"));
+        GlassTechItems.dynamiteRemote.setTexture(NAMESPACE.id("item/tool/dynamite_remote"));
+        GlassTechItems.reEnrichedUraniumCell.setTexture(NAMESPACE.id("item/resource/re_enriched_uranium_cell"));
+        GlassTechItems.nearDepletedUraniumCell.setTexture(NAMESPACE.id("item/resource/near_depleted_uranium_cell"));
+        GlassTechItems.bioCell.setTexture(NAMESPACE.id("item/resource/bio_cell"));
+        GlassTechItems.coalfuelCell.setTexture(NAMESPACE.id("item/resource/coalfuel_cell"));
+        GlassTechItems.compressedHydratedCoalDust.setTexture(NAMESPACE.id("item/resource/compressed_hydrated_coal"));
+        GlassTechItems.rubberSapling.setTexture(NAMESPACE.id("item/resource/rubber_sapling"));
+        GlassTechItems.reinforcedDoor.setTexture(NAMESPACE.id("item/reinforced_door"));
+        GlassTechItems.biofuelCell.setTexture(NAMESPACE.id("item/resource/biofuel_cell"));
+        GlassTechItems.fullFuelCan.setTexture(NAMESPACE.id("item/resource/full_fuel_can"));
+        GlassTechItems.cannedFood.setTexture(NAMESPACE.id("item/resource/canned_food"));
+        GlassTechItems.scanner.setTexture(NAMESPACE.id("item/tool/scanner"));
+        GlassTechItems.advancedScanner.setTexture(NAMESPACE.id("item/tool/advanced_scanner"));
+        GlassTechItems.stickyDynamite.setTexture(NAMESPACE.id("item/tool/sticky_dynamite"));
+        GlassTechItems.rubberBoots.setTexture(NAMESPACE.id("item/armor/rubber_boots"));
+        GlassTechItems.voltageMeter.setTexture(NAMESPACE.id("item/tool/voltage_meter"));
+        GlassTechItems.miningLaser.setTexture(NAMESPACE.id("item/tool/mining_laser"));
+        GlassTechItems.lappack.setTexture(NAMESPACE.id("item/armor/lappack"));
+        GlassTechItems.cfPack.setTexture(NAMESPACE.id("item/armor/cf_pack"));
+        GlassTechItems.compositeChestplate.setTexture(NAMESPACE.id("item/armor/composite_chestplate"));
+        GlassTechItems.treeTap.setTexture(NAMESPACE.id("item/tool/tree_tap"));
     }
 
     @EventListener
