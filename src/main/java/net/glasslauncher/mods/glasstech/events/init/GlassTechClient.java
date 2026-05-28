@@ -209,6 +209,9 @@ public class GlassTechClient {
         GlassTechBlocks.advancedMachineBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/hv")).index;
 
 //        GlassTechBlocks.rubberLogBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/rubber_log_block")).index;
+        GlassTechBlocks.sealedPlanksBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/sealed_planks")).index;
+        GlassTechBlocks.rubberLogBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/rubber_log")).index;
+        GlassTechBlocks.rubberLogBlock.endTextureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/rubber_log_top")).index;
     }
 
     @EventListener

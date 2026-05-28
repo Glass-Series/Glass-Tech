@@ -43,6 +43,7 @@ import net.modificationstation.stationapi.api.event.block.entity.BlockEntityRegi
 import net.modificationstation.stationapi.api.event.mod.InitEvent;
 import net.modificationstation.stationapi.api.event.registry.BlockRegistryEvent;
 import net.modificationstation.stationapi.api.mod.entrypoint.EntrypointManager;
+import net.modificationstation.stationapi.api.template.block.TemplateBlock;
 
 import java.lang.invoke.MethodHandles;
 
@@ -132,7 +133,8 @@ public class GlassTechBlocks {
     public static Block industrialTNTBlock;
     public static Block nukeBlock;
 
-    public static Block rubberLogBlock;
+    public static Block sealedPlanksBlock;
+    public static RubberLogBlock rubberLogBlock;
     public static Block rubberLeavesBlock;
 
     public static Block waterWheelBlock;
@@ -227,6 +229,7 @@ public class GlassTechBlocks {
         industrialTNTBlock = new GTExplosiveBlock(NAMESPACE.id("industrial_tnt"), Material.TNT, 40, 4);
         nukeBlock = new GTExplosiveBlock(NAMESPACE.id("nuke"), Material.TNT, 120, 55, true);
 
+        sealedPlanksBlock = new TemplateBlock(NAMESPACE.id("sealed_planks"), Material.WOOD).setTranslationKey(NAMESPACE.id("sealed_planks")).setSoundGroup(WOOD_SOUND_GROUP).setHardness(2.0F).setResistance(5.0F);
         rubberLogBlock = new RubberLogBlock(NAMESPACE.id("rubber_log"));
         rubberLeavesBlock = new LeavesBlockTemplate(NAMESPACE.id("rubber_leaves"));
     }
