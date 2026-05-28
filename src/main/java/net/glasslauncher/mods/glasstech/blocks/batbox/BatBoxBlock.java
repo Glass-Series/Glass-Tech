@@ -16,7 +16,7 @@ public class BatBoxBlock extends PowerStorageBlockTemplate {
     }
 
     @Override
-    protected BlockEntity createBlockEntity() {
+    public BlockEntity createBlockEntity() {
         return new BatBoxBlockEntity();
     }
 

@@ -46,7 +46,7 @@ public class WindSailsBlock extends TemplateBlockWithEntity implements CustomToo
     }
 
     @Override
-    protected BlockEntity createBlockEntity() {
+    public BlockEntity createBlockEntity() {
         return new WindSailsBlockEntity();
     }
 

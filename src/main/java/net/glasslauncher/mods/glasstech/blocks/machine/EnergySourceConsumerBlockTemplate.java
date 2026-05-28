@@ -18,7 +18,7 @@ public abstract class EnergySourceConsumerBlockTemplate extends TemplateBlockWit
     }
 
     @Override
-    protected abstract BlockEntity createBlockEntity();
+    public abstract BlockEntity createBlockEntity();
 
     @Override
     public NetworkType getNetworkType() {

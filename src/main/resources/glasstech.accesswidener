@@ -12,6 +12,8 @@ accessible field net/minecraft/client/gui/screen/ingame/HandledScreen itemRender
 accessible field net/minecraft/client/gui/screen/ingame/HandledScreen backgroundWidth I
 accessible field net/minecraft/client/gui/screen/ingame/HandledScreen backgroundHeight I
 
+accessible method net/minecraft/block/BlockWithEntity createBlockEntity ()Lnet/minecraft/block/entity/BlockEntity;
+
 accessible method net/minecraft/screen/ScreenHandler addSlot (Lnet/minecraft/screen/slot/Slot;)V
 
 accessible field net/minecraft/block/FurnaceBlock ignoreBlockRemoval Z

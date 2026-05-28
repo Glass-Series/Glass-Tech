@@ -45,7 +45,7 @@ public class IronFurnaceBlock extends TemplateBlockWithEntity implements DropInv
     }
 
     @Override
-    protected BlockEntity createBlockEntity() {
+    public BlockEntity createBlockEntity() {
         return new IronFurnaceBlockEntity();
     }
 

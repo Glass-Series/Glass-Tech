@@ -16,7 +16,7 @@ public class MESUBlock extends PowerStorageBlockTemplate {
     }
 
     @Override
-    protected BlockEntity createBlockEntity() {
+    public BlockEntity createBlockEntity() {
         return new MESUBlockEntity();
     }
 

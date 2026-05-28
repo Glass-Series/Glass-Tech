@@ -38,7 +38,7 @@ public class WaterWheelBlock extends TemplateBlockWithEntity {
     }
 
     @Override
-    protected BlockEntity createBlockEntity() {
+    public BlockEntity createBlockEntity() {
         return new WaterWheelBlockEntity();
     }
 
