@@ -8,6 +8,6 @@ class DynamoScreenHandler extends GeneratorScreenHandlerTemplate<DynamoBlockEnti
 
     public DynamoScreenHandler(PlayerInventory playerInventory, DynamoBlockEntity dynamoBlockEntity) {
         super(playerInventory, dynamoBlockEntity, true);
-        addSlot(new BatteryChargeSlot(dynamoBlockEntity, 1, 80, 22));
+        addSlot(new BatteryChargeSlot(dynamoBlockEntity, 0, 80, 22));
     }
 }

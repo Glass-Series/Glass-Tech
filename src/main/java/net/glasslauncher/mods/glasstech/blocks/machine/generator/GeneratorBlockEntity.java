@@ -5,6 +5,7 @@ import lombok.Setter;
 import net.glasslauncher.mods.glassguis.screen.ServerSyncedField;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.glasslauncher.mods.glasstech.blocks.machine.GeneratorBlockEntityTemplate;
+import net.glasslauncher.mods.glasstech.blocks.machine.GeneratorWithInventoryBlockEntityTemplate;
 import net.minecraft.block.FurnaceBlock;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
@@ -15,7 +16,7 @@ import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.recipe.FuelRegistry;
 import net.modificationstation.stationapi.api.state.property.Properties;
 
-public class GeneratorBlockEntity extends GeneratorBlockEntityTemplate implements Inventory {
+public class GeneratorBlockEntity extends GeneratorWithInventoryBlockEntityTemplate implements Inventory {
     @Getter @Setter @ServerSyncedField
     protected int initialFuelTicks;
     @Getter @Setter @ServerSyncedField
@@ -25,10 +26,8 @@ public class GeneratorBlockEntity extends GeneratorBlockEntityTemplate implement
     @Getter @Setter
     protected float fuelEfficiency = 0.25f;
 
-    protected ItemStack[] slots = new ItemStack[2];
-
     public GeneratorBlockEntity() {
-        super(VoltageTier.LV);
+        super(2, VoltageTier.LV);
         setEnergyCapacity(4000);
     }
 
@@ -77,14 +76,6 @@ public class GeneratorBlockEntity extends GeneratorBlockEntityTemplate implement
         super.writeNbt(tag);
         tag.put("fuelTicks", new NbtInt(fuelTicks));
         tag.put("initialFuelTicks", new NbtInt(initialFuelTicks));
-        for (int i = 0; i < slots.length; i++) {
-            ItemStack slot = slots[i];
-            if (slot != null) {
-                NbtCompound item = new NbtCompound();
-                slot.writeNbt(item);
-                tag.put("item" + i, item);
-            }
-        }
     }
 
     @Override
@@ -92,43 +83,6 @@ public class GeneratorBlockEntity extends GeneratorBlockEntityTemplate implement
         super.readNbt(tag);
         fuelTicks = tag.getInt("fuelTicks");
         initialFuelTicks = tag.getInt("initialFuelTicks");
-        for (int i = 0; i < slots.length; i++) {
-            if (tag.contains("item" + i)) {
-                slots[i] = new ItemStack(tag.getCompound("item" + i));
-            }
-        }
-    }
-
-    @Override
-    public int size() {
-        return 2;
-    }
-
-    @Override
-    public ItemStack getStack(int slot) {
-        return slots[slot];
-    }
-
-    @Override
-    public ItemStack removeStack(int slot, int amount) {
-        ItemStack stack = getStack(slot);
-        if (stack == null) {
-            return null;
-        }
-
-        if (stack.count == amount) {
-            slots[slot] = null;
-            return stack;
-        }
-        stack.count -= amount;
-        stack = stack.copy();
-        stack.count = amount;
-        return stack;
-    }
-
-    @Override
-    public void setStack(int slot, ItemStack stack) {
-        slots[slot] = stack;
     }
 
     @Override
@@ -137,12 +91,7 @@ public class GeneratorBlockEntity extends GeneratorBlockEntityTemplate implement
     }
 
     @Override
-    public int getMaxCountPerStack() {
-        return 64;
-    }
-
-    @Override
-    public boolean canPlayerUse(PlayerEntity player) {
-        return player.getSquaredDistance(x + 0.5, y + 0.5, z + 0.5) <= 64;
+    public int getGeneratingCurrent() {
+        return fuelTicks > 1 ? 10 : 0;
     }
 }

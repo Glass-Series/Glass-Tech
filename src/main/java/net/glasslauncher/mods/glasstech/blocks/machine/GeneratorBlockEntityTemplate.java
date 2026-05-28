@@ -8,7 +8,7 @@ import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.modificationstation.stationapi.api.util.math.Direction;
 import org.jetbrains.annotations.Nullable;
 
-public class GeneratorBlockEntityTemplate extends EnergySourceBlockEntityTemplate {
+public abstract class GeneratorBlockEntityTemplate extends EnergySourceBlockEntityTemplate {
     @Setter @ServerSyncedField
     private int energyCapacity;
     @Setter
@@ -22,6 +22,7 @@ public class GeneratorBlockEntityTemplate extends EnergySourceBlockEntityTemplat
 
     public GeneratorBlockEntityTemplate(VoltageTier voltageTier) {
         outputVoltage = voltageTier.maxVoltage;
+        maxOutputVoltage = 10;
         setMaxOutputAmps(maxOutputAmps);
     }
 
@@ -29,6 +30,8 @@ public class GeneratorBlockEntityTemplate extends EnergySourceBlockEntityTemplat
         maxOutputAmps = amps;
         maxEnergyOutput = amps * maxOutputVoltage;
     }
+
+    public abstract int getGeneratingCurrent();
 
     @Override
     public int getMaxOutputVoltage(@Nullable Direction direction) {
