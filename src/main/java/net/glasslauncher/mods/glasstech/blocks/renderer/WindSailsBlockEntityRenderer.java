@@ -6,6 +6,9 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
+import net.modificationstation.stationapi.api.block.BlockState;
+import net.modificationstation.stationapi.api.state.property.Properties;
+import net.modificationstation.stationapi.api.util.math.Direction;
 import org.lwjgl.opengl.GL11;
 
 import java.nio.ByteOrder;
@@ -42,10 +45,12 @@ public class WindSailsBlockEntityRenderer extends BlockEntityRenderer {
     @Override
     public void render(BlockEntity blockEntity, double x, double y, double z, float tickDelta) {
         WindSailsBlockEntity sailsEntity = (WindSailsBlockEntity) blockEntity;
+        BlockState state = dispatcher.world.getBlockState(blockEntity.x, blockEntity.y, blockEntity.z);
         GL11.glPushMatrix();
         GL11.glTranslated(x + 0.5, y + 0.5, z + 0.5);
+        GL11.glRotatef(sailsEntity.wheelDir.getAxis() == Direction.Axis.Z ? sailsEntity.wheelDir.getOpposite().asRotation() : sailsEntity.wheelDir.asRotation(), 0, 1, 0);
         if (sailsEntity.hasAir) {
-            GL11.glRotatef(sailsEntity.rot + tickDelta, sailsEntity.wheelDir.getOffsetX(), 0, sailsEntity.wheelDir.getOffsetZ());
+            GL11.glRotatef(sailsEntity.rot + tickDelta, 0, 0, -1);
         }
         GL11.glColor4d(1, 1, 1, 1);
         GL11.glDisable(GL11.GL_LIGHTING);
