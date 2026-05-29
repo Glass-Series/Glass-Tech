@@ -66,10 +66,12 @@ public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComp
         );
     }
 
+    @Override
     public BlockState getPlacementState(ItemPlacementContext context) {
         return updateModel(context.getWorld(), context.getBlockPos().x, context.getBlockPos().y, context.getBlockPos().z);
     }
 
+    @Override
     public void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(Properties.NORTH);
         builder.add(Properties.SOUTH);
@@ -85,26 +87,31 @@ public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComp
         return NetworkType.ENERGY;
     }
 
+    @Override
     public boolean isFullCube() {
         return false;
     }
 
+    @Override
     public boolean isOpaque() {
         return false;
     }
 
+    @Override
     public void onBreak(World world, int x, int y, int z) {
         if (!FurnaceBlock.ignoreBlockRemoval) {
             super.onBreak(world, x, y, z);
         }
     }
 
+    @Override
     public void onPlaced(World world, int x, int y, int z) {
         if (!FurnaceBlock.ignoreBlockRemoval) {
             super.onPlaced(world, x, y, z);
         }
     }
 
+    @Override
     public void neighborUpdate(World world, int x, int y, int z, int id) {
         super.neighborUpdate(world, x, y, z, id);
 
