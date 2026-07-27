@@ -2,7 +2,6 @@ package net.glasslauncher.mods.glasstech.blocks.transformer;
 
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.glasslauncher.mods.glasstech.blocks.machine.PowerStorageBlockEntityTemplate;
-import net.minecraft.nbt.NbtCompound;
 import net.modificationstation.stationapi.api.util.math.Direction;
 import org.jetbrains.annotations.Nullable;
 

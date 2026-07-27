@@ -1,6 +1,5 @@
 package net.glasslauncher.mods.glasstech.mixin;
 
-import net.glasslauncher.mods.glasstech.GlassTech;
 import net.glasslauncher.mods.glasstech.MachineRecipeIdentifier;
 import net.minecraft.recipe.CraftingRecipeManager;
 import net.modificationstation.stationapi.api.StationAPI;

@@ -3,7 +3,6 @@ package net.glasslauncher.mods.glasstech.blocks.machine.pump;
 import net.glasslauncher.mods.glassguis.DrawDirection;
 import net.glasslauncher.mods.glasstech.blocks.machine.MachineScreenTemplate;
 import net.minecraft.entity.player.PlayerInventory;
-import net.modificationstation.stationapi.api.client.render.model.BakedModel;
 
 public class PumpScreen extends MachineScreenTemplate<PumpBlockEntity> {
 

@@ -15,7 +15,6 @@ import net.modificationstation.stationapi.api.client.texture.atlas.Atlases;
 import net.modificationstation.stationapi.api.util.Formatting;
 import org.lwjgl.opengl.GL11;
 
-import java.awt.*;
 import java.util.List;
 
 import static net.glasslauncher.mods.glasstech.blocks.machine.SlotLayout.GAUGE_LOCATION;

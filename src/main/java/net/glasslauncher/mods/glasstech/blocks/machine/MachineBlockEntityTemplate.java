@@ -1,6 +1,5 @@
 package net.glasslauncher.mods.glasstech.blocks.machine;
 
-import lombok.Getter;
 import net.danygames2014.nyalib.block.DropInventoryOnBreak;
 import net.danygames2014.nyalib.capability.CapabilityHelper;
 import net.danygames2014.nyalib.capability.item.energyhandler.EnergyStorageItemCapability;

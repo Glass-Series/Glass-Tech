@@ -1,20 +1,9 @@
 package net.glasslauncher.mods.glasstech;
 
-import com.mojang.serialization.Lifecycle;
-import it.unimi.dsi.fastutil.ints.Int2IntMap;
-import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.*;
-import lombok.val;
+import it.unimi.dsi.fastutil.objects.Reference2IntMap;
+import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
 import net.danygames2014.nyalib.fluid.Fluid;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.modificationstation.stationapi.api.registry.*;
-import net.modificationstation.stationapi.api.tag.TagKey;
 import net.modificationstation.stationapi.api.util.API;
-
-import java.util.Map;
-import java.util.OptionalInt;
-import java.util.function.ToIntFunction;
 
 public class GeothermalFuelRegistry {
     private static final Reference2IntMap<Fluid> ITEM_FUEL_TIME = new Reference2IntOpenHashMap<>();

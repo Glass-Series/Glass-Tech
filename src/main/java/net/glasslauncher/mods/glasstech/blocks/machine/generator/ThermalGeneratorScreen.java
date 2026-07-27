@@ -1,6 +1,5 @@
 package net.glasslauncher.mods.glasstech.blocks.machine.generator;
 
-import net.glasslauncher.mods.glassguis.DrawDirection;
 import net.glasslauncher.mods.glasstech.blocks.machine.GeneratorScreenTemplate;
 import net.minecraft.entity.player.PlayerInventory;
 

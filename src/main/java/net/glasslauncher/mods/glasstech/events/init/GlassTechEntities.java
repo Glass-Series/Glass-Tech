@@ -7,7 +7,6 @@ import net.glasslauncher.mods.glasstech.entity.GTTntEntity;
 import net.glasslauncher.mods.glasstech.entity.renderer.GTTntEntityRenderer;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.modificationstation.stationapi.api.client.event.render.entity.EntityRendererRegisterEvent;
-import net.modificationstation.stationapi.api.client.registry.EntityHandlerRegistry;
 import net.modificationstation.stationapi.api.event.entity.EntityRegister;
 import net.modificationstation.stationapi.api.event.registry.EntityHandlerRegistryEvent;
 import net.modificationstation.stationapi.api.mod.entrypoint.EntrypointManager;

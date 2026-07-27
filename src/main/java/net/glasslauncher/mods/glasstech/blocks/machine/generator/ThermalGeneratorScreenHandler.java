@@ -2,8 +2,6 @@ package net.glasslauncher.mods.glasstech.blocks.machine.generator;
 
 import net.glasslauncher.mods.glasstech.blocks.machine.GeneratorScreenHandlerTemplate;
 import net.glasslauncher.mods.glasstech.gui.BatteryChargeSlot;
-import net.glasslauncher.mods.glasstech.gui.FuelSlot;
-import net.glasslauncher.mods.glasstech.gui.FullBucketSlot;
 import net.glasslauncher.mods.glasstech.gui.GeothermalBucketSlot;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.screen.slot.FurnaceOutputSlot;

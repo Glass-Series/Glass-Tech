@@ -2,11 +2,7 @@ package net.glasslauncher.mods.glasstech.blocks.machine;
 
 import lombok.Getter;
 import net.glasslauncher.mods.glasstech.VoltageTier;
-import net.glasslauncher.mods.glasstech.recipe.machine.output.RecipeOutputType;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-
-import java.util.ArrayList;
 
 public abstract class ProgressMachineBlockEntityTemplate extends MachineBlockEntityTemplate {
 

@@ -6,16 +6,13 @@ import net.glasslauncher.mods.alwaysmoreitems.api.event.AMITooltipEvent;
 import net.glasslauncher.mods.alwaysmoreitems.gui.Tooltip;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.glasslauncher.mods.glasstech.blocks.GTTooltipInfo;
-import net.glasslauncher.mods.glasstech.blocks.machine.EnergySourceConsumerBlockEntityTemplate;
 import net.glasslauncher.mods.glasstech.blocks.machine.EnergySourceConsumerBlockTemplate;
-import net.glasslauncher.mods.glasstech.blocks.machine.MachineBlockEntityTemplate;
 import net.glasslauncher.mods.glasstech.blocks.machine.MachineBlockTemplate;
 import net.glasslauncher.mods.glasstech.item.PainterItem;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.item.BlockItem;
-import net.modificationstation.stationapi.api.client.event.gui.screen.container.TooltipBuildEvent;
 
 import java.awt.*;
 

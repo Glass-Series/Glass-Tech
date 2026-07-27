@@ -1,8 +1,6 @@
 package net.glasslauncher.mods.glasstech.blocks;
 
 import net.minecraft.block.Block;
-import net.modificationstation.stationapi.api.registry.BlockRegistry;
-import net.modificationstation.stationapi.api.registry.ItemRegistry;
 import net.modificationstation.stationapi.api.template.block.TemplateLogBlock;
 import net.modificationstation.stationapi.api.util.Identifier;
 

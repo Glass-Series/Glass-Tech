@@ -1,19 +1,10 @@
 package net.glasslauncher.mods.glasstech.blocks.machine;
 
-import lombok.Getter;
-import lombok.Setter;
 import net.glasslauncher.mods.glasstech.VoltageTier;
-import net.glasslauncher.mods.glasstech.blocks.machine.generator.DynamoComponent;
-import net.minecraft.block.FurnaceBlock;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.modificationstation.stationapi.api.block.BlockState;
-import net.modificationstation.stationapi.api.state.property.Properties;
-import net.modificationstation.stationapi.api.util.math.Direction;
-
-import static net.modificationstation.stationapi.api.state.property.Properties.HORIZONTAL_FACING;
 
 public abstract class GeneratorWithInventoryBlockEntityTemplate extends GeneratorBlockEntityTemplate implements Inventory {
 

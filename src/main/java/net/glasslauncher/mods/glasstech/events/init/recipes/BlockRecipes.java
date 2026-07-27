@@ -1,6 +1,5 @@
 package net.glasslauncher.mods.glasstech.events.init.recipes;
 
-import net.glasslauncher.mods.glasstech.events.init.GlassTechItems;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

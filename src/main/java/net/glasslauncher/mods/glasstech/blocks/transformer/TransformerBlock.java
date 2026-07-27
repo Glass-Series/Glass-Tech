@@ -1,7 +1,6 @@
 package net.glasslauncher.mods.glasstech.blocks.transformer;
 
 import lombok.SneakyThrows;
-import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.glasslauncher.mods.glasstech.blocks.machine.PowerStorageBlockTemplate;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.material.Material;

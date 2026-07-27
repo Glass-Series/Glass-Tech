@@ -1,7 +1,6 @@
 package net.glasslauncher.mods.glasstech.events.init;
 
 import com.mojang.datafixers.util.Either;
-import net.glasslauncher.mods.glasstech.GlassTech;
 import net.glasslauncher.mods.glasstech.MachineRecipeIdentifier;
 import net.glasslauncher.mods.glasstech.blocks.FoamColor;
 import net.glasslauncher.mods.glasstech.events.init.recipes.*;

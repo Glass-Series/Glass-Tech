@@ -1,8 +1,5 @@
 package net.glasslauncher.mods.glasstech.blocks;
 
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
-import net.modificationstation.stationapi.api.state.property.EnumProperty;
 import net.modificationstation.stationapi.api.util.StringIdentifiable;
 
 // I hate making new color objects like this but I gotta have easy reading of the colors

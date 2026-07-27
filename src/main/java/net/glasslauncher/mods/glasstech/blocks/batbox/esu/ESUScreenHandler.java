@@ -1,6 +1,5 @@
 package net.glasslauncher.mods.glasstech.blocks.batbox.esu;
 
-import net.glasslauncher.mods.glasstech.blocks.batbox.BatBoxBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.EnergySourceConsumerScreenHandlerTemplate;
 import net.glasslauncher.mods.glasstech.gui.BatteryChargeSlot;
 import net.glasslauncher.mods.glasstech.gui.BatterySlot;
