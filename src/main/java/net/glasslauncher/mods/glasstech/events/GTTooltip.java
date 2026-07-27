@@ -5,7 +5,9 @@ import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.glasslauncher.mods.alwaysmoreitems.api.event.AMITooltipEvent;
 import net.glasslauncher.mods.alwaysmoreitems.gui.Tooltip;
 import net.glasslauncher.mods.glasstech.VoltageTier;
+import net.glasslauncher.mods.glasstech.WireMaterial;
 import net.glasslauncher.mods.glasstech.blocks.GTTooltipInfo;
+import net.glasslauncher.mods.glasstech.blocks.TemplateCableBlock;
 import net.glasslauncher.mods.glasstech.blocks.machine.EnergySourceConsumerBlockTemplate;
 import net.glasslauncher.mods.glasstech.blocks.machine.MachineBlockTemplate;
 import net.glasslauncher.mods.glasstech.item.PainterItem;
@@ -41,6 +43,12 @@ public class GTTooltip {
                 event.tooltip.add(Tooltip.Line.create(new Tooltip.Text("Voltage Tier: "), new Tooltip.Text(voltageTier.name(), Tooltip.Alignment.TOP_LEFT, new Color(voltageTier.color))));
                 event.tooltip.add("Max Amperage: " + amperage);
             }
+        }
+        else if (event.itemStack.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof TemplateCableBlock cableBlock) {
+            WireMaterial wireMaterial = cableBlock.wireMaterial;
+            event.tooltip.add(Tooltip.Line.create(new Tooltip.Text("Voltage Tier: "), new Tooltip.Text(wireMaterial.voltageTier.name(), Tooltip.Alignment.TOP_LEFT, new Color(wireMaterial.voltageTier.color))));
+            event.tooltip.add("Max Amperage: " + wireMaterial.amperage);
+            event.tooltip.add("Power Loss: " + wireMaterial.lossPerBlock + "eu/b");
         }
         else if (event.itemStack.getItem() instanceof PainterItem) {
             String color = event.itemStack.getStationNbt().getString("color");
