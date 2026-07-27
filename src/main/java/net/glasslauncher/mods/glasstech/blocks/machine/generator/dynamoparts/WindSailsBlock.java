@@ -10,16 +10,20 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.block.BlockState;
+import net.modificationstation.stationapi.api.block.HasCustomBlockItemFactory;
 import net.modificationstation.stationapi.api.client.item.CustomTooltipProvider;
 import net.modificationstation.stationapi.api.item.ItemPlacementContext;
 import net.modificationstation.stationapi.api.state.StateManager;
 import net.modificationstation.stationapi.api.state.property.Properties;
 import net.modificationstation.stationapi.api.template.block.TemplateBlockWithEntity;
+import net.modificationstation.stationapi.api.template.item.TemplateBlockItem;
+import net.modificationstation.stationapi.api.template.item.TemplateItem;
 import net.modificationstation.stationapi.api.util.Formatting;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.math.Direction;
 import org.jetbrains.annotations.NotNull;
 
+@HasCustomBlockItemFactory(WindSailsBlock.WindSailsBlockItem.class)
 @DynamoComponentBlock
 public class WindSailsBlock extends TemplateBlockWithEntity implements CustomTooltipProvider {
     public WindSailsBlock(Identifier identifier, Material material) {
@@ -76,5 +80,12 @@ public class WindSailsBlock extends TemplateBlockWithEntity implements CustomToo
                 originalTooltip,
                 Formatting.RED + "Requires an empty 15x15 area to work!"
         };
+    }
+
+    public static class WindSailsBlockItem extends TemplateBlockItem {
+        public WindSailsBlockItem(int i) {
+            super(i);
+            setMaxCount(2);
+        }
     }
 }
