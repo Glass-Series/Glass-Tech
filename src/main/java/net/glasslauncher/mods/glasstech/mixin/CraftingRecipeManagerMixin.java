@@ -1,6 +1,7 @@
 package net.glasslauncher.mods.glasstech.mixin;
 
 import net.glasslauncher.mods.glasstech.GlassTech;
+import net.glasslauncher.mods.glasstech.MachineRecipeIdentifier;
 import net.minecraft.recipe.CraftingRecipeManager;
 import net.modificationstation.stationapi.api.StationAPI;
 import net.modificationstation.stationapi.api.event.recipe.RecipeRegisterEvent;
@@ -15,15 +16,16 @@ public class CraftingRecipeManagerMixin {
 
     @Inject(method = "<init>", at = @At("RETURN"))
     private void initMachineRegistries(CallbackInfo ci) {
-        postRecipes("macerator");
-        postRecipes("compressor");
-        postRecipes("canner");
-        postRecipes("electrolyzer");
-        postRecipes("extractor");
+        postRecipes(MachineRecipeIdentifier.MACERATOR);
+        postRecipes(MachineRecipeIdentifier.COMPRESSOR);
+        postRecipes(MachineRecipeIdentifier.CANNER);
+        postRecipes(MachineRecipeIdentifier.ELECTROLYZER);
+        postRecipes(MachineRecipeIdentifier.EXTRACTOR);
+        postRecipes(MachineRecipeIdentifier.GEOTHERMAL);
     }
 
     @Unique
-    private void postRecipes(String id) {
-        StationAPI.EVENT_BUS.post(RecipeRegisterEvent.builder().recipeId(GlassTech.NAMESPACE.id(id)).build());
+    private void postRecipes(MachineRecipeIdentifier id) {
+        StationAPI.EVENT_BUS.post(RecipeRegisterEvent.builder().recipeId(id.identifier).build());
     }
 }

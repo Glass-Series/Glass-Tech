@@ -18,10 +18,7 @@ import net.glasslauncher.mods.glasstech.blocks.machine.electrolyzer.Electrolyzer
 import net.glasslauncher.mods.glasstech.blocks.machine.electrolyzer.ElectrolyzerScreen;
 import net.glasslauncher.mods.glasstech.blocks.machine.extractor.ExtractorBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.extractor.ExtractorScreen;
-import net.glasslauncher.mods.glasstech.blocks.machine.generator.GeneratorBlockEntity;
-import net.glasslauncher.mods.glasstech.blocks.machine.generator.GeneratorScreen;
-import net.glasslauncher.mods.glasstech.blocks.machine.generator.DynamoBlockEntity;
-import net.glasslauncher.mods.glasstech.blocks.machine.generator.DynamoScreen;
+import net.glasslauncher.mods.glasstech.blocks.machine.generator.*;
 import net.glasslauncher.mods.glasstech.blocks.machine.generator.dynamoparts.WindSailsBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.inductionfurnace.InductionFurnaceBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.inductionfurnace.InductionFurnaceScreen;
@@ -78,6 +75,7 @@ public class GlassTechClient {
     @EventListener
     private static void screenInit(GuiHandlerRegistryEvent event) {
         event.register(NAMESPACE.id("generator"), new GuiHandler((player, inventory, packet) -> new GeneratorScreen(player.inventory, (GeneratorBlockEntity) inventory), GeneratorBlockEntity::new));
+        event.register(NAMESPACE.id("thermal_generator"), new GuiHandler((player, inventory, packet) -> new ThermalGeneratorScreen(player.inventory, (ThermalGeneratorBlockEntity) inventory), ThermalGeneratorBlockEntity::new));
         event.register(NAMESPACE.id("dynamo"), new GuiHandler((player, inventory, packet) -> new DynamoScreen(player.inventory, (DynamoBlockEntity) inventory), DynamoBlockEntity::new));
 
         event.register(NAMESPACE.id("compressor"), new GuiHandler((player, inventory, packet) -> new CompressorScreen(player.inventory, (CompressorBlockEntity) inventory), CompressorBlockEntity::new));

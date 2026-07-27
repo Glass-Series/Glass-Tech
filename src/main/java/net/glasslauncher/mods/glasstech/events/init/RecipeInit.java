@@ -2,6 +2,7 @@ package net.glasslauncher.mods.glasstech.events.init;
 
 import com.mojang.datafixers.util.Either;
 import net.glasslauncher.mods.glasstech.GlassTech;
+import net.glasslauncher.mods.glasstech.MachineRecipeIdentifier;
 import net.glasslauncher.mods.glasstech.blocks.FoamColor;
 import net.glasslauncher.mods.glasstech.events.init.recipes.*;
 import net.glasslauncher.mods.glasstech.recipe.PainterRecipe;
@@ -28,23 +29,28 @@ public class RecipeInit {
             ItemStack painterStack = new ItemStack(GlassTechItems.painter);
             //noinspection unchecked
             List<Object> recipes = CraftingRecipeManager.getInstance().getRecipes();
+            //noinspection unchecked
             recipes.add(new PainterRecipe(painterStack, new Either[]{Either.right(new ItemStack(Item.DYE, 1, -1)), Either.right(new ItemStack(GlassTechItems.painter, 1, -1))}));
+            //noinspection unchecked
             recipes.add(new PainterRecipe(painterStack, new Either[]{Either.right(new ItemStack(Block.WOOL, 1, -1)), Either.right(new ItemStack(GlassTechItems.painter, 1, -1))}));
         }
-        else if (event.recipeId.equals(GlassTech.NAMESPACE.id("macerator"))) {
+        else if (event.recipeId.equals(MachineRecipeIdentifier.MACERATOR.identifier)) {
             MaceratorRecipes.initRecipes();
         }
-        else if (event.recipeId.equals(GlassTech.NAMESPACE.id("compressor"))) {
+        else if (event.recipeId.equals(MachineRecipeIdentifier.COMPRESSOR.identifier)) {
             CompressorRecipes.initRecipes();
         }
-        else if (event.recipeId.equals(GlassTech.NAMESPACE.id("canner"))) {
+        else if (event.recipeId.equals(MachineRecipeIdentifier.CANNER.identifier)) {
             CannerRecipes.initRecipes();
         }
-        else if (event.recipeId.equals(GlassTech.NAMESPACE.id("electrolyzer"))) {
+        else if (event.recipeId.equals(MachineRecipeIdentifier.ELECTROLYZER.identifier)) {
             ElectrolyzerRecipes.initRecipes();
         }
-        else if (event.recipeId.equals(GlassTech.NAMESPACE.id("extractor"))) {
+        else if (event.recipeId.equals(MachineRecipeIdentifier.EXTRACTOR.identifier)) {
             ExtractorRecipes.initRecipes();
+        }
+        else if (event.recipeId.equals(MachineRecipeIdentifier.GEOTHERMAL.identifier)) {
+            GeothermalFuels.initFuels();
         }
         else if (event.recipeId.equals(RecipeRegisterEvent.Vanilla.SMELTING.type())) {
             SmeltingRecipes.initRecipes();

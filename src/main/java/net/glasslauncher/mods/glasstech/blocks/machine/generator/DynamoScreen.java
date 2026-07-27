@@ -11,10 +11,7 @@ public class DynamoScreen extends GeneratorScreenTemplate<DynamoBlockEntity> {
     }
 
     @Override
-    public void drawMachineForeground(float tickDelta) {
-        drawGauge();
-
-//        glassguis_drawImage(this, "/assets/glasstech/stationapi/textures/gui/flame_bg.png", 81, 41);
-//        glassguis_drawImagePercentage(this, "/assets/glasstech/stationapi/textures/gui/flame_fg.png", 80, 40, blockEntity.getInitialFuelTicks() <= 0 ? 0 : blockEntity.getFuelTicks() / (float) blockEntity.getInitialFuelTicks(), DrawDirection.UP);
+    public void drawMachineForeground(float tickDelta, int mouseX, int mouseY) {
+        drawGauge(mouseX, mouseY);
     }
 }

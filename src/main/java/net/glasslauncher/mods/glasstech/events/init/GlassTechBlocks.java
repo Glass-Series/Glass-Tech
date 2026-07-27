@@ -21,10 +21,7 @@ import net.glasslauncher.mods.glasstech.blocks.machine.electrolyzer.Electrolyzer
 import net.glasslauncher.mods.glasstech.blocks.machine.electrolyzer.ElectrolyzerBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.extractor.ExtractorBlock;
 import net.glasslauncher.mods.glasstech.blocks.machine.extractor.ExtractorBlockEntity;
-import net.glasslauncher.mods.glasstech.blocks.machine.generator.GeneratorBlock;
-import net.glasslauncher.mods.glasstech.blocks.machine.generator.GeneratorBlockEntity;
-import net.glasslauncher.mods.glasstech.blocks.machine.generator.DynamoBlock;
-import net.glasslauncher.mods.glasstech.blocks.machine.generator.DynamoBlockEntity;
+import net.glasslauncher.mods.glasstech.blocks.machine.generator.*;
 import net.glasslauncher.mods.glasstech.blocks.machine.generator.dynamoparts.WaterWheelBlock;
 import net.glasslauncher.mods.glasstech.blocks.machine.generator.dynamoparts.WindSailsBlock;
 import net.glasslauncher.mods.glasstech.blocks.machine.generator.dynamoparts.WindSailsBlockEntity;
@@ -210,7 +207,7 @@ public class GlassTechBlocks {
         mvTransformerBlock = new TransformerBlock(NAMESPACE.id("mv_transformer"), Material.METAL, MVTransformerBlockEntity.class);
         hvTransformerBlock = new TransformerBlock(NAMESPACE.id("hv_transformer"), Material.METAL, HVTransformerBlockEntity.class);
 
-        thermalGeneratorBlock = new GTThermalGeneratorBlock(NAMESPACE.id("thermal_generator"));
+        thermalGeneratorBlock = new ThermalGeneratorBlock(NAMESPACE.id("thermal_generator"), Material.METAL);
         dynamoBlock = new DynamoBlock(NAMESPACE.id("dynamo"), Material.METAL);
         solarGeneratorBlock = new GTSolarPanelBlock(NAMESPACE.id("solar_generator"));
 
@@ -238,6 +235,7 @@ public class GlassTechBlocks {
     @EventListener
     private static void tileEntityInit(BlockEntityRegisterEvent event) {
         event.register(GeneratorBlockEntity.class, NAMESPACE.id("generator").toString());
+        event.register(ThermalGeneratorBlockEntity.class, NAMESPACE.id("thermal_generator").toString());
         event.register(CompressorBlockEntity.class, NAMESPACE.id("compressor").toString());
         event.register(ElectricFurnaceBlockEntity.class, NAMESPACE.id("electric_furnace").toString());
         event.register(InductionFurnaceBlockEntity.class, NAMESPACE.id("induction_furnace").toString());
