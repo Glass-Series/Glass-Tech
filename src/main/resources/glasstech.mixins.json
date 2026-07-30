@@ -4,6 +4,7 @@
   "package": "net.glasslauncher.mods.glasstech.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "ArsenicOverlayRendererMixin",
     "CraftingRecipeManagerMixin",
     "CraftingResultSlotMixin",
     "TooltipHelperMixin"
@@ -11,7 +12,8 @@
   "server": [
   ],
   "client": [
-    "InGameHudMixin"
+    "InGameHudMixin",
+    "ItemRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

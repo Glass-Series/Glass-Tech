@@ -1,8 +1,11 @@
 package net.glasslauncher.mods.glasstech.blocks.machine.generator.dynamoparts;
 
+import net.glasslauncher.mods.glassguis.screen.ServerSyncedField;
+import net.glasslauncher.mods.glasstech.GTProperties;
 import net.glasslauncher.mods.glasstech.blocks.machine.generator.DynamoComponent;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.nbt.NbtCompound;
+import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.util.math.Direction;
 
 import static net.modificationstation.stationapi.api.state.property.Properties.HORIZONTAL_FACING;
@@ -10,23 +13,28 @@ import static net.modificationstation.stationapi.api.state.property.Properties.H
 public class WindSailsBlockEntity extends BlockEntity implements DynamoComponent {
     public float rot;
     public int ticks = 0;
-    public boolean hasAir = false;
     public float brightness = 0;
-    public Direction wheelDir;
-    public float[] color = {1, 1, 1};
+    public int wheelDir = -1;
+    @ServerSyncedField
+    public float red = 1;
+    @ServerSyncedField
+    public float green = 1;
+    @ServerSyncedField
+    public float blue = 1;
     public boolean showScan = false;
 
     @Override
     public void tick() {
-        Direction dir = world.getBlockState(x, y, z).get(HORIZONTAL_FACING);
-        if (wheelDir == null) {
-            wheelDir = dir;
+        BlockState state = world.getBlockState(x, y, z);
+        Direction dir = state.get(HORIZONTAL_FACING);
+        if (wheelDir == -1) {
+            wheelDir = dir.getId();
         }
 
         brightness = world.method_1782(x, y, z);
 
-        if (ticks % 20 == 0) {
-            hasAir = true;
+        if (!world.isRemote && ticks % 20 == 0) {
+            boolean hasAir = true;
             for (int x = 0; x < 15; x++) {
                 for (int y = 0; y < 15; y++) {
                     if (x == 7 && y == 7) {
@@ -39,9 +47,9 @@ public class WindSailsBlockEntity extends BlockEntity implements DynamoComponent
                             world.addParticle("smoke", (this.x - 7) + x, (this.y - 7) + y, this.z, 0, 0, 0);
                         }
                     } else {
-                        blockId = world.getBlockId(this.x, (this.y - 7), (this.z - 7) + x);
+                        blockId = world.getBlockId(this.x, (this.y - 7) + y, (this.z - 7) + x);
                         if (showScan) {
-                            world.addParticle("smoke", this.x, (this.y - 7), (this.z - 7) + x, 0, 0, 0);
+                            world.addParticle("smoke", this.x, (this.y - 7) + y, (this.z - 7) + x, 0, 0, 0);
                         }
                     }
                     if (blockId != 0) {
@@ -53,6 +61,9 @@ public class WindSailsBlockEntity extends BlockEntity implements DynamoComponent
                     break;
                 }
             }
+            if (state.get(GTProperties.HAS_AIR) != hasAir) {
+                world.setBlockStateWithNotify(x, y, z, state.with(GTProperties.HAS_AIR, hasAir ? Boolean.TRUE : Boolean.FALSE));
+            }
         }
         rot = ticks % 360;
 
@@ -61,7 +72,10 @@ public class WindSailsBlockEntity extends BlockEntity implements DynamoComponent
 
     @Override
     public boolean isGenerating() {
-        return hasAir;
+        if (world == null) {
+            return false;
+        }
+        return world.getBlockState(x, y, z).get(GTProperties.HAS_AIR);
     }
 
     @Override
@@ -77,16 +91,16 @@ public class WindSailsBlockEntity extends BlockEntity implements DynamoComponent
     @Override
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
-        color[0] = nbt.getFloat("color1");
-        color[1] = nbt.getFloat("color2");
-        color[2] = nbt.getFloat("color3");
+        red = nbt.getFloat("color1");
+        green = nbt.getFloat("color2");
+        blue = nbt.getFloat("color3");
     }
 
     @Override
     public void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
-        nbt.putFloat("color1", color[0]);
-        nbt.putFloat("color2", color[1]);
-        nbt.putFloat("color3", color[2]);
+        nbt.putFloat("color1", red);
+        nbt.putFloat("color2", green);
+        nbt.putFloat("color3", blue);
     }
 }

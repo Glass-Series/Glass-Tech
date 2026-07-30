@@ -5,7 +5,6 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
-import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.util.math.Direction;
 import org.lwjgl.opengl.GL11;
 
@@ -15,6 +14,13 @@ public class WindSailsBlockEntityRenderer extends BlockEntityRenderer {
     public static float NOTCH_MAGIC_SCALE_NUMBER = 0.0625F;
 
     public ModelPart[] windSailsParts;
+
+    private static final WindSailsBlockEntity dummySailsEntity = new WindSailsBlockEntity();
+
+    static {
+        dummySailsEntity.wheelDir = Direction.NORTH.getId();
+        dummySailsEntity.brightness = 1f;
+    }
 
     public WindSailsBlockEntityRenderer() {
         // Partly stolen from btw
@@ -38,14 +44,24 @@ public class WindSailsBlockEntityRenderer extends BlockEntityRenderer {
         }
     }
 
+    public void setBrightness(float brightness) {
+        dummySailsEntity.brightness = brightness;
+    }
+
     @Override
     public void render(BlockEntity blockEntity, double x, double y, double z, float tickDelta) {
         WindSailsBlockEntity sailsEntity = (WindSailsBlockEntity) blockEntity;
-        BlockState state = dispatcher.world.getBlockState(blockEntity.x, blockEntity.y, blockEntity.z);
         GL11.glPushMatrix();
         GL11.glTranslated(x + 0.5, y + 0.5, z + 0.5);
-        GL11.glRotatef(sailsEntity.wheelDir.getAxis() == Direction.Axis.Z ? sailsEntity.wheelDir.getOpposite().asRotation() : sailsEntity.wheelDir.asRotation(), 0, 1, 0);
-        if (sailsEntity.hasAir) {
+        if (sailsEntity == null) {
+            // I should probably find a better way of handling this in the inventory, buuut this works for now
+            sailsEntity = dummySailsEntity;
+            GL11.glRotatef(210.0F, 1.0F, 0.0F, 0.0F);
+            GL11.glRotatef(45.0F, 0.0F, 1.0F, 0.0F);
+        }
+        Direction dir = Direction.byId(sailsEntity.wheelDir);
+        GL11.glRotatef(dir.getAxis() == Direction.Axis.Z ? dir.getOpposite().asRotation() : dir.asRotation(), 0, 1, 0);
+        if (sailsEntity.isGenerating()) {
             GL11.glRotatef(sailsEntity.rot + tickDelta, 0, 0, -1);
         }
         GL11.glColor4d(1, 1, 1, 1);
@@ -61,8 +77,7 @@ public class WindSailsBlockEntityRenderer extends BlockEntityRenderer {
         windSailsParts[8].render(NOTCH_MAGIC_SCALE_NUMBER); // center bit
 
         Minecraft.INSTANCE.textureManager.bindTexture(Minecraft.INSTANCE.textureManager.getTextureId("/assets/glasstech/stationapi/textures/block/wind_sails.png"));
-        float[] color = sailsEntity.color;
-        GL11.glColor3f(blockBrightness * color[0], blockBrightness * color[1], blockBrightness * color[2]);
+        GL11.glColor3f(blockBrightness * sailsEntity.red, blockBrightness * sailsEntity.green, blockBrightness * sailsEntity.blue);
         for (int partIndex = 4; partIndex < 8; partIndex++) {
             windSailsParts[partIndex].render(NOTCH_MAGIC_SCALE_NUMBER);
         }
