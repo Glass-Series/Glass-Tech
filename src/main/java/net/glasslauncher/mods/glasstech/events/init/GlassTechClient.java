@@ -247,7 +247,6 @@ public class GlassTechClient {
         GlassTechItems.bioCell.setTexture(NAMESPACE.id("item/resource/bio_cell"));
         GlassTechItems.coalfuelCell.setTexture(NAMESPACE.id("item/resource/coalfuel_cell"));
         GlassTechItems.compressedHydratedCoalDust.setTexture(NAMESPACE.id("item/resource/compressed_hydrated_coal"));
-        GlassTechItems.rubberSapling.setTexture(NAMESPACE.id("item/resource/rubber_sapling"));
         GlassTechItems.reinforcedDoor.setTexture(NAMESPACE.id("item/reinforced_door"));
         GlassTechItems.biofuelCell.setTexture(NAMESPACE.id("item/resource/biofuel_cell"));
         GlassTechItems.fullFuelCan.setTexture(NAMESPACE.id("item/resource/full_fuel_can"));
@@ -263,6 +262,8 @@ public class GlassTechClient {
         GlassTechItems.compositeChestplate.setTexture(NAMESPACE.id("item/armor/composite_chestplate"));
         GlassTechItems.treeTap.setTexture(NAMESPACE.id("item/tool/tree_tap"));
 
+        GlassTechBlocks.rubberSaplingBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/rubber_sapling")).index;
+        GlassTechBlocks.rubberSaplingBlock.asItem().setTextureId(GlassTechBlocks.rubberSaplingBlock.textureId);
         GlassTechBlocks.rubberLeavesBlock.textureId = 52;
         GlassTechBlocks.rubberLeavesBlock.fastTextureId = 53;
     }

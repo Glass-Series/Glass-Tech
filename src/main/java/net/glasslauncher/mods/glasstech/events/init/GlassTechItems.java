@@ -118,7 +118,6 @@ public class GlassTechItems {
     public static Item coalfuelCell;
     public static Item compressedHydratedCoalDust;
 
-    public static Item rubberSapling;
     public static Item reinforcedDoor;
 
     public static Item biofuelCell;
@@ -236,7 +235,6 @@ public class GlassTechItems {
         bioCell = new TemplateItem(NAMESPACE.id("bio_cell")).setTranslationKey(NAMESPACE.id("bio_cell"));
         coalfuelCell = new TemplateItem(NAMESPACE.id("coalfuel_cell")).setTranslationKey(NAMESPACE.id("coalfuel_cell"));
         compressedHydratedCoalDust = new TemplateItem(NAMESPACE.id("compressed_hydrated_coal_dust")).setTranslationKey(NAMESPACE.id("compressed_hydrated_coal_dust"));
-        rubberSapling = new TemplateItem(NAMESPACE.id("rubber_sapling")).setTranslationKey(NAMESPACE.id("rubber_sapling"));
         reinforcedDoor = new GTDoorBlock.GTDoorItem(NAMESPACE.id("reinforced_door"), Material.METAL, GlassTechBlocks.reinforcedDoorBlock).setTranslationKey(NAMESPACE.id("reinforced_door"));
         biofuelCell = new TemplateItem(NAMESPACE.id("biofuel_cell")).setTranslationKey(NAMESPACE.id("biofuel_cell"));
         fullFuelCan = new TemplateItem(NAMESPACE.id("full_fuel_can")).setTranslationKey(NAMESPACE.id("full_fuel_can"));

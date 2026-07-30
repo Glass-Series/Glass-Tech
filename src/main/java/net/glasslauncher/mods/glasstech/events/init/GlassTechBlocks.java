@@ -238,7 +238,7 @@ public class GlassTechBlocks {
         sealedPlanksBlock = new TemplateBlock(NAMESPACE.id("sealed_planks"), Material.WOOD).setTranslationKey(NAMESPACE.id("sealed_planks")).setSoundGroup(WOOD_SOUND_GROUP).setHardness(2.0F).setResistance(5.0F);
         rubberLogBlock = new RubberLogBlock(NAMESPACE.id("rubber_log"));
         rubberLeavesBlock = new RubberLeavesBlock(NAMESPACE.id("rubber_leaves"));
-        rubberSaplingBlock = new RubberSaplingBlock(NAMESPACE.id("rubber_sapling_block"));
+        rubberSaplingBlock = new RubberSaplingBlock(NAMESPACE.id("rubber_sapling"));
     }
 
     @EventListener

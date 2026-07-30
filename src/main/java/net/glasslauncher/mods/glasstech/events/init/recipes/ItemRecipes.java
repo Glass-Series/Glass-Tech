@@ -63,7 +63,7 @@ public class ItemRecipes {
 
     private static void plantBall() {
         addN(plantBall, 2, "PPP", "P P", "PPP", 'P', Block.SAPLING);
-        addN(plantBall, 2, "PPP", "P P", "PPP", 'P', rubberSapling);
+        addN(plantBall, 2, "PPP", "P P", "PPP", 'P', rubberSaplingBlock);
         addN(plantBall, 1, "PPP", "P P", "PPP", 'P', Item.WHEAT);
         addN(plantBall, 1, "PPP", "P P", "PPP", 'P', Item.SUGAR_CANE);
         addN(plantBall, 1, "PPP", "P P", "PPP", 'P', Block.CACTUS);

@@ -22,6 +22,7 @@ public class RubberSaplingBlock extends TemplateSaplingBlock {
 
     public RubberSaplingBlock(Identifier identifier) {
         super(identifier, 0);
+        setSoundGroup(DIRT_SOUND_GROUP);
     }
 
     @Override
