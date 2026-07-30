@@ -13,6 +13,8 @@ accessible field net/minecraft/client/gui/screen/ingame/HandledScreen background
 accessible field net/minecraft/client/gui/screen/ingame/HandledScreen backgroundHeight I
 accessible method net/minecraft/client/gui/screen/ingame/HandledScreen getSlotAt (II)Lnet/minecraft/screen/slot/Slot;
 
+accessible method net/minecraft/block/Block getDroppedItemMeta (I)I
+
 accessible field net/minecraft/screen/slot/Slot inventory Lnet/minecraft/inventory/Inventory;
 
 accessible method net/minecraft/block/BlockWithEntity createBlockEntity ()Lnet/minecraft/block/entity/BlockEntity;
