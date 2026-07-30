@@ -1,9 +1,6 @@
 package net.glasslauncher.mods.glasstech.blocks.machine.pump;
 
-import net.danygames2014.nyalib.fluid.Fluid;
-import net.danygames2014.nyalib.fluid.FluidBucket;
-import net.danygames2014.nyalib.fluid.FluidRegistry;
-import net.danygames2014.nyalib.fluid.FluidStack;
+import net.danygames2014.nyalib.fluid.*;
 import net.danygames2014.nyalib.fluid.block.FluidHandler;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.glasslauncher.mods.glasstech.blocks.machine.ProgressMachineBlockEntityTemplate;
@@ -35,10 +32,10 @@ public class PumpBlockEntity extends ProgressMachineBlockEntityTemplate implemen
     public void tick() {
         super.tick();
         ItemStack stack = getInput(0);
-        if (stack != null && stack.getItem() instanceof FluidBucket bucket && bucket.getFluid() == null && currentFluid != null && currentFluid.fluid != null && currentFluid.fluid.getBucketSize() <= currentFluid.amount) {
+        if (stack != null && stack.getItem() instanceof FluidBucket bucket && bucket.getFluid() == null && currentFluid != null && currentFluid.fluid != null && Fluids.BUCKET_SIZE <= currentFluid.amount) {
             Item fullBucket = bucket.getFullBucketItem(currentFluid.fluid);
             if (pushOutput(RecipeOutputType.PRIMARY, new ItemStack(fullBucket), false)) {
-                currentFluid.amount -= currentFluid.fluid.getBucketSize();
+                currentFluid.amount -= Fluids.BUCKET_SIZE;
                 stack.count--;
                 if (stack.count <= 0) {
                     setInput(0, null);
@@ -51,23 +48,23 @@ public class PumpBlockEntity extends ProgressMachineBlockEntityTemplate implemen
     public void craftRecipe() {
         BlockState state = world.getBlockState(x, y - 1, z);
         Fluid fluid = FluidRegistry.get(state.getBlock().id);
-        if (fluid == null || (currentFluid != null && (fluid != currentFluid.fluid || currentFluid.amount + fluid.getBucketSize() > maxFluidAmount))) {
+        if (fluid == null || (currentFluid != null && (fluid != currentFluid.fluid || currentFluid.amount + Fluids.BUCKET_SIZE > maxFluidAmount))) {
             return;
         }
 
         world.setBlock(x, y - 1, z, 0);
         if (currentFluid == null) {
-            currentFluid = new FluidStack(fluid, fluid.getBucketSize());
+            currentFluid = new FluidStack(fluid, Fluids.BUCKET_SIZE);
         }
         else {
-            currentFluid.amount += fluid.getBucketSize();
+            currentFluid.amount += Fluids.BUCKET_SIZE;
         }
         progress = 0;
     }
 
     @Override
     public boolean canProcess() {
-        return (currentFluid == null || !(maxFluidAmount - 1000 < currentFluid.amount)) && FluidRegistry.get(world.getBlockId(x, y - 1, z)) != null; // The fluid below is registered, go time
+        return (currentFluid == null || !(maxFluidAmount - Fluids.BUCKET_SIZE < currentFluid.amount)) && FluidRegistry.get(world.getBlockId(x, y - 1, z)) != null; // The fluid below is registered, go time
     }
 
     // Fluid handler stuff
@@ -152,11 +149,10 @@ public class PumpBlockEntity extends ProgressMachineBlockEntityTemplate implemen
     @Override
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
-        NbtCompound compound = nbt.getCompound("fluid");
-        if (compound == null) {
+        if (!nbt.contains("fluid")) {
             return;
         }
-        currentFluid = new FluidStack(compound);
+        currentFluid = new FluidStack(nbt.getCompound("fluid"));
     }
 
     @Override

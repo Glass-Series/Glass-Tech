@@ -70,7 +70,7 @@ public class GTScaffoldBlock extends GTTemplateBlock {
             world.scheduleBlockUpdate(x, y, z, id, 1);
         }
         else if (state != newState) {
-            world.setBlockStateWithNotify(x, y, z, newState);
+            world.setBlockState(x, y, z, newState);
         }
     }
 

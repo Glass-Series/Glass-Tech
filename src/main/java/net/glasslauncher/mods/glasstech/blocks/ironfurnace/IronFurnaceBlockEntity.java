@@ -74,7 +74,7 @@ public class IronFurnaceBlockEntity extends BlockEntity implements Inventory, It
                 didSomething = true;
                 BlockState state = world.getBlockState(x, y, z);
                 state = state.with(Properties.LIT, isBurning());
-                world.setBlockStateWithNotify(x, y, z, state);
+                world.setBlockState(x, y, z, state);
             }
         }
 

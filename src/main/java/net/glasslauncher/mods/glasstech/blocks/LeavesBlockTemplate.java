@@ -30,6 +30,7 @@ public class LeavesBlockTemplate extends TemplateBlock {
         setTickRandomly(true);
         setDefaultState(getDefaultState().with(LEAVES_DISTANCE, 0).with(PERSISTENT, false));
         setTranslationKey(identifier);
+        setHardness(0.2F);
     }
 
     @Override
@@ -90,7 +91,7 @@ public class LeavesBlockTemplate extends TemplateBlock {
 
         int prevDistance = state.get(LEAVES_DISTANCE);
         if (distance != prevDistance) {
-            world.setBlockState(x, y, z, state.with(LEAVES_DISTANCE, distance));
+            world.setBlockStateWithoutNotifyingNeighbors(x, y, z, state.with(LEAVES_DISTANCE, distance));
             for (Direction side : Direction.values()) {
                 if (world.getBlockState(x + side.getOffsetX(), y + side.getOffsetY(), z + side.getOffsetZ()).contains(LEAVES_DISTANCE)) {
                     updateDecay(world, x + side.getOffsetX(), y + side.getOffsetY(), z + side.getOffsetZ(), decay);
@@ -112,7 +113,7 @@ public class LeavesBlockTemplate extends TemplateBlock {
 
     public void decay(World world, int x, int y, int z) {
         int meta = world.getBlockMeta(x, y, z);
-        world.setBlockStateWithNotify(x, y, z, States.AIR.get());
+        world.setBlockState(x, y, z, States.AIR.get());
         this.dropStacks(world, x, y, z, meta);
     }
 
@@ -148,6 +149,7 @@ public class LeavesBlockTemplate extends TemplateBlock {
         return Block.LEAVES.isOpaque() ? fastTextureId : textureId;
     }
 
+    @Override
     public int getDroppedItemCount(Random random) {
         return random.nextInt(20) == 0 ? 1 : 0;
     }

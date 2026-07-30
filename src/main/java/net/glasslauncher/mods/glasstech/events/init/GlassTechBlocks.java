@@ -240,31 +240,31 @@ public class GlassTechBlocks {
 
     @EventListener
     private static void tileEntityInit(BlockEntityRegisterEvent event) {
-        event.register(GeneratorBlockEntity.class, NAMESPACE.id("generator").toString());
-        event.register(ThermalGeneratorBlockEntity.class, NAMESPACE.id("thermal_generator").toString());
-        event.register(CompressorBlockEntity.class, NAMESPACE.id("compressor").toString());
-        event.register(ElectricFurnaceBlockEntity.class, NAMESPACE.id("electric_furnace").toString());
-        event.register(InductionFurnaceBlockEntity.class, NAMESPACE.id("induction_furnace").toString());
-        event.register(MaceratorBlockEntity.class, NAMESPACE.id("macerator").toString());
-        event.register(CannerBlockEntity.class, NAMESPACE.id("canner").toString());
-        event.register(ElectrolyzerBlockEntity.class, NAMESPACE.id("electrolyzer").toString());
-        event.register(ExtractorBlockEntity.class, NAMESPACE.id("extractor").toString());
-        event.register(RecyclerBlockEntity.class, NAMESPACE.id("recycler").toString());
-        event.register(MinerBlockEntity.class, NAMESPACE.id("miner").toString());
-        event.register(PumpBlockEntity.class, NAMESPACE.id("pump").toString());
+        event.register(NAMESPACE.id("generator"), GeneratorBlockEntity.class);
+        event.register(NAMESPACE.id("thermal_generator"), ThermalGeneratorBlockEntity.class);
+        event.register(NAMESPACE.id("compressor"), CompressorBlockEntity.class);
+        event.register(NAMESPACE.id("electric_furnace"), ElectricFurnaceBlockEntity.class);
+        event.register(NAMESPACE.id("induction_furnace"), InductionFurnaceBlockEntity.class);
+        event.register(NAMESPACE.id("macerator"), MaceratorBlockEntity.class);
+        event.register(NAMESPACE.id("canner"), CannerBlockEntity.class);
+        event.register(NAMESPACE.id("electrolyzer"), ElectrolyzerBlockEntity.class);
+        event.register(NAMESPACE.id("extractor"), ExtractorBlockEntity.class);
+        event.register(NAMESPACE.id("recycler"), RecyclerBlockEntity.class);
+        event.register(NAMESPACE.id("miner"), MinerBlockEntity.class);
+        event.register(NAMESPACE.id("pump"), PumpBlockEntity.class);
 
-        event.register(IronFurnaceBlockEntity.class, NAMESPACE.id("iron_furnace").toString());
+        event.register(NAMESPACE.id("iron_furnace"), IronFurnaceBlockEntity.class);
 
-        event.register(LVTransformerBlockEntity.class, NAMESPACE.id("lv_transformer").toString());
-        event.register(MVTransformerBlockEntity.class, NAMESPACE.id("mv_transformer").toString());
-        event.register(HVTransformerBlockEntity.class, NAMESPACE.id("hv_transformer").toString());
+        event.register(NAMESPACE.id("lv_transformer"), LVTransformerBlockEntity.class);
+        event.register(NAMESPACE.id("mv_transformer"), MVTransformerBlockEntity.class);
+        event.register(NAMESPACE.id("hv_transformer"), HVTransformerBlockEntity.class);
 
-        event.register(BatBoxBlockEntity.class, NAMESPACE.id("battery_box").toString());
-        event.register(ESUBlockEntity.class, NAMESPACE.id("esu").toString());
-        event.register(MESUBlockEntity.class, NAMESPACE.id("mesu").toString());
+        event.register(NAMESPACE.id("battery_box"), BatBoxBlockEntity.class);
+        event.register(NAMESPACE.id("esu"), ESUBlockEntity.class);
+        event.register(NAMESPACE.id("mesu"), MESUBlockEntity.class);
 
-        event.register(DynamoBlockEntity.class, NAMESPACE.id("water_mill").toString());
-        event.register(WaterWheelBlockEntity.class, NAMESPACE.id("water_wheel").toString());
-        event.register(WindSailsBlockEntity.class, NAMESPACE.id("wind_sails").toString());
+        event.register(NAMESPACE.id("water_mill"), DynamoBlockEntity.class);
+        event.register(NAMESPACE.id("water_wheel"), WaterWheelBlockEntity.class);
+        event.register(NAMESPACE.id("wind_sails"), WindSailsBlockEntity.class);
     }
 }

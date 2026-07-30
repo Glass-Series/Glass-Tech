@@ -4,8 +4,8 @@ import java.net.URI
 
 plugins {
 	id("maven-publish")
-	id("fabric-loom") version "1.15.3"
-	id("babric-loom-extension") version "1.15.3"
+	id("fabric-loom") version "1.16.2"
+	id("babric-loom-extension") version "1.16.1"
 	id("resourceGen")
 }
 

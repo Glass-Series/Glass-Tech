@@ -66,9 +66,9 @@ public abstract class MachineBlockEntityTemplate extends ConsumerBlockEntityTemp
             BlockState blockState = world.getBlockState(this.x, this.y, this.z);
             if (blockState.contains(Properties.LIT)) {
                 if (!lit && blockState.get(Properties.LIT)) {
-                    world.setBlockStateWithNotify(this.x, this.y, this.z, blockState.with(Properties.LIT, false));
+                    world.setBlockState(this.x, this.y, this.z, blockState.with(Properties.LIT, false));
                 } else if (lit && !blockState.get(Properties.LIT)) {
-                    world.setBlockStateWithNotify(this.x, this.y, this.z, blockState.with(Properties.LIT, true));
+                    world.setBlockState(this.x, this.y, this.z, blockState.with(Properties.LIT, true));
                 }
             }
         }

@@ -54,7 +54,7 @@ public class PainterItem extends TemplateItem {
 
         if (state.contains(FOAM_COLOR)) {
             state = state.with(FOAM_COLOR, foamColor);
-            world.setBlockStateWithNotify(x, y, z, state);
+            world.setBlockState(x, y, z, state);
             world.playSound(player, "random.click", 0.5f, 1);
             stack.damage(1, player);
             if (stack.getDamage() == stack.getMaxDamage() - 1) {

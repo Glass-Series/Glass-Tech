@@ -116,7 +116,7 @@ public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComp
         super.neighborUpdate(world, x, y, z, id);
 
         FurnaceBlock.ignoreBlockRemoval = true;
-        world.setBlockStateWithNotify(x, y, z, updateModel(world, x, y, z));
+        world.setBlockState(x, y, z, updateModel(world, x, y, z));
         FurnaceBlock.ignoreBlockRemoval = false;
     }
 
@@ -224,7 +224,7 @@ public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComp
         for (int particle = 0; particle < 4; particle++) {
             ParticleHelper.addParticle(world, "smoke", pos.x + 0.5D + (world.random.nextDouble() - 0.5D), pos.y + 0.5D, pos.z + 0.5D + (world.random.nextDouble() - 0.5D));
         }
-        world.setBlockStateWithNotify(pos.x, pos.y, pos.z, States.AIR.get());
+        world.setBlockState(pos.x, pos.y, pos.z, States.AIR.get());
     }
 
     @Override

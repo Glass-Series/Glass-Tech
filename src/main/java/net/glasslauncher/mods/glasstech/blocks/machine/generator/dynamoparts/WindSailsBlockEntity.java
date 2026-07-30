@@ -62,7 +62,7 @@ public class WindSailsBlockEntity extends BlockEntity implements DynamoComponent
                 }
             }
             if (state.get(GTProperties.HAS_AIR) != hasAir) {
-                world.setBlockStateWithNotify(x, y, z, state.with(GTProperties.HAS_AIR, hasAir ? Boolean.TRUE : Boolean.FALSE));
+                world.setBlockState(x, y, z, state.with(GTProperties.HAS_AIR, hasAir ? Boolean.TRUE : Boolean.FALSE));
             }
         }
         rot = ticks % 360;

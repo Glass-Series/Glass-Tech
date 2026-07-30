@@ -52,13 +52,13 @@ public class GeneratorBlockEntity extends GeneratorWithInventoryBlockEntityTempl
             energy += generationAmount; // in eu/t
             if (state.contains(Properties.LIT) && !state.get(Properties.LIT)) {
                 FurnaceBlock.ignoreBlockRemoval = true;
-                world.setBlockStateWithNotify(x, y, z, state.with(Properties.LIT, true));
+                world.setBlockState(x, y, z, state.with(Properties.LIT, true));
                 FurnaceBlock.ignoreBlockRemoval = false;
             }
         }
         else if (state.get(Properties.LIT)) {
             FurnaceBlock.ignoreBlockRemoval = true;
-            world.setBlockStateWithNotify(x, y, z, state.with(Properties.LIT, false));
+            world.setBlockState(x, y, z, state.with(Properties.LIT, false));
             FurnaceBlock.ignoreBlockRemoval = false;
         }
         if (energy > getEnergyCapacity()) {
