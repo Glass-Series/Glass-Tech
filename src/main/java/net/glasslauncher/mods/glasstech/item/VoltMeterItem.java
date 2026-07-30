@@ -8,6 +8,8 @@ import net.danygames2014.nyalib.network.Network;
 import net.danygames2014.nyalib.network.NetworkManager;
 import net.danygames2014.nyalib.network.NetworkType;
 import net.danygames2014.nyalib.network.energy.EnergyNetwork;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.glasslauncher.mods.alwaysmoreitems.gui.Tooltip;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.glasslauncher.mods.glasstech.blocks.machine.GeneratorBlockEntityTemplate;
@@ -28,12 +30,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VoltMeterItem extends TemplateItem {
-    public static final VoltMeterTooltip TOOLTIP = new VoltMeterTooltip();
 
     public VoltMeterItem(Identifier identifier) {
         super(identifier);
     }
 
+    @Environment(EnvType.CLIENT)
     public static void renderHud() {
         HitResult hitResult = Minecraft.INSTANCE.crosshairTarget;
         if (hitResult == null) {
@@ -121,16 +123,18 @@ public class VoltMeterItem extends TemplateItem {
             return;
         }
 
-        VoltMeterItem.TOOLTIP.setTooltip(tooltip, 0, 0);
-        VoltMeterItem.TOOLTIP.setCursor(-12, -5 - (TOOLTIP.getHeight(false) * 2));
-        VoltMeterItem.TOOLTIP.render();
-        VoltMeterItem.TOOLTIP.clear();
+        VoltMeterTooltip.TOOLTIP.setTooltip(tooltip, 0, 0);
+        VoltMeterTooltip.TOOLTIP.setCursor(-12, -5 - (VoltMeterTooltip.TOOLTIP.getHeight(false) * 2));
+        VoltMeterTooltip.TOOLTIP.render();
+        VoltMeterTooltip.TOOLTIP.clear();
         GL11.glColor4f(1, 1, 1, 1);
         GL11.glEnable(GL11.GL_ALPHA_TEST);
         GL11.glEnable(GL11.GL_BLEND);
     }
 
+    @Environment(EnvType.CLIENT)
     public static class VoltMeterTooltip extends Tooltip {
+        public static final VoltMeterTooltip TOOLTIP = new VoltMeterTooltip();
 
         @Override
         public void commonInit() {
