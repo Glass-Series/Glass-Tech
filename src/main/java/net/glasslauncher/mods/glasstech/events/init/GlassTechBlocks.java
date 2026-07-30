@@ -138,7 +138,7 @@ public class GlassTechBlocks {
 
     public static Block sealedPlanksBlock;
     public static RubberLogBlock rubberLogBlock;
-    public static Block rubberLeavesBlock;
+    public static LeavesBlockTemplate rubberLeavesBlock;
 
     public static Block waterWheelBlock;
     public static Block windSailsBlock;
@@ -235,7 +235,7 @@ public class GlassTechBlocks {
 
         sealedPlanksBlock = new TemplateBlock(NAMESPACE.id("sealed_planks"), Material.WOOD).setTranslationKey(NAMESPACE.id("sealed_planks")).setSoundGroup(WOOD_SOUND_GROUP).setHardness(2.0F).setResistance(5.0F);
         rubberLogBlock = new RubberLogBlock(NAMESPACE.id("rubber_log"));
-        rubberLeavesBlock = new LeavesBlockTemplate(NAMESPACE.id("rubber_leaves"));
+        rubberLeavesBlock = new RubberLeavesBlock(NAMESPACE.id("rubber_leaves"));
     }
 
     @EventListener
