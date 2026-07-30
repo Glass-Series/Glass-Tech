@@ -14,16 +14,25 @@ import static net.glasslauncher.mods.glasstech.GlassTech.NAMESPACE;
 @HasTrackingParameters(trackingDistance = 40, updatePeriod = 40, sendVelocity = TriState.TRUE)
 public class GTTntEntity extends TntEntity implements EntitySpawnDataProvider {
     public float power = 4;
-    private boolean nukesplosion = false;
+    private boolean nukesplosion;
 
     public GTTntEntity(World world) {
         super(world);
         fuse = 40;
     }
 
+    // Used in multiplayer.
     public GTTntEntity(World world, double x, double y, double z) {
         this(world);
         setPosition(x, y, z);
+    }
+
+    public GTTntEntity(World world, double x, double y, double z, int fuse, float power, boolean nukesplosion) {
+        this(world);
+        setPosition(x, y, z);
+        this.fuse = fuse;
+        this.power = power;
+        this.nukesplosion = nukesplosion;
     }
 
     @Override

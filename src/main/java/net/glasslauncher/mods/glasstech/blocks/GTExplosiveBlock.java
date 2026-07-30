@@ -74,7 +74,7 @@ public class GTExplosiveBlock extends GTTemplateBlock {
     }
 
     public TntEntity createTntEntity(World world, int x, int y, int z) {
-        return new GTTntEntity(world, (float)x + 0.5F, (float)y + 0.5F, (float)z + 0.5F);
+        return new GTTntEntity(world, (float)x + 0.5F, (float)y + 0.5F, (float)z + 0.5F, fuse, power, nukesplosion);
     }
 
     @Override
