@@ -263,8 +263,8 @@ public class GlassTechClient {
         GlassTechItems.compositeChestplate.setTexture(NAMESPACE.id("item/armor/composite_chestplate"));
         GlassTechItems.treeTap.setTexture(NAMESPACE.id("item/tool/tree_tap"));
 
-        GlassTechBlocks.rubberLeavesBlock.textureId = 132;
-        GlassTechBlocks.rubberLeavesBlock.fastTextureId = 133;
+        GlassTechBlocks.rubberLeavesBlock.textureId = 52;
+        GlassTechBlocks.rubberLeavesBlock.fastTextureId = 53;
     }
 
     @EventListener

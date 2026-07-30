@@ -56,6 +56,7 @@ import static net.glasslauncher.mods.glasstech.blocks.TemplateCableBlock.PIXEL_S
 import static net.minecraft.block.Block.*;
 
 public class GlassTechBlocks {
+
     static {
         EntrypointManager.registerLookup(MethodHandles.lookup());
     }
@@ -137,6 +138,7 @@ public class GlassTechBlocks {
     public static Block nukeBlock;
 
     public static Block sealedPlanksBlock;
+    public static RubberSaplingBlock rubberSaplingBlock;
     public static RubberLogBlock rubberLogBlock;
     public static LeavesBlockTemplate rubberLeavesBlock;
 
@@ -236,6 +238,7 @@ public class GlassTechBlocks {
         sealedPlanksBlock = new TemplateBlock(NAMESPACE.id("sealed_planks"), Material.WOOD).setTranslationKey(NAMESPACE.id("sealed_planks")).setSoundGroup(WOOD_SOUND_GROUP).setHardness(2.0F).setResistance(5.0F);
         rubberLogBlock = new RubberLogBlock(NAMESPACE.id("rubber_log"));
         rubberLeavesBlock = new RubberLeavesBlock(NAMESPACE.id("rubber_leaves"));
+        rubberSaplingBlock = new RubberSaplingBlock(NAMESPACE.id("rubber_sapling_block"));
     }
 
     @EventListener
