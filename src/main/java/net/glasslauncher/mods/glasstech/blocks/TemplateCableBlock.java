@@ -168,19 +168,19 @@ public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComp
             minY = 0.0F;
         }
 
-        if (state.get(Properties.SOUTH)) {
+        if (state.get(Properties.EAST)) {
             maxZ = 1.0F;
         }
 
-        if (state.get(Properties.NORTH)) {
+        if (state.get(Properties.WEST)) {
             minZ = 0.0F;
         }
 
-        if (state.get(Properties.WEST)) {
+        if (state.get(Properties.SOUTH)) {
             minX = 0.0F;
         }
 
-        if (state.get(Properties.EAST)) {
+        if (state.get(Properties.NORTH)) {
             maxX = 1.0F;
         }
 

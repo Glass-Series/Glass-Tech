@@ -2,18 +2,19 @@
   "variants": {
     "facing=north,lit=false": {
       "model": "glasstech:block/canner",
-      "y": -90
+      "y": 0
     },
     "facing=east,lit=false": {
-      "model": "glasstech:block/canner"
-    },
-    "facing=south,lit=false": {
       "model": "glasstech:block/canner",
       "y": 90
     },
-    "facing=west,lit=false": {
+    "facing=south,lit=false": {
       "model": "glasstech:block/canner",
       "y": 180
+    },
+    "facing=west,lit=false": {
+      "model": "glasstech:block/canner",
+      "y": 270
     },
     "facing=north,lit=true": {
       "model": "glasstech:block/canner_lit",

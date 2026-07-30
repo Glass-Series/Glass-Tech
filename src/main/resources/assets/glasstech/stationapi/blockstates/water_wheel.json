@@ -3,18 +3,19 @@
   "variants": {
     "facing=north": {
       "model": "glasstech:block/water_wheel",
-      "y": 180
+      "y": 90
     },
     "facing=east": {
       "model": "glasstech:block/water_wheel",
-      "y": -90
+      "y": 0
     },
     "facing=south": {
-      "model": "glasstech:block/water_wheel"
+      "model": "glasstech:block/water_wheel",
+      "y": 270
     },
     "facing=west": {
       "model": "glasstech:block/water_wheel",
-      "y": 90
+      "y": 180
     }
   }
 }

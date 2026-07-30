@@ -1,5 +1,5 @@
 {
-  "parent": "glasstech:block/cable/$1$/cable_east",
+  "parent": "glasstech:block/cable/$1$/cable_south",
   "textures": {
     "core": "glasstech:block/cable/$0$",
     "particle": "#core"

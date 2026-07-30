@@ -2,18 +2,19 @@
   "variants": {
     "facing=north": {
       "model": "glasstech:block/personal_safe",
-      "y": -90
+      "y": 0
     },
     "facing=east": {
-      "model": "glasstech:block/personal_safe"
-    },
-    "facing=south": {
       "model": "glasstech:block/personal_safe",
       "y": 90
     },
-    "facing=west": {
+    "facing=south": {
       "model": "glasstech:block/personal_safe",
       "y": 180
+    },
+    "facing=west": {
+      "model": "glasstech:block/personal_safe",
+      "y": 270
     }
   }
 }

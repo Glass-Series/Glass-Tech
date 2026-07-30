@@ -2,18 +2,19 @@
   "variants": {
     "facing=north": {
       "model": "glasstech:block/lv_transformer",
-      "y": -90
+      "y": 0
     },
     "facing=east": {
-      "model": "glasstech:block/lv_transformer"
-    },
-    "facing=south": {
       "model": "glasstech:block/lv_transformer",
       "y": 90
     },
-    "facing=west": {
+    "facing=south": {
       "model": "glasstech:block/lv_transformer",
       "y": 180
+    },
+    "facing=west": {
+      "model": "glasstech:block/lv_transformer",
+      "y": 270
     },
     "facing=up": {
       "model": "glasstech:block/lv_transformer",
