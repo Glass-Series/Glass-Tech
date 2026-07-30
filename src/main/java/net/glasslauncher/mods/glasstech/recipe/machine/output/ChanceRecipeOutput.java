@@ -8,16 +8,16 @@ import java.util.Random;
  * A recipe output with a given chance to "drop"
  */
 public class ChanceRecipeOutput extends RecipeOutput {
-    public final int chance;
+    public final int rarity;
 
-    public ChanceRecipeOutput(ItemStack stack, RecipeOutputType type, int chance) {
+    public ChanceRecipeOutput(ItemStack stack, RecipeOutputType type, int rarity) {
         super(stack, type);
-        this.chance = chance;
+        this.rarity = rarity;
     }
 
-    public ChanceRecipeOutput(ItemStack stack, int chance) {
+    public ChanceRecipeOutput(ItemStack stack, int rarity) {
         super(stack);
-        this.chance = chance;
+        this.rarity = rarity;
     }
 
     @Override
@@ -26,7 +26,7 @@ public class ChanceRecipeOutput extends RecipeOutput {
             return super.getOutput(null);
         }
         
-        if (random.nextInt(chance) == 0) {
+        if (random.nextInt(rarity) == 0) {
             return super.getOutput(random);
         }
         
@@ -35,6 +35,6 @@ public class ChanceRecipeOutput extends RecipeOutput {
 
     @Override
     public String toString() {
-        return "RecipeOutput { stack=" + getStackString() + ", type=" + type + ", chance=" + chance + " }";
+        return "RecipeOutput { stack=" + getStackString() + ", type=" + type + ", chance=" + rarity + " }";
     }
 }

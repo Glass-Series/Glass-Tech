@@ -31,6 +31,8 @@ import net.glasslauncher.mods.glasstech.blocks.machine.macerator.MaceratorBlock;
 import net.glasslauncher.mods.glasstech.blocks.machine.macerator.MaceratorBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.pump.PumpBlock;
 import net.glasslauncher.mods.glasstech.blocks.machine.pump.PumpBlockEntity;
+import net.glasslauncher.mods.glasstech.blocks.machine.recycler.RecyclerBlock;
+import net.glasslauncher.mods.glasstech.blocks.machine.recycler.RecyclerBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.transformer.HVTransformerBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.transformer.LVTransformerBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.transformer.MVTransformerBlockEntity;
@@ -218,7 +220,7 @@ public class GlassTechBlocks {
 
         refinedIronFenceBlock = new GTFenceBlock(NAMESPACE.id("refined_iron_fence"));
 
-        recyclerBlock = new RecyclerBlock(NAMESPACE.id("recycler"));
+        recyclerBlock = new RecyclerBlock(NAMESPACE.id("recycler"), Material.METAL);
         illuminatorBlock = new IlluminatorBlock(NAMESPACE.id("illuminator"));
         minerBlock = new MinerBlock(NAMESPACE.id("miner"));
         pumpBlock = new PumpBlock(NAMESPACE.id("pump"), Material.METAL);
@@ -245,6 +247,7 @@ public class GlassTechBlocks {
         event.register(CannerBlockEntity.class, NAMESPACE.id("canner").toString());
         event.register(ElectrolyzerBlockEntity.class, NAMESPACE.id("electrolyzer").toString());
         event.register(ExtractorBlockEntity.class, NAMESPACE.id("extractor").toString());
+        event.register(RecyclerBlockEntity.class, NAMESPACE.id("recycler").toString());
         event.register(PumpBlockEntity.class, NAMESPACE.id("pump").toString());
 
         event.register(IronFurnaceBlockEntity.class, NAMESPACE.id("iron_furnace").toString());

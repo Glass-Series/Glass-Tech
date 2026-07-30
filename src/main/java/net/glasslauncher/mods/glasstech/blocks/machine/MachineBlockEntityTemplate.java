@@ -489,6 +489,9 @@ public abstract class MachineBlockEntityTemplate extends ConsumerBlockEntityTemp
 
     @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     public boolean pushOutput(RecipeOutputType type, ItemStack output, boolean simulate) {
+        if (output == null) {
+            return true;
+        }
         int[] slotIndexes = getOutputIndexes(type);
         ItemStack[] slots = getOutputs(type, simulate);
 

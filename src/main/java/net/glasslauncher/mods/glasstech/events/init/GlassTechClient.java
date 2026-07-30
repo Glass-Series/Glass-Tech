@@ -27,6 +27,8 @@ import net.glasslauncher.mods.glasstech.blocks.machine.macerator.MaceratorBlockE
 import net.glasslauncher.mods.glasstech.blocks.machine.macerator.MaceratorScreen;
 import net.glasslauncher.mods.glasstech.blocks.machine.pump.PumpBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.pump.PumpScreen;
+import net.glasslauncher.mods.glasstech.blocks.machine.recycler.RecyclerBlockEntity;
+import net.glasslauncher.mods.glasstech.blocks.machine.recycler.RecyclerScreen;
 import net.glasslauncher.mods.glasstech.blocks.renderer.WaterWheelBlockEntityRenderer;
 import net.glasslauncher.mods.glasstech.blocks.renderer.WindSailsBlockEntityRenderer;
 import net.mine_diver.unsafeevents.listener.EventListener;
@@ -85,6 +87,7 @@ public class GlassTechClient {
         event.register(NAMESPACE.id("canner"), new GuiHandler((player, inventory, packet) -> new CannerScreen(player.inventory, (CannerBlockEntity) inventory), CannerBlockEntity::new));
         event.register(NAMESPACE.id("electrolyzer"), new GuiHandler((player, inventory, packet) -> new ElectrolyzerScreen(player.inventory, (ElectrolyzerBlockEntity) inventory), ElectrolyzerBlockEntity::new));
         event.register(NAMESPACE.id("extractor"), new GuiHandler((player, inventory, packet) -> new ExtractorScreen(player.inventory, (ExtractorBlockEntity) inventory), ExtractorBlockEntity::new));
+        event.register(NAMESPACE.id("recycler"), new GuiHandler((player, inventory, packet) -> new RecyclerScreen(player.inventory, (RecyclerBlockEntity) inventory), RecyclerBlockEntity::new));
         event.register(NAMESPACE.id("pump"), new GuiHandler((player, inventory, packet) -> new PumpScreen(player.inventory, (PumpBlockEntity) inventory), PumpBlockEntity::new));
 
         event.register(NAMESPACE.id("iron_furnace"), new GuiHandler((player, inventory, packet) -> new IronFurnaceScreen(player.inventory, (IronFurnaceBlockEntity) inventory), IronFurnaceBlockEntity::new));
