@@ -30,6 +30,7 @@ public class BlockRecipes {
         add(solarGeneratorBlock, "CgC", "gCg", "cGc", 'G', generatorBlock, 'C', coalDust, 'g', Block.GLASS, 'c', circuit);
 
         add(waterWheelBlock, "PPP", "PIP", "PPP", 'P', sealedPlanksBlock, 'I', refinedIronIngot);
+        add(windSailsBlock, "PPP", "PIP", "PPP", 'P', sealedPlanksBlock, 'I', refinedIronIngot);
 
         add(lvTransformerBlock, "PCP", "ccc", "PCP", 'P', Block.PLANKS, 'C', copperInsulatedCableBlock, 'c', copperIngot);
         add(mvTransformerBlock, " C ", " M ", " C ", 'M', machineBlock, 'C', copperInsulatedCableBlock);
@@ -106,7 +107,7 @@ public class BlockRecipes {
     }
 
     public static void materials() {
-        addSN(Block.PLANKS, 3, rubberLogBlock);
+        addSN(sealedPlanksBlock, 2, rubberLogBlock);
 
         addN(reinforcedStoneBlock, 8, "SSS", "SAS", "SSS", 'S', Block.STONE, 'A', advancedAlloy);
         addN(reinforcedGlassBlock, 7, "GAG", "GGG", "GAG", 'G', Block.GLASS, 'A', advancedAlloy);

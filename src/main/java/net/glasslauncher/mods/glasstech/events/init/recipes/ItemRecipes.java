@@ -5,8 +5,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.modificationstation.stationapi.api.recipe.CraftingRegistry;
 
-import static net.glasslauncher.mods.glasstech.events.init.GlassTechBlocks.copperInsulatedCableBlock;
-import static net.glasslauncher.mods.glasstech.events.init.GlassTechBlocks.machineBlock;
+import static net.glasslauncher.mods.glasstech.events.init.GlassTechBlocks.*;
 import static net.glasslauncher.mods.glasstech.events.init.GlassTechItems.*;
 
 public class ItemRecipes {
@@ -50,6 +49,8 @@ public class ItemRecipes {
 
         add(iridiumPlate, "IAI", "ADA", "IAI", 'I', iridium, 'A', advancedAlloy, 'D', Item.DIAMOND);
         add(iridiumPlate, "IAI", "ADA", "IAI", 'I', iridium, 'A', advancedAlloy, 'D', industrialDiamond);
+
+        addS(sealedPlanksBlock, Block.PLANKS, resin);
 
         add(scrapBox, "SSS", "SSS", "SSS", 'S', scrap);
 
