@@ -1,11 +1,9 @@
 package net.glasslauncher.mods.glasstech.events.init;
 
 import net.danygames2014.nyalib.event.ItemCapabilityProviderRegisterEvent;
+import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.glasslauncher.mods.glasstech.blocks.GTDoorBlock;
-import net.glasslauncher.mods.glasstech.item.PainterItem;
-import net.glasslauncher.mods.glasstech.item.SingleUsePowerCapability;
-import net.glasslauncher.mods.glasstech.item.SingleUsePowerCapabilityProvider;
-import net.glasslauncher.mods.glasstech.item.VoltMeterItem;
+import net.glasslauncher.mods.glasstech.item.*;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
@@ -51,9 +49,9 @@ public class GlassTechItems {
     public static Item advancedCircuit;
     public static Item scrapBox;
 
-    public static Item reBattery;
-    public static Item energyCrystal;
-    public static Item lapotronCrystal;
+    public static RechargeableCellItem reBattery;
+    public static RechargeableCellItem energyCrystal;
+    public static RechargeableCellItem lapotronCrystal;
     public static Item batteryPack;
 
     public static Item wrench;
@@ -179,9 +177,9 @@ public class GlassTechItems {
         advancedCircuit = new TemplateItem(NAMESPACE.id("advanced_circuit"));
         scrapBox = new TemplateItem(NAMESPACE.id("scrap_box"));
 
-        reBattery = new TemplateItem(NAMESPACE.id("re_battery"));
-        energyCrystal = new TemplateItem(NAMESPACE.id("energy_crystal"));
-        lapotronCrystal = new TemplateItem(NAMESPACE.id("lapotron_crystal"));
+        reBattery = new RechargeableCellItem(NAMESPACE.id("re_battery"), VoltageTier.LV, VoltageTier.LV.maxVoltage * 64);
+        energyCrystal = new RechargeableCellItem(NAMESPACE.id("energy_crystal"), VoltageTier.MV, VoltageTier.MV.maxVoltage * 64);
+        lapotronCrystal = new RechargeableCellItem(NAMESPACE.id("lapotron_crystal"), VoltageTier.HV, VoltageTier.HV.maxVoltage * 64);
         batteryPack = new TemplateItem(NAMESPACE.id("battery_pack"));
 
         wrench = new TemplateItem(NAMESPACE.id("wrench"));

@@ -1,5 +1,7 @@
 package net.glasslauncher.mods.glasstech.blocks.machine;
 
+import net.danygames2014.nyalib.capability.CapabilityHelper;
+import net.danygames2014.nyalib.capability.item.energyhandler.EnergyStorageItemCapability;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
@@ -78,5 +80,24 @@ public abstract class GeneratorWithInventoryBlockEntityTemplate extends Generato
     @Override
     public boolean canPlayerUse(PlayerEntity player) {
         return player.getSquaredDistance(x + 0.5, y + 0.5, z + 0.5) <= 64;
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+        if (world.isRemote) {
+            return;
+        }
+
+        for (ItemStack stack : slots) {
+            if (stack == null) {
+                continue;
+            }
+            // Energy Storage Item
+            EnergyStorageItemCapability energyStorage = CapabilityHelper.getCapability(stack, EnergyStorageItemCapability.class);
+            if (energyStorage != null && getEnergyStored() > 0 && energyStorage.getEnergyStored() < energyStorage.getEnergyCapacity() && VoltageTier.get(getMaxOutputVoltage(null)).maxVoltage >= energyStorage.getMaxEnergyInput()) {
+                energyStorage.addEnergy(removeEnergy(Math.min(energyStorage.getEnergyCapacity() - energyStorage.getEnergyStored(), energyStorage.getMaxEnergyInput())));
+            }
+        }
     }
 }
