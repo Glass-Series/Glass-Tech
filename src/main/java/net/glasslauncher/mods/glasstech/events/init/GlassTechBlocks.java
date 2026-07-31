@@ -21,7 +21,7 @@ import net.glasslauncher.mods.glasstech.blocks.machine.electrolyzer.Electrolyzer
 import net.glasslauncher.mods.glasstech.blocks.machine.extractor.ExtractorBlock;
 import net.glasslauncher.mods.glasstech.blocks.machine.extractor.ExtractorBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.generator.*;
-import net.glasslauncher.mods.glasstech.blocks.machine.generator.d.SolarGeneratorBlock;
+import net.glasslauncher.mods.glasstech.blocks.machine.generator.SolarGeneratorBlock;
 import net.glasslauncher.mods.glasstech.blocks.machine.generator.dynamoparts.WaterWheelBlock;
 import net.glasslauncher.mods.glasstech.blocks.machine.generator.dynamoparts.WaterWheelBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.generator.dynamoparts.WindSailsBlock;
@@ -243,6 +243,7 @@ public class GlassTechBlocks {
     @EventListener
     private static void tileEntityInit(BlockEntityRegisterEvent event) {
         event.register(NAMESPACE.id("generator"), GeneratorBlockEntity.class);
+        event.register(NAMESPACE.id("solar_generator"), SolarGeneratorBlockEntity.class);
         event.register(NAMESPACE.id("thermal_generator"), ThermalGeneratorBlockEntity.class);
         event.register(NAMESPACE.id("compressor"), CompressorBlockEntity.class);
         event.register(NAMESPACE.id("electric_furnace"), ElectricFurnaceBlockEntity.class);
