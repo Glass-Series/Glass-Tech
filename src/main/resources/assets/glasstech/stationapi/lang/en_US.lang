@@ -170,6 +170,7 @@ item.@.re_enriched_uranium_cell.name=Re-Enriched Uranium Cell
 item.@.bio_cell.name=Bio Cell
 item.@.coalfuel_cell.name=Coal Fuel Cell
 item.@.compressed_hydrated_coal_dust.name=Compressed Hydrated Coal Dust
+item.@.sail.name=Sail
 item.@.item_cell_uran_depleted.name=Item Cell Uranium Depleted
 item.@.item_cell_uran_empty.name=Item Cell Uranium Empty
 item.@.rubber_sapling.name=Rubber Sapling

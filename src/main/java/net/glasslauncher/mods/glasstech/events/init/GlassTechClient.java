@@ -247,6 +247,7 @@ public class GlassTechClient {
         GlassTechItems.bioCell.setTexture(NAMESPACE.id("item/resource/bio_cell"));
         GlassTechItems.coalfuelCell.setTexture(NAMESPACE.id("item/resource/coalfuel_cell"));
         GlassTechItems.compressedHydratedCoalDust.setTexture(NAMESPACE.id("item/resource/compressed_hydrated_coal"));
+        GlassTechItems.sail.setTexture(NAMESPACE.id("item/resource/sail"));
         GlassTechItems.reinforcedDoor.setTexture(NAMESPACE.id("item/reinforced_door"));
         GlassTechItems.biofuelCell.setTexture(NAMESPACE.id("item/resource/biofuel_cell"));
         GlassTechItems.fullFuelCan.setTexture(NAMESPACE.id("item/resource/full_fuel_can"));

@@ -44,6 +44,7 @@ public class ItemRecipes {
         addS(Block.OBSIDIAN, waterCell, waterCell, lavaCell, lavaCell);
         addS(hydratedCoalDust, coalDust, Item.WATER_BUCKET);
         addS(hydratedCoalDust, coalDust, waterCell);
+        add(sail, "SWW", "SWW", "SWW", 'S', Item.STICK, 'W', Block.WOOL);
 
         addS(new ItemStack(nearDepletedUraniumCell, 1, 9999), new ItemStack(nearDepletedUraniumCell), coalDust);
 
