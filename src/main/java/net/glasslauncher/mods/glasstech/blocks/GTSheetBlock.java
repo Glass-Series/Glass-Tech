@@ -18,19 +18,23 @@ public class GTSheetBlock extends GTTemplateBlock {
         setBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 0.125F, 1.0F);
     }
 
+    @Override
     public Box getCollisionShape(World world, int x, int y, int z) {
         int var5 = world.getBlockMeta(x, y, z) & 7;
         return var5 >= 3 ? Box.createCached((double)x + this.minX, (double)y + this.minY, (double)z + this.minZ, (double)x + this.maxX, (float)y + 0.5F, (double)z + this.maxZ) : null;
     }
 
+    @Override
     public boolean isOpaque() {
         return false;
     }
 
+    @Override
     public boolean isFullCube() {
         return false;
     }
 
+    @Override
     public void updateBoundingBox(BlockView blockView, int x, int y, int z) {
         int var5 = blockView.getBlockMeta(x, y, z) & 7;
         float var6 = (float)(2 * (1 + var5)) / 16.0F;
@@ -50,6 +54,7 @@ public class GTSheetBlock extends GTTemplateBlock {
         }
     }
 
+    @Override
     public boolean canPlaceAt(World world, int x, int y, int z) {
         int blockId = world.getBlockId(x, y - 1, z);
         return blockId != 0 && Block.BLOCKS[blockId].isOpaque() && world.getMaterial(x, y - 1, z).blocksMovement();

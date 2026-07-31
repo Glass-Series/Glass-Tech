@@ -36,6 +36,7 @@ import net.glasslauncher.mods.glasstech.blocks.machine.pump.PumpBlock;
 import net.glasslauncher.mods.glasstech.blocks.machine.pump.PumpBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.recycler.RecyclerBlock;
 import net.glasslauncher.mods.glasstech.blocks.machine.recycler.RecyclerBlockEntity;
+import net.glasslauncher.mods.glasstech.blocks.machine.teslacoil.TeslaCoilBlock;
 import net.glasslauncher.mods.glasstech.blocks.transformer.HVTransformerBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.transformer.LVTransformerBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.transformer.MVTransformerBlockEntity;
@@ -205,7 +206,7 @@ public class GlassTechBlocks {
         personalSafeBlock = new GTSafeBlock(NAMESPACE.id("personal_safe"));
         reinforcedDoorBlock = new GTDoorBlock(NAMESPACE.id("reinforced_door_block"));
         teleporterBlock = new TeleporterBlock(NAMESPACE.id("teleporter"));
-        teslaCoilBlock = new TeslaCoilBlock(NAMESPACE.id("tesla_coil"));
+        teslaCoilBlock = new TeslaCoilBlock(NAMESPACE.id("tesla_coil"), Material.METAL);
 
         woodenScaffoldBlock = new GTScaffoldBlock(NAMESPACE.id("wooden_scaffold"), Material.LEAVES, WOOD_SOUND_GROUP, 3);
         metalScaffoldBlock = new GTScaffoldBlock(NAMESPACE.id("metal_scaffold"), new Material(Material.METAL.mapColor).setDestroyPistonBehavior(), METAL_SOUND_GROUP, 7);
