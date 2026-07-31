@@ -89,6 +89,6 @@ public class GeneratorBlockEntity extends GeneratorWithInventoryBlockEntityTempl
 
     @Override
     public int getGeneratingCurrent() {
-        return fuelTicks > 1 ? 10 : 0;
+        return fuelTicks > 1 ? generationAmount : 0;
     }
 }

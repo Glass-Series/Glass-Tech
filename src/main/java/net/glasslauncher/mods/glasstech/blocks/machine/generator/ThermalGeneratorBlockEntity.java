@@ -127,7 +127,7 @@ public class ThermalGeneratorBlockEntity extends GeneratorWithInventoryBlockEnti
 
     @Override
     public int getGeneratingCurrent() {
-        return fuelTicks > 1 ? 20 : 0;
+        return fuelTicks > 1 ? generationAmount : 0;
     }
 
     // Fluid handler stuff
