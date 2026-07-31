@@ -49,9 +49,9 @@ public class GlassTechItems {
     public static Item advancedCircuit;
     public static Item scrapBox;
 
-    public static RechargeableCellItem reBattery;
-    public static RechargeableCellItem energyCrystal;
-    public static RechargeableCellItem lapotronCrystal;
+    public static ChangingSpritePowerItem reBattery;
+    public static ChangingSpritePowerItem energyCrystal;
+    public static ChangingSpritePowerItem lapotronCrystal;
     public static Item batteryPack;
 
     public static Item wrench;

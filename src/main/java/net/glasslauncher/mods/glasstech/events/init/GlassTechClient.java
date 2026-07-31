@@ -58,26 +58,6 @@ public class GlassTechClient {
     public static Atlas.Sprite fuelSlotIndex = null;
     public static Atlas.Sprite bucketSlotIndex = null;
 
-    public static Atlas.Sprite emptyBattery;
-    public static Atlas.Sprite emptyEnergyCrystal;
-    public static Atlas.Sprite emptyLapotronCrystal;
-    public static Atlas.Sprite emptyBatteryPack;
-
-    public static Atlas.Sprite almostEmptyBattery;
-    public static Atlas.Sprite almostEmptyEnergyCrystal;
-    public static Atlas.Sprite almostEmptyLapotronCrystal;
-    public static Atlas.Sprite almostEmptyBatteryPack;
-
-    public static Atlas.Sprite almostFullBattery;
-    public static Atlas.Sprite almostFullEnergyCrystal;
-    public static Atlas.Sprite almostFullLapotronCrystal;
-    public static Atlas.Sprite almostFullBatteryPack;
-
-    public static Atlas.Sprite fullBattery;
-    public static Atlas.Sprite fullEnergyCrystal;
-    public static Atlas.Sprite fullLapotronCrystal;
-    public static Atlas.Sprite fullBatteryPack;
-
     @EventListener
     private static void screenInit(GuiHandlerRegistryEvent event) {
         event.register(NAMESPACE.id("generator"), new GuiHandler((player, inventory, packet) -> new GeneratorScreen(player.inventory, (GeneratorBlockEntity) inventory), GeneratorBlockEntity::new));
@@ -149,30 +129,25 @@ public class GlassTechClient {
         GlassTechItems.advancedCircuit.setTexture(NAMESPACE.id("item/advanced_circuit"));
         GlassTechItems.scrapBox.setTexture(NAMESPACE.id("item/scrap_box"));
 
-        emptyBattery = Atlases.getGuiItems().addTexture(NAMESPACE.id("item/storage/empty_battery"));
-        emptyEnergyCrystal = Atlases.getGuiItems().addTexture(NAMESPACE.id("item/storage/empty_energy_crystal"));
-        emptyLapotronCrystal = Atlases.getGuiItems().addTexture(NAMESPACE.id("item/storage/empty_lapotron_crystal"));
-        emptyBatteryPack = Atlases.getGuiItems().addTexture(NAMESPACE.id("item/storage/empty_battery_pack"));
+        GlassTechItems.reBattery.setDischargedTexture(Atlases.getGuiItems().addTexture(NAMESPACE.id("item/storage/empty_battery")).index);
+        GlassTechItems.energyCrystal.setDischargedTexture(Atlases.getGuiItems().addTexture(NAMESPACE.id("item/storage/empty_energy_crystal")).index);
+        GlassTechItems.lapotronCrystal.setDischargedTexture(Atlases.getGuiItems().addTexture(NAMESPACE.id("item/storage/empty_lapotron_crystal")).index);
 
-        GlassTechItems.reBattery.setTextureId(emptyBattery.index);
-        GlassTechItems.energyCrystal.setTextureId(emptyEnergyCrystal.index);
-        GlassTechItems.lapotronCrystal.setTextureId(emptyLapotronCrystal.index);
-        GlassTechItems.batteryPack.setTextureId(emptyBatteryPack.index);
+        GlassTechItems.reBattery.setAlmostDischargedTexture(Atlases.getGuiItems().addTexture(NAMESPACE.id("item/storage/almost_empty_battery")).index);
+        GlassTechItems.energyCrystal.setAlmostDischargedTexture(Atlases.getGuiItems().addTexture(NAMESPACE.id("item/storage/almost_empty_energy_crystal")).index);
+        GlassTechItems.lapotronCrystal.setAlmostDischargedTexture(Atlases.getGuiItems().addTexture(NAMESPACE.id("item/storage/almost_empty_lapotron_crystal")).index);
 
-        almostEmptyBattery = Atlases.getGuiItems().addTexture(NAMESPACE.id("item/storage/almost_empty_battery"));
-        almostEmptyEnergyCrystal = Atlases.getGuiItems().addTexture(NAMESPACE.id("item/storage/almost_empty_energy_crystal"));
-        almostEmptyLapotronCrystal = Atlases.getGuiItems().addTexture(NAMESPACE.id("item/storage/almost_empty_lapotron_crystal"));
-        almostEmptyBatteryPack = Atlases.getGuiItems().addTexture(NAMESPACE.id("item/storage/almost_empty_battery_pack"));
+        GlassTechItems.reBattery.setHalfChargedTexture(Atlases.getGuiItems().addTexture(NAMESPACE.id("item/storage/half_full_battery")).index);
+        GlassTechItems.energyCrystal.setHalfChargedTexture(Atlases.getGuiItems().addTexture(NAMESPACE.id("item/storage/half_full_energy_crystal")).index);
+        GlassTechItems.lapotronCrystal.setHalfChargedTexture(Atlases.getGuiItems().addTexture(NAMESPACE.id("item/storage/half_full_lapotron_crystal")).index);
 
-        almostFullBattery = Atlases.getGuiItems().addTexture(NAMESPACE.id("item/storage/almost_full_battery"));
-        almostFullEnergyCrystal = Atlases.getGuiItems().addTexture(NAMESPACE.id("item/storage/almost_full_energy_crystal"));
-        almostFullLapotronCrystal = Atlases.getGuiItems().addTexture(NAMESPACE.id("item/storage/almost_full_lapotron_crystal"));
-        almostFullBatteryPack = Atlases.getGuiItems().addTexture(NAMESPACE.id("item/storage/almost_full_battery_pack"));
+        GlassTechItems.reBattery.setAlmostChargedTexture(Atlases.getGuiItems().addTexture(NAMESPACE.id("item/storage/almost_full_battery")).index);
+        GlassTechItems.energyCrystal.setAlmostChargedTexture(Atlases.getGuiItems().addTexture(NAMESPACE.id("item/storage/almost_full_energy_crystal")).index);
+        GlassTechItems.lapotronCrystal.setAlmostChargedTexture(Atlases.getGuiItems().addTexture(NAMESPACE.id("item/storage/almost_full_lapotron_crystal")).index);
 
-        fullBattery = Atlases.getGuiItems().addTexture(NAMESPACE.id("item/storage/full_battery"));
-        fullEnergyCrystal = Atlases.getGuiItems().addTexture(NAMESPACE.id("item/storage/full_energy_crystal"));
-        fullLapotronCrystal = Atlases.getGuiItems().addTexture(NAMESPACE.id("item/storage/full_lapotron_crystal"));
-        fullBatteryPack = Atlases.getGuiItems().addTexture(NAMESPACE.id("item/storage/full_battery_pack"));
+        GlassTechItems.reBattery.setChargedTexture(Atlases.getGuiItems().addTexture(NAMESPACE.id("item/storage/full_battery")).index);
+        GlassTechItems.energyCrystal.setChargedTexture(Atlases.getGuiItems().addTexture(NAMESPACE.id("item/storage/full_energy_crystal")).index);
+        GlassTechItems.lapotronCrystal.setChargedTexture(Atlases.getGuiItems().addTexture(NAMESPACE.id("item/storage/full_lapotron_crystal")).index);
 
         GlassTechItems.wrench.setTexture(NAMESPACE.id("item/tool/wrench"));
         GlassTechItems.electricWrench.setTexture(NAMESPACE.id("item/tool/electric_wrench"));
