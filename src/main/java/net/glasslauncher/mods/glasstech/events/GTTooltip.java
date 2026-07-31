@@ -2,7 +2,7 @@ package net.glasslauncher.mods.glasstech.events;
 
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import net.glasslauncher.mods.alwaysmoreitems.api.event.AMITooltipEvent;
+import net.glasslauncher.mods.alwaysmoreitems.api.event.AMIItemTooltipEvent;
 import net.glasslauncher.mods.alwaysmoreitems.gui.Tooltip;
 import net.glasslauncher.mods.glasstech.GTItemOverlay;
 import net.glasslauncher.mods.glasstech.VoltageTier;
@@ -19,6 +19,7 @@ import net.minecraft.client.render.Tessellator;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.item.BlockItem;
 import net.modificationstation.stationapi.api.client.event.render.item.ItemOverlayRenderEvent;
+import net.modificationstation.stationapi.api.util.Formatting;
 import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
@@ -30,10 +31,7 @@ public class GTTooltip {
     private static final ItemRenderer ITEM_RENDERER = new ItemRenderer();
 
     @EventListener
-    public static void addToTooltips(AMITooltipEvent event) {
-        if (event.itemStack == null) {
-            return;
-        }
+    public static void addToTooltips(AMIItemTooltipEvent event) {
         if (event.itemStack.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof BlockWithEntity machineBlockTemplate && (blockItem.getBlock() instanceof MachineBlockTemplate || blockItem.getBlock() instanceof EnergySourceConsumerBlockTemplate)) {
             int voltage = MACHINE_TO_VOLTAGE_CACHE.computeIfAbsent(machineBlockTemplate, k -> {
                 BlockEntity fakeBlockEntity = machineBlockTemplate.createBlockEntity();
@@ -63,6 +61,9 @@ public class GTTooltip {
                 return;
             }
             event.tooltip.add(color);
+        }
+        else if (event.itemStack.getItem() instanceof GTItemOverlay gtItemOverlay) {
+            event.tooltip.add(((gtItemOverlay.getEnergyStored(event.itemStack) < gtItemOverlay.getEnergyCapacity(event.itemStack) / 5) ? Formatting.RED : Formatting.AQUA).toString() + gtItemOverlay.getEnergyStored(event.itemStack) + Formatting.FORMATTING_CODE_PREFIX + "r/" + Formatting.AQUA + gtItemOverlay.getEnergyCapacity(event.itemStack) + " EU");
         }
     }
 
