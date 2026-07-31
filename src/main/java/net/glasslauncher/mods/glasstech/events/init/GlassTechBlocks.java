@@ -21,6 +21,7 @@ import net.glasslauncher.mods.glasstech.blocks.machine.electrolyzer.Electrolyzer
 import net.glasslauncher.mods.glasstech.blocks.machine.extractor.ExtractorBlock;
 import net.glasslauncher.mods.glasstech.blocks.machine.extractor.ExtractorBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.generator.*;
+import net.glasslauncher.mods.glasstech.blocks.machine.generator.d.SolarGeneratorBlock;
 import net.glasslauncher.mods.glasstech.blocks.machine.generator.dynamoparts.WaterWheelBlock;
 import net.glasslauncher.mods.glasstech.blocks.machine.generator.dynamoparts.WaterWheelBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.generator.dynamoparts.WindSailsBlock;
@@ -92,7 +93,6 @@ public class GlassTechBlocks {
     public static Block bronzeBlock;
     public static Block copperBlock;
     public static Block copperOreBlock;
-    public static Block refinedIronBlock;
     public static Block reinforcedGlassBlock;
     public static Block reinforcedStoneBlock;
     public static Block resinSheetBlock;
@@ -188,10 +188,9 @@ public class GlassTechBlocks {
         copperBlock = new GTTemplateBlock(NAMESPACE.id("copper_block"), Material.METAL, METAL_SOUND_GROUP);
         tinBlock = new GTTemplateBlock(NAMESPACE.id("tin_block"), Material.METAL, METAL_SOUND_GROUP);
         uraniumBlock = new GTTemplateBlock(NAMESPACE.id("uranium_block"), Material.METAL, METAL_SOUND_GROUP);
-        refinedIronBlock = new GTTemplateBlock(NAMESPACE.id("refined_iron"), Material.METAL, METAL_SOUND_GROUP);
 
         reinforcedGlassBlock = new GTGlassBlock(NAMESPACE.id("reinforced_glass"));
-        reinforcedStoneBlock = new GTTemplateBlock(NAMESPACE.id("reinforced_stone"), Material.STONE, STONE_SOUND_GROUP);
+        reinforcedStoneBlock = new GTTemplateBlock(NAMESPACE.id("reinforced_stone"), Material.STONE, STONE_SOUND_GROUP).setHardness(10.0F).setResistance(2000.0F);
 
         resinSheetBlock = new GTSheetBlock(NAMESPACE.id("resin_sheet"), GTSheetBlock.Type.STICKY);
         rubberSheetBlock = new GTSheetBlock(NAMESPACE.id("rubber_sheet"), GTSheetBlock.Type.BOUNCY);
@@ -217,7 +216,7 @@ public class GlassTechBlocks {
 
         thermalGeneratorBlock = new ThermalGeneratorBlock(NAMESPACE.id("thermal_generator"), Material.METAL);
         dynamoBlock = new DynamoBlock(NAMESPACE.id("dynamo"), Material.METAL);
-        solarGeneratorBlock = new GTSolarPanelBlock(NAMESPACE.id("solar_generator"));
+        solarGeneratorBlock = new SolarGeneratorBlock(NAMESPACE.id("solar_generator"), Material.METAL);
 
         waterWheelBlock = new WaterWheelBlock(NAMESPACE.id("water_wheel"), Material.WOOD);
         windSailsBlock = new WindSailsBlock(NAMESPACE.id("wind_sails"), Material.WOOD);

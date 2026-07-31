@@ -17,7 +17,6 @@
     "glasstech:copper_block",
     "glasstech:tin_block",
     "glasstech:uranium_block",
-    "glasstech:refined_iron",
     "glasstech:machine_block",
     "glasstech:advanced_machine_block",
     "glasstech:metal_scaffold",
@@ -28,6 +27,10 @@
     "glasstech:dynamo",
     "glasstech:thermal_generator",
     "glasstech:recycler",
+    "glasstech:reinforced_glass",
+    "glasstech:reinforced_stone",
+    "glasstech:reinforced_door_block",
+    "glasstech:solar_generator",
     "glasstech:pump"
   ]
 }

@@ -9,7 +9,8 @@ import java.util.Random;
 public class GTGlassBlock extends TemplateGlassBlock {
     public GTGlassBlock(Identifier identifier) {
         super(identifier, 0, Material.GLASS, true);
-        setTranslationKey(identifier);
+        setHardness(10.0F);
+        setResistance(2000.0F);
     }
 
     @Override
