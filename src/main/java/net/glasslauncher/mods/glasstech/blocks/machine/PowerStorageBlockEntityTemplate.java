@@ -2,6 +2,8 @@ package net.glasslauncher.mods.glasstech.blocks.machine;
 
 import lombok.Getter;
 import lombok.Setter;
+import net.danygames2014.nyalib.capability.CapabilityHelper;
+import net.danygames2014.nyalib.capability.item.energyhandler.EnergyStorageItemCapability;
 import net.glasslauncher.mods.glassguis.screen.ServerSyncedField;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.minecraft.entity.player.PlayerEntity;
@@ -194,5 +196,28 @@ public abstract class PowerStorageBlockEntityTemplate extends EnergySourceConsum
         }
 
         nbt.put("Items", itemsNbt);
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+        if (world.isRemote) {
+            return;
+        }
+
+        if (inventory[0] != null) {
+            // Energy Storage Item
+            EnergyStorageItemCapability energyStorage = CapabilityHelper.getCapability(inventory[0], EnergyStorageItemCapability.class);
+            if (energyStorage != null && getEnergyStored() > 0 && energyStorage.getEnergyStored() < energyStorage.getEnergyCapacity() && VoltageTier.get(getMaxOutputVoltage(null)).maxVoltage >= energyStorage.getMaxEnergyInput()) {
+                energyStorage.addEnergy(removeEnergy(Math.min(energyStorage.getEnergyCapacity() - energyStorage.getEnergyStored(), energyStorage.getMaxEnergyInput())));
+            }
+        }
+
+        if (inventory[1] != null) {
+            EnergyStorageItemCapability energyStorage = CapabilityHelper.getCapability(inventory[1], EnergyStorageItemCapability.class);
+            if (energyStorage != null && energyStorage.getEnergyStored() > 0) {
+                addEnergy(energyStorage.extractEnergy(getRemainingCapacity()));
+            }
+        }
     }
 }
