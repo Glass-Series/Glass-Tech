@@ -22,9 +22,12 @@
     "glasstech:advanced_machine_block",
     "glasstech:metal_scaffold",
     "glasstech:mining_pipe",
+    "glasstech:lv_transformer",
     "glasstech:mv_transformer",
     "glasstech:hv_transformer",
     "glasstech:dynamo",
+    "glasstech:thermal_generator",
+    "glasstech:recycler",
     "glasstech:pump"
   ]
 }
