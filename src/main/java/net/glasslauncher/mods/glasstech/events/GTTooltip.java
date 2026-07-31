@@ -4,6 +4,7 @@ import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.glasslauncher.mods.alwaysmoreitems.api.event.AMITooltipEvent;
 import net.glasslauncher.mods.alwaysmoreitems.gui.Tooltip;
+import net.glasslauncher.mods.glasstech.GTItemOverlay;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.glasslauncher.mods.glasstech.WireMaterial;
 import net.glasslauncher.mods.glasstech.blocks.GTTooltipInfo;
@@ -14,13 +15,19 @@ import net.glasslauncher.mods.glasstech.item.PainterItem;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.client.render.Tessellator;
+import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.item.BlockItem;
+import net.modificationstation.stationapi.api.client.event.render.item.ItemOverlayRenderEvent;
+import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
 
 public class GTTooltip {
     private static final Object2IntMap<BlockWithEntity> MACHINE_TO_VOLTAGE_CACHE = new Object2IntOpenHashMap<>();
     private static final Object2IntMap<BlockWithEntity> MACHINE_TO_AMPS_CACHE = new Object2IntOpenHashMap<>();
+
+    private static final ItemRenderer ITEM_RENDERER = new ItemRenderer();
 
     @EventListener
     public static void addToTooltips(AMITooltipEvent event) {
@@ -56,6 +63,30 @@ public class GTTooltip {
                 return;
             }
             event.tooltip.add(color);
+        }
+    }
+
+    @EventListener
+    public void overlay(ItemOverlayRenderEvent event) {
+        if (event.itemStack != null && event.itemStack.getItem() instanceof GTItemOverlay stackToOverlay) {
+            double capacity = stackToOverlay.getEnergyCapacity(event.itemStack);
+            double stored = stackToOverlay.getEnergyStored(event.itemStack);
+            int barLength = (int) Math.round(((stored / capacity) * 13));
+            int colourOffset = 255 - (int) Math.round(((stored / capacity) * 225));
+            GL11.glDisable(2896);
+            GL11.glDisable(2929);
+            GL11.glDisable(3553);
+            Tessellator var8 = Tessellator.INSTANCE;
+            int barColour = new Color(255 - Math.max((colourOffset / 2) - 130, 100), 255 - colourOffset, 255 - (colourOffset / 2)).getRGB();
+            int backgroundColour = (255 - colourOffset) / 4 << 16 | 16128;
+            int barOffset = event.itemStack.isDamaged() ? 2 : 0;
+            ITEM_RENDERER.fillRect(var8, event.itemX + 2, event.itemY + 13 - barOffset, 13, 2, 0);
+            ITEM_RENDERER.fillRect(var8, event.itemX + 2, event.itemY + 13 - barOffset, 12, 1, backgroundColour);
+            ITEM_RENDERER.fillRect(var8, event.itemX + 2, event.itemY + 13 - barOffset, barLength, 1, barColour);
+            GL11.glEnable(3553);
+            GL11.glEnable(2896);
+            GL11.glEnable(2929);
+            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         }
     }
 }
