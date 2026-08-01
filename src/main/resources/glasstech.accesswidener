@@ -40,3 +40,5 @@ accessible field net/minecraft/world/explosion/Explosion world Lnet/minecraft/wo
 accessible field net/minecraft/client/render/block/BlockRenderManager blockView Lnet/minecraft/world/BlockView;
 
 accessible method net/minecraft/client/render/item/ItemRenderer fillRect (Lnet/minecraft/client/render/Tessellator;IIIII)V
+
+mutable field net/minecraft/item/ArmorItem maxProtection I
