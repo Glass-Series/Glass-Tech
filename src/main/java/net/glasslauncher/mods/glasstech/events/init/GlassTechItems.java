@@ -7,9 +7,10 @@ import net.glasslauncher.mods.glasstech.item.*;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
+import net.minecraft.item.ToolMaterial;
 import net.modificationstation.stationapi.api.event.registry.ItemRegistryEvent;
 import net.modificationstation.stationapi.api.mod.entrypoint.EntrypointManager;
-import net.modificationstation.stationapi.api.template.item.TemplateItem;
+import net.modificationstation.stationapi.api.template.item.*;
 
 import java.lang.invoke.MethodHandles;
 
@@ -193,11 +194,13 @@ public class GlassTechItems {
         diamondChainsaw = new TemplateItem(NAMESPACE.id("diamond_chainsaw"));
         drill = new TemplateItem(NAMESPACE.id("drill"));
         diamondDrill = new TemplateItem(NAMESPACE.id("diamond_drill"));
-        bronzeAxe = new TemplateItem(NAMESPACE.id("bronze_axe"));
-        bronzeHoe = new TemplateItem(NAMESPACE.id("bronze_hoe"));
-        bronzePickaxe = new TemplateItem(NAMESPACE.id("bronze_pickaxe"));
-        bronzeShovel = new TemplateItem(NAMESPACE.id("bronze_shovel"));
-        bronzeSword = new TemplateItem(NAMESPACE.id("bronze_sword"));
+
+        bronzeAxe = new TemplateAxeItem(NAMESPACE.id("bronze_axe"), ToolMaterial.IRON);
+        bronzeHoe = new TemplateHoeItem(NAMESPACE.id("bronze_hoe"), ToolMaterial.IRON);
+        bronzePickaxe = new TemplatePickaxeItem(NAMESPACE.id("bronze_pickaxe"), ToolMaterial.IRON);
+        bronzeShovel = new TemplateShovelItem(NAMESPACE.id("bronze_shovel"), ToolMaterial.IRON);
+        bronzeSword = new TemplateSwordItem(NAMESPACE.id("bronze_sword"), ToolMaterial.IRON);
+
         cfSprayer = new TemplateItem(NAMESPACE.id("cf_sprayer"));
         frequencyTransmitter = new TemplateItem(NAMESPACE.id("frequency_transmitter"));
         wireCutter = new WireCutters(NAMESPACE.id("wire_cutters"));
