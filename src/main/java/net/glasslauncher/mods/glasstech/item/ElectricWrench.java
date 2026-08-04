@@ -3,6 +3,7 @@ package net.glasslauncher.mods.glasstech.item;
 import lombok.Getter;
 import lombok.Setter;
 import net.danygames2014.nyalib.energy.EnergyStorageItem;
+import net.danygames2014.uniwrench.api.WrenchMode;
 import net.danygames2014.uniwrench.item.WrenchBase;
 import net.glasslauncher.mods.alwaysmoreitems.api.SubItemProvider;
 import net.glasslauncher.mods.glasstech.GTItemOverlay;
@@ -24,6 +25,8 @@ public class ElectricWrench extends WrenchBase implements EnergyStorageItem, GTI
         super(identifier);
         this.voltageTier = voltageTier;
         this.maxEnergy = maxEnergy;
+        this.addWrenchMode(WrenchMode.MODE_WRENCH);
+        this.addWrenchMode(WrenchMode.MODE_ROTATE);
     }
 
     @Override

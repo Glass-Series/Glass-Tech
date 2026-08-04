@@ -1,5 +1,6 @@
 package net.glasslauncher.mods.glasstech.item;
 
+import net.danygames2014.uniwrench.api.WrenchMode;
 import net.danygames2014.uniwrench.item.WrenchBase;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -10,6 +11,8 @@ public class Wrench extends WrenchBase {
     public Wrench(Identifier identifier) {
         super(identifier);
         setMaxDamage(128);
+        this.addWrenchMode(WrenchMode.MODE_WRENCH);
+        this.addWrenchMode(WrenchMode.MODE_ROTATE);
     }
 
     @Override
