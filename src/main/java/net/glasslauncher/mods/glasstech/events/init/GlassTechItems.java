@@ -190,10 +190,10 @@ public class GlassTechItems {
         wrench = new Wrench(NAMESPACE.id("wrench"));
         electricWrench = new ElectricWrench(NAMESPACE.id("electric_wrench"), VoltageTier.LV, VoltageTier.LV.maxVoltage * 256);
 
-        chainsaw = new TemplateItem(NAMESPACE.id("chainsaw"));
-        diamondChainsaw = new TemplateItem(NAMESPACE.id("diamond_chainsaw"));
-        drill = new TemplateItem(NAMESPACE.id("drill"));
-        diamondDrill = new TemplateItem(NAMESPACE.id("diamond_drill"));
+        chainsaw = new ElectricAxe(NAMESPACE.id("chainsaw"), ToolMaterial.IRON, VoltageTier.MV, VoltageTier.MV.maxVoltage * 160);
+        diamondChainsaw = new ElectricAxe(NAMESPACE.id("diamond_chainsaw"), ToolMaterial.DIAMOND, VoltageTier.HV, VoltageTier.HV.maxVoltage * 160);
+        drill = new ElectricPickaxe(NAMESPACE.id("drill"), ToolMaterial.IRON, VoltageTier.MV, VoltageTier.MV.maxVoltage * 160);
+        diamondDrill = new ElectricPickaxe(NAMESPACE.id("diamond_drill"), ToolMaterial.DIAMOND, VoltageTier.HV, VoltageTier.HV.maxVoltage * 160);
 
         bronzeAxe = new TemplateAxeItem(NAMESPACE.id("bronze_axe"), ToolMaterial.IRON);
         bronzeHoe = new TemplateHoeItem(NAMESPACE.id("bronze_hoe"), ToolMaterial.IRON);
