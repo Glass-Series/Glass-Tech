@@ -1,5 +1,6 @@
 package net.glasslauncher.mods.glasstech.blocks;
 
+import net.glasslauncher.mods.glasstech.WorldUtil;
 import net.minecraft.block.material.Material;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.hit.HitResult;
@@ -29,8 +30,7 @@ public class MiningPipeBlock extends GTTemplateBlock {
 
     @Override
     public void onTick(World world, int x, int y, int z, Random random) {
-        world.worldEvent(null, 2001, x, y, z, id + (world.getBlockMeta(x, y, z) << 28));
-        world.setBlock(x, y, z, 0);
+        WorldUtil.breakBlockWithParticles(world, x, y, z, id);
         dropStacks(world, x, y, z, 0);
     }
 

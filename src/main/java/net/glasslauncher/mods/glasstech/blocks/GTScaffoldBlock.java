@@ -2,6 +2,7 @@ package net.glasslauncher.mods.glasstech.blocks;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.loader.api.FabricLoader;
+import net.glasslauncher.mods.glasstech.WorldUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
@@ -106,8 +107,7 @@ public class GTScaffoldBlock extends GTTemplateBlock {
     }
 
     public void breakScaffold(World world, int x, int y, int z) {
-        world.worldEvent(null, 2001, x, y, z, id + (world.getBlockMeta(x, y, z) << 28));
-        world.setBlock(x, y, z, 0);
+        WorldUtil.breakBlockWithParticles(world, x, y, z, id);
         dropStacks(world, x, y, z, 0);
     }
 

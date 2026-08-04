@@ -4,6 +4,7 @@ import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.danygames2014.nyalib.capability.CapabilityHelper;
 import net.danygames2014.nyalib.capability.block.itemhandler.ItemHandlerBlockCapability;
 import net.glasslauncher.mods.glasstech.VoltageTier;
+import net.glasslauncher.mods.glasstech.WorldUtil;
 import net.glasslauncher.mods.glasstech.blocks.machine.ProgressMachineBlockEntityTemplate;
 import net.glasslauncher.mods.glasstech.blocks.machine.SlotLayout;
 import net.glasslauncher.mods.glasstech.events.init.GlassTechBlocks;
@@ -82,8 +83,7 @@ public class MinerBlockEntity extends ProgressMachineBlockEntityTemplate {
                 BlockState state = world.getBlockState(digPos);
                 heldItems = getStacksFromBlock(digPos.x, digPos.y, digPos.z);
 
-                world.worldEvent(null, 2001, digPos.x, digPos.y, digPos.z, state.getBlock().id + (world.getBlockMeta(digPos.x, digPos.y, digPos.z) << 28));
-                world.setBlock(digPos.x, digPos.y, digPos.z, 0);
+                WorldUtil.breakBlockWithParticles(world, digPos.x, digPos.y, digPos.z, state.getBlock().id);
 
                 yeetItems();
             }
@@ -159,25 +159,22 @@ public class MinerBlockEntity extends ProgressMachineBlockEntityTemplate {
         return stack;
     }
 
-    public boolean expandDrill(BlockPos target) {
+    public void expandDrill(BlockPos target) {
         BlockState state = world.getBlockState(target);
 
         if (!state.isAir()) {
             if (!canMine(target)) {
-                return false;
+                return;
             }
 
             heldItems = getStacksFromBlock(target.x, target.y, target.z);
 
-            world.worldEvent(null, 2001, target.x, target.y, target.z, state.getBlock().id + (world.getBlockMeta(target.x, target.y, target.z) << 28));
-            world.setBlock(target.x, target.y, target.z, 0);
+            WorldUtil.breakBlockWithParticles(world, target.x, target.y, target.z, state.getBlock().id);
         }
 
         if ((state.isAir() || state.getMaterial().isReplaceable()) && world.canPlace(GlassTechBlocks.miningPipeBlock.id, target.x, target.y, target.z, false, Direction.DOWN.getId())) {
             world.setBlock(target.x, target.y, target.z, GlassTechBlocks.miningPipeBlock.id);
-            return true;
         }
-        return false;
     }
 
     public BlockPos getEndOfDrill() {
@@ -235,7 +232,7 @@ public class MinerBlockEntity extends ProgressMachineBlockEntityTemplate {
         // Add the starting position to explore
         open.add(start);
 
-        // Go until open isnt empty
+        // Go until open isn't empty
         while (!open.isEmpty()) {
             // Get the position to explore
             BlockPos pos = open.get(0);
