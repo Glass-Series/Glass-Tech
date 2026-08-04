@@ -62,7 +62,7 @@ public class GTTooltip {
             }
             event.tooltip.add(color);
         }
-        else if (event.itemStack.getItem() instanceof GTItemOverlay gtItemOverlay) {
+        else if (event.itemStack.getItem() instanceof GTItemOverlay gtItemOverlay && gtItemOverlay.addTooltip()) {
             event.tooltip.add(((gtItemOverlay.getEnergyStored(event.itemStack) < gtItemOverlay.getEnergyCapacity(event.itemStack) / 5) ? Formatting.RED : Formatting.AQUA).toString() + gtItemOverlay.getEnergyStored(event.itemStack) + Formatting.FORMATTING_CODE_PREFIX + "r/" + Formatting.AQUA + gtItemOverlay.getEnergyCapacity(event.itemStack) + " EU");
         }
     }
@@ -73,16 +73,16 @@ public class GTTooltip {
             double capacity = stackToOverlay.getEnergyCapacity(event.itemStack);
             double stored = stackToOverlay.getEnergyStored(event.itemStack);
             int barLength = (int) Math.round(((stored / capacity) * 13));
-            int colourOffset = 255 - (int) Math.round(((stored / capacity) * 225));
+            int colorOffset = 255 - (int) Math.round(((stored / capacity) * 225));
             GL11.glDisable(2896);
             GL11.glDisable(2929);
             GL11.glDisable(3553);
             Tessellator var8 = Tessellator.INSTANCE;
-            int barColour = new Color(255 - Math.max((colourOffset / 2) - 130, 100), 255 - colourOffset, 255 - (colourOffset / 2)).getRGB();
-            int backgroundColour = (255 - colourOffset) / 4 << 16 | 16128;
+            int barColour = stackToOverlay.getColor(colorOffset);
+            int backgroundColor = (255 - colorOffset) / 4 << 16 | 16128;
             int barOffset = event.itemStack.isDamaged() ? 2 : 0;
             ITEM_RENDERER.fillRect(var8, event.itemX + 2, event.itemY + 13 - barOffset, 13, 2, 0);
-            ITEM_RENDERER.fillRect(var8, event.itemX + 2, event.itemY + 13 - barOffset, 12, 1, backgroundColour);
+            ITEM_RENDERER.fillRect(var8, event.itemX + 2, event.itemY + 13 - barOffset, 12, 1, backgroundColor);
             ITEM_RENDERER.fillRect(var8, event.itemX + 2, event.itemY + 13 - barOffset, barLength, 1, barColour);
             GL11.glEnable(3553);
             GL11.glEnable(2896);

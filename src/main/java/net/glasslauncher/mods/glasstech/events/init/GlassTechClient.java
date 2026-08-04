@@ -236,10 +236,12 @@ public class GlassTechClient {
         GlassTechItems.rubberBoots.setTexture(NAMESPACE.id("item/armor/rubber_boots"));
         GlassTechItems.voltageMeter.setTexture(NAMESPACE.id("item/tool/voltage_meter"));
         GlassTechItems.miningLaser.setTexture(NAMESPACE.id("item/tool/mining_laser"));
-        GlassTechItems.lappack.setTexture(NAMESPACE.id("item/armor/lappack"));
-        GlassTechItems.cfPack.setTexture(NAMESPACE.id("item/armor/cf_pack"));
         GlassTechItems.compositeChestplate.setTexture(NAMESPACE.id("item/armor/composite_chestplate"));
         GlassTechItems.treeTap.setTexture(NAMESPACE.id("item/tool/tree_tap"));
+
+        GlassTechItems.batteryPack.setTexture(NAMESPACE.id("item/armor/batpack"));
+        GlassTechItems.lappack.setTexture(NAMESPACE.id("item/armor/lappack"));
+        GlassTechItems.cfPack.setTexture(NAMESPACE.id("item/armor/cf_pack"));
 
         GlassTechBlocks.rubberSaplingBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/rubber_sapling")).index;
         GlassTechBlocks.rubberSaplingBlock.asItem().setTextureId(GlassTechBlocks.rubberSaplingBlock.textureId);

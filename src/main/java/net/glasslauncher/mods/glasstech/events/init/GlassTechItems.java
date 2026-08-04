@@ -180,7 +180,11 @@ public class GlassTechItems {
         reBattery = new RechargeableCellItem(NAMESPACE.id("re_battery"), VoltageTier.LV, VoltageTier.LV.maxVoltage * 64);
         energyCrystal = new RechargeableCellItem(NAMESPACE.id("energy_crystal"), VoltageTier.MV, VoltageTier.MV.maxVoltage * 64);
         lapotronCrystal = new RechargeableCellItem(NAMESPACE.id("lapotron_crystal"), VoltageTier.HV, VoltageTier.HV.maxVoltage * 64);
-        batteryPack = new TemplateItem(NAMESPACE.id("battery_pack"));
+
+        batteryPack = new PowerStorageArmor(NAMESPACE.id("battery_pack"), 1, VoltageTier.LV, VoltageTier.LV.maxVoltage * 640);
+        lappack = new PowerStorageArmor(NAMESPACE.id("lappack"), 1, VoltageTier.HV, VoltageTier.HV.maxVoltage * 640);
+
+        cfPack = new TemplateItem(NAMESPACE.id("cf_pack"));
 
         wrench = new TemplateItem(NAMESPACE.id("wrench"));
         electricWrench = new TemplateItem(NAMESPACE.id("electric_wrench"));
@@ -209,16 +213,19 @@ public class GlassTechItems {
         plantBall = new TemplateItem(NAMESPACE.id("plant_ball"));
         suBattery = new TemplateItem(NAMESPACE.id("su_battery"));
         uraniumCell = new TemplateItem(NAMESPACE.id("uranium_cell"));
-        nanoBoots = new TemplateItem(NAMESPACE.id("nano_boots"));
-        nanoChestplate = new TemplateItem(NAMESPACE.id("nano_chestplate"));
-        nanoHelmet = new TemplateItem(NAMESPACE.id("nano_helmet"));
-        nanoLeggings = new TemplateItem(NAMESPACE.id("nano_leggings"));
-        quantumBoots = new TemplateItem(NAMESPACE.id("quantum_boots"));
-        quantumChestplate = new TemplateItem(NAMESPACE.id("quantum_chestplate"));
-        quantumHelmet = new TemplateItem(NAMESPACE.id("quantum_helmet"));
-        quantumLeggings = new TemplateItem(NAMESPACE.id("quantum_leggings"));
-        jetpack = new TemplateItem(NAMESPACE.id("jetpack"));
-        electricJetpack = new TemplateItem(NAMESPACE.id("electric_jetpack"));
+
+        nanoBoots = new NanoArmor(NAMESPACE.id("nano_boots"), 3, VoltageTier.MV, VoltageTier.MV.maxVoltage * 320);
+        nanoChestplate = new NanoArmor(NAMESPACE.id("nano_chestplate"), 1, VoltageTier.MV, VoltageTier.MV.maxVoltage * 320);
+        nanoHelmet = new NanoArmor(NAMESPACE.id("nano_helmet"), 0, VoltageTier.MV, VoltageTier.MV.maxVoltage * 320);
+        nanoLeggings = new NanoArmor(NAMESPACE.id("nano_leggings"), 2, VoltageTier.MV, VoltageTier.MV.maxVoltage * 320);
+
+        quantumBoots = new QuantumArmor(NAMESPACE.id("quantum_boots"), 3, VoltageTier.HV, VoltageTier.HV.maxVoltage * 320);
+        quantumChestplate = new QuantumArmor(NAMESPACE.id("quantum_chestplate"), 1, VoltageTier.HV, VoltageTier.HV.maxVoltage * 320);
+        quantumHelmet = new QuantumArmor(NAMESPACE.id("quantum_helmet"), 0, VoltageTier.HV, VoltageTier.HV.maxVoltage * 320);
+        quantumLeggings = new QuantumArmor(NAMESPACE.id("quantum_leggings"), 2, VoltageTier.HV, VoltageTier.HV.maxVoltage * 320);
+
+        jetpack = new FuelJetPack(NAMESPACE.id("jetpack"), 1, VoltageTier.MV);
+        electricJetpack = new ElectricJetPack(NAMESPACE.id("electric_jetpack"), 1, VoltageTier.MV, VoltageTier.MV.maxVoltage * 160);
 
         bronzeBoots = new TemplateItem(NAMESPACE.id("bronze_boots"));
         bronzeChestplate = new TemplateItem(NAMESPACE.id("bronze_chestplate"));
@@ -247,8 +254,6 @@ public class GlassTechItems {
         rubberBoots = new TemplateItem(NAMESPACE.id("rubber_boots"));
         voltageMeter = new VoltMeterItem(NAMESPACE.id("voltage_meter"));
         miningLaser = new TemplateItem(NAMESPACE.id("mining_laser"));
-        lappack = new TemplateItem(NAMESPACE.id("lappack"));
-        cfPack = new TemplateItem(NAMESPACE.id("cf_pack"));
         compositeChestplate = new TemplateItem(NAMESPACE.id("composite_chestplate"));
     }
 

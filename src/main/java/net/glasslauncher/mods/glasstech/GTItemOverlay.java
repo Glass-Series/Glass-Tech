@@ -2,7 +2,14 @@ package net.glasslauncher.mods.glasstech;
 
 import net.minecraft.item.ItemStack;
 
+import java.awt.*;
+
 public interface GTItemOverlay {
+    default int getColor(int colorOffset) {
+        return new Color(255 - Math.max((colorOffset / 2) - 130, 100), 255 - colorOffset, 255 - (colorOffset / 2)).getRGB();
+    }
     int getEnergyStored(ItemStack stack);
     int getEnergyCapacity(ItemStack stack);
+
+    default boolean addTooltip() {return true;}
 }

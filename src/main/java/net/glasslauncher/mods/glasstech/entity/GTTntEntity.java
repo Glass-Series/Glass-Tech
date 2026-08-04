@@ -14,7 +14,7 @@ import static net.glasslauncher.mods.glasstech.GlassTech.NAMESPACE;
 @HasTrackingParameters(trackingDistance = 40, updatePeriod = 40, sendVelocity = TriState.TRUE)
 public class GTTntEntity extends TntEntity implements EntitySpawnDataProvider {
     public float power = 4;
-    private boolean nukesplosion;
+    protected boolean nukesplosion;
 
     public GTTntEntity(World world) {
         super(world);

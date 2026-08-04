@@ -23,10 +23,12 @@
       "net.glasslauncher.mods.glasstech.events.init.GlassTechItems",
       "net.glasslauncher.mods.glasstech.events.init.RecipeInit",
       "net.glasslauncher.mods.glasstech.events.init.GlassTechEntities",
-      "net.glasslauncher.mods.glasstech.events.GTTooltip"
+      "net.glasslauncher.mods.glasstech.events.init.GlassTechNetworking"
     ],
     "stationapi:event_bus_client": [
-      "net.glasslauncher.mods.glasstech.events.init.GlassTechClient"
+      "net.glasslauncher.mods.glasstech.events.init.GlassTechClient",
+      "net.glasslauncher.mods.glasstech.events.GTKeybinds",
+      "net.glasslauncher.mods.glasstech.events.GTTooltip"
     ],
     "stationapi:event_bus_server": [
     ]
@@ -34,7 +36,7 @@
   "mixins": [
     "glasstech.mixins.json"
   ],
-  "accessWidener": "glasstech.accesswidener",
+  "accessWidener": "glasstech.classtweaker",
 
   "depends": {
     "minecraft": "1.0.0-beta.7.3"

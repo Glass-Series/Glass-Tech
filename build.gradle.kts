@@ -26,7 +26,7 @@ sourceSets {
 }
 
 loom {
-	accessWidenerPath = file("src/main/resources/glasstech.accesswidener")
+	accessWidenerPath = file("src/main/resources/glasstech.classtweaker")
 
 	runs {
 		// If you want to make a testmod for your mod, right click on src, and create a new folder with the same name as source() below.
