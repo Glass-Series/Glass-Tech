@@ -255,7 +255,7 @@ public class GlassTechItems {
         advancedScanner = new TemplateItem(NAMESPACE.id("advanced_scanner"));
 //        dynamite = new TemplateItem(NAMESPACE.id("dynamite"));
         stickyDynamite = new TemplateItem(NAMESPACE.id("sticky_dynamite"));
-        rubberBoots = new TemplateItem(NAMESPACE.id("rubber_boots"));
+        rubberBoots = new RubberBoots(NAMESPACE.id("rubber_boots"), 0, 0, 3);
         voltageMeter = new VoltMeterItem(NAMESPACE.id("voltage_meter"));
         miningLaser = new TemplateItem(NAMESPACE.id("mining_laser"));
         compositeChestplate = new TemplateItem(NAMESPACE.id("composite_chestplate"));
