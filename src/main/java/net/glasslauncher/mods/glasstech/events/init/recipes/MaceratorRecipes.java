@@ -16,11 +16,11 @@ import static net.glasslauncher.mods.glasstech.GlassTech.NAMESPACE;
 public class MaceratorRecipes {
     public static void initRecipes() {
         MaceratorRecipeRegistry registry = MaceratorRecipeRegistry.INSTANCE;
-        registry.register(NAMESPACE.id("refinediron2dust"), new MaceratorRecipe(new StackRecipeInput(new ItemStack(GlassTechItems.refinedIronIngot)), 200, new RecipeOutput(new ItemStack(GlassTechItems.ironDust, 2))));
-        registry.register(NAMESPACE.id("iron2dust"), new MaceratorRecipe(new StackRecipeInput(new ItemStack(Item.IRON_INGOT)), 200, new RecipeOutput(new ItemStack(GlassTechItems.ironDust, 2))));
-        registry.register(NAMESPACE.id("gold2dust"), new MaceratorRecipe(new StackRecipeInput(new ItemStack(Item.GOLD_INGOT)), 200, new RecipeOutput(new ItemStack(GlassTechItems.goldDust, 2))));
-        registry.register(NAMESPACE.id("tin2dust"), new MaceratorRecipe(new StackRecipeInput(new ItemStack(GlassTechItems.tinIngot)), 200, new RecipeOutput(new ItemStack(GlassTechItems.tinDust, 2))));
-        registry.register(NAMESPACE.id("copper2dust"), new MaceratorRecipe(new StackRecipeInput(new ItemStack(GlassTechItems.copperIngot)), 200, new RecipeOutput(new ItemStack(GlassTechItems.copperDust, 2))));
+        registry.register(NAMESPACE.id("refinediron2dust"), new MaceratorRecipe(new StackRecipeInput(new ItemStack(GlassTechItems.refinedIronIngot)), 200, new RecipeOutput(new ItemStack(GlassTechItems.ironDust))));
+        registry.register(NAMESPACE.id("iron2dust"), new MaceratorRecipe(new StackRecipeInput(new ItemStack(Item.IRON_INGOT)), 200, new RecipeOutput(new ItemStack(GlassTechItems.ironDust))));
+        registry.register(NAMESPACE.id("gold2dust"), new MaceratorRecipe(new StackRecipeInput(new ItemStack(Item.GOLD_INGOT)), 200, new RecipeOutput(new ItemStack(GlassTechItems.goldDust))));
+        registry.register(NAMESPACE.id("tin2dust"), new MaceratorRecipe(new StackRecipeInput(new ItemStack(GlassTechItems.tinIngot)), 200, new RecipeOutput(new ItemStack(GlassTechItems.tinDust))));
+        registry.register(NAMESPACE.id("copper2dust"), new MaceratorRecipe(new StackRecipeInput(new ItemStack(GlassTechItems.copperIngot)), 200, new RecipeOutput(new ItemStack(GlassTechItems.copperDust))));
         registry.register(NAMESPACE.id("ironore2dust"), new MaceratorRecipe(new StackRecipeInput(new ItemStack(Block.IRON_ORE)), 200, new RecipeOutput(new ItemStack(GlassTechItems.ironDust, 2))));
         registry.register(NAMESPACE.id("goldore2dust"), new MaceratorRecipe(new StackRecipeInput(new ItemStack(Block.GOLD_ORE)), 200, new RecipeOutput(new ItemStack(GlassTechItems.goldDust, 2))));
         registry.register(NAMESPACE.id("tinore2dust"), new MaceratorRecipe(new StackRecipeInput(new ItemStack(GlassTechBlocks.tinOreBlock)), 200, new RecipeOutput(new ItemStack(GlassTechItems.tinDust, 2))));
