@@ -1,7 +1,9 @@
 package net.glasslauncher.mods.glasstech.mixin;
 
 import net.glasslauncher.mods.glasstech.GTArmorPlayerTick;
+import net.glasslauncher.mods.glasstech.GTCustomAttackDamage;
 import net.glasslauncher.mods.glasstech.GlassTechPlayer;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
@@ -13,9 +15,16 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(PlayerEntity.class)
-public class PlayerEntityMixin implements GlassTechPlayer {
+public abstract class PlayerEntityMixin implements GlassTechPlayer {
     @Shadow
     public PlayerInventory inventory;
+
+    @Shadow
+    public abstract ItemStack getHand();
+
+    @Shadow
+    public abstract boolean isFullyAsleep();
+
     @Unique
     private boolean holdingAbilityKey = false;
 
@@ -37,5 +46,13 @@ public class PlayerEntityMixin implements GlassTechPlayer {
     @Override
     public void glasstech$setHoldingAbilityKey(boolean value) {
         holdingAbilityKey = value;
+    }
+
+    @Inject(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;getHand()Lnet/minecraft/item/ItemStack;"))
+    private void dealtDamage(Entity par1, CallbackInfo ci) {
+        ItemStack hand = getHand();
+        if (hand != null && hand.getItem() instanceof GTCustomAttackDamage customAttackDamage) {
+            customAttackDamage.dealtDamage(hand, par1, (Entity) (Object) this);
+        }
     }
 }

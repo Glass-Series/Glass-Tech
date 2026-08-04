@@ -1,5 +1,8 @@
 package net.glasslauncher.mods.glasstech.mixin;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import net.glasslauncher.mods.glasstech.GTCustomAttackDamage;
 import net.glasslauncher.mods.glasstech.GTCustomDamageHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
@@ -21,5 +24,13 @@ public abstract class ItemStackMixin {
             customDamageHandler.onTakeDamage(entity, (ItemStack) (Object) this, damage);
             ci.cancel();
         }
+    }
+
+    @WrapOperation(method = "getAttackDamage", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/Item;getAttackDamage(Lnet/minecraft/entity/Entity;)I"))
+    private int hijackAttackDamage(Item instance, Entity entity, Operation<Integer> original) {
+        if (instance instanceof GTCustomAttackDamage customAttackDamage) {
+            return customAttackDamage.glasstech$getAttackDamage((ItemStack) (Object) this, entity);
+        }
+        return original.call(instance, entity);
     }
 }

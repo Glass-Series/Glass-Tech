@@ -165,6 +165,8 @@ public class GlassTechClient {
         GlassTechItems.wireCutter.setTexture(NAMESPACE.id("item/tool/wire_cutters"));
         GlassTechItems.painter.setTexture(NAMESPACE.id("item/tool/painter"));
         GlassTechItems.nanoSaber.setTexture(NAMESPACE.id("item/tool/nano_saber"));
+        GlassTechItems.nanoSaber.onTexture1 = Atlases.getGuiItems().addTexture(NAMESPACE.id("item/tool/nano_saber_1")).index;
+        GlassTechItems.nanoSaber.onTexture2 = Atlases.getGuiItems().addTexture(NAMESPACE.id("item/tool/nano_saber_2")).index;
 
         GlassTechBlocks.copperOreBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/resource/copper_ore")).index;
         GlassTechBlocks.tinOreBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/resource/tin_ore")).index;

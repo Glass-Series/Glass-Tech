@@ -81,7 +81,7 @@ public class GlassTechItems {
     public static Item frequencyTransmitter;
     public static Item wireCutter;
     public static Item painter;
-    public static Item nanoSaber;
+    public static NanoSaberItem nanoSaber;
 
     public static Item compressedHydratedCoal;
     public static Item compressedPlantBall;
@@ -205,7 +205,7 @@ public class GlassTechItems {
         frequencyTransmitter = new TemplateItem(NAMESPACE.id("frequency_transmitter"));
         wireCutter = new WireCutters(NAMESPACE.id("wire_cutters"));
         painter = new PainterItem(NAMESPACE.id("painter"));
-        nanoSaber = new TemplateItem(NAMESPACE.id("nano_saber"));
+        nanoSaber = new NanoSaberItem(NAMESPACE.id("nano_saber"), VoltageTier.MV, VoltageTier.MV.maxVoltage * 320);
 
         treeTap = new TemplateItem(NAMESPACE.id("tree_tap"));
 
