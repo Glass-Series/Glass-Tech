@@ -186,8 +186,9 @@ public class GlassTechItems {
 
         cfPack = new TemplateItem(NAMESPACE.id("cf_pack"));
 
-        wrench = new TemplateItem(NAMESPACE.id("wrench"));
-        electricWrench = new TemplateItem(NAMESPACE.id("electric_wrench"));
+        wrench = new Wrench(NAMESPACE.id("wrench"));
+        electricWrench = new ElectricWrench(NAMESPACE.id("electric_wrench"), VoltageTier.LV, VoltageTier.LV.maxVoltage * 256);
+
         chainsaw = new TemplateItem(NAMESPACE.id("chainsaw"));
         diamondChainsaw = new TemplateItem(NAMESPACE.id("diamond_chainsaw"));
         drill = new TemplateItem(NAMESPACE.id("drill"));
