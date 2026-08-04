@@ -3,6 +3,7 @@ package net.glasslauncher.mods.glasstech.mixin;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.glasslauncher.mods.glasstech.GTCustomDamageHandler;
+import net.glasslauncher.mods.glasstech.item.GTTickingArmor;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
@@ -11,13 +12,18 @@ import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(PlayerInventory.class)
 public abstract class PlayerInventoryMixin implements Inventory {
 
     @Shadow
     public PlayerEntity player;
+
+    @Shadow
+    public ItemStack[] armor;
 
     @Redirect(method = "getTotalArmorDurability", at = @At(
             value = "FIELD",
@@ -44,5 +50,15 @@ public abstract class PlayerInventoryMixin implements Inventory {
             return customDamageHandler.getCurrentArmorDamage(player, instance);
         }
         return original.call(instance);
+    }
+
+    @Inject(method = "inventoryTick", at = @At("HEAD"))
+    private void tickArmor(CallbackInfo ci) {
+        for (int i = 0; i< 4; i++) {
+            ItemStack stack = armor[i];
+            if (stack != null && stack.getItem() instanceof GTTickingArmor tickingArmor) {
+                tickingArmor.armorTick(stack, player.world, player, i);
+            }
+        }
     }
 }
