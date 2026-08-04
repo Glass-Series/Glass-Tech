@@ -231,10 +231,10 @@ public class GlassTechItems {
         jetpack = new FuelJetPack(NAMESPACE.id("jetpack"), 1, VoltageTier.MV);
         electricJetpack = new ElectricJetPack(NAMESPACE.id("electric_jetpack"), 1, VoltageTier.MV, VoltageTier.MV.maxVoltage * 160);
 
-        bronzeBoots = new TemplateItem(NAMESPACE.id("bronze_boots"));
-        bronzeChestplate = new TemplateItem(NAMESPACE.id("bronze_chestplate"));
-        bronzeHelmet = new TemplateItem(NAMESPACE.id("bronze_helmet"));
-        bronzeLeggings = new TemplateItem(NAMESPACE.id("bronze_leggings"));
+        bronzeBoots = new BronzeArmor(NAMESPACE.id("bronze_boots"), 2, 0, 3);
+        bronzeChestplate = new BronzeArmor(NAMESPACE.id("bronze_chestplate"), 2, 0, 1);
+        bronzeHelmet = new BronzeArmor(NAMESPACE.id("bronze_helmet"), 2, 0, 0);
+        bronzeLeggings = new BronzeArmor(NAMESPACE.id("bronze_leggings"), 2, 0, 2);
 
         reactorCooler = new TemplateItem(NAMESPACE.id("reactor_cooler"));
         reactorPlating = new TemplateItem(NAMESPACE.id("reactor_plating"));
