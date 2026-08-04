@@ -6,9 +6,12 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.modificationstation.stationapi.api.client.item.CustomTooltipProvider;
+import net.modificationstation.stationapi.api.util.Formatting;
 import net.modificationstation.stationapi.api.util.Identifier;
+import org.jetbrains.annotations.NotNull;
 
-public class PowerStorageArmor extends PowerArmor implements GTTickingArmor {
+public class PowerStorageArmor extends PowerArmor implements GTTickingArmor, CustomTooltipProvider {
     private final Identifier identifier;
 
     public PowerStorageArmor(Identifier identifier, int slot, VoltageTier voltageTier, int maxEnergy) {
@@ -57,5 +60,13 @@ public class PowerStorageArmor extends PowerArmor implements GTTickingArmor {
                 addEnergy(stack, chargeAmount);
             }
         }
+    }
+
+    @Override
+    public @NotNull String[] getTooltip(ItemStack stack, String originalTooltip) {
+        return new String[]{
+                originalTooltip,
+                Formatting.GRAY + "Charges hotbar and armor"
+        };
     }
 }
