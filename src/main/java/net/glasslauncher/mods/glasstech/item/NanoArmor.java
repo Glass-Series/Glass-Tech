@@ -13,6 +13,7 @@ public class NanoArmor extends PowerArmor implements GTCustomDamageHandler {
 
     public NanoArmor(Identifier identifier, int slot, VoltageTier voltageTier, int maxEnergy) {
         super(identifier, slot, voltageTier, maxEnergy);
+        setMaxDamage(0);
     }
 
     @Override

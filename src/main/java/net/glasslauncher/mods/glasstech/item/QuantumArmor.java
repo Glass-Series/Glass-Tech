@@ -10,6 +10,7 @@ import net.modificationstation.stationapi.api.util.Identifier;
 public class QuantumArmor extends NanoArmor implements GTArmorDamageHandler, GTArmorPlayerTick {
     public QuantumArmor(Identifier identifier, int slot, VoltageTier voltageTier, int maxEnergy) {
         super(identifier, slot, voltageTier, maxEnergy);
+        setMaxDamage(0);
     }
 
     @Override

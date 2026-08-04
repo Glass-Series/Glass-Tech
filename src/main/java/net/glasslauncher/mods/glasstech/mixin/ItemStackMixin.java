@@ -18,11 +18,10 @@ public abstract class ItemStackMixin {
     @Shadow
     public abstract Item getItem();
 
-    @Inject(method = "damage", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "damage", at = @At("HEAD"))
     private void hijackDamage(int damage, Entity entity, CallbackInfo ci) {
         if (getItem() instanceof GTCustomDamageHandler customDamageHandler) {
             customDamageHandler.onTakeDamage(entity, (ItemStack) (Object) this, damage);
-            ci.cancel();
         }
     }
 
