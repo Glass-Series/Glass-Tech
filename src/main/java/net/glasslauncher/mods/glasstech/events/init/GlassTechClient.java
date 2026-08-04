@@ -162,7 +162,7 @@ public class GlassTechClient {
         GlassTechItems.bronzeSword.setTexture(NAMESPACE.id("item/tool/bronze_sword"));
         GlassTechItems.cfSprayer.setTexture(NAMESPACE.id("item/tool/cf_sprayer"));
         GlassTechItems.frequencyTransmitter.setTexture(NAMESPACE.id("item/tool/frequency_transmitter"));
-        GlassTechItems.insulationCutter.setTexture(NAMESPACE.id("item/tool/insulation_cutter"));
+        GlassTechItems.wireCutter.setTexture(NAMESPACE.id("item/tool/wire_cutters"));
         GlassTechItems.painter.setTexture(NAMESPACE.id("item/tool/painter"));
         GlassTechItems.nanoSaber.setTexture(NAMESPACE.id("item/tool/nano_saber"));
 

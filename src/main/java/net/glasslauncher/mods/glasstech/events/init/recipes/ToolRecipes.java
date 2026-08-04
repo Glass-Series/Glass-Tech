@@ -43,7 +43,7 @@ public class ToolRecipes {
         add(frequencyTransmitter, "c", "C", "C", 'C', circuit, 'c', copperCableBlock);
         add(batteryPack, "BCB", "BTB", "B B", 'T', tinIngot, 'C', circuit, 'B', reBattery);
         add(lappack, "LAL", "LBL", "L L", 'L', Block.LAPIS_BLOCK, 'A', advancedCircuit, 'B', batteryPack);
-        add(insulationCutter, "A A", " A ", "I I", 'A', refinedIronIngot, 'I', Item.IRON_INGOT);
+        add(wireCutter, "A A", " A ", "I I", 'A', refinedIronIngot, 'I', Item.IRON_INGOT);
         add(bronzePickaxe, "BBB", " S ", " S ", 'B', bronzeIngot, 'S', Item.STICK);
         add(bronzeAxe, "BB", "SB", "S ", 'B', bronzeIngot, 'S', Item.STICK);
         add(bronzeHoe, "BB", "S ", "S ", 'B', bronzeIngot, 'S', Item.STICK);

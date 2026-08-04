@@ -78,7 +78,7 @@ public class GlassTechItems {
     public static Item bronzeSword;
     public static Item cfSprayer;
     public static Item frequencyTransmitter;
-    public static Item insulationCutter;
+    public static Item wireCutter;
     public static Item painter;
     public static Item nanoSaber;
 
@@ -199,7 +199,7 @@ public class GlassTechItems {
         bronzeSword = new TemplateItem(NAMESPACE.id("bronze_sword"));
         cfSprayer = new TemplateItem(NAMESPACE.id("cf_sprayer"));
         frequencyTransmitter = new TemplateItem(NAMESPACE.id("frequency_transmitter"));
-        insulationCutter = new TemplateItem(NAMESPACE.id("insulation_cutter"));
+        wireCutter = new WireCutters(NAMESPACE.id("wire_cutters"));
         painter = new PainterItem(NAMESPACE.id("painter"));
         nanoSaber = new TemplateItem(NAMESPACE.id("nano_saber"));
 
