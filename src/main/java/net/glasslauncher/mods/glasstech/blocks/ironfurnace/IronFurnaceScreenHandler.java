@@ -14,10 +14,12 @@ public class IronFurnaceScreenHandler extends ScreenHandler {
     public IronFurnaceScreenHandler(PlayerInventory playerInventory, IronFurnaceBlockEntity ironFurnaceBlockEntity) {
         super();
         this.ironFurnaceBlockEntity = ironFurnaceBlockEntity;
-        glassguis_setupPlayerInventory(8, 167, playerInventory);
+        if (playerInventory != null) {
+            glassguis_setupPlayerInventory(8, 167, playerInventory);
+        }
         addSlot(new Slot(ironFurnaceBlockEntity, 0, 56, 17));
         addSlot(new FuelSlot(ironFurnaceBlockEntity, 1, 56, 53));
-        addSlot(new BigOutputSlot(playerInventory.player, ironFurnaceBlockEntity, 2, 116, 35));
+        addSlot(new BigOutputSlot(ironFurnaceBlockEntity, 2, 116, 35));
     }
 
     @Override

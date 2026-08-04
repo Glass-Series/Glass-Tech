@@ -19,7 +19,7 @@ public class ConsumerScreenHandlerTemplate<T extends ConsumerBlockEntityTemplate
     public ConsumerScreenHandlerTemplate(PlayerInventory playerInventory, T blockEntity, boolean hasPlayerInventory) {
         this.playerInventory = playerInventory;
         this.blockEntity = blockEntity;
-        if (hasPlayerInventory) {
+        if (hasPlayerInventory && playerInventory != null) {
             glassguis_setupPlayerInventory(8, 167, playerInventory);
         }
     }

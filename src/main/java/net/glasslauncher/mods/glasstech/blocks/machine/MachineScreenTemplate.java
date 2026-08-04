@@ -22,7 +22,7 @@ import static net.glasslauncher.mods.glasstech.blocks.machine.SlotLayout.GAUGE_L
 
 public abstract class MachineScreenTemplate<T extends MachineBlockEntityTemplate> extends HandledScreen {
     protected final PlayerInventory playerInventory;
-    protected final T blockEntity;
+    public final T blockEntity;
 
     public MachineScreenTemplate(ScreenHandler screenHandler, PlayerInventory playerInventory, T blockEntity) {
         super(screenHandler);

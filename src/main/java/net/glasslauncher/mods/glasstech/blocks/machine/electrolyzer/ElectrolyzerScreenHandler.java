@@ -7,6 +7,6 @@ import net.minecraft.entity.player.PlayerInventory;
 class ElectrolyzerScreenHandler extends ConsumerScreenHandlerTemplate<ElectrolyzerBlockEntity> {
     public ElectrolyzerScreenHandler(PlayerInventory playerInventory, ElectrolyzerBlockEntity blockEntity) {
         super(playerInventory, blockEntity, true);
-        SlotLayout.createBasic(this, playerInventory.player, blockEntity);
+        SlotLayout.createBasic(this, blockEntity);
     }
 }

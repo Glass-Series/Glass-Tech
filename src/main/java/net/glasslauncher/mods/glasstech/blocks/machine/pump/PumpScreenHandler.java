@@ -7,6 +7,6 @@ import net.minecraft.entity.player.PlayerInventory;
 class PumpScreenHandler extends ConsumerScreenHandlerTemplate<PumpBlockEntity> {
     public PumpScreenHandler(PlayerInventory playerInventory, PumpBlockEntity blockEntity) {
         super(playerInventory, blockEntity, true);
-        SlotLayout.createFluid(this, playerInventory.player, blockEntity);
+        SlotLayout.createFluid(this, blockEntity);
     }
 }

@@ -1,13 +1,14 @@
 package net.glasslauncher.mods.glasstech.blocks.machine;
 
 import lombok.Getter;
+import lombok.Setter;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.glasslauncher.mods.glasstech.recipe.machine.BasicMachineRecipe;
 import net.glasslauncher.mods.glasstech.recipe.machine.output.RecipeOutput;
 import net.minecraft.item.ItemStack;
 
 public abstract class RecipeBlockEntityTemplate<R extends BasicMachineRecipe> extends ProgressMachineBlockEntityTemplate {
-    @Getter
+    @Getter @Setter
     private int currentShortestTime = Integer.MAX_VALUE;
 
     public RecipeBlockEntityTemplate(VoltageTier tier, int maxProgress, int energyConsumption, int energyCapacity) {

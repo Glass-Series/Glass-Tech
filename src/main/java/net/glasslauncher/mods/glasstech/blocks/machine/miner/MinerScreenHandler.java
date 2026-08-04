@@ -7,6 +7,6 @@ import net.minecraft.entity.player.PlayerInventory;
 class MinerScreenHandler extends ConsumerScreenHandlerTemplate<MinerBlockEntity> {
     public MinerScreenHandler(PlayerInventory playerInventory, MinerBlockEntity blockEntity) {
         super(playerInventory, blockEntity, true);
-        SlotLayout.createBasic(this, playerInventory.player, blockEntity);
+        SlotLayout.createBasic(this, blockEntity);
     }
 }

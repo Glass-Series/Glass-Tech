@@ -7,6 +7,6 @@ import net.minecraft.entity.player.PlayerInventory;
 class CannerScreenHandler extends ConsumerScreenHandlerTemplate<CannerBlockEntity> {
     public CannerScreenHandler(PlayerInventory playerInventory, CannerBlockEntity blockEntity) {
         super(playerInventory, blockEntity, true);
-        SlotLayout.createBasic(this, playerInventory.player, blockEntity);
+        SlotLayout.createBasic(this, blockEntity);
     }
 }

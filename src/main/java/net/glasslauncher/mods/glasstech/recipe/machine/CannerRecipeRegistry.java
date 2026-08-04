@@ -1,5 +1,7 @@
 package net.glasslauncher.mods.glasstech.recipe.machine;
 
-public class CannerRecipeRegistry extends RecipeRegistryTemplate<BasicMachineRecipe> {
+import net.glasslauncher.mods.glasstech.events.init.recipes.CannerRecipes;
+
+public class CannerRecipeRegistry extends RecipeRegistryTemplate<CannerRecipes.CannerRecipe> {
     public static CannerRecipeRegistry INSTANCE = new CannerRecipeRegistry();
 }

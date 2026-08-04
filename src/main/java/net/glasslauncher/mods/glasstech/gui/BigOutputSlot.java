@@ -1,15 +1,19 @@
 package net.glasslauncher.mods.glasstech.gui;
 
 import net.glasslauncher.mods.glassguis.screen.widget.slot.GlassSlot;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
-import net.minecraft.screen.slot.FurnaceOutputSlot;
+import net.minecraft.item.ItemStack;
+import net.minecraft.screen.slot.Slot;
 
-public class BigOutputSlot extends FurnaceOutputSlot implements GlassSlot {
-    public BigOutputSlot(PlayerEntity player, Inventory inventory, int index, int x, int y) {
-        super(player, inventory, index, x, y);
+public class BigOutputSlot extends Slot implements GlassSlot {
+    public BigOutputSlot(Inventory inventory, int index, int x, int y) {
+        super(inventory, index, x, y);
     }
 
+    @Override
+    public boolean canInsert(ItemStack stack) {
+        return false;
+    }
 
     @Override
     public int getWidth() {

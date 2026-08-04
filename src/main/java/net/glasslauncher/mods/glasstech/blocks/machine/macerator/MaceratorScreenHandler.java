@@ -4,9 +4,9 @@ import net.glasslauncher.mods.glasstech.blocks.machine.ConsumerScreenHandlerTemp
 import net.glasslauncher.mods.glasstech.blocks.machine.SlotLayout;
 import net.minecraft.entity.player.PlayerInventory;
 
-class MaceratorScreenHandler extends ConsumerScreenHandlerTemplate<MaceratorBlockEntity> {
+public class MaceratorScreenHandler extends ConsumerScreenHandlerTemplate<MaceratorBlockEntity> {
     public MaceratorScreenHandler(PlayerInventory playerInventory, MaceratorBlockEntity blockEntity) {
         super(playerInventory, blockEntity, true);
-        SlotLayout.createBasic(this, playerInventory.player, blockEntity);
+        SlotLayout.createBasic(this, blockEntity);
     }
 }
