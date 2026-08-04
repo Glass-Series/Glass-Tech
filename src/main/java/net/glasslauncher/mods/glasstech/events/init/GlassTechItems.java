@@ -249,7 +249,7 @@ public class GlassTechItems {
         reinforcedDoor = new GTDoorBlock.GTDoorItem(NAMESPACE.id("reinforced_door"), Material.METAL, GlassTechBlocks.reinforcedDoorBlock);
         biofuelCell = new TemplateItem(NAMESPACE.id("biofuel_cell"));
         fullFuelCan = new TemplateItem(NAMESPACE.id("full_fuel_can"));
-        cannedFood = new TemplateItem(NAMESPACE.id("canned_food"));
+        cannedFood = new CannedFood(NAMESPACE.id("canned_food"));
 
         scanner = new TemplateItem(NAMESPACE.id("scanner"));
         advancedScanner = new TemplateItem(NAMESPACE.id("advanced_scanner"));
