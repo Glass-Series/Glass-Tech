@@ -4,13 +4,14 @@ import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.glasslauncher.mods.alwaysmoreitems.api.event.AMIItemTooltipEvent;
 import net.glasslauncher.mods.alwaysmoreitems.gui.Tooltip;
-import net.glasslauncher.mods.glasstech.GTItemOverlay;
+import net.glasslauncher.mods.glasstech.GTEnergyBar;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.glasslauncher.mods.glasstech.WireMaterial;
 import net.glasslauncher.mods.glasstech.blocks.GTTooltipInfo;
 import net.glasslauncher.mods.glasstech.blocks.TemplateCableBlock;
 import net.glasslauncher.mods.glasstech.blocks.machine.EnergySourceConsumerBlockTemplate;
 import net.glasslauncher.mods.glasstech.blocks.machine.MachineBlockTemplate;
+import net.glasslauncher.mods.glasstech.item.GTEnergyStorageItem;
 import net.glasslauncher.mods.glasstech.item.PainterItem;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.BlockWithEntity;
@@ -49,27 +50,30 @@ public class GTTooltip {
                 event.tooltip.add("Max Amperage: " + amperage);
             }
         }
-        else if (event.itemStack.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof TemplateCableBlock cableBlock) {
+        if (event.itemStack.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof TemplateCableBlock cableBlock) {
             WireMaterial wireMaterial = cableBlock.wireMaterial;
             event.tooltip.add(Tooltip.Line.create(new Tooltip.Text("Voltage Tier: "), new Tooltip.Text(wireMaterial.voltageTier.name(), Tooltip.Alignment.TOP_LEFT, new Color(wireMaterial.voltageTier.color))));
             event.tooltip.add("Max Amperage: " + wireMaterial.amperage);
             event.tooltip.add("Power Loss: " + wireMaterial.lossPerBlock + "eu/b");
         }
-        else if (event.itemStack.getItem() instanceof PainterItem) {
+        if (event.itemStack.getItem() instanceof PainterItem) {
             String color = event.itemStack.getStationNbt().getString("color");
             if (color.isEmpty()) {
                 return;
             }
             event.tooltip.add(color);
         }
-        else if (event.itemStack.getItem() instanceof GTItemOverlay gtItemOverlay && gtItemOverlay.addTooltip()) {
-            event.tooltip.add(((gtItemOverlay.getEnergyStored(event.itemStack) < gtItemOverlay.getEnergyCapacity(event.itemStack) / 5) ? Formatting.RED : Formatting.AQUA).toString() + gtItemOverlay.getEnergyStored(event.itemStack) + Formatting.FORMATTING_CODE_PREFIX + "r/" + Formatting.AQUA + gtItemOverlay.getEnergyCapacity(event.itemStack) + " EU");
+        if (event.itemStack.getItem() instanceof GTEnergyBar gtEnergyBar && gtEnergyBar.addTooltip()) {
+            event.tooltip.add(((gtEnergyBar.getEnergyStored(event.itemStack) < gtEnergyBar.getEnergyCapacity(event.itemStack) / 5) ? Formatting.RED : Formatting.AQUA).toString() + gtEnergyBar.getEnergyStored(event.itemStack) + Formatting.FORMATTING_CODE_PREFIX + "r/" + Formatting.AQUA + gtEnergyBar.getEnergyCapacity(event.itemStack) + " EU");
+        }
+        if (event.itemStack.getItem() instanceof GTEnergyStorageItem storageItem) {
+            event.tooltip.add(Tooltip.Line.create(new Tooltip.Text("Min Charge Voltage: "), new Tooltip.Text(storageItem.getVoltageTier().name(), Tooltip.Alignment.TOP_LEFT, new Color(storageItem.getVoltageTier().color))));
         }
     }
 
     @EventListener
     public void overlay(ItemOverlayRenderEvent event) {
-        if (event.itemStack != null && event.itemStack.getItem() instanceof GTItemOverlay stackToOverlay) {
+        if (event.itemStack != null && event.itemStack.getItem() instanceof GTEnergyBar stackToOverlay) {
             double capacity = stackToOverlay.getEnergyCapacity(event.itemStack);
             double stored = stackToOverlay.getEnergyStored(event.itemStack);
             int barLength = (int) Math.round(((stored / capacity) * 13));

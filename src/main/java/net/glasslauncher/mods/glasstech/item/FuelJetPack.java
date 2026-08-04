@@ -1,7 +1,7 @@
 package net.glasslauncher.mods.glasstech.item;
 
 import net.glasslauncher.mods.alwaysmoreitems.api.SubItemProvider;
-import net.glasslauncher.mods.glasstech.GTItemOverlay;
+import net.glasslauncher.mods.glasstech.GTEnergyBar;
 import net.glasslauncher.mods.glasstech.GTJetPackTick;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.glasslauncher.mods.glasstech.events.init.GlassTechItems;
@@ -14,7 +14,7 @@ import net.modificationstation.stationapi.api.util.Identifier;
 import java.awt.*;
 import java.util.List;
 
-public class FuelJetPack extends TemplateArmorItem implements GTJetPackTick, GTItemOverlay, ArmorTextureProvider {
+public class FuelJetPack extends TemplateArmorItem implements GTJetPackTick, GTEnergyBar, ArmorTextureProvider {
     private final Identifier identifier;
     // VoltageTier is just here to make up numbers
     private final VoltageTier voltageTier;

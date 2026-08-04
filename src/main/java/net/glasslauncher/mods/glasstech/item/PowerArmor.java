@@ -2,9 +2,8 @@ package net.glasslauncher.mods.glasstech.item;
 
 import lombok.Getter;
 import lombok.Setter;
-import net.danygames2014.nyalib.energy.EnergyStorageItem;
 import net.glasslauncher.mods.alwaysmoreitems.api.SubItemProvider;
-import net.glasslauncher.mods.glasstech.GTItemOverlay;
+import net.glasslauncher.mods.glasstech.GTEnergyBar;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.minecraft.item.ItemStack;
 import net.modificationstation.stationapi.api.client.item.ArmorTextureProvider;
@@ -13,7 +12,7 @@ import net.modificationstation.stationapi.api.util.Identifier;
 
 import java.util.List;
 
-public abstract class PowerArmor extends TemplateArmorItem implements EnergyStorageItem, GTItemOverlay, ArmorTextureProvider {
+public abstract class PowerArmor extends TemplateArmorItem implements GTEnergyStorageItem, GTEnergyBar, ArmorTextureProvider {
     @Setter
     protected int maxEnergy;
     @Setter @Getter

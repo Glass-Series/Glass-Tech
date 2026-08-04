@@ -2,11 +2,10 @@ package net.glasslauncher.mods.glasstech.item;
 
 import lombok.Getter;
 import lombok.Setter;
-import net.danygames2014.nyalib.energy.EnergyStorageItem;
 import net.danygames2014.uniwrench.api.WrenchMode;
 import net.danygames2014.uniwrench.item.WrenchBase;
 import net.glasslauncher.mods.alwaysmoreitems.api.SubItemProvider;
-import net.glasslauncher.mods.glasstech.GTItemOverlay;
+import net.glasslauncher.mods.glasstech.GTEnergyBar;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -15,7 +14,7 @@ import net.modificationstation.stationapi.api.util.Identifier;
 
 import java.util.List;
 
-public class ElectricWrench extends WrenchBase implements EnergyStorageItem, GTItemOverlay {
+public class ElectricWrench extends WrenchBase implements GTEnergyStorageItem, GTEnergyBar {
     @Setter
     protected int maxEnergy;
     @Setter @Getter
