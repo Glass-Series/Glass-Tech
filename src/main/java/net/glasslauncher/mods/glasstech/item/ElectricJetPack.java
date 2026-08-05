@@ -4,9 +4,12 @@ import net.glasslauncher.mods.glasstech.GTJetPackTick;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ItemStack;
+import net.modificationstation.stationapi.api.client.item.CustomTooltipProvider;
+import net.modificationstation.stationapi.api.util.Formatting;
 import net.modificationstation.stationapi.api.util.Identifier;
+import org.jetbrains.annotations.NotNull;
 
-public class ElectricJetPack extends PowerArmor implements GTJetPackTick {
+public class ElectricJetPack extends PowerArmor implements GTJetPackTick, CustomTooltipProvider {
 
     private final Identifier identifier;
 
@@ -40,5 +43,14 @@ public class ElectricJetPack extends PowerArmor implements GTJetPackTick {
     @Override
     public float getMaxVelocity() {
         return 0.3f;
+    }
+
+    @Override
+    public @NotNull String[] getTooltip(ItemStack stack, String originalTooltip) {
+        return new String[] {
+                originalTooltip,
+                Formatting.GRAY + "Worse than the normal jetpack,",
+                Formatting.GRAY + "but only requires power"
+        };
     }
 }

@@ -11,6 +11,7 @@ public class GTFoamBlock extends GTTemplateBlock {
     public GTFoamBlock(Identifier identifier) {
         super(identifier, Material.WOOL, WOOL_SOUND_GROUP);
         setTickRandomly(true);
+        setHardness(0.1f);
     }
 
     @Override
@@ -19,13 +20,13 @@ public class GTFoamBlock extends GTTemplateBlock {
             return;
         }
 
-        if (world.getBrightness(x, y, z) * 6 >= random.nextInt(1000)) {
+        if (world.getBrightness(x, y, z) * 6 >= random.nextInt(500)) {
             world.setBlock(x, y, z, GlassTechBlocks.hardenedConstructionFoamBlock.id);
         }
     }
 
     @Override
-    public int getTickRate() {
-        return 500;
+    public boolean isOpaque() {
+        return false;
     }
 }
