@@ -5,6 +5,7 @@ import net.glasslauncher.mods.glasstech.GTArmorDamageHandler;
 import net.glasslauncher.mods.glasstech.GTCustomDamageHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ItemStack;
 import net.modificationstation.stationapi.api.client.item.ArmorTextureProvider;
@@ -24,8 +25,11 @@ public class RubberBoots extends TemplateArmorItem implements GTArmorDamageHandl
     @Override
     public boolean shouldDamage(LivingEntity entity, ItemStack armor, int damage, DamageSource source) {
         boolean willDamage = source != DamageSource.FALLING;
-        if (!willDamage) {
+        if (!willDamage && entity instanceof PlayerEntity player) {
             armor.damage(damage * 2, entity);
+            if (armor.count <= 0) {
+                player.inventory.armor[3 - equipmentSlot] = null;
+            }
         }
         return willDamage;
     }
@@ -42,7 +46,6 @@ public class RubberBoots extends TemplateArmorItem implements GTArmorDamageHandl
 
     @Override
     public void onTakeDamage(Entity entity, ItemStack stack, int damage) {
-
     }
 
     @Override

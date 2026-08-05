@@ -34,7 +34,7 @@ public class CannerBlockEntity extends RecipeBlockEntityTemplate<BasicMachineRec
     public BasicMachineRecipe fetchRecipe(ItemStack[] input) {
         if (input[0] != null && input[1] != null && input[0].getItem() instanceof FuelJetPack fuelJetPack && fuelJetPack.getEnergyStored(input[0]) != fuelJetPack.getEnergyCapacity(input[0]) && input[1].getItem() instanceof FuelCan fuelCan) {
             ItemStack output = new ItemStack(input[0].getItem());
-            output.getStationNbt().putInt("energy", fuelJetPack.getEnergyStored(input[0]) + fuelCan.getFuel(input[1]));
+            output.getStationNbt().putInt("energy", Math.min(fuelJetPack.getEnergyCapacity(input[0]), fuelJetPack.getEnergyStored(input[0]) + fuelCan.getFuel(input[1])));
             return new CannerRecipes.CannerRecipe(new RecipeInput[]{new StackRecipeInput(input[0]), new ItemRecipeInput(input[1].getItem())}, new RecipeOutput[]{new RecipeOutput(output)});
         }
         return CannerRecipeRegistry.INSTANCE.get(input);

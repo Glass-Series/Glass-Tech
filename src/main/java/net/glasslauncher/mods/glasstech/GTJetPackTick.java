@@ -7,7 +7,7 @@ public interface GTJetPackTick extends GTArmorPlayerTick {
     @Override
     default void tick(PlayerEntity player, int armorSlot) {
         ItemStack jetPack = player.inventory.armor[armorSlot];
-        if (jetPack.getStationNbt().getInt("energy") < 0) {
+        if (jetPack.getStationNbt().getInt("energy") <= 0) {
             return;
         }
         if (player.onGround) {
