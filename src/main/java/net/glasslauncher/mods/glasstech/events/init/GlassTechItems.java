@@ -6,6 +6,7 @@ import net.glasslauncher.mods.glasstech.blocks.GTDoorBlock;
 import net.glasslauncher.mods.glasstech.item.*;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.material.Material;
+import net.minecraft.item.FoodItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ToolMaterial;
 import net.modificationstation.stationapi.api.event.registry.ItemRegistryEvent;
@@ -137,6 +138,10 @@ public class GlassTechItems {
 
     @EventListener
     private static void itemInit(ItemRegistryEvent event) {
+        // Otherwise the canner gives 21 hearts worth of food.
+        // That doesn't seem particularly balanced if other mods that add apples are in play.
+        ((FoodItem) Item.GOLDEN_APPLE).healthRestored = 20;
+
         copperIngot = new TemplateItem(NAMESPACE.id("copper_ingot"));
         advancedAlloy = new TemplateItem(NAMESPACE.id("advanced_alloy"));
         scrap = new TemplateItem(NAMESPACE.id("scrap"));
@@ -244,7 +249,7 @@ public class GlassTechItems {
         sail = new TemplateItem(NAMESPACE.id("sail"));
         reinforcedDoor = new GTDoorBlock.GTDoorItem(NAMESPACE.id("reinforced_door"), Material.METAL, GlassTechBlocks.reinforcedDoorBlock);
         biofuelCell = new TemplateItem(NAMESPACE.id("biofuel_cell"));
-        fullFuelCan = new TemplateItem(NAMESPACE.id("full_fuel_can"));
+        fullFuelCan = new FuelCanItem(NAMESPACE.id("full_fuel_can"));
         cannedFood = new CannedFood(NAMESPACE.id("canned_food"));
 
         scanner = new TemplateItem(NAMESPACE.id("scanner"));

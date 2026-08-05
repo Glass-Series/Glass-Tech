@@ -43,6 +43,8 @@ accessible method net/minecraft/client/render/item/ItemRenderer fillRect (Lnet/m
 
 mutable field net/minecraft/item/ArmorItem maxProtection I
 
+accessible field net/minecraft/item/FoodItem healthRestored I
+
 accessible field net/minecraft/entity/LivingEntity jumping Z
 
 accessible field net/minecraft/server/network/ServerPlayNetworkHandler player Lnet/minecraft/entity/player/ServerPlayerEntity;

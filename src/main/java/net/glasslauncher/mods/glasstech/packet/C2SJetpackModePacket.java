@@ -16,11 +16,9 @@ public class C2SJetpackModePacket extends TemplateManagedPacket<C2SJetpackModePa
     public C2SJetpackModePacket() {
     }
 
-    @SneakyThrows
     @Override
     public void write(TrackingOutputStream outputStream) {}
 
-    @SneakyThrows
     @Override
     public void read(DataInputStream stream) {}
 

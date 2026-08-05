@@ -8,22 +8,23 @@ import net.glasslauncher.mods.glasstech.events.init.GlassTechItems;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ItemStack;
 import net.modificationstation.stationapi.api.client.item.ArmorTextureProvider;
+import net.modificationstation.stationapi.api.client.item.CustomTooltipProvider;
 import net.modificationstation.stationapi.api.template.item.TemplateArmorItem;
+import net.modificationstation.stationapi.api.util.Formatting;
 import net.modificationstation.stationapi.api.util.Identifier;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.util.List;
 
-public class FuelJetPack extends TemplateArmorItem implements GTJetPackTick, GTEnergyBar, ArmorTextureProvider {
+public class FuelJetPack extends TemplateArmorItem implements GTJetPackTick, GTEnergyBar, ArmorTextureProvider, CustomTooltipProvider {
     private final Identifier identifier;
-    // VoltageTier is just here to make up numbers
-    private final VoltageTier voltageTier;
     private final int maxEnergy;
 
+    // VoltageTier is just here to make up numbers
     public FuelJetPack(Identifier identifier, int slot, VoltageTier voltageTier) {
         super(identifier, 0, 0, slot);
         this.identifier = identifier;
-        this.voltageTier = voltageTier;
         this.maxEnergy = voltageTier.maxVoltage * 320;
         maxProtection = 0;
         setMaxDamage(0);
@@ -78,5 +79,13 @@ public class FuelJetPack extends TemplateArmorItem implements GTJetPackTick, GTE
     @Override
     public boolean addTooltip() {
         return false;
+    }
+
+    @Override
+    public @NotNull String[] getTooltip(ItemStack stack, String originalTooltip) {
+        return new String[] {
+                originalTooltip,
+                Formatting.GRAY + "Can be filled with fuel cans in a canner"
+        };
     }
 }
