@@ -135,8 +135,6 @@ public class GlassTechItems {
     public static Item cfPack;
     public static Item compositeChestplate;
 
-    public static Item treeTap;
-
     @EventListener
     private static void itemInit(ItemRegistryEvent event) {
         copperIngot = new TemplateItem(NAMESPACE.id("copper_ingot"));
@@ -206,8 +204,6 @@ public class GlassTechItems {
         wireCutter = new WireCutters(NAMESPACE.id("wire_cutters"));
         painter = new PainterItem(NAMESPACE.id("painter"));
         nanoSaber = new NanoSaberItem(NAMESPACE.id("nano_saber"), VoltageTier.MV, VoltageTier.MV.maxVoltage * 320);
-
-        treeTap = new TemplateItem(NAMESPACE.id("tree_tap"));
 
         compressedHydratedCoal = new TemplateItem(NAMESPACE.id("compressed_hydrated_coal"));
         compressedPlantBall = new TemplateItem(NAMESPACE.id("compressed_plant_ball"));

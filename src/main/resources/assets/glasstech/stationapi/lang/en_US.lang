@@ -83,6 +83,8 @@ tile.@.sealed_planks.name=Sealed Planks
 
 tile.@.water_wheel.name=Water Wheel
 tile.@.wind_sails.name=Wind Sails
+tile.@.tree_tap.name=Tree Tap
+tile.@.rubber_sapling.name=Rubber Sapling
 
 item.@.copper_ingot.name=Copper Ingot
 item.@.advanced_alloy.name=Advanced Alloy
@@ -141,7 +143,6 @@ item.@.frequency_transmitter.name=Frequency Transmitter
 item.@.wire_cutters.name=Wire Cutters
 item.@.painter.name=Painter
 item.@.nano_saber.name=Nano Saber
-item.@.tree_tap.name=Tree Tap
 item.@.compressed_hydrated_coal.name=Compressed Hydrated Coal
 item.@.compressed_plant_ball.name=Compressed Plant Ball
 item.@.coolant_cell.name=Coolant Cell
@@ -175,7 +176,6 @@ item.@.compressed_hydrated_coal_dust.name=Compressed Hydrated Coal Dust
 item.@.sail.name=Sail
 item.@.item_cell_uran_depleted.name=Item Cell Uranium Depleted
 item.@.item_cell_uran_empty.name=Item Cell Uranium Empty
-item.@.rubber_sapling.name=Rubber Sapling
 item.@.biofuel_cell.name=Biofuel Cell
 item.@.full_fuel_can.name=Full Fuel Can
 item.@.canned_food.name=Canned Food

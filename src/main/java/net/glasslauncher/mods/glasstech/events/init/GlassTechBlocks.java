@@ -146,6 +146,8 @@ public class GlassTechBlocks {
     public static Block waterWheelBlock;
     public static Block windSailsBlock;
 
+    public static Block treeTap;
+
     @EventListener
     private static void init(InitEvent event) {
         LOGGER.info(NAMESPACE.toString());
@@ -239,6 +241,8 @@ public class GlassTechBlocks {
         rubberLogBlock = new RubberLogBlock(NAMESPACE.id("rubber_log"));
         rubberLeavesBlock = new RubberLeavesBlock(NAMESPACE.id("rubber_leaves"));
         rubberSaplingBlock = new RubberSaplingBlock(NAMESPACE.id("rubber_sapling"));
+
+        treeTap = new TreeTapBlock(NAMESPACE.id("tree_tap"), Material.WOOD);
     }
 
     @EventListener

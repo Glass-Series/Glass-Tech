@@ -12,4 +12,6 @@ public class GTProperties {
     public static final IntProperty SCAFFOLD_DISTANCE = IntProperty.of("distance", 0, 16);
 
     public static final BooleanProperty HAS_AIR = BooleanProperty.of("has_air");
+
+    public static final IntProperty RESIN = IntProperty.of("resin", 0, 3);
 }

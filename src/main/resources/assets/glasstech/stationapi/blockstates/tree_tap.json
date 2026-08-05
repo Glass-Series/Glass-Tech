@@ -1,0 +1,68 @@
+{
+  "variants": {
+    "facing=north,resin=0": {
+      "model": "glasstech:block/tree_tap",
+      "y": 0
+    },
+    "facing=east,resin=0": {
+      "model": "glasstech:block/tree_tap",
+      "y": 90
+    },
+    "facing=south,resin=0": {
+      "model": "glasstech:block/tree_tap",
+      "y": 180
+    },
+    "facing=west,resin=0": {
+      "model": "glasstech:block/tree_tap",
+      "y": 270
+    },
+    "facing=north,resin=1": {
+      "model": "glasstech:block/tree_tap_1",
+      "y": 0
+    },
+    "facing=east,resin=1": {
+      "model": "glasstech:block/tree_tap_1",
+      "y": 90
+    },
+    "facing=south,resin=1": {
+      "model": "glasstech:block/tree_tap_1",
+      "y": 180
+    },
+    "facing=west,resin=1": {
+      "model": "glasstech:block/tree_tap_1",
+      "y": 270
+    },
+    "facing=north,resin=2": {
+      "model": "glasstech:block/tree_tap_2",
+      "y": 0
+    },
+    "facing=east,resin=2": {
+      "model": "glasstech:block/tree_tap_2",
+      "y": 90
+    },
+    "facing=south,resin=2": {
+      "model": "glasstech:block/tree_tap_2",
+      "y": 180
+    },
+    "facing=west,resin=2": {
+      "model": "glasstech:block/tree_tap_2",
+      "y": 270
+    },
+    "facing=north,resin=3": {
+      "model": "glasstech:block/tree_tap_3",
+      "y": 0
+    },
+    "facing=east,resin=3": {
+      "model": "glasstech:block/tree_tap_3",
+      "y": 90
+    },
+    "facing=south,resin=3": {
+      "model": "glasstech:block/tree_tap_3",
+      "y": 180
+    },
+    "facing=west,resin=3": {
+      "model": "glasstech:block/tree_tap_3",
+      "y": 270
+    }
+  }
+}

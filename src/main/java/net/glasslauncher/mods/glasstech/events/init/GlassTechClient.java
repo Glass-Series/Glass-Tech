@@ -239,7 +239,6 @@ public class GlassTechClient {
         GlassTechItems.voltageMeter.setTexture(NAMESPACE.id("item/tool/voltage_meter"));
         GlassTechItems.miningLaser.setTexture(NAMESPACE.id("item/tool/mining_laser"));
         GlassTechItems.compositeChestplate.setTexture(NAMESPACE.id("item/armor/composite_chestplate"));
-        GlassTechItems.treeTap.setTexture(NAMESPACE.id("item/tool/tree_tap"));
 
         GlassTechItems.batteryPack.setTexture(NAMESPACE.id("item/armor/batpack"));
         GlassTechItems.lappack.setTexture(NAMESPACE.id("item/armor/lappack"));
