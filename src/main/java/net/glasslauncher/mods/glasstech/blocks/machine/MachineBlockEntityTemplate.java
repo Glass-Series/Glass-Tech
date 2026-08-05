@@ -27,7 +27,7 @@ public abstract class MachineBlockEntityTemplate extends ConsumerBlockEntityTemp
     public Random random;
 
     // Lit State
-    boolean lit = false;
+    protected boolean lit = false;
 
     public MachineBlockEntityTemplate(VoltageTier tier, int energyConsumption, int energyCapacity) {
         super(tier);

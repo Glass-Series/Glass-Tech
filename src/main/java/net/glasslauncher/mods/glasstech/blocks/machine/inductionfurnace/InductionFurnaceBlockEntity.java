@@ -13,6 +13,7 @@ import net.glasslauncher.mods.glasstech.recipe.machine.output.RecipeOutput;
 import net.glasslauncher.mods.glasstech.recipe.machine.output.RecipeOutputType;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
 import net.modificationstation.stationapi.api.recipe.SmeltingRegistry;
 
 public class InductionFurnaceBlockEntity extends RecipeBlockEntityTemplate<BasicMachineRecipe> implements Inventory {
@@ -26,6 +27,28 @@ public class InductionFurnaceBlockEntity extends RecipeBlockEntityTemplate<Basic
         boolean canCraft = craft(new int[]{0}, simulate);
         canCraft |= craft(new int[]{1}, simulate);
         return canCraft;
+    }
+
+    @Override
+    public void processTick() {
+        super.processTick();
+        boolean gettingRedstone = world.getPowerLevel(x, y, z) > 0;
+        if (lit || (gettingRedstone && energyConsumption <= getEnergyStored())) {
+            if (gettingRedstone) {
+                lit = true;
+                removeEnergy(energyConsumption);
+            }
+            heat++;
+            if (heat > maxHeat) {
+                heat = maxHeat;
+            }
+            return;
+        }
+
+        heat -= 5;
+        if (heat < 0) {
+            heat = 0;
+        }
     }
 
     public InductionFurnaceBlockEntity() {
@@ -56,6 +79,18 @@ public class InductionFurnaceBlockEntity extends RecipeBlockEntityTemplate<Basic
         ItemStack inputItem = input[0].copy();
         inputItem.count = 1;
 
-        return new BasicMachineRecipe(new RecipeInput[]{new StackRecipeInput(inputItem)}, new RecipeOutput[]{new RecipeOutput(output)});
+        return new BasicMachineRecipe(new RecipeInput[]{new StackRecipeInput(inputItem)}, new RecipeOutput[]{new RecipeOutput(output)}, maxHeat - heat);
+    }
+
+    @Override
+    public void readNbt(NbtCompound nbt) {
+        super.readNbt(nbt);
+        heat = nbt.getInt("heat");
+    }
+
+    @Override
+    public void writeNbt(NbtCompound nbt) {
+        super.writeNbt(nbt);
+        nbt.putInt("heat", heat);
     }
 }
