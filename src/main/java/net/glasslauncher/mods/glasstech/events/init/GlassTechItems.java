@@ -179,7 +179,7 @@ public class GlassTechItems {
 
         circuit = new TemplateItem(NAMESPACE.id("circuit"));
         advancedCircuit = new TemplateItem(NAMESPACE.id("advanced_circuit"));
-        scrapBox = new TemplateItem(NAMESPACE.id("scrap_box"));
+        scrapBox = new ScrapBox(NAMESPACE.id("scrap_box"));
 
         reBattery = new RechargeableCellItem(NAMESPACE.id("re_battery"), VoltageTier.LV, VoltageTier.LV.maxVoltage * 64);
         energyCrystal = new RechargeableCellItem(NAMESPACE.id("energy_crystal"), VoltageTier.MV, VoltageTier.MV.maxVoltage * 64);
@@ -260,6 +260,8 @@ public class GlassTechItems {
         voltageMeter = new VoltMeterItem(NAMESPACE.id("voltage_meter"));
         miningLaser = new TemplateItem(NAMESPACE.id("mining_laser"));
         compositeChestplate = new TemplateItem(NAMESPACE.id("composite_chestplate"));
+
+        ScrapBox.initDefaultDrops();
     }
 
     @EventListener

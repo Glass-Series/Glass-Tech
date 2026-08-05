@@ -49,4 +49,7 @@ accessible field net/minecraft/entity/LivingEntity jumping Z
 
 accessible field net/minecraft/server/network/ServerPlayNetworkHandler player Lnet/minecraft/entity/player/ServerPlayerEntity;
 
+accessible method net/minecraft/nbt/NbtCompound read (Ljava/io/DataInput;)V
+accessible method net/minecraft/nbt/NbtCompound write (Ljava/io/DataOutput;)V
+
 transitive-inject-interface net/minecraft/entity/player/PlayerEntity net/glasslauncher/mods/glasstech/GlassTechPlayer
