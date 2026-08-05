@@ -206,17 +206,18 @@ public abstract class PowerStorageBlockEntityTemplate extends EnergySourceConsum
         }
 
         if (inventory[0] != null) {
-            // Energy Storage Item
+            // charging item
             EnergyStorageItemCapability energyStorage = CapabilityHelper.getCapability(inventory[0], EnergyStorageItemCapability.class);
             if (energyStorage != null && getEnergyStored() > 0 && energyStorage.getEnergyStored() < energyStorage.getEnergyCapacity() && VoltageTier.get(getMaxOutputVoltage(null)).maxVoltage >= energyStorage.getMaxEnergyInput()) {
-                energyStorage.addEnergy(removeEnergy(Math.min(energyStorage.getEnergyCapacity() - energyStorage.getEnergyStored(), energyStorage.getMaxEnergyInput())));
+                energyStorage.addEnergy(removeEnergy(Math.min(energyStorage.getRemainingCapacity(), Math.min(energyStorage.getMaxEnergyInput(), getMaxEnergyOutput(null)))));
             }
         }
 
         if (inventory[1] != null) {
+            // discharging item
             EnergyStorageItemCapability energyStorage = CapabilityHelper.getCapability(inventory[1], EnergyStorageItemCapability.class);
             if (energyStorage != null && energyStorage.getEnergyStored() > 0) {
-                addEnergy(energyStorage.extractEnergy(getRemainingCapacity()));
+                addEnergy(energyStorage.extractEnergy(Math.min(getRemainingCapacity(), Math.min(energyStorage.getMaxEnergyOutput(), getMaxEnergyInput(null)))));
             }
         }
     }

@@ -108,10 +108,10 @@ public abstract class MachineBlockEntityTemplate extends ConsumerBlockEntityTemp
                 return;
             }
 
-            // Energy Storage Item
+            // discharging item
             EnergyStorageItemCapability energyStorage = CapabilityHelper.getCapability(fuelStack, EnergyStorageItemCapability.class);
             if (energyStorage != null && energyStorage.getEnergyStored() > 0) {
-                addEnergy(energyStorage.extractEnergy(getRemainingCapacity()));
+                addEnergy(energyStorage.extractEnergy(Math.min(getRemainingCapacity(), Math.min(energyStorage.getMaxEnergyOutput(), getMaxEnergyInput(null)))));
             }
         }
     }
