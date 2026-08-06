@@ -21,7 +21,6 @@ import net.glasslauncher.mods.glasstech.blocks.machine.electrolyzer.Electrolyzer
 import net.glasslauncher.mods.glasstech.blocks.machine.extractor.ExtractorBlock;
 import net.glasslauncher.mods.glasstech.blocks.machine.extractor.ExtractorBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.generator.*;
-import net.glasslauncher.mods.glasstech.blocks.machine.generator.SolarGeneratorBlock;
 import net.glasslauncher.mods.glasstech.blocks.machine.generator.dynamoparts.WaterWheelBlock;
 import net.glasslauncher.mods.glasstech.blocks.machine.generator.dynamoparts.WaterWheelBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.generator.dynamoparts.WindSailsBlock;
@@ -30,6 +29,8 @@ import net.glasslauncher.mods.glasstech.blocks.machine.inductionfurnace.Inductio
 import net.glasslauncher.mods.glasstech.blocks.machine.inductionfurnace.InductionFurnaceBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.macerator.MaceratorBlock;
 import net.glasslauncher.mods.glasstech.blocks.machine.macerator.MaceratorBlockEntity;
+import net.glasslauncher.mods.glasstech.blocks.machine.massfab.MassFabricatorBlock;
+import net.glasslauncher.mods.glasstech.blocks.machine.massfab.MassFabricatorBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.miner.MinerBlock;
 import net.glasslauncher.mods.glasstech.blocks.machine.miner.MinerBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.pump.PumpBlock;
@@ -233,7 +234,7 @@ public class GlassTechBlocks {
         magnetizerBlock = new MagnetizerBlock(NAMESPACE.id("magnetizer"));
         reactorChamberBlock = new ReactorChamberBlock(NAMESPACE.id("reactor_chamber"));
         reactorCoreBlock = new ReactorCoreBlock(NAMESPACE.id("reactor_core"));
-        massFabricatorBlock = new MassFabricatorBlock(NAMESPACE.id("mass_fabricator"));
+        massFabricatorBlock = new MassFabricatorBlock(NAMESPACE.id("mass_fabricator"), Material.METAL);
         industrialTNTBlock = new GTExplosiveBlock(NAMESPACE.id("industrial_tnt"), Material.TNT, 40, 4);
         nukeBlock = new GTExplosiveBlock(NAMESPACE.id("nuke"), Material.TNT, 120, 55, true);
 
@@ -260,6 +261,7 @@ public class GlassTechBlocks {
         event.register(NAMESPACE.id("recycler"), RecyclerBlockEntity.class);
         event.register(NAMESPACE.id("miner"), MinerBlockEntity.class);
         event.register(NAMESPACE.id("pump"), PumpBlockEntity.class);
+        event.register(NAMESPACE.id("mass_fabricator"), MassFabricatorBlockEntity.class);
 
         event.register(NAMESPACE.id("iron_furnace"), IronFurnaceBlockEntity.class);
 

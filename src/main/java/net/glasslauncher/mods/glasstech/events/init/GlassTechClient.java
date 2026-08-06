@@ -19,14 +19,14 @@ import net.glasslauncher.mods.glasstech.blocks.machine.electrolyzer.Electrolyzer
 import net.glasslauncher.mods.glasstech.blocks.machine.extractor.ExtractorBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.extractor.ExtractorScreen;
 import net.glasslauncher.mods.glasstech.blocks.machine.generator.*;
-import net.glasslauncher.mods.glasstech.blocks.machine.generator.SolarGeneratorBlockEntity;
-import net.glasslauncher.mods.glasstech.blocks.machine.generator.SolarGeneratorScreen;
 import net.glasslauncher.mods.glasstech.blocks.machine.generator.dynamoparts.WaterWheelBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.generator.dynamoparts.WindSailsBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.inductionfurnace.InductionFurnaceBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.inductionfurnace.InductionFurnaceScreen;
 import net.glasslauncher.mods.glasstech.blocks.machine.macerator.MaceratorBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.macerator.MaceratorScreen;
+import net.glasslauncher.mods.glasstech.blocks.machine.massfab.MassFabricatorBlockEntity;
+import net.glasslauncher.mods.glasstech.blocks.machine.massfab.MassFabricatorScreen;
 import net.glasslauncher.mods.glasstech.blocks.machine.miner.MinerBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.miner.MinerScreen;
 import net.glasslauncher.mods.glasstech.blocks.machine.pump.PumpBlockEntity;
@@ -75,6 +75,7 @@ public class GlassTechClient {
         event.register(NAMESPACE.id("recycler"), new GuiHandler((player, inventory, packet) -> new RecyclerScreen(player.inventory, (RecyclerBlockEntity) inventory), RecyclerBlockEntity::new));
         event.register(NAMESPACE.id("miner"), new GuiHandler((player, inventory, packet) -> new MinerScreen(player.inventory, (MinerBlockEntity) inventory), MinerBlockEntity::new));
         event.register(NAMESPACE.id("pump"), new GuiHandler((player, inventory, packet) -> new PumpScreen(player.inventory, (PumpBlockEntity) inventory), PumpBlockEntity::new));
+        event.register(NAMESPACE.id("mass_fabricator"), new GuiHandler((player, inventory, packet) -> new MassFabricatorScreen(player.inventory, (MassFabricatorBlockEntity) inventory), MassFabricatorBlockEntity::new));
 
         event.register(NAMESPACE.id("iron_furnace"), new GuiHandler((player, inventory, packet) -> new IronFurnaceScreen(player.inventory, (IronFurnaceBlockEntity) inventory), IronFurnaceBlockEntity::new));
 

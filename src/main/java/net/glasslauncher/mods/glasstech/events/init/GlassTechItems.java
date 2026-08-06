@@ -144,7 +144,7 @@ public class GlassTechItems {
 
         copperIngot = new TemplateItem(NAMESPACE.id("copper_ingot"));
         advancedAlloy = new TemplateItem(NAMESPACE.id("advanced_alloy"));
-        scrap = new TemplateItem(NAMESPACE.id("scrap"));
+        scrap = new Scrap(NAMESPACE.id("scrap"));
         copperDust = new TemplateItem(NAMESPACE.id("copper_dust"));
         tinIngot = new TemplateItem(NAMESPACE.id("tin_ingot"));
         tinDust = new TemplateItem(NAMESPACE.id("tin_dust"));
