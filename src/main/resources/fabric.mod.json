@@ -23,6 +23,7 @@
       "net.glasslauncher.mods.glasstech.events.init.GlassTechItems",
       "net.glasslauncher.mods.glasstech.events.init.RecipeInit",
       "net.glasslauncher.mods.glasstech.events.init.GlassTechEntities",
+      "net.glasslauncher.mods.glasstech.events.GTChunkDecoration",
       "net.glasslauncher.mods.glasstech.events.init.GlassTechNetworking"
     ],
     "stationapi:event_bus_client": [
