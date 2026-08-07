@@ -6,12 +6,14 @@ import net.danygames2014.nyalib.capability.block.itemhandler.ItemHandlerBlockCap
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.glasslauncher.mods.glasstech.WorldUtil;
 import net.glasslauncher.mods.glasstech.blocks.machine.ProgressMachineBlockEntityTemplate;
-import net.glasslauncher.mods.glasstech.blocks.machine.SlotLayout;
+import net.glasslauncher.mods.glasstech.blocks.machine.SlotType;
 import net.glasslauncher.mods.glasstech.events.init.GlassTechBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.entity.ItemEntity;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
 import net.modificationstation.stationapi.api.block.BlockState;
@@ -25,11 +27,12 @@ import java.util.List;
 
 public class MinerBlockEntity extends ProgressMachineBlockEntityTemplate {
     public static final TagKey<Block> ORES_TAG = TagKey.of(BlockRegistry.KEY, Identifier.of("c:ores"));
-    private static final ObjectArrayList<Vec3i> SEARCH_OFFSETS = new ObjectArrayList<>();
+    protected static final ObjectArrayList<Vec3i> SEARCH_OFFSETS = new ObjectArrayList<>();
 
-    private ArrayList<BlockPos> queue;
+    protected ArrayList<BlockPos> queue;
+    protected List<ItemStack> heldItems;
 
-    private List<ItemStack> heldItems;
+    protected boolean retracted = false;
 
     static {
         // Top and Bottom
@@ -51,7 +54,8 @@ public class MinerBlockEntity extends ProgressMachineBlockEntityTemplate {
 
     public MinerBlockEntity() {
         super(VoltageTier.LV, 200, VoltageTier.MV.maxVoltage, 300);
-        SlotLayout.createBasic(this);
+        addInput();
+        addSlot(SlotType.FUEL);
     }
 
     @Override
@@ -61,10 +65,13 @@ public class MinerBlockEntity extends ProgressMachineBlockEntityTemplate {
 
     @Override
     public void craftRecipe() {
+        if (retracted) {
+            return;
+        }
         BlockPos end = getEndOfDrill();
 
         // Try to ditch held items
-        yeetItems();
+        yeetItems(false);
         if (heldItems != null) {
             return;
         }
@@ -85,7 +92,7 @@ public class MinerBlockEntity extends ProgressMachineBlockEntityTemplate {
 
                 WorldUtil.breakBlockWithParticles(world, digPos.x, digPos.y, digPos.z, state.getBlock().id);
 
-                yeetItems();
+                yeetItems(false);
             }
             return; // Don't try to rescan or expand the drill if we're already processing a queue.
         }
@@ -95,10 +102,52 @@ public class MinerBlockEntity extends ProgressMachineBlockEntityTemplate {
         if (queue == null || queue.isEmpty()) {
             findBlocks(end.x, end.y, end.z);
         }
+
+        end = getEndOfDrill();
+
+        if ((queue == null || queue.isEmpty()) && (end == null || !canMine(end))) {
+            retract(false);
+        }
+    }
+
+    public void retract(boolean forceEject) {
+        retracted = true;
+        BlockPos end = getEndOfDrill();
+        for (int removeY = y - 1; removeY >= end.y + 1; removeY--) {
+            WorldUtil.breakBlockWithParticles(world, x, removeY, z, GlassTechBlocks.miningPipeBlock.id);
+        }
+        int pipeCount = y - (end.y + 1);
+        if (pipeCount < 1) {
+            return;
+        }
+        if (heldItems == null) {
+            heldItems = new ArrayList<>();
+        }
+        for (int pipeStack = (int) Math.ceil(pipeCount / 64f); pipeStack > 0; pipeStack--) {
+            heldItems.add(new ItemStack(GlassTechBlocks.miningPipeBlock, Math.min(pipeCount, 64)));
+            pipeCount -= 64;
+        }
+        yeetItems(forceEject);
     }
 
     @Override
     public boolean canProcess() {
+        if (retracted) { // This is only checked once a tick, so we're good to handle this here.
+            yeetItems(false);
+            if (world.getPowerLevel(x, y, z) > 0) {
+                retracted = false;
+            }
+        }
+        if (heldItems != null) {
+            return true;
+        }
+        if (retracted) {
+            return false;
+        }
+        ItemStack pipeStack = getInput(0);
+        if (pipeStack == null || !(pipeStack.getItem() instanceof BlockItem blockItem) || blockItem.getBlock() != GlassTechBlocks.miningPipeBlock) {
+            return false;
+        }
         BlockPos end = getEndOfDrill();
         return end != null && (canMine(end) || world.getBlockState(end).isAir());
     }
@@ -121,14 +170,14 @@ public class MinerBlockEntity extends ProgressMachineBlockEntityTemplate {
         return true;
     }
 
-    public void yeetItems() {
-        if (heldItems == null) {
+    public void yeetItems(boolean forceEject) {
+        if (heldItems == null || heldItems.isEmpty()) {
             return;
         }
 
         List<ItemStack> remainders = new ArrayList<>();
         for (ItemStack stack : heldItems) {
-            ItemStack remainder = yeetItem(stack);
+            ItemStack remainder = yeetItem(stack, forceEject);
             if (remainder != null) {
                 remainders.add(remainder);
             }
@@ -141,12 +190,12 @@ public class MinerBlockEntity extends ProgressMachineBlockEntityTemplate {
         }
     }
 
-    public ItemStack yeetItem(ItemStack stack) {
+    public ItemStack yeetItem(ItemStack stack, boolean forceEject) {
         ItemHandlerBlockCapability capability = CapabilityHelper.getCapability(world, x, y + 1, z, ItemHandlerBlockCapability.class);
         if (capability != null) {
             stack = capability.insertItem(stack, Direction.DOWN);
         }
-        else if (world.getBlockState(x, y + 1, z).isAir()) {
+        else if (world.getBlockState(x, y + 1, z).isAir() || forceEject) {
             ItemEntity item = new ItemEntity(world, x + .5, y + 1.5, z + .5, stack);
             item.pickupDelay = 10;
             float baseVelocity = 0.05F;
@@ -160,6 +209,10 @@ public class MinerBlockEntity extends ProgressMachineBlockEntityTemplate {
     }
 
     public void expandDrill(BlockPos target) {
+        ItemStack pipeStack = getInput(0);
+        if (pipeStack == null || !(pipeStack.getItem() instanceof BlockItem blockItem) || blockItem.getBlock() != GlassTechBlocks.miningPipeBlock) {
+            return;
+        }
         BlockState state = world.getBlockState(target);
 
         if (!state.isAir()) {
@@ -173,6 +226,10 @@ public class MinerBlockEntity extends ProgressMachineBlockEntityTemplate {
         }
 
         if ((state.isAir() || state.getMaterial().isReplaceable()) && world.canPlace(GlassTechBlocks.miningPipeBlock.id, target.x, target.y, target.z, false, Direction.DOWN.getId())) {
+            pipeStack.count--;
+            if (pipeStack.count < 1) {
+                setInput(0, null);
+            }
             world.setBlock(target.x, target.y, target.z, GlassTechBlocks.miningPipeBlock.id);
         }
     }
@@ -248,10 +305,24 @@ public class MinerBlockEntity extends ProgressMachineBlockEntityTemplate {
             }
 
             // Add the position to closed and remove it from open
-            closed.add(pos);
+            if (!closed.contains(pos)) {
+                closed.add(pos);
+            }
             open.remove(pos);
         }
 
         return closed;
+    }
+
+    @Override
+    public void writeNbt(NbtCompound nbt) {
+        super.writeNbt(nbt);
+        nbt.putBoolean("retracted", retracted);
+    }
+
+    @Override
+    public void readNbt(NbtCompound nbt) {
+        super.readNbt(nbt);
+        retracted = nbt.getBoolean("retracted");
     }
 }
