@@ -259,7 +259,7 @@ public class GlassTechItems {
         rubberBoots = new RubberBoots(NAMESPACE.id("rubber_boots"), 0, 0, 3);
         voltageMeter = new VoltMeterItem(NAMESPACE.id("voltage_meter"));
         miningLaser = new TemplateItem(NAMESPACE.id("mining_laser"));
-        compositeChestplate = new TemplateItem(NAMESPACE.id("composite_chestplate"));
+        compositeChestplate = new CompositeChestplate(NAMESPACE.id("composite_chestplate"), 0, 0, 1);
 
         ScrapBox.initDefaultDrops();
     }
