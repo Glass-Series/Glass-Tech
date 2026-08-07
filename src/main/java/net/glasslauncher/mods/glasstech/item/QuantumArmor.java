@@ -1,6 +1,7 @@
 package net.glasslauncher.mods.glasstech.item;
 
 import net.glasslauncher.mods.glasstech.*;
+import net.glasslauncher.mods.glasstech.events.init.GlassTechItems;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ArmorItem;
@@ -20,11 +21,41 @@ public class QuantumArmor extends NanoArmor implements GTArmorDamageHandler, GTA
 
     @Override
     public boolean shouldDamage(LivingEntity entity, ItemStack armor, int damage, DamageSource source) {
-        boolean willDamage = source.nature != DamageSource.Nature.ENVIRONMENT; // Invincible to all natural damage
-        if (!willDamage) {
-            removeEnergy(armor, damage);
+        if (getEnergyStored(armor) < 1) {
+            return true;
         }
-        return willDamage;
+        if (entity instanceof PlayerEntity player) {
+            boolean notQuantum = false;
+            for (ItemStack armorPiece : player.inventory.armor) {
+                notQuantum = !(armorPiece.getItem() instanceof QuantumArmor quantumArmor) || quantumArmor.getEnergyStored(armorPiece) < 1;
+                if (notQuantum) {
+                    break;
+                }
+            }
+            if (!notQuantum) {
+                boolean willDamage = source.nature != DamageSource.Nature.ENVIRONMENT;
+                if (!willDamage) {
+                    for (ItemStack armorPiece : player.inventory.armor) {
+                        removeEnergy(armorPiece, damage * 4);
+                    }
+                }
+                return false;
+            }
+        }
+        boolean wontDamage = false;
+        if (armor.getItem() == GlassTechItems.quantumBoots) {
+            wontDamage |= source == DamageSource.FALLING;
+        }
+        if (armor.getItem() == GlassTechItems.quantumChestplate) {
+            wontDamage |= source == DamageSource.FIRE;
+        }
+        if (armor.getItem() == GlassTechItems.quantumHelmet) {
+            wontDamage |= source == DamageSource.DROWNING;
+        }
+        if (wontDamage) {
+            removeEnergy(armor, damage * 16);
+        }
+        return !wontDamage;
     }
 
     @Override
@@ -39,8 +70,8 @@ public class QuantumArmor extends NanoArmor implements GTArmorDamageHandler, GTA
                 }
             }
             case CHEST -> {
-                if (player.fireTicks > 0) {
-                    removeEnergy(armor, player.fireTicks * 10);
+                if (player.fireTicks > 0 && getEnergyStored(armor) > 0) {
+                    removeEnergy(armor, player.fireTicks / 2);
                     player.fireTicks = 0;
                 }
             }

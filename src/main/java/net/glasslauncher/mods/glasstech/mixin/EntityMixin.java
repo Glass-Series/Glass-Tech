@@ -15,6 +15,8 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Entity.class)
 public class EntityMixin {
@@ -39,6 +41,17 @@ public class EntityMixin {
         }
 
         return original.call(instance, box);
+    }
+
+    @Inject(method = "setOnFire", at = @At("HEAD"), cancellable = true)
+    private void stopIgniteDamage(CallbackInfo ci) {
+        if ((Object) this instanceof PlayerEntity player) {
+            for (ItemStack itemStack : player.inventory.armor) {
+                if (itemStack != null && itemStack.getItem() instanceof GTArmorDamageHandler handler && !handler.shouldDamage(player, itemStack, 4, DamageSource.LAVA)) {
+                    ci.cancel();
+                }
+            }
+        }
     }
 
     @Unique
