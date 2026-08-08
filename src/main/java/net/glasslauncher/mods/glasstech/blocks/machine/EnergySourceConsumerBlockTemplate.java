@@ -3,13 +3,14 @@ package net.glasslauncher.mods.glasstech.blocks.machine;
 import net.danygames2014.nyalib.network.Network;
 import net.danygames2014.nyalib.network.NetworkEdgeComponent;
 import net.danygames2014.nyalib.network.NetworkType;
+import net.glasslauncher.mods.glasstech.blocks.GTWrenchable;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.material.Material;
 import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.template.block.TemplateBlockWithEntity;
 import net.modificationstation.stationapi.api.util.Identifier;
 
-public abstract class EnergySourceConsumerBlockTemplate extends TemplateBlockWithEntity implements NetworkEdgeComponent {
+public abstract class EnergySourceConsumerBlockTemplate extends TemplateBlockWithEntity implements NetworkEdgeComponent, GTWrenchable {
     public EnergySourceConsumerBlockTemplate(Identifier identifier, Material material) {
         super(identifier, material);
         setHardness(5f);

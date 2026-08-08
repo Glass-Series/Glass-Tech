@@ -43,6 +43,8 @@ accessible method net/minecraft/client/render/item/ItemRenderer fillRect (Lnet/m
 
 mutable field net/minecraft/item/ArmorItem maxProtection I
 
+accessible method net/minecraft/block/Block dropStack (Lnet/minecraft/world/World;IIILnet/minecraft/item/ItemStack;)V
+
 accessible field net/minecraft/item/FoodItem healthRestored I
 
 accessible field net/minecraft/entity/LivingEntity jumping Z

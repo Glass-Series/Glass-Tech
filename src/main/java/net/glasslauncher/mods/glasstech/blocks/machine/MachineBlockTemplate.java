@@ -2,6 +2,7 @@ package net.glasslauncher.mods.glasstech.blocks.machine;
 
 import net.danygames2014.nyalib.block.DropInventoryOnBreak;
 import net.danygames2014.nyalib.energy.template.block.EnergySourceBlockTemplate;
+import net.glasslauncher.mods.glasstech.blocks.GTWrenchable;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.material.Material;
@@ -12,7 +13,7 @@ import net.modificationstation.stationapi.api.state.property.Properties;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.math.Direction;
 
-public abstract class MachineBlockTemplate extends EnergySourceBlockTemplate implements DropInventoryOnBreak {
+public abstract class MachineBlockTemplate extends EnergySourceBlockTemplate implements DropInventoryOnBreak, GTWrenchable {
 
     public MachineBlockTemplate(Identifier identifier, Material material) {
         super(identifier, material);
