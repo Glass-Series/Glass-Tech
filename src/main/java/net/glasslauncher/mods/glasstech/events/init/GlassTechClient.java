@@ -33,9 +33,11 @@ import net.glasslauncher.mods.glasstech.blocks.machine.pump.PumpBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.pump.PumpScreen;
 import net.glasslauncher.mods.glasstech.blocks.machine.recycler.RecyclerBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.recycler.RecyclerScreen;
+import net.glasslauncher.mods.glasstech.blocks.personalsafe.PersonalSafeBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.renderer.WaterWheelBlockEntityRenderer;
 import net.glasslauncher.mods.glasstech.blocks.renderer.WindSailsBlockEntityRenderer;
 import net.mine_diver.unsafeevents.listener.EventListener;
+import net.minecraft.client.gui.screen.ingame.DoubleChestScreen;
 import net.modificationstation.stationapi.api.client.event.block.entity.BlockEntityRendererRegisterEvent;
 import net.modificationstation.stationapi.api.client.event.texture.TextureRegisterEvent;
 import net.modificationstation.stationapi.api.client.gui.screen.GuiHandler;
@@ -78,6 +80,8 @@ public class GlassTechClient {
         event.register(NAMESPACE.id("mass_fabricator"), new GuiHandler((player, inventory, packet) -> new MassFabricatorScreen(player.inventory, (MassFabricatorBlockEntity) inventory), MassFabricatorBlockEntity::new));
 
         event.register(NAMESPACE.id("iron_furnace"), new GuiHandler((player, inventory, packet) -> new IronFurnaceScreen(player.inventory, (IronFurnaceBlockEntity) inventory), IronFurnaceBlockEntity::new));
+
+        event.register(NAMESPACE.id("personal_safe"), new GuiHandler((player, inventory, packet) -> new DoubleChestScreen(player.inventory, inventory), PersonalSafeBlockEntity::new));
 
         event.register(NAMESPACE.id("battery_box"), new GuiHandler((player, inventory, packet) -> new BatBoxScreen(player.inventory, (BatBoxBlockEntity) inventory), BatBoxBlockEntity::new));
         event.register(NAMESPACE.id("esu"), new GuiHandler((player, inventory, packet) -> new ESUScreen(player.inventory, (ESUBlockEntity) inventory), ESUBlockEntity::new));

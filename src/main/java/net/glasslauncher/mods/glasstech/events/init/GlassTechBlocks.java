@@ -38,6 +38,8 @@ import net.glasslauncher.mods.glasstech.blocks.machine.pump.PumpBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.recycler.RecyclerBlock;
 import net.glasslauncher.mods.glasstech.blocks.machine.recycler.RecyclerBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.teslacoil.TeslaCoilBlock;
+import net.glasslauncher.mods.glasstech.blocks.personalsafe.PersonalSafeBlock;
+import net.glasslauncher.mods.glasstech.blocks.personalsafe.PersonalSafeBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.transformer.HVTransformerBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.transformer.LVTransformerBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.transformer.MVTransformerBlockEntity;
@@ -206,7 +208,7 @@ public class GlassTechBlocks {
         hardenedConstructionFoamBlock = new GTHardenedFoamBlock(NAMESPACE.id("hardened_construction_foam"));
         dynamiteBlock = new GTDynamiteBlock(NAMESPACE.id("dynamite"));
         miningPipeBlock = new MiningPipeBlock(NAMESPACE.id("mining_pipe"), Material.METAL, METAL_SOUND_GROUP);
-        personalSafeBlock = new GTSafeBlock(NAMESPACE.id("personal_safe"));
+        personalSafeBlock = new PersonalSafeBlock(NAMESPACE.id("personal_safe"));
         reinforcedDoorBlock = new GTDoorBlock(NAMESPACE.id("reinforced_door_block"));
         teleporterBlock = new TeleporterBlock(NAMESPACE.id("teleporter"));
         teslaCoilBlock = new TeslaCoilBlock(NAMESPACE.id("tesla_coil"), Material.METAL);
@@ -264,6 +266,8 @@ public class GlassTechBlocks {
         event.register(NAMESPACE.id("mass_fabricator"), MassFabricatorBlockEntity.class);
 
         event.register(NAMESPACE.id("iron_furnace"), IronFurnaceBlockEntity.class);
+
+        event.register(NAMESPACE.id("personal_safe"), PersonalSafeBlockEntity.class);
 
         event.register(NAMESPACE.id("lv_transformer"), LVTransformerBlockEntity.class);
         event.register(NAMESPACE.id("mv_transformer"), MVTransformerBlockEntity.class);
