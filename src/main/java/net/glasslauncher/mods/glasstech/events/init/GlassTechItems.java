@@ -240,7 +240,7 @@ public class GlassTechItems {
         reactorCooler = new TemplateItem(NAMESPACE.id("reactor_cooler"));
         reactorPlating = new TemplateItem(NAMESPACE.id("reactor_plating"));
         emptyFuelCan = new TemplateItem(NAMESPACE.id("empty_fuel_can"));
-        dynamiteRemote = new TemplateItem(NAMESPACE.id("dynamite_remote"));
+        dynamiteRemote = new DynamiteRemote(NAMESPACE.id("dynamite_remote"));
         reEnrichedUraniumCell = new TemplateItem(NAMESPACE.id("re_enriched_uranium_cell"));
         nearDepletedUraniumCell = new TemplateItem(NAMESPACE.id("near_depleted_uranium_cell"));
         bioCell = new TemplateItem(NAMESPACE.id("bio_cell"));
