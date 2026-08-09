@@ -20,7 +20,7 @@ import org.lwjgl.input.Keyboard;
 import java.util.*;
 
 public class DynamiteRemote extends TemplateItem implements CustomTooltipProvider {
-    public static int MAX_TARGETS = 5;
+    public static int MAX_TARGETS = 32;
 
     public static final String TARGETS = "targets";
 
