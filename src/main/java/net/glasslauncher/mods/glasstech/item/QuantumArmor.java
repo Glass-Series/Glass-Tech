@@ -27,6 +27,10 @@ public class QuantumArmor extends NanoArmor implements GTArmorDamageHandler, GTA
         if (entity instanceof PlayerEntity player) {
             boolean notQuantum = false;
             for (ItemStack armorPiece : player.inventory.armor) {
+                if (armorPiece == null) {
+                    notQuantum = true;
+                    break;
+                }
                 notQuantum = !(armorPiece.getItem() instanceof QuantumArmor quantumArmor) || quantumArmor.getEnergyStored(armorPiece) < 1;
                 if (notQuantum) {
                     break;
@@ -36,6 +40,9 @@ public class QuantumArmor extends NanoArmor implements GTArmorDamageHandler, GTA
                 boolean willDamage = source.nature != DamageSource.Nature.ENVIRONMENT;
                 if (!willDamage) {
                     for (ItemStack armorPiece : player.inventory.armor) {
+                        if (armorPiece == null || !(armorPiece.getItem() instanceof QuantumArmor)) {
+                            continue;
+                        }
                         removeEnergy(armorPiece, damage * 4);
                     }
                 }

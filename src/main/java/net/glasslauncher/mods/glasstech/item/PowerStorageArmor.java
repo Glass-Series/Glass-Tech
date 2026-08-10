@@ -23,7 +23,7 @@ public class PowerStorageArmor extends PowerArmor implements GTTickingArmor, Cus
 
     @Override
     public boolean canExtractEnergy(ItemStack stack) {
-        return true;
+        return false;
     }
 
     @Override
