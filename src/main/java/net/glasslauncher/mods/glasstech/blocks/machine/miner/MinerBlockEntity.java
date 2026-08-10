@@ -8,6 +8,7 @@ import net.glasslauncher.mods.glasstech.WorldUtil;
 import net.glasslauncher.mods.glasstech.blocks.machine.ProgressMachineBlockEntityTemplate;
 import net.glasslauncher.mods.glasstech.blocks.machine.SlotType;
 import net.glasslauncher.mods.glasstech.events.init.GlassTechBlocks;
+import net.glasslauncher.mods.glasstech.util.BlockWalker;
 import net.minecraft.block.Block;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.item.BlockItem;
@@ -16,6 +17,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
+import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.registry.BlockRegistry;
 import net.modificationstation.stationapi.api.tag.TagKey;
@@ -27,7 +29,8 @@ import java.util.List;
 
 public class MinerBlockEntity extends ProgressMachineBlockEntityTemplate {
     public static final TagKey<Block> ORES_TAG = TagKey.of(BlockRegistry.KEY, Identifier.of("c:ores"));
-    protected static final ObjectArrayList<Vec3i> SEARCH_OFFSETS = new ObjectArrayList<>();
+
+    public static BlockWalker.WalkValidator MINING_FILTER = ((world, x, y, z) -> world.getBlockState(x, y, z).isIn(ORES_TAG) && canMine(world, x, y, z));
 
     protected ArrayList<BlockPos> queue;
     protected List<ItemStack> heldItems;
@@ -35,21 +38,6 @@ public class MinerBlockEntity extends ProgressMachineBlockEntityTemplate {
     protected boolean retracted = false;
 
     static {
-        // Top and Bottom
-        SEARCH_OFFSETS.add(new Vec3i(0, 1, 0));
-        SEARCH_OFFSETS.add(new Vec3i(0, -1, 0));
-
-        // Sides
-        SEARCH_OFFSETS.add(new Vec3i(1, 0, 0));
-        SEARCH_OFFSETS.add(new Vec3i(-1, 0, 0));
-        SEARCH_OFFSETS.add(new Vec3i(0, 0, 1));
-        SEARCH_OFFSETS.add(new Vec3i(0, 0, -1));
-
-        // Diagonals
-        SEARCH_OFFSETS.add(new Vec3i(1, 0, 1));
-        SEARCH_OFFSETS.add(new Vec3i(1, 0, -1));
-        SEARCH_OFFSETS.add(new Vec3i(-1, 0, 1));
-        SEARCH_OFFSETS.add(new Vec3i(-1, 0, -1));
     }
 
     public MinerBlockEntity() {
@@ -79,7 +67,7 @@ public class MinerBlockEntity extends ProgressMachineBlockEntityTemplate {
         // Try to process the queue
         if (queue != null && !queue.isEmpty()) {
             BlockPos digPos = queue.remove(queue.size() - 1);
-            while (!canMine(digPos)) {
+            while (!canMine(world, digPos.x, digPos.y, digPos.z)) {
                 if (queue.isEmpty()) {
                     digPos = null;
                     break;
@@ -105,7 +93,7 @@ public class MinerBlockEntity extends ProgressMachineBlockEntityTemplate {
 
         end = getEndOfDrill();
 
-        if ((queue == null || queue.isEmpty()) && (end == null || !canMine(end))) {
+        if ((queue == null || queue.isEmpty()) && (end == null || !canMine(world, end.x, end.y, end.z))) {
             retract(false);
         }
     }
@@ -149,14 +137,11 @@ public class MinerBlockEntity extends ProgressMachineBlockEntityTemplate {
             return false;
         }
         BlockPos end = getEndOfDrill();
-        return end != null && (canMine(end) || world.getBlockState(end).isAir());
+        return end != null && (canMine(world, end.x, end.y, end.z) || world.getBlockState(end).isAir());
     }
 
-    public boolean canMine(BlockPos end) {
-        if (end == null) {
-            return false;
-        }
-        BlockState state = world.getBlockState(end);
+    public static boolean canMine(World world, int x, int y, int z) {
+        BlockState state = world.getBlockState(x, y, z);
 
         if (state.getBlock().getHardness() == -1) {
             return false;
@@ -216,7 +201,7 @@ public class MinerBlockEntity extends ProgressMachineBlockEntityTemplate {
         BlockState state = world.getBlockState(target);
 
         if (!state.isAir()) {
-            if (!canMine(target)) {
+            if (!canMine(world, target.x, target.y, target.z)) {
                 return;
             }
 
@@ -272,46 +257,12 @@ public class MinerBlockEntity extends ProgressMachineBlockEntityTemplate {
 
     public void findBlocks(int x, int y, int z) {
         queue = new ArrayList<>();
-        for (Vec3i side : SEARCH_OFFSETS) {
+        for (Vec3i side : BlockWalker.DIAGONAL_SEARCH_OFFSETS) {
             BlockPos pos = new BlockPos(x + side.x, y + side.y, z + side.z);
-            if (world.getBlockState(pos.x, pos.y, pos.z).isIn(ORES_TAG) && !queue.contains(pos) && canMine(pos)) {
-                queue = walk(pos);
+            if (!queue.contains(pos) && MINING_FILTER.test(world, pos.x, pos.y, pos.z)) {
+                queue = BlockWalker.walk(world, pos, BlockWalker.DIAGONAL_SEARCH_OFFSETS, MINING_FILTER);;
             }
         }
-    }
-
-    public ArrayList<BlockPos> walk(BlockPos start) {
-        // ArrayList for list of blocks yet to explore
-        ArrayList<BlockPos> open = new ArrayList<>();
-        // ArrayList for list of blocks that have been found
-        ArrayList<BlockPos> closed = new ArrayList<>();
-
-        // Add the starting position to explore
-        open.add(start);
-
-        // Go until open isn't empty
-        while (!open.isEmpty()) {
-            // Get the position to explore
-            BlockPos pos = open.get(0);
-            // Look at all of its sides
-            for (Vec3i dir : SEARCH_OFFSETS) {
-                // Get the side and see if there is a block on it. Then check if it doesnt already exist
-                BlockPos side = new BlockPos(pos.x + dir.x, pos.y + dir.y, pos.z + dir.z);
-                if (!closed.contains(side)) {
-                    if (world.getBlockState(side.x, side.y, side.z).isIn(ORES_TAG) && canMine(side)) {
-                        open.add(side);
-                    }
-                }
-            }
-
-            // Add the position to closed and remove it from open
-            if (!closed.contains(pos)) {
-                closed.add(pos);
-            }
-            open.remove(pos);
-        }
-
-        return closed;
     }
 
     @Override

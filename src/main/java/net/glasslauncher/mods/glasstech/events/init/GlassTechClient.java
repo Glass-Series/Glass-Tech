@@ -1,5 +1,6 @@
 package net.glasslauncher.mods.glasstech.events.init;
 
+import net.glasslauncher.mods.glasstech.blocks.TemplateCableBlock;
 import net.glasslauncher.mods.glasstech.blocks.batbox.BatBoxBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.batbox.BatBoxScreen;
 import net.glasslauncher.mods.glasstech.blocks.batbox.esu.ESUBlockEntity;
@@ -37,17 +38,21 @@ import net.glasslauncher.mods.glasstech.blocks.personalsafe.PersonalSafeBlockEnt
 import net.glasslauncher.mods.glasstech.blocks.renderer.WaterWheelBlockEntityRenderer;
 import net.glasslauncher.mods.glasstech.blocks.renderer.WindSailsBlockEntityRenderer;
 import net.mine_diver.unsafeevents.listener.EventListener;
+import net.minecraft.block.Block;
 import net.minecraft.client.gui.screen.ingame.DoubleChestScreen;
 import net.modificationstation.stationapi.api.client.event.block.entity.BlockEntityRendererRegisterEvent;
+import net.modificationstation.stationapi.api.client.event.color.block.BlockColorsRegisterEvent;
 import net.modificationstation.stationapi.api.client.event.texture.TextureRegisterEvent;
 import net.modificationstation.stationapi.api.client.gui.screen.GuiHandler;
 import net.modificationstation.stationapi.api.client.texture.atlas.Atlas;
 import net.modificationstation.stationapi.api.client.texture.atlas.Atlases;
 import net.modificationstation.stationapi.api.event.registry.GuiHandlerRegistryEvent;
 import net.modificationstation.stationapi.api.mod.entrypoint.EntrypointManager;
+import net.modificationstation.stationapi.api.registry.BlockRegistry;
 
 import java.lang.invoke.MethodHandles;
 
+import static net.glasslauncher.mods.glasstech.GTProperties.FOAM_COLOR;
 import static net.glasslauncher.mods.glasstech.GlassTech.NAMESPACE;
 
 public class GlassTechClient {
@@ -259,5 +264,21 @@ public class GlassTechClient {
     public static void blockEntityRendererInit(BlockEntityRendererRegisterEvent event) {
         event.renderers.put(WaterWheelBlockEntity.class, new WaterWheelBlockEntityRenderer());
         event.renderers.put(WindSailsBlockEntity.class, new WindSailsBlockEntityRenderer());
+    }
+
+    @EventListener
+    public static void blockColorsInit(BlockColorsRegisterEvent event) {
+        event.blockColors.registerColorProvider(((state, world, pos, tintIndex) -> {
+            if (tintIndex != 1) {
+                return -1;
+            }
+            if (world != null) {
+                if (!state.contains(FOAM_COLOR) || state.get(FOAM_COLOR) == null) {
+                    return 0;
+                }
+                return state.get(FOAM_COLOR).color;
+            }
+            return -1;
+        }), BlockRegistry.INSTANCE.stream().filter(e -> e instanceof TemplateCableBlock).toArray(Block[]::new));
     }
 }

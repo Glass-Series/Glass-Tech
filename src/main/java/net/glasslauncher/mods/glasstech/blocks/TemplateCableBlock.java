@@ -29,6 +29,10 @@ import net.modificationstation.stationapi.api.util.math.Direction;
 
 import javax.annotation.Nullable;
 import java.util.Map;
+import java.util.Random;
+
+import static net.glasslauncher.mods.glasstech.GTProperties.FOAM;
+import static net.glasslauncher.mods.glasstech.GTProperties.FOAM_COLOR;
 
 public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComponent, EnergyConductor {
     public static final float PIXEL_SIZE = 1f / 16;
@@ -63,7 +67,10 @@ public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComp
             .with(Properties.WEST, false)
             .with(Properties.UP, false)
             .with(Properties.DOWN, false)
+            .with(FOAM_COLOR, FoamColor.DEFAULT)
+            .with(FOAM, 0)
         );
+        setTickRandomly(true); // Maybe see if there's a better way of doing this.
     }
 
     @Override
@@ -79,6 +86,8 @@ public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComp
         builder.add(Properties.WEST);
         builder.add(Properties.UP);
         builder.add(Properties.DOWN);
+        builder.add(FOAM_COLOR);
+        builder.add(FOAM);
         super.appendProperties(builder);
     }
 
@@ -121,7 +130,10 @@ public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComp
     }
 
     public BlockState updateModel(World world, int x, int y, int z) {
-        var state = getDefaultState();
+        var state = world.getBlockState(x, y, z);
+        if (!(state.getBlock() instanceof TemplateCableBlock)) {
+            return getDefaultState(); // Probably placing or breaking a block, if I return the wrong state shit breaks
+        }
         for (Map.Entry<BooleanProperty, Direction> it : DIR_PROPS.entrySet()) {
             state = state.with(it.getKey(), canConnectTo(world, x, y, z, null, it.getValue()));
         }
@@ -139,10 +151,13 @@ public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComp
 
     @Override
     public Box getBoundingBox(World world, int x, int y, int z) {
-        if (FabricLoader.getInstance().getEnvironmentType().equals(EnvType.CLIENT) && !ignoreSneaking && Minecraft.INSTANCE.player.isSneaking()) {
+        BlockState state = world.getBlockState(x, y, z);
+        if (!state.contains(FOAM)) {
+            return null;
+        }
+        if (state.get(FOAM) != 0 || (FabricLoader.getInstance().getEnvironmentType().equals(EnvType.CLIENT) && !ignoreSneaking && Minecraft.INSTANCE.player.isSneaking())) {
             return super.getBoundingBox(world, x, y, z);
         }
-        BlockState state = world.getBlockState(x, y, z);
 
         if (state.getBlock() != this) {
             return null;
@@ -253,5 +268,17 @@ public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComp
         }
 
         entity.damage(null, network.getFlowEntry(x, y, z).energyFlow);
+    }
+
+    @Override
+    public void onTick(World world, int x, int y, int z, Random random) {
+        BlockState state = world.getBlockState(x, y, z);
+        if (world.isRemote || state.get(FOAM) != 1) {
+            return;
+        }
+
+        if (world.getBrightness(x, y, z) * 6 >= random.nextInt(500)) {
+            world.setBlockState(x, y, z, state.with(FOAM, 2));
+        }
     }
 }

@@ -188,7 +188,7 @@ public class GlassTechItems {
         batteryPack = new PowerStorageArmor(NAMESPACE.id("battery_pack"), 1, VoltageTier.LV, VoltageTier.LV.maxVoltage * 640);
         lappack = new PowerStorageArmor(NAMESPACE.id("lappack"), 1, VoltageTier.HV, VoltageTier.HV.maxVoltage * 640);
 
-        cfPack = new TemplateItem(NAMESPACE.id("cf_pack"));
+        cfPack = new CFBackpack(NAMESPACE.id("cf_pack"), 0, 0, 1);
 
         wrench = new Wrench(NAMESPACE.id("wrench"));
         electricWrench = new ElectricWrench(NAMESPACE.id("electric_wrench"), VoltageTier.LV, VoltageTier.LV.maxVoltage * 256);
@@ -204,7 +204,7 @@ public class GlassTechItems {
         bronzeShovel = new TemplateShovelItem(NAMESPACE.id("bronze_shovel"), ToolMaterial.IRON);
         bronzeSword = new TemplateSwordItem(NAMESPACE.id("bronze_sword"), ToolMaterial.IRON);
 
-        cfSprayer = new TemplateItem(NAMESPACE.id("cf_sprayer"));
+        cfSprayer = new CFSprayer(NAMESPACE.id("cf_sprayer"));
         frequencyTransmitter = new TemplateItem(NAMESPACE.id("frequency_transmitter"));
         wireCutter = new WireCutters(NAMESPACE.id("wire_cutters"));
         painter = new PainterItem(NAMESPACE.id("painter"));

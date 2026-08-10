@@ -4,28 +4,36 @@
       "apply": { "model": "glasstech:block/cable/$0$/cable_core" }
     },
     {
-      "when": { "north": "true" },
+      "when": { "north": "true", "foam": "0|1" },
       "apply": { "model": "glasstech:block/cable/$0$/cable_north" }
     },
     {
-      "when": { "east": "true" },
+      "when": { "east": "true", "foam": "0|1" },
       "apply": { "model": "glasstech:block/cable/$0$/cable_east" }
     },
     {
-      "when": { "south": "true" },
+      "when": { "south": "true", "foam": "0|1" },
       "apply": { "model": "glasstech:block/cable/$0$/cable_south" }
     },
     {
-      "when": { "west": "true" },
+      "when": { "west": "true", "foam": "0|1" },
       "apply": { "model": "glasstech:block/cable/$0$/cable_west" }
     },
     {
-      "when": { "up": "true" },
+      "when": { "up": "true", "foam": "0|1" },
       "apply": { "model": "glasstech:block/cable/$0$/cable_up" }
     },
     {
-      "when": { "down": "true" },
+      "when": { "down": "true", "foam": "0|1" },
       "apply": { "model": "glasstech:block/cable/$0$/cable_down" }
+    },
+    {
+      "when": { "foam": "1" },
+      "apply": { "model": "glasstech:block/construction_foam" }
+    },
+    {
+      "when": { "foam": "2" },
+      "apply": { "model": "glasstech:block/hardened_construction_foam" }
     }
   ]
 }

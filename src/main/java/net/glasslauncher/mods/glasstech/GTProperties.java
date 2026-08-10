@@ -14,4 +14,6 @@ public class GTProperties {
     public static final BooleanProperty HAS_AIR = BooleanProperty.of("has_air");
 
     public static final IntProperty RESIN = IntProperty.of("resin", 0, 3);
+
+    public static final IntProperty FOAM = IntProperty.of("foam", 0, 2);
 }
