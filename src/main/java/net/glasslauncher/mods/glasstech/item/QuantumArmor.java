@@ -68,6 +68,9 @@ public class QuantumArmor extends NanoArmor implements GTArmorDamageHandler, GTA
     @Override
     public void tick(PlayerEntity player, int armorSlot) {
         ItemStack armor = player.inventory.armor[armorSlot];
+        if (getEnergyStored(armor) < 1) {
+            return;
+        }
 
         switch(armorSlot) {
             case HEAD -> {
@@ -77,13 +80,13 @@ public class QuantumArmor extends NanoArmor implements GTArmorDamageHandler, GTA
                 }
             }
             case CHEST -> {
-                if (player.fireTicks > 0 && getEnergyStored(armor) > 0) {
+                if (player.fireTicks > 0) {
                     removeEnergy(armor, player.fireTicks / 2);
                     player.fireTicks = 0;
                 }
             }
             case LEGS -> {
-                if ((player.onGround || player.isSubmergedInWater()) && (Math.abs(player.velocityX) + Math.abs(player.velocityZ) > 0.05d) && player.glasstech$isHoldingAbilityKey() && getEnergyStored(armor) > 0) {
+                if ((player.onGround || player.isSubmergedInWater()) && (Math.abs(player.velocityX) + Math.abs(player.velocityZ) > 0.05d) && player.glasstech$isHoldingAbilityKey()) {
                     removeEnergy(armor, 1);
                     if (player.isSubmergedInWater()) {
                         if (player.jumping) {
