@@ -3,7 +3,6 @@ package net.glasslauncher.mods.glasstech.entity;
 import net.minecraft.entity.TntEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.world.World;
-import net.minecraft.world.explosion.Explosion;
 import net.modificationstation.stationapi.api.server.entity.EntitySpawnDataProvider;
 import net.modificationstation.stationapi.api.server.entity.HasTrackingParameters;
 import net.modificationstation.stationapi.api.util.Identifier;
@@ -51,7 +50,10 @@ public class GTTntEntity extends TntEntity implements EntitySpawnDataProvider {
 
     @Override
     public void explode() {
-        Explosion explosion = nukesplosion ? new GTNukesplosion(world, this, x, y, z, power) : new GTExplosion(world, this, x, y, z, power);
+        GTExplosion explosion = nukesplosion ? new GTNukesplosion(world, this, x, y, z, power) : new GTExplosion(world, this, x, y, z, power);
+        if (!nukesplosion) {
+            explosion.destroyItems = false;
+        }
         explosion.explode();
         explosion.playExplosionSound(true);
     }

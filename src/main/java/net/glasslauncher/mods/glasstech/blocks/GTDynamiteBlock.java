@@ -2,7 +2,6 @@ package net.glasslauncher.mods.glasstech.blocks;
 
 import net.glasslauncher.mods.glasstech.entity.GTExplosion;
 import net.minecraft.world.World;
-import net.minecraft.world.explosion.Explosion;
 import net.modificationstation.stationapi.api.template.block.TemplateTorchBlock;
 import net.modificationstation.stationapi.api.util.Identifier;
 
@@ -17,7 +16,8 @@ public class GTDynamiteBlock extends TemplateTorchBlock {
     }
 
     public static void explode(World world, int x, int y, int z) {
-        Explosion explosion = new GTExplosion(world, null, x, y, z, 1);
+        GTExplosion explosion = new GTExplosion(world, null, x, y, z, 1);
+        explosion.destroyItems = false;
         explosion.explode();
         explosion.playExplosionSound(true);
     }

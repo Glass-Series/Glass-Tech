@@ -1,5 +1,6 @@
 package net.glasslauncher.mods.glasstech.blocks;
 
+import net.glasslauncher.mods.glasstech.entity.GTNukeEntity;
 import net.glasslauncher.mods.glasstech.entity.GTTntEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -78,7 +79,10 @@ public class GTExplosiveBlock extends GTTemplateBlock {
     }
 
     public TntEntity createTntEntity(World world, int x, int y, int z) {
-        return new GTTntEntity(world, (float)x + 0.5F, (float)y + 0.5F, (float)z + 0.5F, fuse, power, nukesplosion);
+        if (nukesplosion) {
+            return new GTNukeEntity(world, (float) x + 0.5F, (float) y + 0.5F, (float) z + 0.5F, fuse, power, true);
+        }
+        return new GTTntEntity(world, (float) x + 0.5F, (float) y + 0.5F, (float) z + 0.5F, fuse, power, false);
     }
 
     @Override
