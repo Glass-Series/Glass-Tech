@@ -10,7 +10,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.nbt.NbtList;
 import net.minecraft.world.explosion.Explosion;
 import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.state.property.Properties;
@@ -167,10 +166,13 @@ public abstract class PowerStorageBlockEntityTemplate extends EnergySourceConsum
         super.readNbt(nbt);
 
         // Inventory
-        NbtList itemsNbt = nbt.getList("Items");
+        NbtCompound itemsNbt = nbt.getCompound("Items");
 
-        for (int slot = 0; slot < itemsNbt.size(); slot++) {
-            NbtCompound stackNbt = (NbtCompound) itemsNbt.get(slot);
+        for (int slot = 0; slot < inventory.length; slot++) {
+            if (!itemsNbt.contains(String.valueOf(slot))) {
+                continue;
+            }
+            NbtCompound stackNbt = itemsNbt.getCompound(String.valueOf(slot));
             if (slot < inventory.length) {
                 inventory[slot] = new ItemStack(stackNbt);
             }
@@ -183,16 +185,17 @@ public abstract class PowerStorageBlockEntityTemplate extends EnergySourceConsum
 
         // Inventory
         // Input
-        NbtList itemsNbt = new NbtList();
+        NbtCompound itemsNbt = new NbtCompound();
 
-        for (ItemStack itemStack : inventory) {
+        for (int slot = 0; slot < inventory.length; slot++) {
+            ItemStack itemStack = inventory[slot];
             if (itemStack == null) {
                 continue;
             }
 
             NbtCompound stackNbt = new NbtCompound();
             itemStack.writeNbt(stackNbt);
-            itemsNbt.add(stackNbt);
+            itemsNbt.put(String.valueOf(slot), stackNbt);
         }
 
         nbt.put("Items", itemsNbt);
