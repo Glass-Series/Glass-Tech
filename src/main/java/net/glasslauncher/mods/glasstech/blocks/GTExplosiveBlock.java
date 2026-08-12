@@ -17,6 +17,10 @@ public class GTExplosiveBlock extends GTTemplateBlock {
     public final float power;
     public final boolean nukesplosion;
 
+    public int topTexture;
+    public int sideTexture;
+    public int bottomTexture;
+
     public GTExplosiveBlock(Identifier identifier, Material material, int fuse, float power) {
         this(identifier, material, fuse, power, false);
     }
@@ -64,7 +68,7 @@ public class GTExplosiveBlock extends GTTemplateBlock {
     public void onMetadataChange(World world, int x, int y, int z, int meta) {
         if (!world.isRemote) {
             if ((meta & 1) == 0) {
-                this.dropStack(world, x, y, z, new ItemStack(Block.TNT.id, 1, 0));
+                this.dropStack(world, x, y, z, new ItemStack(this, 1));
             } else {
                 TntEntity tntEntity = createTntEntity(world, x, y, z);
                 world.spawnEntity(tntEntity);
@@ -84,5 +88,14 @@ public class GTExplosiveBlock extends GTTemplateBlock {
         }
 
         super.onBlockBreakStart(world, x, y, z, player);
+    }
+
+    @Override
+    public int getTexture(int side) {
+        return switch (side) {
+            case 0 -> this.bottomTexture;
+            case 1 -> this.topTexture;
+            default -> this.sideTexture;
+        };
     }
 }

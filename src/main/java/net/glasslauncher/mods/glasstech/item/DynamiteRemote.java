@@ -26,6 +26,7 @@ public class DynamiteRemote extends TemplateItem implements CustomTooltipProvide
 
     public DynamiteRemote(Identifier identifier) {
         super(identifier);
+        setMaxCount(1);
     }
 
     public static HashSet<BlockPos> getTargets(ItemStack stack) {
@@ -59,20 +60,24 @@ public class DynamiteRemote extends TemplateItem implements CustomTooltipProvide
             return false;
         }
 
+        int meta = world.getBlockMeta(x, y, z);
+
         if (user.isSneaking() && targets.contains(target)) {
             targets.remove(target);
             setTargets(stack, targets);
+            world.setBlockMeta(x, y, z, meta & ~(1 << 3));
             user.sendMessage("Removed target: (x:" + target.getX() + ", y:" + target.getY() + ", z:" + target.getZ() + ")");
-        } else {
+        }
+        else {
             if (targets.size() >= MAX_TARGETS) {
                 user.sendMessage(Formatting.RED + "Cannot add more than " + MAX_TARGETS + " targets!");
                 return true;
             }
             targets.add(target);
             setTargets(stack, targets);
+            world.setBlockMeta(x, y, z, meta | (1 << 3));
             user.sendMessage("Added target: (x:" + target.getX() + ", y:" + target.getY() + ", z:" + target.getZ() + ")");
         }
-
 
         return true;
     }
@@ -105,7 +110,8 @@ public class DynamiteRemote extends TemplateItem implements CustomTooltipProvide
             for (BlockPos target : targets) {
                 lines.add(Formatting.GRAY + " Target: (x:" + target.getX() + ", y:" + target.getY() + ", z:" + target.getZ() + ")");
             }
-        } else {
+        }
+        else {
             lines.add(Formatting.GRAY + "Hold shift to see individual targets");
         }
         return lines.toArray(String[]::new);

@@ -196,6 +196,10 @@ public class GlassTechClient {
         GlassTechBlocks.constructionFoamBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/construction_foam")).index;
         GlassTechBlocks.hardenedConstructionFoamBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/hardened_construction_foam")).index;
 
+        GlassTechBlocks.dynamiteBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/dynamite")).index;
+        GlassTechBlocks.dynamiteBlock.linkedTexture = Atlases.getTerrain().addTexture(NAMESPACE.id("block/linked_dynamite")).index;
+        GlassTechBlocks.dynamiteBlock.asItem().setTextureId(GlassTechBlocks.dynamiteBlock.textureId);
+
         GlassTechBlocks.reinforcedDoorBlock.topTextureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/reinforced_door_top")).index;
         GlassTechBlocks.reinforcedDoorBlock.bottomTextureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/reinforced_door_bottom")).index;
 
@@ -205,6 +209,14 @@ public class GlassTechClient {
         GlassTechBlocks.sealedPlanksBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/sealed_planks")).index;
         GlassTechBlocks.rubberLogBlock.textureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/rubber_log")).index;
         GlassTechBlocks.rubberLogBlock.endTextureId = Atlases.getTerrain().addTexture(NAMESPACE.id("block/rubber_log_top")).index;
+
+        GlassTechBlocks.nukeBlock.topTexture = Atlases.getTerrain().addTexture(NAMESPACE.id("block/nuke_top")).index;
+        GlassTechBlocks.nukeBlock.sideTexture = Atlases.getTerrain().addTexture(NAMESPACE.id("block/nuke_side")).index;
+        GlassTechBlocks.nukeBlock.bottomTexture = Atlases.getTerrain().addTexture(NAMESPACE.id("block/nuke_bottom")).index;
+
+        GlassTechBlocks.industrialTNTBlock.topTexture = Atlases.getTerrain().addTexture(NAMESPACE.id("block/itnt_top")).index;
+        GlassTechBlocks.industrialTNTBlock.sideTexture = Atlases.getTerrain().addTexture(NAMESPACE.id("block/itnt_side")).index;
+        GlassTechBlocks.industrialTNTBlock.bottomTexture = Atlases.getTerrain().addTexture(NAMESPACE.id("block/itnt_bottom")).index;
 
         GlassTechItems.compressedHydratedCoal.setTexture(NAMESPACE.id("item/resource/compressed_hydrated_coal"));
         GlassTechItems.compressedPlantBall.setTexture(NAMESPACE.id("item/resource/compressed_plant_ball"));

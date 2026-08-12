@@ -111,7 +111,7 @@ public class GlassTechBlocks {
 
     public static Block constructionFoamBlock;
     public static Block hardenedConstructionFoamBlock;
-    public static Block dynamiteBlock;
+    public static GTDynamiteBlock dynamiteBlock;
     public static Block metalScaffoldBlock;
     public static Block miningPipeBlock;
     public static Block personalSafeBlock;
@@ -138,8 +138,8 @@ public class GlassTechBlocks {
     public static Block reactorChamberBlock;
     public static Block reactorCoreBlock;
     public static Block massFabricatorBlock;
-    public static Block industrialTNTBlock;
-    public static Block nukeBlock;
+    public static GTExplosiveBlock industrialTNTBlock;
+    public static GTExplosiveBlock nukeBlock;
 
     public static Block sealedPlanksBlock;
     public static RubberSaplingBlock rubberSaplingBlock;
