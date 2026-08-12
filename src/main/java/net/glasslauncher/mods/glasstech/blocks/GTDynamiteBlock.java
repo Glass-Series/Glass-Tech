@@ -1,6 +1,8 @@
 package net.glasslauncher.mods.glasstech.blocks;
 
 import net.glasslauncher.mods.glasstech.entity.GTExplosion;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.template.block.TemplateTorchBlock;
 import net.modificationstation.stationapi.api.util.Identifier;
@@ -22,14 +24,7 @@ public class GTDynamiteBlock extends TemplateTorchBlock {
         explosion.playExplosionSound(true);
     }
 
-    @Override
-    public void onDestroyedByExplosion(World world, int x, int y, int z) {
-        if (!world.isRemote) {
-            explode(world, x, y, z);
-        }
-    }
-
-// Notch doesn't filter this shit in the renderer (despite it being done in the torch class) and so this whole idea falls apart
+    // Notch doesn't filter this shit in the renderer (despite it being done in the torch class) and so this whole idea falls apart
 // And mixins can't fix this easily cause the actual torch rendering method has no metadata or world context
 // This isn't worth the effort for a feature I know almost no one will use
 //    @Override
@@ -46,12 +41,38 @@ public class GTDynamiteBlock extends TemplateTorchBlock {
 
     @Override
     public void neighborUpdate(World world, int x, int y, int z, int id) {
+        super.neighborUpdate(world, x, y, z, id);
         if (world.getPowerLevel(x, y, z) != 0) {
+            world.setBlock(x, y, z, 0);
             explode(world, x, y, z);
         }
     }
 
     @Override
+    public void onDestroyedByExplosion(World world, int x, int y, int z) {
+        explode(world, x, y, z);
+    }
+
+    @Override
     public void randomDisplayTick(World world, int x, int y, int z, Random random) {
+    }
+
+    @Override
+    public int getDroppedItemCount(Random random) {
+        return 0;
+    }
+
+    @Override
+    public void onBlockBreakStart(World world, int x, int y, int z, PlayerEntity player) {
+        super.onBlockBreakStart(world, x, y, z, player);
+        world.setBlockMeta(x, y, z, (world.getBlockMeta(x, y, z) | (1 << 3)));
+    }
+
+    @Override
+    public void onBreak(World world, int x, int y, int z) {
+        super.onBreak(world, x, y, z);
+        if ((world.getBlockMeta(x, y, z) & (1 << 3)) != 0) {
+            dropStack(world, x, y, z, new ItemStack(this));
+        }
     }
 }
