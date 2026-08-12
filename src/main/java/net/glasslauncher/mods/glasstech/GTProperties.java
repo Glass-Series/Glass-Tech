@@ -16,4 +16,5 @@ public class GTProperties {
     public static final IntProperty RESIN = IntProperty.of("resin", 0, 3);
 
     public static final IntProperty FOAM = IntProperty.of("foam", 0, 2);
+    public static final IntProperty PLACEMENT = IntProperty.of("placement", 0, 2);
 }

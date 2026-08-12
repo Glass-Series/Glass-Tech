@@ -1,0 +1,116 @@
+{
+  "variants": {
+    "facing=north,placement=0,lit=false": {
+      "model": "glasstech:block/illuminator",
+      "y": 0
+    },
+    "facing=east,placement=0,lit=false": {
+      "model": "glasstech:block/illuminator",
+      "y": 90
+    },
+    "facing=south,placement=0,lit=false": {
+      "model": "glasstech:block/illuminator",
+      "y": 180
+    },
+    "facing=west,placement=0,lit=false": {
+      "model": "glasstech:block/illuminator",
+      "y": 270
+    },
+    "facing=north,placement=1,lit=false": {
+      "model": "glasstech:block/illuminator",
+      "y": 0,
+      "x": 90
+    },
+    "facing=east,placement=1,lit=false": {
+      "model": "glasstech:block/illuminator",
+      "y": 90,
+      "x": 90
+    },
+    "facing=south,placement=1,lit=false": {
+      "model": "glasstech:block/illuminator",
+      "y": 180,
+      "x": 90
+    },
+    "facing=west,placement=1,lit=false": {
+      "model": "glasstech:block/illuminator",
+      "y": 270,
+      "x": 90
+    },
+    "facing=north,placement=2,lit=false": {
+      "model": "glasstech:block/illuminator",
+      "y": 0,
+      "x": 180
+    },
+    "facing=east,placement=2,lit=false": {
+      "model": "glasstech:block/illuminator",
+      "y": 90,
+      "x": 180
+    },
+    "facing=south,placement=2,lit=false": {
+      "model": "glasstech:block/illuminator",
+      "y": 180,
+      "x": 180
+    },
+    "facing=west,placement=2,lit=false": {
+      "model": "glasstech:block/illuminator",
+      "y": 270,
+      "x": 180
+    },
+    "facing=north,placement=0,lit=true": {
+      "model": "glasstech:block/illuminator_lit",
+      "y": 0
+    },
+    "facing=east,placement=0,lit=true": {
+      "model": "glasstech:block/illuminator_lit",
+      "y": 90
+    },
+    "facing=south,placement=0,lit=true": {
+      "model": "glasstech:block/illuminator_lit",
+      "y": 180
+    },
+    "facing=west,placement=0,lit=true": {
+      "model": "glasstech:block/illuminator_lit",
+      "y": 270
+    },
+    "facing=north,placement=1,lit=true": {
+      "model": "glasstech:block/illuminator_lit",
+      "y": 0,
+      "x": 90
+    },
+    "facing=east,placement=1,lit=true": {
+      "model": "glasstech:block/illuminator_lit",
+      "y": 90,
+      "x": 90
+    },
+    "facing=south,placement=1,lit=true": {
+      "model": "glasstech:block/illuminator_lit",
+      "y": 180,
+      "x": 90
+    },
+    "facing=west,placement=1,lit=true": {
+      "model": "glasstech:block/illuminator_lit",
+      "y": 270,
+      "x": 90
+    },
+    "facing=north,placement=2,lit=true": {
+      "model": "glasstech:block/illuminator_lit",
+      "y": 0,
+      "x": 180
+    },
+    "facing=east,placement=2,lit=true": {
+      "model": "glasstech:block/illuminator_lit",
+      "y": 90,
+      "x": 180
+    },
+    "facing=south,placement=2,lit=true": {
+      "model": "glasstech:block/illuminator_lit",
+      "y": 180,
+      "x": 180
+    },
+    "facing=west,placement=2,lit=true": {
+      "model": "glasstech:block/illuminator_lit",
+      "y": 270,
+      "x": 180
+    }
+  }
+}

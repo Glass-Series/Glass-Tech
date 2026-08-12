@@ -277,6 +277,8 @@ public class GlassTechBlocks {
         event.register(NAMESPACE.id("esu"), ESUBlockEntity.class);
         event.register(NAMESPACE.id("mesu"), MESUBlockEntity.class);
 
+        event.register(NAMESPACE.id("illuminator"), IlluminatorBlock.IlluminatorBlockEntity.class);
+
         event.register(NAMESPACE.id("water_mill"), DynamoBlockEntity.class);
         event.register(NAMESPACE.id("water_wheel"), WaterWheelBlockEntity.class);
         event.register(NAMESPACE.id("wind_sails"), WindSailsBlockEntity.class);
