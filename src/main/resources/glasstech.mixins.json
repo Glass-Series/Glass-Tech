@@ -18,7 +18,8 @@
   ],
   "client": [
     "InGameHudMixin",
-    "ItemRendererMixin"
+    "ItemRendererMixin",
+    "WorldRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

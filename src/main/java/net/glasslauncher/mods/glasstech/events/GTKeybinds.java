@@ -2,6 +2,7 @@ package net.glasslauncher.mods.glasstech.events;
 
 import net.glasslauncher.mods.glasstech.packet.C2SHoldingAbilityPacket;
 import net.glasslauncher.mods.glasstech.packet.C2SJetpackModePacket;
+import net.glasslauncher.mods.glasstech.packet.C2SToolModePacket;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.option.KeyBinding;
@@ -14,11 +15,13 @@ import org.lwjgl.input.Keyboard;
 public class GTKeybinds {
     public static final KeyBinding ARMOR_ABILITY = new KeyBinding("key.glasstech.armor_ability", Keyboard.KEY_LCONTROL);
     public static final KeyBinding HOVER_MODE = new KeyBinding("key.glasstech.hover_mode", Keyboard.KEY_H);
+    public static final KeyBinding TOOL_MODE = new KeyBinding("key.glasstech.tool_mode", Keyboard.KEY_M);
 
     @EventListener
     public void registerKeys(KeyBindingRegisterEvent event) {
         event.register(ARMOR_ABILITY);
         event.register(HOVER_MODE);
+        event.register(TOOL_MODE);
     }
 
     @EventListener
@@ -36,6 +39,9 @@ public class GTKeybinds {
             PlayerEntity player = Minecraft.INSTANCE.player;
             player.glasstech$setHovering(!player.glasstech$isHovering());
             player.sendMessage("Hovering: " + player.glasstech$isHovering());
+        }
+        else if (Keyboard.getEventKey() == TOOL_MODE.code && Keyboard.getEventKeyState()) {
+            PacketHelper.send(new C2SToolModePacket());
         }
     }
 }

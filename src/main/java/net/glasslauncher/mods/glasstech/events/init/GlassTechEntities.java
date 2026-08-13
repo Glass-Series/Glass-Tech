@@ -4,7 +4,9 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.glasslauncher.mods.glasstech.entity.GTNukeEntity;
 import net.glasslauncher.mods.glasstech.entity.GTTntEntity;
+import net.glasslauncher.mods.glasstech.entity.MiningLaserEntity;
 import net.glasslauncher.mods.glasstech.entity.renderer.GTTntEntityRenderer;
+import net.glasslauncher.mods.glasstech.entity.renderer.MiningLaserEntityRenderer;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.modificationstation.stationapi.api.client.event.render.entity.EntityRendererRegisterEvent;
 import net.modificationstation.stationapi.api.event.entity.EntityRegisterEvent;
@@ -24,12 +26,14 @@ public class GlassTechEntities {
     private static void initEntities(EntityRegisterEvent event) {
         event.register(NAMESPACE.id("tnt"), GTTntEntity.class);
         event.register(NAMESPACE.id("nuke"), GTNukeEntity.class);
+        event.register(NAMESPACE.id("mining_laser"), MiningLaserEntity.class);
     }
 
     @EventListener
     private static void initHandlers(EntityHandlerRegistryEvent event) {
         event.register(NAMESPACE.id("tnt"), GTTntEntity::new);
         event.register(NAMESPACE.id("nuke"), GTNukeEntity::new);
+        event.register(NAMESPACE.id("mining_laser"), MiningLaserEntity::new);
     }
 
     @Environment(EnvType.CLIENT)
@@ -37,5 +41,6 @@ public class GlassTechEntities {
     private static void initRenderers(EntityRendererRegisterEvent event) {
         event.renderers.put(GTTntEntity.class, new GTTntEntityRenderer(GlassTechBlocks.industrialTNTBlock));
         event.renderers.put(GTNukeEntity.class, new GTTntEntityRenderer(GlassTechBlocks.nukeBlock));
+        event.renderers.put(MiningLaserEntity.class, new MiningLaserEntityRenderer());
     }
 }
