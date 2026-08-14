@@ -256,7 +256,8 @@ public class GlassTechClient {
         GlassTechItems.cannedFood.setTexture(NAMESPACE.id("item/resource/canned_food"));
         GlassTechItems.scanner.setTexture(NAMESPACE.id("item/tool/scanner"));
         GlassTechItems.advancedScanner.setTexture(NAMESPACE.id("item/tool/advanced_scanner"));
-        GlassTechItems.stickyDynamite.setTexture(NAMESPACE.id("item/tool/sticky_dynamite"));
+        GlassTechEntities.STICKY_DYNAMITE_RENDERER.itemTextureId = Atlases.getGuiItems().addTexture(NAMESPACE.id("item/tool/sticky_dynamite")).index;
+        GlassTechItems.stickyDynamite.setTextureId(GlassTechEntities.STICKY_DYNAMITE_RENDERER.itemTextureId);
         GlassTechItems.rubberBoots.setTexture(NAMESPACE.id("item/armor/rubber_boots"));
         GlassTechItems.voltageMeter.setTexture(NAMESPACE.id("item/tool/voltage_meter"));
         GlassTechItems.miningLaser.setTexture(NAMESPACE.id("item/tool/mining_laser"));

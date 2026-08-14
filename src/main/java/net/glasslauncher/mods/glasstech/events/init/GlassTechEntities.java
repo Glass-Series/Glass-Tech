@@ -5,9 +5,11 @@ import net.fabricmc.api.Environment;
 import net.glasslauncher.mods.glasstech.entity.GTNukeEntity;
 import net.glasslauncher.mods.glasstech.entity.GTTntEntity;
 import net.glasslauncher.mods.glasstech.entity.MiningLaserEntity;
+import net.glasslauncher.mods.glasstech.entity.StickyDynamiteEntity;
 import net.glasslauncher.mods.glasstech.entity.renderer.GTTntEntityRenderer;
 import net.glasslauncher.mods.glasstech.entity.renderer.MiningLaserEntityRenderer;
 import net.mine_diver.unsafeevents.listener.EventListener;
+import net.minecraft.client.render.entity.ProjectileEntityRenderer;
 import net.modificationstation.stationapi.api.client.event.render.entity.EntityRendererRegisterEvent;
 import net.modificationstation.stationapi.api.event.entity.EntityRegisterEvent;
 import net.modificationstation.stationapi.api.event.registry.EntityHandlerRegistryEvent;
@@ -18,6 +20,9 @@ import java.lang.invoke.MethodHandles;
 import static net.glasslauncher.mods.glasstech.GlassTech.NAMESPACE;
 
 public class GlassTechEntities {
+    @Environment(EnvType.CLIENT)
+    public static ProjectileEntityRenderer STICKY_DYNAMITE_RENDERER = new ProjectileEntityRenderer(0);
+
     static {
         EntrypointManager.registerLookup(MethodHandles.lookup());
     }
@@ -27,6 +32,7 @@ public class GlassTechEntities {
         event.register(NAMESPACE.id("tnt"), GTTntEntity.class);
         event.register(NAMESPACE.id("nuke"), GTNukeEntity.class);
         event.register(NAMESPACE.id("mining_laser"), MiningLaserEntity.class);
+        event.register(NAMESPACE.id("sticky_dynamite"), StickyDynamiteEntity.class);
     }
 
     @EventListener
@@ -34,6 +40,7 @@ public class GlassTechEntities {
         event.register(NAMESPACE.id("tnt"), GTTntEntity::new);
         event.register(NAMESPACE.id("nuke"), GTNukeEntity::new);
         event.register(NAMESPACE.id("mining_laser"), MiningLaserEntity::new);
+        event.register(NAMESPACE.id("sticky_dynamite"), StickyDynamiteEntity::new);
     }
 
     @Environment(EnvType.CLIENT)
@@ -42,5 +49,6 @@ public class GlassTechEntities {
         event.renderers.put(GTTntEntity.class, new GTTntEntityRenderer(GlassTechBlocks.industrialTNTBlock));
         event.renderers.put(GTNukeEntity.class, new GTTntEntityRenderer(GlassTechBlocks.nukeBlock));
         event.renderers.put(MiningLaserEntity.class, new MiningLaserEntityRenderer());
+        event.renderers.put(StickyDynamiteEntity.class, STICKY_DYNAMITE_RENDERER);
     }
 }

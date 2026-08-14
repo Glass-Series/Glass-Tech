@@ -253,7 +253,7 @@ public class GlassTechItems {
 
         scanner = new OreScanner.Basic(NAMESPACE.id("scanner"), VoltageTier.LV, VoltageTier.LV.maxVoltage * 32);
         advancedScanner = new OreScanner.Advanced(NAMESPACE.id("advanced_scanner"), VoltageTier.MV, VoltageTier.MV.maxVoltage * 64);
-        stickyDynamite = new TemplateItem(NAMESPACE.id("sticky_dynamite"));
+        stickyDynamite = new StickyDynamiteItem(NAMESPACE.id("sticky_dynamite"));
         rubberBoots = new RubberBoots(NAMESPACE.id("rubber_boots"), 0, 0, 3);
         voltageMeter = new VoltMeterItem(NAMESPACE.id("voltage_meter"));
         miningLaser = new MiningLaser(NAMESPACE.id("mining_laser"), VoltageTier.MV, VoltageTier.MV.maxVoltage * 320);
