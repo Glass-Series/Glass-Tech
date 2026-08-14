@@ -4,6 +4,7 @@ import com.mojang.datafixers.util.Either;
 import net.glasslauncher.mods.glasstech.MachineRecipeIdentifier;
 import net.glasslauncher.mods.glasstech.blocks.FoamColor;
 import net.glasslauncher.mods.glasstech.events.init.recipes.*;
+import net.glasslauncher.mods.glasstech.item.OreScannerRegistry;
 import net.glasslauncher.mods.glasstech.recipe.PainterRecipe;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
@@ -21,6 +22,7 @@ public class RecipeInit {
     @EventListener
     public static void registerRecipes(RecipeRegisterEvent event) {
         if (event.recipeId.equals(RecipeRegisterEvent.Vanilla.CRAFTING_SHAPED.type())) {
+            OreScannerRegistry.initDefaults();
             ToolRecipes.initRecipes();
             BlockRecipes.initRecipes();
             ItemRecipes.initRecipes();

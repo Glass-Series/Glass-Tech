@@ -127,7 +127,6 @@ public class GlassTechItems {
 
     public static Item scanner;
     public static Item advancedScanner;
-//    public static Item dynamite;
     public static Item stickyDynamite;
     public static Item rubberBoots;
     public static Item voltageMeter;
@@ -252,9 +251,8 @@ public class GlassTechItems {
         fullFuelCan = new FuelCanItem(NAMESPACE.id("full_fuel_can"));
         cannedFood = new CannedFood(NAMESPACE.id("canned_food"));
 
-        scanner = new TemplateItem(NAMESPACE.id("scanner"));
-        advancedScanner = new TemplateItem(NAMESPACE.id("advanced_scanner"));
-//        dynamite = new TemplateItem(NAMESPACE.id("dynamite"));
+        scanner = new OreScanner.Basic(NAMESPACE.id("scanner"), VoltageTier.LV, VoltageTier.LV.maxVoltage * 32);
+        advancedScanner = new OreScanner.Advanced(NAMESPACE.id("advanced_scanner"), VoltageTier.MV, VoltageTier.MV.maxVoltage * 64);
         stickyDynamite = new TemplateItem(NAMESPACE.id("sticky_dynamite"));
         rubberBoots = new RubberBoots(NAMESPACE.id("rubber_boots"), 0, 0, 3);
         voltageMeter = new VoltMeterItem(NAMESPACE.id("voltage_meter"));
@@ -267,6 +265,5 @@ public class GlassTechItems {
     @EventListener
     private static void registerCapabilities(ItemCapabilityProviderRegisterEvent event) {
         event.register(SingleUsePowerCapability.IDENTIFIER, new SingleUsePowerCapabilityProvider());
-
     }
 }
