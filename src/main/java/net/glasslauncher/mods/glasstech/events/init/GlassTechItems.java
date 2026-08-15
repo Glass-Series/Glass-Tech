@@ -40,6 +40,7 @@ public class GlassTechItems {
     public static Item emptyCell;
     public static Item lavaCell;
     public static Item waterCell;
+    public static Item electrolyzedWaterCell;
     public static Item mixedMetalIngot;
     public static Item refinedIronIngot;
     public static Item uranium;
@@ -158,6 +159,7 @@ public class GlassTechItems {
         resin = new TemplateItem(NAMESPACE.id("resin"));
         emptyCell = new TemplateItem(NAMESPACE.id("empty_cell"));
         lavaCell = new TemplateItem(NAMESPACE.id("lava_cell"));
+        electrolyzedWaterCell = new TemplateItem(NAMESPACE.id("electrolyzed_water_cell"));
         waterCell = new TemplateItem(NAMESPACE.id("water_cell"));
         mixedMetalIngot = new TemplateItem(NAMESPACE.id("mixed_metal_ingot"));
         refinedIronIngot = new TemplateItem(NAMESPACE.id("refined_iron_ingot"));

@@ -47,7 +47,7 @@ public class GlassTechAMIPlugin implements ModPluginProvider {
         registerMachine(registry, MaceratorRecipes.MaceratorRecipe.class, "Macerator", MaceratorRecipeRegistry.INSTANCE, new MaceratorScreen(null, new MaceratorBlockEntity()));
         registerMachine(registry, CompressorRecipes.CompressorRecipe.class, "Compressor", CompressorRecipeRegistry.INSTANCE, new CompressorScreen(null, new CompressorBlockEntity()));
         registerMachine(registry, CannerRecipes.CannerRecipe.class, "Canner", CannerRecipeRegistry.INSTANCE, new CannerScreen(null, new CannerBlockEntity()));
-        registerMachine(registry, ElectrolyzerRecipes.ElectrolyzerRecipe.class, "Electrolyzer", ElectrolyzerRecipeRegistry.INSTANCE, new ElectrolyzerScreen(null, new ElectrolyzerBlockEntity()));
+        registerMachine(registry, ElectrolyzerMachineRecipe.class, "Electrolyzer", ElectrolyzerRecipeRegistry.INSTANCE, new ElectrolyzerScreen(null, new ElectrolyzerBlockEntity()));
         registerMachine(registry, ExtractorRecipes.ExtractorRecipe.class, "Extractor", ExtractorRecipeRegistry.INSTANCE, new ExtractorScreen(null, new ExtractorBlockEntity()));
     }
 

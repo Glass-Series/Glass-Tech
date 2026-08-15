@@ -19,7 +19,6 @@ public class TransformerBlock extends PowerStorageBlockTemplate {
     @Override
     @SneakyThrows // If we get either exception from newInstance, something is extremely wrong, or a modder was stupid. Either case, not my problem.
     public BlockEntity createBlockEntity() {
-        //noinspection deprecation
-        return blockEntityClass.newInstance();
+        return blockEntityClass.getConstructor().newInstance();
     }
 }

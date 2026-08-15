@@ -25,7 +25,14 @@ public class InductionFurnaceBlockEntity extends RecipeBlockEntityTemplate<Basic
     @Override
     public boolean tryCraft(boolean simulate) {
         boolean canCraft = craft(new int[]{0}, simulate);
-        canCraft |= craft(new int[]{1}, simulate);
+        boolean canCraftSecondary = craft(new int[]{1}, simulate);
+        if (simulate && (canCraft || canCraftSecondary)) {
+            return true;
+        }
+        if (canCraft != canCraftSecondary) {
+            craft(new int[]{canCraft ? 0 : 1}, false);
+            return true;
+        }
         return canCraft;
     }
 
