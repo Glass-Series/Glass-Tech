@@ -58,7 +58,7 @@ public class TeleporterBlockEntity extends MachineBlockEntityTemplate {
         teleportedThisPulse = true;
         for (Entity entity : new ArrayList<>(entities)) {
             if (entity instanceof ItemEntity item && item.stack.getItem() == Item.BREAD && random.nextInt(100) == 0) {
-                item.stack = new ItemStack(Item.SLIMEBALL);
+                item.stack = new ItemStack(Item.SLIMEBALL, item.stack.count);
             }
             entity.setPosition(targetX + 0.5, targetY + 1 + entity.standingEyeHeight, targetZ + 0.5);
             // Stops the entity from visually shmoving at mach 7 towards where they teleported
