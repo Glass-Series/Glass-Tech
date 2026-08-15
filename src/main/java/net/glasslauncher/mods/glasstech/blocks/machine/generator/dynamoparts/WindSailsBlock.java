@@ -43,6 +43,8 @@ public class WindSailsBlock extends TemplateBlockWithEntity implements CustomToo
         setSoundGroup(WOOD_SOUND_GROUP);
         setTranslationKey(identifier);
         setDefaultState(getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH).with(GTProperties.HAS_AIR, Boolean.FALSE));
+        setHardness(2);
+        setResistance(5);
     }
 
     @Override

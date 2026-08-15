@@ -14,6 +14,8 @@ import java.util.Random;
 public class MiningPipeBlock extends GTTemplateBlock {
     public MiningPipeBlock(Identifier identifier, Material material, BlockSoundGroup soundGroup) {
         super(identifier, material, soundGroup);
+        setHardness(1);
+        setResistance(5);
     }
 
     @Override

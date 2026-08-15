@@ -27,6 +27,8 @@ public class TreeTapBlock extends TemplateBlock {
         setDefaultState(getDefaultState().with(GTProperties.RESIN, 0));
         setSoundGroup(WOOD_SOUND_GROUP);
         setTickRandomly(true);
+        setHardness(0.8f);
+        setResistance(2);
     }
 
     @Override

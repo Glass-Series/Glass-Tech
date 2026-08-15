@@ -15,7 +15,8 @@ public class GTHardenedFoamBlock extends GTTemplateBlock {
 
     public GTHardenedFoamBlock(Identifier identifier) {
         super(identifier, Material.STONE, STONE_SOUND_GROUP);
-        setDefaultState(getDefaultState().with(FOAM_COLOR, FoamColor.DEFAULT));
+        setHardness(1);
+        setResistance(5);
     }
 
     @Override

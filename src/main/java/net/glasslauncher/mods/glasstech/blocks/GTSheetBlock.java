@@ -16,6 +16,8 @@ public class GTSheetBlock extends GTTemplateBlock {
         super(identifier, Material.WOOL, Block.WOOL_SOUND_GROUP);
         this.sheetType = sheetType;
         setBoundingBox(0.0F, 0.0F, 0.0F, 1.0F, 0.125F, 1.0F);
+        setHardness(0.5f);
+        setResistance(2);
     }
 
     @Override

@@ -26,6 +26,8 @@ public class WaterWheelBlock extends TemplateBlockWithEntity implements CustomTo
         setSoundGroup(WOOD_SOUND_GROUP);
         setTranslationKey(identifier);
         setDefaultState(getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH));
+        setHardness(2);
+        setResistance(5);
     }
 
     @Override
