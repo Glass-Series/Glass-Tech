@@ -216,7 +216,7 @@ public class GlassTechBlocks {
         teleporterBlock = new TeleporterBlock(NAMESPACE.id("teleporter"), Material.METAL);
         teslaCoilBlock = new TeslaCoilBlock(NAMESPACE.id("tesla_coil"), Material.METAL);
 
-        woodenScaffoldBlock = new GTScaffoldBlock(NAMESPACE.id("wooden_scaffold"), Material.LEAVES, WOOD_SOUND_GROUP, 3);
+        woodenScaffoldBlock = new GTScaffoldBlock(NAMESPACE.id("wooden_scaffold"), Material.WOOD, WOOD_SOUND_GROUP, 3);
         metalScaffoldBlock = new GTScaffoldBlock(NAMESPACE.id("metal_scaffold"), new Material(Material.METAL.mapColor).setDestroyPistonBehavior(), METAL_SOUND_GROUP, 7);
 
         lvTransformerBlock = new TransformerBlock(NAMESPACE.id("lv_transformer"), Material.WOOD, LVTransformerBlockEntity.class);
