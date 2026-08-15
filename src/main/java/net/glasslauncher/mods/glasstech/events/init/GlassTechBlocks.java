@@ -37,7 +37,10 @@ import net.glasslauncher.mods.glasstech.blocks.machine.pump.PumpBlock;
 import net.glasslauncher.mods.glasstech.blocks.machine.pump.PumpBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.recycler.RecyclerBlock;
 import net.glasslauncher.mods.glasstech.blocks.machine.recycler.RecyclerBlockEntity;
+import net.glasslauncher.mods.glasstech.blocks.machine.teleporter.TeleporterBlock;
+import net.glasslauncher.mods.glasstech.blocks.machine.teleporter.TeleporterBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.teslacoil.TeslaCoilBlock;
+import net.glasslauncher.mods.glasstech.blocks.machine.teslacoil.TeslaCoilBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.personalsafe.PersonalSafeBlock;
 import net.glasslauncher.mods.glasstech.blocks.personalsafe.PersonalSafeBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.transformer.HVTransformerBlockEntity;
@@ -210,7 +213,7 @@ public class GlassTechBlocks {
         miningPipeBlock = new MiningPipeBlock(NAMESPACE.id("mining_pipe"), Material.METAL, METAL_SOUND_GROUP);
         personalSafeBlock = new PersonalSafeBlock(NAMESPACE.id("personal_safe"));
         reinforcedDoorBlock = new GTDoorBlock(NAMESPACE.id("reinforced_door_block"));
-        teleporterBlock = new TeleporterBlock(NAMESPACE.id("teleporter"));
+        teleporterBlock = new TeleporterBlock(NAMESPACE.id("teleporter"), Material.METAL);
         teslaCoilBlock = new TeslaCoilBlock(NAMESPACE.id("tesla_coil"), Material.METAL);
 
         woodenScaffoldBlock = new GTScaffoldBlock(NAMESPACE.id("wooden_scaffold"), Material.LEAVES, WOOD_SOUND_GROUP, 3);
@@ -264,6 +267,8 @@ public class GlassTechBlocks {
         event.register(NAMESPACE.id("miner"), MinerBlockEntity.class);
         event.register(NAMESPACE.id("pump"), PumpBlockEntity.class);
         event.register(NAMESPACE.id("mass_fabricator"), MassFabricatorBlockEntity.class);
+        event.register(NAMESPACE.id("tesla_coil"), TeslaCoilBlockEntity.class);
+        event.register(NAMESPACE.id("teleporter"), TeleporterBlockEntity.class);
 
         event.register(NAMESPACE.id("iron_furnace"), IronFurnaceBlockEntity.class);
 

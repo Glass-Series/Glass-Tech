@@ -204,7 +204,7 @@ public class GlassTechItems {
         bronzeSword = new TemplateSwordItem(NAMESPACE.id("bronze_sword"), ToolMaterial.IRON);
 
         cfSprayer = new CFSprayer(NAMESPACE.id("cf_sprayer"));
-        frequencyTransmitter = new TemplateItem(NAMESPACE.id("frequency_transmitter"));
+        frequencyTransmitter = new FrequencyTransmitter(NAMESPACE.id("frequency_transmitter"));
         wireCutter = new WireCutters(NAMESPACE.id("wire_cutters"));
         painter = new PainterItem(NAMESPACE.id("painter"));
         nanoSaber = new NanoSaberItem(NAMESPACE.id("nano_saber"), VoltageTier.MV, VoltageTier.MV.maxVoltage * 320);
