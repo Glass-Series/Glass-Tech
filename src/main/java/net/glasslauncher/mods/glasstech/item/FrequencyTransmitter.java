@@ -17,6 +17,7 @@ import org.jetbrains.annotations.NotNull;
 public class FrequencyTransmitter extends TemplateItem implements CustomTooltipProvider {
     public FrequencyTransmitter(Identifier identifier) {
         super(identifier);
+        setMaxCount(1);
     }
 
     @Override
