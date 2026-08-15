@@ -2,6 +2,7 @@ package net.glasslauncher.mods.glasstech.item;
 
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.glasslauncher.mods.glasstech.entity.MiningLaserEntity;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -33,7 +34,17 @@ public class MiningLaser extends PowerItem implements GTItemWithModes, CustomToo
             return stack;
         }
 
-        world.spawnEntity(new MiningLaserEntity(world, user, mode.range, mode.explosive));
+        if (mode.shotgun) {
+            for (int x = -2; x <= 2; x++) {
+                for (int y = -2; y <= 2; y++) {
+                    Entity entity = new MiningLaserEntity(world, user, mode.range, mode.explosive, user.pitch + (y * 10), user.yaw + (x * 10));
+                    world.spawnEntity(entity);
+                }
+            }
+        }
+        else {
+            world.spawnEntity(new MiningLaserEntity(world, user, mode.range, mode.explosive, user.pitch, user.yaw));
+        }
 
         return stack;
     }
@@ -54,19 +65,21 @@ public class MiningLaser extends PowerItem implements GTItemWithModes, CustomToo
     }
 
     public enum LaserMode {
-        MINING(8, 125, false),
-        SHOTGUN(6, 1000, false),
-        EXPLOSIVE(12, 500, true),
+        MINING(8, 125, false, false),
+        SHOTGUN(6, 1000, false, true),
+        EXPLOSIVE(12, 500, true, false),
         ;
 
         public final int range;
         public final int powerUse;
         public final boolean explosive;
+        public final boolean shotgun;
 
-        LaserMode(int range, int powerUse, boolean explosive) {
+        LaserMode(int range, int powerUse, boolean explosive, boolean shotgun) {
             this.range = range;
             this.powerUse = powerUse;
             this.explosive = explosive;
+            this.shotgun = shotgun;
         }
     }
 }

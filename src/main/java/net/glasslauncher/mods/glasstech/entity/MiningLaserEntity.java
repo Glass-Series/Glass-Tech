@@ -39,18 +39,25 @@ public class MiningLaserEntity extends Entity implements StationSpawnDataProvide
         this.setPosition(x, y, z);
     }
 
-    public MiningLaserEntity(World world, PlayerEntity owner, int range, boolean explode) {
+    public MiningLaserEntity(World world, PlayerEntity owner, int range, boolean explode, float pitch, float yaw) {
         this(world);
         this.x = owner.x - MathHelper.cos(owner.yaw / 180.0F * (float) Math.PI) * 0.16F;
         this.y = owner.y - 0.1F;
         this.z = owner.z - MathHelper.sin(owner.yaw / 180.0F * (float) Math.PI) * 0.16F;
-        this.setPositionAndAngles(x, y, z, -owner.yaw, -owner.pitch);
-        this.prevPitch = this.pitch;
-        this.prevYaw = this.yaw;
+        this.yaw = -yaw;
+        this.pitch = -pitch;
+        prevYaw = this.yaw;
+        prevPitch = this.pitch;
         this.owner = owner;
         this.range = range;
         this.explode = explode;
-        Vec3d look = owner.getLookVector(1);
+
+        float var8 = MathHelper.cos(-yaw * (float) (Math.PI / 180.0) - (float) Math.PI);
+        float var9 = MathHelper.sin(-yaw * (float) (Math.PI / 180.0) - (float) Math.PI);
+        float var10 = -MathHelper.cos(-pitch * (float) (Math.PI / 180.0));
+        float var11 = MathHelper.sin(-pitch * (float) (Math.PI / 180.0));
+        Vec3d look = Vec3d.createCached(var9 * var10, var11, var8 * var10);
+
         this.velocityX = look.x;
         this.velocityY = look.y;
         this.velocityZ = look.z;
