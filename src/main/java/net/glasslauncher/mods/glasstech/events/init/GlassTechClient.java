@@ -118,6 +118,7 @@ public class GlassTechClient {
         GlassTechItems.emptyCell.setTexture(NAMESPACE.id("item/resource/empty_cell"));
         GlassTechItems.lavaCell.setTexture(NAMESPACE.id("item/resource/lava_cell"));
         GlassTechItems.waterCell.setTexture(NAMESPACE.id("item/resource/water_cell"));
+        GlassTechItems.electrolyzedWaterCell.setTexture(NAMESPACE.id("item/resource/electrolyzed_water_cell"));
         GlassTechItems.mixedMetalIngot.setTexture(NAMESPACE.id("item/resource/mixed_metal_ingot"));
         GlassTechItems.refinedIronIngot.setTexture(NAMESPACE.id("item/resource/refined_iron_ingot"));
         GlassTechItems.uranium.setTexture(NAMESPACE.id("item/resource/uranium_ore"));
