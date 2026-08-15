@@ -27,7 +27,7 @@ public class TeleporterBlockEntity extends MachineBlockEntityTemplate {
 
     @Override
     public String getName() {
-        return "Tesla Coil";
+        return "Teleporter";
     }
 
     @Override
