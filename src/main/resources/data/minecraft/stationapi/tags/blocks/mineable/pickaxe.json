@@ -31,6 +31,18 @@
     "glasstech:reinforced_stone",
     "glasstech:reinforced_door_block",
     "glasstech:solar_generator",
-    "glasstech:pump"
+    "glasstech:pump",
+    "glasstech:copper_ore",
+    "glasstech:tin_ore",
+    "glasstech:uranium_ore",
+    "glasstech:construction_foam",
+    "glasstech:tesla_coil",
+    "glasstech:teleporter",
+    "glasstech:personal_safe",
+    "glasstech:illuminator",
+    "glasstech:magnetizer",
+    "glasstech:reactor_chamber",
+    "glasstech:reactor_core",
+    "glasstech:mass_fabricator"
   ]
 }
