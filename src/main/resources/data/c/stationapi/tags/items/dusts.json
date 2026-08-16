@@ -1,0 +1,36 @@
+{
+  "values": [
+    {
+      "id": "#c:dusts/bronze",
+      "required": false
+    },
+    {
+      "id": "#c:dusts/clay",
+      "required": false
+    },
+    {
+      "id": "#c:dusts/coal",
+      "required": false
+    },
+    {
+      "id": "#c:dusts/copper",
+      "required": false
+    },
+    {
+      "id": "#c:dusts/gold",
+      "required": false
+    },
+    {
+      "id": "#c:dusts/iron",
+      "required": false
+    },
+    {
+      "id": "#c:dusts/silver",
+      "required": false
+    },
+    {
+      "id": "#c:dusts/tin",
+      "required": false
+    }
+  ]
+}
