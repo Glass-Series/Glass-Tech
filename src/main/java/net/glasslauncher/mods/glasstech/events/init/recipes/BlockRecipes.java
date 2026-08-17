@@ -51,7 +51,6 @@ public class BlockRecipes {
         add(compressorBlock, "S S", "SMS", "SCS", 'S', Block.STONE, 'M', machineBlock, 'C', circuit);
         add(minerBlock, "CMC", " P ", " P ", 'P', miningPipeBlock, 'M', machineBlock, 'C', circuit);
         add(pumpBlock, "cCc", "cMc", "PTP", 'c', emptyCell, 'T', treeTap, 'P', miningPipeBlock, 'M', machineBlock, 'C', circuit);
-        add(magnetizerBlock, "RFR", "RMR", "RFR", 'R', Item.REDSTONE, 'F', Block.IRON_BLOCK, 'M', machineBlock);
         add(electrolyzerBlock, "c c", "cCc", "EME", 'E', emptyCell, 'c', copperInsulatedCableBlock, 'M', machineBlock, 'C', circuit);
         add(reactorChamberBlock, "ACA", "PMP", "APA", 'A', advancedAlloy, 'C', reactorCooler, 'P', reactorPlating, 'M', machineBlock);
         add(reactorCoreBlock, "AcA", "CGC", "AcA", 'A', advancedAlloy, 'C', reactorChamberBlock, 'c', advancedCircuit, 'G', generatorBlock);

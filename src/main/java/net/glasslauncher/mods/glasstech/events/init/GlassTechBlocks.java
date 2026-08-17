@@ -137,7 +137,6 @@ public class GlassTechBlocks {
     public static Block illuminatorBlock;
     public static Block minerBlock;
     public static Block pumpBlock;
-    public static Block magnetizerBlock;
     public static Block reactorChamberBlock;
     public static Block reactorCoreBlock;
     public static Block massFabricatorBlock;
@@ -236,7 +235,6 @@ public class GlassTechBlocks {
         illuminatorBlock = new IlluminatorBlock(NAMESPACE.id("illuminator"));
         minerBlock = new MinerBlock(NAMESPACE.id("miner"), Material.METAL);
         pumpBlock = new PumpBlock(NAMESPACE.id("pump"), Material.METAL);
-        magnetizerBlock = new MagnetizerBlock(NAMESPACE.id("magnetizer"));
         reactorChamberBlock = new ReactorChamberBlock(NAMESPACE.id("reactor_chamber"));
         reactorCoreBlock = new ReactorCoreBlock(NAMESPACE.id("reactor_core"));
         massFabricatorBlock = new MassFabricatorBlock(NAMESPACE.id("mass_fabricator"), Material.METAL);
