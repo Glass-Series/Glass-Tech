@@ -15,6 +15,7 @@ public class MiningLaser extends PowerItem implements GTItemWithModes, CustomToo
     public MiningLaser(Identifier identifier, VoltageTier voltageTier, int maxEnergy) {
         super(identifier, voltageTier, maxEnergy);
         setHandheld();
+        setMaxCount(1);
     }
 
     @Override

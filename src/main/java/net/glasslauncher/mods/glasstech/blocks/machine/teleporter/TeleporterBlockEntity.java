@@ -50,6 +50,7 @@ public class TeleporterBlockEntity extends MachineBlockEntityTemplate {
             return;
         }
 
+        //noinspection unchecked
         List<Entity> entities = world.getEntities(null, Box.create(x, y + 1, z, x + 1, y + 2, z + 1));
         if (entities.isEmpty()) {
             return;

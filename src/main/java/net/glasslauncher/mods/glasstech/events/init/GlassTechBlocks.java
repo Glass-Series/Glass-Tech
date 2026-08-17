@@ -137,8 +137,8 @@ public class GlassTechBlocks {
     public static Block illuminatorBlock;
     public static Block minerBlock;
     public static Block pumpBlock;
-    public static Block reactorChamberBlock;
-    public static Block reactorCoreBlock;
+//    public static Block reactorChamberBlock;
+//    public static Block reactorCoreBlock;
     public static Block massFabricatorBlock;
     public static GTExplosiveBlock industrialTNTBlock;
     public static GTExplosiveBlock nukeBlock;
@@ -188,14 +188,14 @@ public class GlassTechBlocks {
         refinedIronInsulatedX3CableBlock = new TemplateCableBlock(NAMESPACE.id("refined_iron_cable_insulated_x3"), WireMaterial.REFINED_IRON_INSULATED_X3, PIXEL_SIZE * 14);
         glassFibreCableBlock = new TemplateCableBlock(NAMESPACE.id("glass_fibre_cable"), WireMaterial.GLASS_FIBRE, PIXEL_SIZE * 4);
 
-        copperOreBlock = new GTTemplateBlock(NAMESPACE.id("copper_ore"), Material.STONE, STONE_SOUND_GROUP);
-        tinOreBlock = new GTTemplateBlock(NAMESPACE.id("tin_ore"), Material.STONE, STONE_SOUND_GROUP);
-        uraniumOreBlock = new GTTemplateBlock(NAMESPACE.id("uranium_ore"), Material.STONE, STONE_SOUND_GROUP);
+        copperOreBlock = new GTTemplateBlock(NAMESPACE.id("copper_ore"), Material.STONE, STONE_SOUND_GROUP).setHardness(3).setResistance(5);
+        tinOreBlock = new GTTemplateBlock(NAMESPACE.id("tin_ore"), Material.STONE, STONE_SOUND_GROUP).setHardness(3).setResistance(5);
+        uraniumOreBlock = new GTTemplateBlock(NAMESPACE.id("uranium_ore"), Material.STONE, STONE_SOUND_GROUP).setHardness(3).setResistance(5);
 
-        bronzeBlock = new GTTemplateBlock(NAMESPACE.id("bronze_block"), Material.METAL, METAL_SOUND_GROUP);
-        copperBlock = new GTTemplateBlock(NAMESPACE.id("copper_block"), Material.METAL, METAL_SOUND_GROUP);
-        tinBlock = new GTTemplateBlock(NAMESPACE.id("tin_block"), Material.METAL, METAL_SOUND_GROUP);
-        uraniumBlock = new GTTemplateBlock(NAMESPACE.id("uranium_block"), Material.METAL, METAL_SOUND_GROUP);
+        bronzeBlock = new GTTemplateBlock(NAMESPACE.id("bronze_block"), Material.METAL, METAL_SOUND_GROUP).setHardness(5.0F).setResistance(10.0F);
+        copperBlock = new GTTemplateBlock(NAMESPACE.id("copper_block"), Material.METAL, METAL_SOUND_GROUP).setHardness(4.0F).setResistance(10.0F);
+        tinBlock = new GTTemplateBlock(NAMESPACE.id("tin_block"), Material.METAL, METAL_SOUND_GROUP).setHardness(4.0F).setResistance(10.0F);
+        uraniumBlock = new GTTemplateBlock(NAMESPACE.id("uranium_block"), Material.METAL, METAL_SOUND_GROUP).setHardness(5.0F).setResistance(10.0F);
 
         reinforcedGlassBlock = new GTGlassBlock(NAMESPACE.id("reinforced_glass"));
         reinforcedStoneBlock = new GTTemplateBlock(NAMESPACE.id("reinforced_stone"), Material.STONE, STONE_SOUND_GROUP).setHardness(10.0F).setResistance(2000.0F);
@@ -203,8 +203,8 @@ public class GlassTechBlocks {
         resinSheetBlock = new GTSheetBlock(NAMESPACE.id("resin_sheet"), GTSheetBlock.Type.STICKY);
         rubberSheetBlock = new GTSheetBlock(NAMESPACE.id("rubber_sheet"), GTSheetBlock.Type.BOUNCY);
 
-        machineBlock = new GTTemplateBlock(NAMESPACE.id("machine_block"), Material.METAL, METAL_SOUND_GROUP);
-        advancedMachineBlock = new GTTemplateBlock(NAMESPACE.id("advanced_machine_block"), Material.METAL, METAL_SOUND_GROUP);
+        machineBlock = new GTTemplateBlock(NAMESPACE.id("machine_block"), Material.METAL, METAL_SOUND_GROUP).setHardness(5).setResistance(10);
+        advancedMachineBlock = new GTTemplateBlock(NAMESPACE.id("advanced_machine_block"), Material.METAL, METAL_SOUND_GROUP).setHardness(5).setResistance(10);
 
         constructionFoamBlock = new GTFoamBlock(NAMESPACE.id("construction_foam"));
         hardenedConstructionFoamBlock = new GTHardenedFoamBlock(NAMESPACE.id("hardened_construction_foam"));
@@ -235,8 +235,8 @@ public class GlassTechBlocks {
         illuminatorBlock = new IlluminatorBlock(NAMESPACE.id("illuminator"));
         minerBlock = new MinerBlock(NAMESPACE.id("miner"), Material.METAL);
         pumpBlock = new PumpBlock(NAMESPACE.id("pump"), Material.METAL);
-        reactorChamberBlock = new ReactorChamberBlock(NAMESPACE.id("reactor_chamber"));
-        reactorCoreBlock = new ReactorCoreBlock(NAMESPACE.id("reactor_core"));
+//        reactorChamberBlock = new ReactorChamberBlock(NAMESPACE.id("reactor_chamber"));
+//        reactorCoreBlock = new ReactorCoreBlock(NAMESPACE.id("reactor_core"));
         massFabricatorBlock = new MassFabricatorBlock(NAMESPACE.id("mass_fabricator"), Material.METAL);
         industrialTNTBlock = new GTExplosiveBlock(NAMESPACE.id("industrial_tnt"), Material.TNT, 40, 4);
         nukeBlock = new GTExplosiveBlock(NAMESPACE.id("nuke"), Material.TNT, 120, 55, true);

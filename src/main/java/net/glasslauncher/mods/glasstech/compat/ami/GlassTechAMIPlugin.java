@@ -14,8 +14,10 @@ import net.glasslauncher.mods.glasstech.blocks.machine.extractor.ExtractorBlockE
 import net.glasslauncher.mods.glasstech.blocks.machine.extractor.ExtractorScreen;
 import net.glasslauncher.mods.glasstech.blocks.machine.macerator.MaceratorBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.macerator.MaceratorScreen;
+import net.glasslauncher.mods.glasstech.events.init.GlassTechBlocks;
 import net.glasslauncher.mods.glasstech.events.init.recipes.*;
 import net.glasslauncher.mods.glasstech.recipe.machine.*;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.modificationstation.stationapi.api.util.Identifier;
 
@@ -76,6 +78,6 @@ public class GlassTechAMIPlugin implements ModPluginProvider {
 
     @Override
     public void updateBlacklist(AMIHelpers amiHelpers) {
-
+        amiHelpers.getItemBlacklist().addItemToBlacklist(new ItemStack(GlassTechBlocks.reinforcedDoorBlock));
     }
 }

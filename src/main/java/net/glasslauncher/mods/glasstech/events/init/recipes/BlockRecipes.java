@@ -52,8 +52,8 @@ public class BlockRecipes {
         add(minerBlock, "CMC", " P ", " P ", 'P', miningPipeBlock, 'M', machineBlock, 'C', circuit);
         add(pumpBlock, "cCc", "cMc", "PTP", 'c', emptyCell, 'T', treeTap, 'P', miningPipeBlock, 'M', machineBlock, 'C', circuit);
         add(electrolyzerBlock, "c c", "cCc", "EME", 'E', emptyCell, 'c', copperInsulatedCableBlock, 'M', machineBlock, 'C', circuit);
-        add(reactorChamberBlock, "ACA", "PMP", "APA", 'A', advancedAlloy, 'C', reactorCooler, 'P', reactorPlating, 'M', machineBlock);
-        add(reactorCoreBlock, "AcA", "CGC", "AcA", 'A', advancedAlloy, 'C', reactorChamberBlock, 'c', advancedCircuit, 'G', generatorBlock);
+//        add(reactorChamberBlock, "ACA", "PMP", "APA", 'A', advancedAlloy, 'C', reactorCooler, 'P', reactorPlating, 'M', machineBlock);
+//        add(reactorCoreBlock, "AcA", "CGC", "AcA", 'A', advancedAlloy, 'C', reactorChamberBlock, 'c', advancedCircuit, 'G', generatorBlock);
         add(massFabricatorBlock, "GCG", "ALA", "GCG", 'A', advancedMachineBlock, 'L', lapotronCrystal, 'G', Item.GLOWSTONE_DUST, 'C', advancedCircuit);
 
         addN(woodenScaffoldBlock, 16, "PPP", " s ", "s s", 'P', Block.PLANKS, 's', Item.STICK);

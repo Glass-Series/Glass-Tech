@@ -29,4 +29,9 @@ public class GTFoamBlock extends GTTemplateBlock {
     public boolean isOpaque() {
         return false;
     }
+
+    @Override
+    public int getDroppedItemCount(Random random) {
+        return 0;
+    }
 }

@@ -9,6 +9,8 @@ import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.state.StateManager;
 import net.modificationstation.stationapi.api.util.Identifier;
 
+import java.util.Random;
+
 import static net.glasslauncher.mods.glasstech.GTProperties.FOAM_COLOR;
 
 public class GTHardenedFoamBlock extends GTTemplateBlock {
@@ -17,6 +19,7 @@ public class GTHardenedFoamBlock extends GTTemplateBlock {
         super(identifier, Material.STONE, STONE_SOUND_GROUP);
         setHardness(1);
         setResistance(5);
+        setDefaultState(getDefaultState().with(FOAM_COLOR, FoamColor.DEFAULT));
     }
 
     @Override
@@ -49,5 +52,10 @@ public class GTHardenedFoamBlock extends GTTemplateBlock {
     @Override
     public int getColor(int meta) {
         return FoamColor.DEFAULT.color;
+    }
+
+    @Override
+    public int getDroppedItemCount(Random random) {
+        return 0;
     }
 }
