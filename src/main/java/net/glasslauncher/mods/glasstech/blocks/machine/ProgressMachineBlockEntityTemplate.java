@@ -1,12 +1,14 @@
 package net.glasslauncher.mods.glasstech.blocks.machine;
 
 import lombok.Getter;
+import net.glasslauncher.mods.glassguis.screen.ServerSyncedField;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.minecraft.nbt.NbtCompound;
 
 public abstract class ProgressMachineBlockEntityTemplate extends MachineBlockEntityTemplate {
 
     // Progress
+    @ServerSyncedField
     public int progress;
     @Getter
     public int maxProgress;

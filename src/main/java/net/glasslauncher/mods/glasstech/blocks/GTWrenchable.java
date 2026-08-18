@@ -42,7 +42,7 @@ public interface GTWrenchable extends Wrenchable {
                 dropStack(world, x, y, z, itemStack);
             }
             WorldHelper.breakBlockWithParticles(world, x, y, z, world.getBlockId(x, y, z));
-            dropStacks(world, x, y, z, 0);
+            dropStacksWrench(world, x, y, z, 0);
             return true;
         }
         return false;
@@ -50,7 +50,7 @@ public interface GTWrenchable extends Wrenchable {
 
     void dropStack(World world, int x, int y, int z, ItemStack itemStack);
 
-    void dropStacks(World world, int x, int y, int z, int i);
+    void dropStacksWrench(World world, int x, int y, int z, int i);
 
     // TODO: Uncomment when dany L moment subsides
 //    @Override

@@ -3,6 +3,7 @@ package net.glasslauncher.mods.glasstech.blocks.ironfurnace;
 import net.danygames2014.nyalib.NyaLib;
 import net.danygames2014.nyalib.item.HasSmeltingReturnStack;
 import net.danygames2014.nyalib.item.block.ItemHandler;
+import net.glasslauncher.mods.glassguis.screen.ServerSyncedField;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
@@ -21,8 +22,11 @@ public class IronFurnaceBlockEntity extends BlockEntity implements Inventory, It
     protected final ItemStack[] inventory = new ItemStack[3];
 
     protected final int initialCookTime = 160;
+    @ServerSyncedField
     protected int cookTime;
+    @ServerSyncedField
     protected int fuelTime;
+    @ServerSyncedField
     protected int burnTime;
 
 
@@ -38,6 +42,7 @@ public class IronFurnaceBlockEntity extends BlockEntity implements Inventory, It
         return this.burnTime > 0;
     }
 
+    @Override
     public void tick() {
         boolean wasBurning = isBurning();
         boolean didSomething = false;
@@ -133,6 +138,7 @@ public class IronFurnaceBlockEntity extends BlockEntity implements Inventory, It
         return FuelRegistry.getFuelTime(itemStack);
     }
 
+    @Override
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
         NbtList var2 = nbt.getList("Items");
@@ -150,6 +156,7 @@ public class IronFurnaceBlockEntity extends BlockEntity implements Inventory, It
         this.fuelTime = nbt.getShort("FuelTime");
     }
 
+    @Override
     public void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
         nbt.putShort("BurnTime", (short)this.burnTime);
