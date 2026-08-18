@@ -23,7 +23,7 @@ public class BlockRecipes {
         addN(miningPipeBlock, 8, "I I", "I I", "ITI", 'I', tagKey("ingots/steel"), 'T', treeTap);
         addN(refinedIronFenceBlock, 12, "III", "III", 'I', tagKey("ingots/steel"));
 
-        add(machineBlock, " I ", "I I", "IFI", 'I', tagKey("ingots/steel"), 'F', Block.FURNACE);
+        add(ironFurnaceBlock, " I ", "I I", "IFI", 'I', tagKey("ingots/iron"), 'F', Block.FURNACE);
         add(machineBlock, "III", "I I", "III", 'I', tagKey("ingots/steel"));
         add(advancedMachineBlock, " A ", "CMC", " A ", 'A', advancedAlloy, 'C', carbonPlate, 'M', machineBlock);
 
@@ -96,7 +96,7 @@ public class BlockRecipes {
         addS(goldInsulatedX2CableBlock, goldCableBlock, tagKey("rubbers"), tagKey("rubbers"));
         addS(goldInsulatedX2CableBlock, goldInsulatedCableBlock, tagKey("rubbers"));
 
-        addN(goldInsulatedCableBlock, 16, "GGG", "RDR", "GGG", 'D', tagKey("gems/diamond"), 'R', tagKey("dusts/redstone"), 'G', tagKey("glass_blocks"));
+        addN(glassFibreCableBlock, 16, "GGG", "RDR", "GGG", 'D', tagKey("gems/diamond"), 'R', tagKey("dusts/redstone"), 'G', tagKey("glass_blocks"));
     }
 
     public static void materials() {

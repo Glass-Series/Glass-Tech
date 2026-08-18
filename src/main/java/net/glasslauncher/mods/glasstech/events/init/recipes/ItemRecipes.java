@@ -54,9 +54,9 @@ public class ItemRecipes {
 
         add(scrapBox, "SSS", "SSS", "SSS", 'S', scrap);
 
-        add(coalChunk, "BBB", "BOB", "BBB", 'B', tagKey("dusts/coal"), 'O', tagKey("obsidians"));
-        add(coalChunk, "BBB", "BOB", "BBB", 'B', tagKey("dusts/coal"), 'O', tagKey("storage_blocks/iron"));
-        add(coalChunk, "BBB", "BOB", "BBB", 'B', tagKey("dusts/coal"), 'O', tagKey("brick_blocks"));
+        add(coalChunk, "BBB", "BOB", "BBB", 'B', compressedCoalBall, 'O', tagKey("obsidians"));
+        add(coalChunk, "BBB", "BOB", "BBB", 'B', compressedCoalBall, 'O', tagKey("storage_blocks/iron"));
+        add(coalChunk, "BBB", "BOB", "BBB", 'B', compressedCoalBall, 'O', tagKey("brick_blocks"));
 
         plantBall();
     }

@@ -95,7 +95,7 @@ public class TreeTapBlock extends TemplateBlock {
 
     @Override
     public HitResult raycast(World world, int x, int y, int z, Vec3d startPos, Vec3d endPos) {
-        Box box = getBoundingBox(world, x, y, z);
+        Box box = getBoundingBoxCommon(world, x, y, z);
 
         HitResult hitResult = box.raycast(startPos, endPos);
 
@@ -112,7 +112,7 @@ public class TreeTapBlock extends TemplateBlock {
 
     @Override
     public Box getCollisionShape(World world, int x, int y, int z) {
-        return getBoundingBox(world, x, y, z);
+        return getBoundingBoxCommon(world, x, y, z);
     }
 
     @Override
@@ -129,8 +129,12 @@ public class TreeTapBlock extends TemplateBlock {
 
     @Override
     public Box getBoundingBox(World world, int x, int y, int z) {
+        return getBoundingBoxCommon(world, x, y, z);
+    }
+
+    public Box getBoundingBoxCommon(World world, int x, int y, int z) {
         if (world.getBlockState(x, y, z).getBlock() != this) {
-            return super.getBoundingBox(world, x, y, z);
+            return Box.createCached((double)x + this.minX, (double)y + this.minY, (double)z + this.minZ, (double)x + this.maxX, (double)y + this.maxY, (double)z + this.maxZ);
         }
         Direction d = world.getBlockState(x, y, z).get(Properties.HORIZONTAL_FACING);
         double xPos = 0.35 + (d.getOffsetX() * 0.35);

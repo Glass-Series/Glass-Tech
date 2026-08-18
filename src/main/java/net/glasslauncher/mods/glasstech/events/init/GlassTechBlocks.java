@@ -190,7 +190,7 @@ public class GlassTechBlocks {
 
         copperOreBlock = new GTTemplateBlock(NAMESPACE.id("copper_ore"), Material.STONE, STONE_SOUND_GROUP).setHardness(3).setResistance(5);
         tinOreBlock = new GTTemplateBlock(NAMESPACE.id("tin_ore"), Material.STONE, STONE_SOUND_GROUP).setHardness(3).setResistance(5);
-        uraniumOreBlock = new GTTemplateBlock(NAMESPACE.id("uranium_ore"), Material.STONE, STONE_SOUND_GROUP).setHardness(3).setResistance(5);
+        uraniumOreBlock = new UraniumOreBlock(NAMESPACE.id("uranium_ore"), Material.STONE, STONE_SOUND_GROUP);
 
         bronzeBlock = new GTTemplateBlock(NAMESPACE.id("bronze_block"), Material.METAL, METAL_SOUND_GROUP).setHardness(5.0F).setResistance(10.0F);
         copperBlock = new GTTemplateBlock(NAMESPACE.id("copper_block"), Material.METAL, METAL_SOUND_GROUP).setHardness(4.0F).setResistance(10.0F);

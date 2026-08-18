@@ -1,7 +1,10 @@
 package net.glasslauncher.mods.glasstech.blocks;
 
+import net.glasslauncher.mods.glasstech.events.init.GlassTechBlocks;
 import net.minecraft.world.BlockView;
 import net.modificationstation.stationapi.api.util.Identifier;
+
+import java.util.Random;
 
 public class RubberLeavesBlock extends LeavesBlockTemplate {
     public RubberLeavesBlock(Identifier identifier) {
@@ -16,5 +19,10 @@ public class RubberLeavesBlock extends LeavesBlockTemplate {
     @Override
     public int getColorMultiplier(BlockView blockView, int x, int y, int z) {
         return 4688199;
+    }
+
+    @Override
+    public int getDroppedItemId(int blockMeta, Random random) {
+        return GlassTechBlocks.rubberSaplingBlock.id;
     }
 }
