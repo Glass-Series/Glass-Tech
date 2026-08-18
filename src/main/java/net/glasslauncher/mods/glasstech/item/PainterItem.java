@@ -10,8 +10,8 @@ import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.template.item.TemplateItem;
 import net.modificationstation.stationapi.api.util.Identifier;
 
-import static net.glasslauncher.mods.glasstech.GTProperties.FOAM;
-import static net.glasslauncher.mods.glasstech.GTProperties.FOAM_COLOR;
+import static net.glasslauncher.mods.glasstech.blocks.GTProperties.FOAM;
+import static net.glasslauncher.mods.glasstech.blocks.GTProperties.FOAM_COLOR;
 import static net.glasslauncher.mods.glasstech.GlassTech.LOGGER;
 
 public class PainterItem extends TemplateItem {

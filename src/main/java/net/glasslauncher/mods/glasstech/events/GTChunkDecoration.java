@@ -1,11 +1,10 @@
 package net.glasslauncher.mods.glasstech.events;
 
-import net.glasslauncher.mods.glasstech.blocks.RubberSaplingBlock;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.world.biome.Biome;
 import net.modificationstation.stationapi.api.event.world.gen.WorldGenEvent;
 
-import static net.glasslauncher.mods.glasstech.Features.*;
+import static net.glasslauncher.mods.glasstech.worldgen.Features.*;
 
 public class GTChunkDecoration {
 
@@ -39,7 +38,7 @@ public class GTChunkDecoration {
             for (int i = 0; i < genChances; i++) {
                 x = event.x + event.random.nextInt(16);
                 z = event.z + event.random.nextInt(16);
-                RubberSaplingBlock.RUBBER_TREE_GENERATOR.generate(event.world, event.random, x, event.world.getTopY(x, z), z);
+                RUBBER_TREE.generate(event.world, event.random, x, event.world.getTopY(x, z), z);
             }
         }
     }

@@ -6,7 +6,6 @@ import net.danygames2014.nyalib.network.energy.EnergyNetwork;
 import net.danygames2014.nyalib.particle.ParticleHelper;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.loader.api.FabricLoader;
-import net.glasslauncher.mods.glasstech.WireMaterial;
 import net.minecraft.block.Block;
 import net.minecraft.block.FurnaceBlock;
 import net.minecraft.block.material.Material;
@@ -31,8 +30,8 @@ import javax.annotation.Nullable;
 import java.util.Map;
 import java.util.Random;
 
-import static net.glasslauncher.mods.glasstech.GTProperties.FOAM;
-import static net.glasslauncher.mods.glasstech.GTProperties.FOAM_COLOR;
+import static net.glasslauncher.mods.glasstech.blocks.GTProperties.FOAM;
+import static net.glasslauncher.mods.glasstech.blocks.GTProperties.FOAM_COLOR;
 
 public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComponent, EnergyConductor {
     public static final float PIXEL_SIZE = 1f / 16;

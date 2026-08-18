@@ -2,7 +2,7 @@ package net.glasslauncher.mods.glasstech.blocks;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.loader.api.FabricLoader;
-import net.glasslauncher.mods.glasstech.WorldUtil;
+import net.glasslauncher.mods.glasstech.util.WorldHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
@@ -21,7 +21,7 @@ import org.lwjgl.input.Keyboard;
 
 import java.util.Random;
 
-import static net.glasslauncher.mods.glasstech.GTProperties.SCAFFOLD_DISTANCE;
+import static net.glasslauncher.mods.glasstech.blocks.GTProperties.SCAFFOLD_DISTANCE;
 import static net.modificationstation.stationapi.api.state.property.Properties.BOTTOM;
 
 public class GTScaffoldBlock extends GTTemplateBlock {
@@ -107,7 +107,7 @@ public class GTScaffoldBlock extends GTTemplateBlock {
     }
 
     public void breakScaffold(World world, int x, int y, int z) {
-        WorldUtil.breakBlockWithParticles(world, x, y, z, id);
+        WorldHelper.breakBlockWithParticles(world, x, y, z, id);
         dropStacks(world, x, y, z, 0);
     }
 

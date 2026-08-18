@@ -1,7 +1,5 @@
 package net.glasslauncher.mods.glasstech.blocks;
 
-import net.glasslauncher.mods.glasstech.GTMaterials;
-import net.glasslauncher.mods.glasstech.GTProperties;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.glasslauncher.mods.glasstech.blocks.machine.MachineBlockEntityTemplate;
 import net.glasslauncher.mods.glasstech.blocks.machine.MachineBlockTemplate;

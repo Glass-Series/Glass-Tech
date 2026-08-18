@@ -1,8 +1,6 @@
 package net.glasslauncher.mods.glasstech.item;
 
-import net.glasslauncher.mods.glasstech.DamageSource;
-import net.glasslauncher.mods.glasstech.GTArmorDamageHandler;
-import net.glasslauncher.mods.glasstech.GTCustomDamageHandler;
+import net.glasslauncher.mods.glasstech.entity.DamageSource;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;

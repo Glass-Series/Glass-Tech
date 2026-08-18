@@ -1,5 +1,6 @@
-package net.glasslauncher.mods.glasstech;
+package net.glasslauncher.mods.glasstech.blocks;
 
+import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.minecraft.block.Block;
 import net.minecraft.sound.BlockSoundGroup;
 

@@ -3,8 +3,6 @@ package net.glasslauncher.mods.glasstech.item;
 import lombok.Getter;
 import lombok.Setter;
 import net.glasslauncher.mods.alwaysmoreitems.api.SubItemProvider;
-import net.glasslauncher.mods.glasstech.GTCustomAttackDamage;
-import net.glasslauncher.mods.glasstech.GTEnergyBar;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;

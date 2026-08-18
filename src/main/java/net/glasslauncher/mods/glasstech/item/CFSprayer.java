@@ -1,7 +1,7 @@
 package net.glasslauncher.mods.glasstech.item;
 
-import net.glasslauncher.mods.glasstech.GTProperties;
-import net.glasslauncher.mods.glasstech.WorldUtil;
+import net.glasslauncher.mods.glasstech.blocks.GTProperties;
+import net.glasslauncher.mods.glasstech.util.WorldHelper;
 import net.glasslauncher.mods.glasstech.blocks.GTScaffoldBlock;
 import net.glasslauncher.mods.glasstech.events.init.GlassTechBlocks;
 import net.glasslauncher.mods.glasstech.util.BlockWalker;
@@ -55,7 +55,7 @@ public class CFSprayer extends TemplateItem {
         List<BlockPos> results = BlockWalker.walk(world, new BlockPos(x, y, z), BlockWalker.ADJACENT_SEARCH_OFFSETS, SCAFFOLD_FILTER, Math.min(32, charges));
         for (BlockPos pos : results) {
             BlockState state = world.getBlockState(pos);
-            WorldUtil.breakBlockWithParticles(world, pos.x, pos.y, pos.z, state.getBlock().id);
+            WorldHelper.breakBlockWithParticles(world, pos.x, pos.y, pos.z, state.getBlock().id);
             state.getBlock().dropStacks(world, x + direction.getOffsetX(), y + direction.getOffsetY(), z + direction.getOffsetZ(), 0);
             world.setBlock(pos.x, pos.y, pos.z, GlassTechBlocks.constructionFoamBlock.id);
         }

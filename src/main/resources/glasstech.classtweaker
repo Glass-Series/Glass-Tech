@@ -57,4 +57,4 @@ accessible method net/minecraft/nbt/NbtCompound write (Ljava/io/DataOutput;)V
 
 accessible field net/minecraft/client/render/entity/ProjectileEntityRenderer itemTextureId I
 
-transitive-inject-interface net/minecraft/entity/player/PlayerEntity net/glasslauncher/mods/glasstech/GlassTechPlayer
+transitive-inject-interface net/minecraft/entity/player/PlayerEntity net/glasslauncher/mods/glasstech/entity/GlassTechPlayer

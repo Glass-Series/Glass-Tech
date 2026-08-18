@@ -1,4 +1,4 @@
-package net.glasslauncher.mods.glasstech;
+package net.glasslauncher.mods.glasstech.blocks;
 
 import net.minecraft.block.material.Material;
 

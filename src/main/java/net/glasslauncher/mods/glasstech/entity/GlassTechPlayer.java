@@ -1,4 +1,4 @@
-package net.glasslauncher.mods.glasstech;
+package net.glasslauncher.mods.glasstech.entity;
 
 import net.modificationstation.stationapi.api.util.Util;
 

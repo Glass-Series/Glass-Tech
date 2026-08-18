@@ -1,7 +1,7 @@
 package net.glasslauncher.mods.glasstech.events.init;
 
 import com.mojang.datafixers.util.Either;
-import net.glasslauncher.mods.glasstech.MachineRecipeIdentifier;
+import net.glasslauncher.mods.glasstech.recipe.MachineRecipeIdentifier;
 import net.glasslauncher.mods.glasstech.blocks.FoamColor;
 import net.glasslauncher.mods.glasstech.events.init.recipes.*;
 import net.glasslauncher.mods.glasstech.item.OreScannerRegistry;
@@ -50,7 +50,7 @@ public class RecipeInit {
         else if (event.recipeId.equals(MachineRecipeIdentifier.EXTRACTOR.identifier)) {
             ExtractorRecipes.initRecipes();
         }
-        else if (event.recipeId.equals(MachineRecipeIdentifier.GEOTHERMAL.identifier)) {
+        else if (event.recipeId.equals(MachineRecipeIdentifier.THERMAL.identifier)) {
             GeothermalFuels.initFuels();
         }
         else if (event.recipeId.equals(RecipeRegisterEvent.Vanilla.SMELTING.type())) {

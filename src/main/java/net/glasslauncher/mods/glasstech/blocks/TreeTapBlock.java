@@ -1,7 +1,6 @@
 package net.glasslauncher.mods.glasstech.blocks;
 
-import net.glasslauncher.mods.glasstech.GTProperties;
-import net.glasslauncher.mods.glasstech.WorldUtil;
+import net.glasslauncher.mods.glasstech.util.WorldHelper;
 import net.glasslauncher.mods.glasstech.events.init.GlassTechItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -81,7 +80,7 @@ public class TreeTapBlock extends TemplateBlock {
     public void onTick(World world, int x, int y, int z, Random random) {
         Direction direction = world.getBlockState(x, y, z).get(Properties.HORIZONTAL_FACING);
         if (!(world.getBlockState(x + direction.getOffsetX(), y, z + direction.getOffsetZ()).getBlock() instanceof RubberLogBlock)) {
-            WorldUtil.breakBlockWithParticles(world, x, y, z, id);
+            WorldHelper.breakBlockWithParticles(world, x, y, z, id);
             dropStacks(world, x, y, z, world.getBlockMeta(x, y, z));
             return;
         }

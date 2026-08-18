@@ -3,7 +3,7 @@ package net.glasslauncher.mods.glasstech.mixin;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
-import net.glasslauncher.mods.glasstech.GlassTechItemInWorldRenderer;
+import net.glasslauncher.mods.glasstech.item.GlassTechItemInWorldRenderer;
 import net.minecraft.block.Block;
 import net.minecraft.client.render.block.BlockRenderManager;
 import net.minecraft.entity.ItemEntity;

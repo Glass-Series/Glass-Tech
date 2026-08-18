@@ -1,7 +1,5 @@
 package net.glasslauncher.mods.glasstech.item;
 
-import net.glasslauncher.mods.glasstech.GTArmorPlayerTick;
-import net.glasslauncher.mods.glasstech.GTCustomDamageHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ArmorItem;

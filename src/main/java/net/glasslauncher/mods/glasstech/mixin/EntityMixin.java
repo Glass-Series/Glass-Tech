@@ -2,8 +2,8 @@ package net.glasslauncher.mods.glasstech.mixin;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import net.glasslauncher.mods.glasstech.DamageSource;
-import net.glasslauncher.mods.glasstech.GTArmorDamageHandler;
+import net.glasslauncher.mods.glasstech.entity.DamageSource;
+import net.glasslauncher.mods.glasstech.item.GTArmorDamageHandler;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;

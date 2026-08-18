@@ -1,7 +1,7 @@
 package net.glasslauncher.mods.glasstech.events.init.recipes;
 
 import net.danygames2014.nyalib.fluid.FluidRegistry;
-import net.glasslauncher.mods.glasstech.GeothermalFuelRegistry;
+import net.glasslauncher.mods.glasstech.recipe.GeothermalFuelRegistry;
 import net.minecraft.block.Block;
 
 public class GeothermalFuels {

@@ -6,7 +6,7 @@ import net.danygames2014.nyalib.fluid.FluidBucket;
 import net.danygames2014.nyalib.fluid.FluidStack;
 import net.danygames2014.nyalib.fluid.block.FluidHandler;
 import net.glasslauncher.mods.glassguis.screen.ServerSyncedField;
-import net.glasslauncher.mods.glasstech.GeothermalFuelRegistry;
+import net.glasslauncher.mods.glasstech.recipe.GeothermalFuelRegistry;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.glasslauncher.mods.glasstech.blocks.machine.GeneratorWithInventoryBlockEntityTemplate;
 import net.minecraft.block.FurnaceBlock;

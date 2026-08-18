@@ -1,6 +1,5 @@
-package net.glasslauncher.mods.glasstech;
+package net.glasslauncher.mods.glasstech.blocks;
 
-import net.glasslauncher.mods.glasstech.blocks.FoamColor;
 import net.modificationstation.stationapi.api.state.property.BooleanProperty;
 import net.modificationstation.stationapi.api.state.property.EnumProperty;
 import net.modificationstation.stationapi.api.state.property.IntProperty;

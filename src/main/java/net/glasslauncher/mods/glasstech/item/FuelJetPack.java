@@ -1,8 +1,6 @@
 package net.glasslauncher.mods.glasstech.item;
 
 import net.glasslauncher.mods.alwaysmoreitems.api.SubItemProvider;
-import net.glasslauncher.mods.glasstech.GTEnergyBar;
-import net.glasslauncher.mods.glasstech.GTJetPackTick;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.glasslauncher.mods.glasstech.events.init.GlassTechItems;
 import net.minecraft.item.ArmorItem;

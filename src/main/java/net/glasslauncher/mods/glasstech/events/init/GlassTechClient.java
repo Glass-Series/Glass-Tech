@@ -52,7 +52,7 @@ import net.modificationstation.stationapi.api.registry.BlockRegistry;
 
 import java.lang.invoke.MethodHandles;
 
-import static net.glasslauncher.mods.glasstech.GTProperties.FOAM_COLOR;
+import static net.glasslauncher.mods.glasstech.blocks.GTProperties.FOAM_COLOR;
 import static net.glasslauncher.mods.glasstech.GlassTech.NAMESPACE;
 
 public class GlassTechClient {

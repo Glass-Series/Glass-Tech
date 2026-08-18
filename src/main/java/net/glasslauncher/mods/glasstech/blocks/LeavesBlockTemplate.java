@@ -16,7 +16,7 @@ import net.modificationstation.stationapi.api.util.math.Direction;
 
 import java.util.Random;
 
-import static net.glasslauncher.mods.glasstech.GTProperties.LEAVES_DISTANCE;
+import static net.glasslauncher.mods.glasstech.blocks.GTProperties.LEAVES_DISTANCE;
 import static net.modificationstation.stationapi.api.state.property.Properties.PERSISTENT;
 
 

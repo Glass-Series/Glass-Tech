@@ -1,6 +1,5 @@
 package net.glasslauncher.mods.glasstech.item;
 
-import net.glasslauncher.mods.glasstech.GTJetPackTick;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ItemStack;

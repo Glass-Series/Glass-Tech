@@ -1,6 +1,6 @@
 package net.glasslauncher.mods.glasstech.mixin;
 
-import net.glasslauncher.mods.glasstech.MachineRecipeIdentifier;
+import net.glasslauncher.mods.glasstech.recipe.MachineRecipeIdentifier;
 import net.minecraft.recipe.CraftingRecipeManager;
 import net.modificationstation.stationapi.api.StationAPI;
 import net.modificationstation.stationapi.api.event.recipe.RecipeRegisterEvent;
@@ -20,7 +20,7 @@ public class CraftingRecipeManagerMixin {
         postRecipes(MachineRecipeIdentifier.CANNER);
         postRecipes(MachineRecipeIdentifier.ELECTROLYZER);
         postRecipes(MachineRecipeIdentifier.EXTRACTOR);
-        postRecipes(MachineRecipeIdentifier.GEOTHERMAL);
+        postRecipes(MachineRecipeIdentifier.THERMAL);
     }
 
     @Unique

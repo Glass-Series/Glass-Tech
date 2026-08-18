@@ -1,6 +1,7 @@
 package net.glasslauncher.mods.glasstech.item;
 
 import net.glasslauncher.mods.glasstech.*;
+import net.glasslauncher.mods.glasstech.entity.DamageSource;
 import net.glasslauncher.mods.glasstech.events.init.GlassTechItems;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;

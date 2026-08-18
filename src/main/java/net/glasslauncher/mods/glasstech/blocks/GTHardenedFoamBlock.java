@@ -11,7 +11,7 @@ import net.modificationstation.stationapi.api.util.Identifier;
 
 import java.util.Random;
 
-import static net.glasslauncher.mods.glasstech.GTProperties.FOAM_COLOR;
+import static net.glasslauncher.mods.glasstech.blocks.GTProperties.FOAM_COLOR;
 
 public class GTHardenedFoamBlock extends GTTemplateBlock {
 

@@ -4,7 +4,7 @@ import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.danygames2014.nyalib.capability.CapabilityHelper;
 import net.danygames2014.nyalib.capability.block.itemhandler.ItemHandlerBlockCapability;
 import net.glasslauncher.mods.glasstech.VoltageTier;
-import net.glasslauncher.mods.glasstech.WorldUtil;
+import net.glasslauncher.mods.glasstech.util.WorldHelper;
 import net.glasslauncher.mods.glasstech.blocks.machine.ProgressMachineBlockEntityTemplate;
 import net.glasslauncher.mods.glasstech.blocks.machine.SlotType;
 import net.glasslauncher.mods.glasstech.events.init.GlassTechBlocks;
@@ -78,7 +78,7 @@ public class MinerBlockEntity extends ProgressMachineBlockEntityTemplate {
                 BlockState state = world.getBlockState(digPos);
                 heldItems = getStacksFromBlock(digPos.x, digPos.y, digPos.z);
 
-                WorldUtil.breakBlockWithParticles(world, digPos.x, digPos.y, digPos.z, state.getBlock().id);
+                WorldHelper.breakBlockWithParticles(world, digPos.x, digPos.y, digPos.z, state.getBlock().id);
 
                 yeetItems(false);
             }
@@ -102,7 +102,7 @@ public class MinerBlockEntity extends ProgressMachineBlockEntityTemplate {
         retracted = true;
         BlockPos end = getEndOfDrill();
         for (int removeY = y - 1; removeY >= end.y + 1; removeY--) {
-            WorldUtil.breakBlockWithParticles(world, x, removeY, z, GlassTechBlocks.miningPipeBlock.id);
+            WorldHelper.breakBlockWithParticles(world, x, removeY, z, GlassTechBlocks.miningPipeBlock.id);
         }
         int pipeCount = y - (end.y + 1);
         if (pipeCount < 1) {
@@ -207,7 +207,7 @@ public class MinerBlockEntity extends ProgressMachineBlockEntityTemplate {
 
             heldItems = getStacksFromBlock(target.x, target.y, target.z);
 
-            WorldUtil.breakBlockWithParticles(world, target.x, target.y, target.z, state.getBlock().id);
+            WorldHelper.breakBlockWithParticles(world, target.x, target.y, target.z, state.getBlock().id);
         }
 
         if ((state.isAir() || state.getMaterial().isReplaceable()) && world.canPlace(GlassTechBlocks.miningPipeBlock.id, target.x, target.y, target.z, false, Direction.DOWN.getId())) {

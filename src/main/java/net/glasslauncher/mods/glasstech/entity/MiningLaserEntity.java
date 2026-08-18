@@ -1,7 +1,7 @@
 package net.glasslauncher.mods.glasstech.entity;
 
 import net.glasslauncher.mods.glasstech.GlassTech;
-import net.glasslauncher.mods.glasstech.WorldUtil;
+import net.glasslauncher.mods.glasstech.util.WorldHelper;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -89,7 +89,7 @@ public class MiningLaserEntity extends Entity implements StationSpawnDataProvide
         Block block = world.getBlockState(result.blockX, result.blockY, result.blockZ).getBlock();
         if (block.material.isHandHarvestable() || Item.IRON_PICKAXE.isSuitableFor(block) || Item.IRON_SHOVEL.isSuitableFor(block) || Item.IRON_AXE.isSuitableFor(block) || Item.IRON_HOE.isSuitableFor(block) || Item.SHEARS.isSuitableFor(block)) {
             block.dropStacks(world, result.blockX, result.blockY, result.blockZ, world.getBlockMeta(result.blockX, result.blockY, result.blockZ));
-            WorldUtil.breakBlockWithParticles(world, result.blockX, result.blockY, result.blockZ, block.id);
+            WorldHelper.breakBlockWithParticles(world, result.blockX, result.blockY, result.blockZ, block.id);
         }
     }
 

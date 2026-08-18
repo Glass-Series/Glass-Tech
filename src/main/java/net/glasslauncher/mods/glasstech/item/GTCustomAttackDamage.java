@@ -1,4 +1,4 @@
-package net.glasslauncher.mods.glasstech;
+package net.glasslauncher.mods.glasstech.item;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;

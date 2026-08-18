@@ -1,7 +1,7 @@
 package net.glasslauncher.mods.glasstech.blocks.machine.generator.dynamoparts;
 
 import net.glasslauncher.mods.glassguis.screen.ServerSyncedField;
-import net.glasslauncher.mods.glasstech.GTProperties;
+import net.glasslauncher.mods.glasstech.blocks.GTProperties;
 import net.glasslauncher.mods.glasstech.blocks.machine.generator.DynamoComponent;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.nbt.NbtCompound;

@@ -1,4 +1,4 @@
-package net.glasslauncher.mods.glasstech;
+package net.glasslauncher.mods.glasstech.recipe;
 
 import it.unimi.dsi.fastutil.objects.Reference2IntMap;
 import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;

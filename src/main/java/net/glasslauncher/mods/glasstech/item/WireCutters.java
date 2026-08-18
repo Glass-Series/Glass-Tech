@@ -1,6 +1,6 @@
 package net.glasslauncher.mods.glasstech.item;
 
-import net.glasslauncher.mods.glasstech.WorldUtil;
+import net.glasslauncher.mods.glasstech.util.WorldHelper;
 import net.glasslauncher.mods.glasstech.blocks.TemplateCableBlock;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -24,7 +24,7 @@ public class WireCutters extends TemplateShearsItem {
         }
 
         stack.damage(1, user);
-        WorldUtil.breakBlockWithParticles(world, x, y, z, templateCableBlock.id);
+        WorldHelper.breakBlockWithParticles(world, x, y, z, templateCableBlock.id);
         templateCableBlock.dropStacks(world, x, y, z, templateCableBlock.id);
 
         return true;

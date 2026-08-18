@@ -1,4 +1,4 @@
-package net.glasslauncher.mods.glasstech;
+package net.glasslauncher.mods.glasstech.item;
 
 public interface GlassTechItemInWorldRenderer {
     void renderItemOnGround(float brightness);

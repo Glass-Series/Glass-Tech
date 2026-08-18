@@ -1,5 +1,6 @@
-package net.glasslauncher.mods.glasstech;
+package net.glasslauncher.mods.glasstech.recipe;
 
+import net.glasslauncher.mods.glasstech.GlassTech;
 import net.modificationstation.stationapi.api.util.Identifier;
 
 public enum MachineRecipeIdentifier {
@@ -8,7 +9,7 @@ public enum MachineRecipeIdentifier {
     CANNER("canner"),
     ELECTROLYZER("electrolyzer"),
     EXTRACTOR("extractor"),
-    GEOTHERMAL("geothermal"),
+    THERMAL("thermal"),
     ;
 
     public final Identifier identifier;

@@ -1,6 +1,6 @@
 package net.glasslauncher.mods.glasstech.events.init;
 
-import net.glasslauncher.mods.glasstech.WireMaterial;
+import net.glasslauncher.mods.glasstech.blocks.WireMaterial;
 import net.glasslauncher.mods.glasstech.blocks.*;
 import net.glasslauncher.mods.glasstech.blocks.batbox.BatBoxBlock;
 import net.glasslauncher.mods.glasstech.blocks.batbox.BatBoxBlockEntity;

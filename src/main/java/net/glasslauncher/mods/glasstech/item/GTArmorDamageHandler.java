@@ -1,5 +1,6 @@
-package net.glasslauncher.mods.glasstech;
+package net.glasslauncher.mods.glasstech.item;
 
+import net.glasslauncher.mods.glasstech.entity.DamageSource;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 

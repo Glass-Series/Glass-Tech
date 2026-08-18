@@ -2,7 +2,7 @@ package net.glasslauncher.mods.glasstech.blocks;
 
 import net.danygames2014.uniwrench.api.WrenchMode;
 import net.danygames2014.uniwrench.api.Wrenchable;
-import net.glasslauncher.mods.glasstech.WorldUtil;
+import net.glasslauncher.mods.glasstech.util.WorldHelper;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
@@ -41,7 +41,7 @@ public interface GTWrenchable extends Wrenchable {
                 }
                 dropStack(world, x, y, z, itemStack);
             }
-            WorldUtil.breakBlockWithParticles(world, x, y, z, world.getBlockId(x, y, z));
+            WorldHelper.breakBlockWithParticles(world, x, y, z, world.getBlockId(x, y, z));
             dropStacks(world, x, y, z, 0);
             return true;
         }

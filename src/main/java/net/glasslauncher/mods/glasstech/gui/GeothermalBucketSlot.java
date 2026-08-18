@@ -1,7 +1,7 @@
 package net.glasslauncher.mods.glasstech.gui;
 
 import net.danygames2014.nyalib.fluid.FluidBucket;
-import net.glasslauncher.mods.glasstech.GeothermalFuelRegistry;
+import net.glasslauncher.mods.glasstech.recipe.GeothermalFuelRegistry;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 

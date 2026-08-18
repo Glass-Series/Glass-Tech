@@ -1,4 +1,4 @@
-package net.glasslauncher.mods.glasstech;
+package net.glasslauncher.mods.glasstech.entity;
 
 public enum DamageSource {
     FALLING(Nature.ENVIRONMENT),

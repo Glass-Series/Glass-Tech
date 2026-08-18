@@ -1,8 +1,8 @@
 package net.glasslauncher.mods.glasstech.mixin;
 
-import net.glasslauncher.mods.glasstech.GTArmorPlayerTick;
-import net.glasslauncher.mods.glasstech.GTCustomAttackDamage;
-import net.glasslauncher.mods.glasstech.GlassTechPlayer;
+import net.glasslauncher.mods.glasstech.item.GTArmorPlayerTick;
+import net.glasslauncher.mods.glasstech.item.GTCustomAttackDamage;
+import net.glasslauncher.mods.glasstech.entity.GlassTechPlayer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;

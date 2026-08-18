@@ -2,7 +2,7 @@ package net.glasslauncher.mods.glasstech.mixin;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import net.glasslauncher.mods.glasstech.GTCustomDamageHandler;
+import net.glasslauncher.mods.glasstech.item.GTCustomDamageHandler;
 import net.glasslauncher.mods.glasstech.item.GTTickingArmor;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;

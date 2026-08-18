@@ -3,7 +3,6 @@ package net.glasslauncher.mods.glasstech.item;
 import lombok.Getter;
 import lombok.Setter;
 import net.glasslauncher.mods.alwaysmoreitems.api.SubItemProvider;
-import net.glasslauncher.mods.glasstech.GTEnergyBar;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.minecraft.item.ItemStack;
 import net.modificationstation.stationapi.api.client.item.ArmorTextureProvider;

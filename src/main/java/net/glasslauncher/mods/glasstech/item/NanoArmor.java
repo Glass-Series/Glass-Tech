@@ -1,6 +1,5 @@
 package net.glasslauncher.mods.glasstech.item;
 
-import net.glasslauncher.mods.glasstech.GTCustomDamageHandler;
 import net.glasslauncher.mods.glasstech.GlassTech;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.minecraft.entity.Entity;
