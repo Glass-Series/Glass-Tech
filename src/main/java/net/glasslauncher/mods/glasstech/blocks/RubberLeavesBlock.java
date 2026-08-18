@@ -23,6 +23,6 @@ public class RubberLeavesBlock extends LeavesBlockTemplate {
 
     @Override
     public int getDroppedItemId(int blockMeta, Random random) {
-        return GlassTechBlocks.rubberSaplingBlock.id;
+        return GlassTechBlocks.rubberSaplingBlock.asItem().id;
     }
 }
