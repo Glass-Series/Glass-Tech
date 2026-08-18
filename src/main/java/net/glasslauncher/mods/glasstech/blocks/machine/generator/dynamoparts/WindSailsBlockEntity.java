@@ -26,6 +26,9 @@ public class WindSailsBlockEntity extends BlockEntity implements DynamoComponent
     @Override
     public void tick() {
         BlockState state = world.getBlockState(x, y, z);
+        if (!(state.getBlock() instanceof WindSailsBlock)) {
+            return;
+        }
         Direction dir = state.get(HORIZONTAL_FACING);
         if (wheelDir == -1) {
             wheelDir = dir.getId();
