@@ -17,7 +17,7 @@ public class PumpScreen extends MachineScreenTemplate<PumpBlockEntity> {
         float progress = blockEntity.progress / (float) blockEntity.getMaxProgress();
         int x = 79;
         int y = 34;
-        glassguis_drawImage(this, "/assets/glasstech/stationapi/textures/gui/pump_bg.png", x + 1, y + 1);
-        glassguis_drawImagePercentage(this, "/assets/glasstech/stationapi/textures/block/pump_on.png", x, y, progress, DrawDirection.UP);
+        glassguis_drawImage("/assets/glasstech/stationapi/textures/gui/pump_bg.png", x + 1, y + 1);
+        glassguis_drawImagePercentage("/assets/glasstech/stationapi/textures/block/pump_on.png", x, y, progress, DrawDirection.UP);
     }
 }

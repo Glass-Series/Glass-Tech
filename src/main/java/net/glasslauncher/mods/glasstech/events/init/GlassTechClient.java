@@ -40,6 +40,7 @@ import net.glasslauncher.mods.glasstech.blocks.renderer.WindSailsBlockEntityRend
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.screen.ingame.DoubleChestScreen;
+import net.minecraft.client.render.entity.ProjectileEntityRenderer;
 import net.modificationstation.stationapi.api.client.event.block.entity.BlockEntityRendererRegisterEvent;
 import net.modificationstation.stationapi.api.client.event.color.block.BlockColorsRegisterEvent;
 import net.modificationstation.stationapi.api.client.event.texture.TextureRegisterEvent;
@@ -56,6 +57,8 @@ import static net.glasslauncher.mods.glasstech.blocks.GTProperties.FOAM_COLOR;
 import static net.glasslauncher.mods.glasstech.GlassTech.NAMESPACE;
 
 public class GlassTechClient {
+    public static ProjectileEntityRenderer STICKY_DYNAMITE_RENDERER = new ProjectileEntityRenderer(0);
+
     static {
         EntrypointManager.registerLookup(MethodHandles.lookup());
     }
@@ -257,8 +260,8 @@ public class GlassTechClient {
         GlassTechItems.cannedFood.setTexture(NAMESPACE.id("item/resource/canned_food"));
         GlassTechItems.scanner.setTexture(NAMESPACE.id("item/tool/scanner"));
         GlassTechItems.advancedScanner.setTexture(NAMESPACE.id("item/tool/advanced_scanner"));
-        GlassTechEntities.STICKY_DYNAMITE_RENDERER.itemTextureId = Atlases.getGuiItems().addTexture(NAMESPACE.id("item/tool/sticky_dynamite")).index;
-        GlassTechItems.stickyDynamite.setTextureId(GlassTechEntities.STICKY_DYNAMITE_RENDERER.itemTextureId);
+        STICKY_DYNAMITE_RENDERER.itemTextureId = Atlases.getGuiItems().addTexture(NAMESPACE.id("item/tool/sticky_dynamite")).index;
+        GlassTechItems.stickyDynamite.setTextureId(STICKY_DYNAMITE_RENDERER.itemTextureId);
         GlassTechItems.rubberBoots.setTexture(NAMESPACE.id("item/armor/rubber_boots"));
         GlassTechItems.voltageMeter.setTexture(NAMESPACE.id("item/tool/voltage_meter"));
         GlassTechItems.miningLaser.setTexture(NAMESPACE.id("item/tool/mining_laser"));

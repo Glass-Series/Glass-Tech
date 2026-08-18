@@ -1,5 +1,8 @@
 package net.glasslauncher.mods.glasstech.compat.ami;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.fabricmc.loader.api.FabricLoader;
 import net.glasslauncher.mods.alwaysmoreitems.api.*;
 import net.glasslauncher.mods.glasstech.GlassTech;
 import net.glasslauncher.mods.glasstech.blocks.machine.MachineScreenTemplate;
@@ -15,7 +18,10 @@ import net.glasslauncher.mods.glasstech.blocks.machine.extractor.ExtractorScreen
 import net.glasslauncher.mods.glasstech.blocks.machine.macerator.MaceratorBlockEntity;
 import net.glasslauncher.mods.glasstech.blocks.machine.macerator.MaceratorScreen;
 import net.glasslauncher.mods.glasstech.events.init.GlassTechBlocks;
-import net.glasslauncher.mods.glasstech.events.init.recipes.*;
+import net.glasslauncher.mods.glasstech.events.init.recipes.CannerRecipes;
+import net.glasslauncher.mods.glasstech.events.init.recipes.CompressorRecipes;
+import net.glasslauncher.mods.glasstech.events.init.recipes.ExtractorRecipes;
+import net.glasslauncher.mods.glasstech.events.init.recipes.MaceratorRecipes;
 import net.glasslauncher.mods.glasstech.recipe.machine.*;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
@@ -46,6 +52,14 @@ public class GlassTechAMIPlugin implements ModPluginProvider {
 
     @Override
     public void register(ModRegistry registry) {
+        if (FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT) {
+            // These aren't synced yet anyway
+            registerMachines(registry);
+        }
+    }
+
+    @Environment(EnvType.CLIENT)
+    private void registerMachines(ModRegistry registry) {
         registerMachine(registry, MaceratorRecipes.MaceratorRecipe.class, "Macerator", MaceratorRecipeRegistry.INSTANCE, new MaceratorScreen(null, new MaceratorBlockEntity()));
         registerMachine(registry, CompressorRecipes.CompressorRecipe.class, "Compressor", CompressorRecipeRegistry.INSTANCE, new CompressorScreen(null, new CompressorBlockEntity()));
         registerMachine(registry, CannerRecipes.CannerRecipe.class, "Canner", CannerRecipeRegistry.INSTANCE, new CannerScreen(null, new CannerBlockEntity()));
@@ -53,6 +67,7 @@ public class GlassTechAMIPlugin implements ModPluginProvider {
         registerMachine(registry, ExtractorRecipes.ExtractorRecipe.class, "Extractor", ExtractorRecipeRegistry.INSTANCE, new ExtractorScreen(null, new ExtractorBlockEntity()));
     }
 
+    @Environment(EnvType.CLIENT)
     private <T extends MachineScreenTemplate<V>, V extends RecipeBlockEntityTemplate<?>, C extends BasicMachineRecipe> void registerMachine(ModRegistry registry, Class<C> cls, String name, RecipeRegistryTemplate<C> recipeRegistry, T screenTemplate) {
         BasicMachineCategory<T, V> basicMachineCategory = new BasicMachineCategory<>("glasstech_" + name, name, screenTemplate);
         registry.addRecipeCategories(

@@ -44,12 +44,12 @@ public abstract class MachineScreenTemplate<T extends MachineBlockEntityTemplate
 
     @Override
     public void drawBackground(float tickDelta) {
-        glassguis_renderBackground(this);
+        glassguis_renderBackground();
 
         GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
         GL11.glEnable(GL11.GL_BLEND);
 
-        glassguis_drawSlots(this);
+        glassguis_drawSlots();
 
         GL11.glDisable(GL11.GL_BLEND);
 
@@ -62,9 +62,9 @@ public abstract class MachineScreenTemplate<T extends MachineBlockEntityTemplate
     }
 
     public void drawGauge(int x, int y, int mouseX, int mouseY) {
-        glassguis_drawImage(this, "/assets/glasstech/stationapi/textures/gui/energy_background.png", x, y);
-        glassguis_drawImagePercentage(this, "/assets/glasstech/stationapi/textures/gui/energy_bar.png", x + 2, y + 2, (((float) blockEntity.getEnergyStored()) / blockEntity.getEnergyCapacity()), DrawDirection.UP);
-        glassguis_drawImage(this, "/assets/glasstech/stationapi/textures/gui/energy_overlay.png", x, y);
+        glassguis_drawImage("/assets/glasstech/stationapi/textures/gui/energy_background.png", x, y);
+        glassguis_drawImagePercentage("/assets/glasstech/stationapi/textures/gui/energy_bar.png", x + 2, y + 2, (((float) blockEntity.getEnergyStored()) / blockEntity.getEnergyCapacity()), DrawDirection.UP);
+        glassguis_drawImage("/assets/glasstech/stationapi/textures/gui/energy_overlay.png", x, y);
         int[] size = GlassGUIs.IMAGE_SIZE_CACHE.getIfPresent("/assets/glasstech/stationapi/textures/gui/energy_background.png");
 
         x += ((width - backgroundWidth) / 2);
@@ -75,8 +75,8 @@ public abstract class MachineScreenTemplate<T extends MachineBlockEntityTemplate
     }
 
     public void drawArrow(int x, int y, float progress) {
-        glassguis_drawImage(this, "/assets/glasstech/stationapi/textures/gui/arrow_bg.png", x + 1, y + 1);
-        glassguis_drawImagePercentage(this, "/assets/glasstech/stationapi/textures/gui/arrow_fg.png", x, y, progress, DrawDirection.RIGHT);
+        glassguis_drawImage("/assets/glasstech/stationapi/textures/gui/arrow_bg.png", x + 1, y + 1);
+        glassguis_drawImagePercentage("/assets/glasstech/stationapi/textures/gui/arrow_fg.png", x, y, progress, DrawDirection.RIGHT);
     }
 
     public void drawFluidGauge(int mouseX, int mouseY) {
@@ -84,7 +84,7 @@ public abstract class MachineScreenTemplate<T extends MachineBlockEntityTemplate
     }
 
     public void drawFluidGauge(int x, int y, int slot, int mouseX, int mouseY) {
-        glassguis_drawImage(this, "/assets/glasstech/stationapi/textures/gui/energy_background.png", x, y);
+        glassguis_drawImage("/assets/glasstech/stationapi/textures/gui/energy_background.png", x, y);
 
         FluidHandler fluidHandler = (FluidHandler) blockEntity;
         FluidStack stack = fluidHandler.getFluid(slot, null);
@@ -101,7 +101,7 @@ public abstract class MachineScreenTemplate<T extends MachineBlockEntityTemplate
             }
         }
 
-        glassguis_drawImage(this, "/assets/glasstech/stationapi/textures/gui/energy_overlay.png", x, y);
+        glassguis_drawImage("/assets/glasstech/stationapi/textures/gui/energy_overlay.png", x, y);
     }
 
     public static void drawFluid(FluidStack fluidStack, int level, int x, int y, int width, int height, float zOffset){

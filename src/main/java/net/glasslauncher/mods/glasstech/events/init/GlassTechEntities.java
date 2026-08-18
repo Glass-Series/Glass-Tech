@@ -9,7 +9,6 @@ import net.glasslauncher.mods.glasstech.entity.StickyDynamiteEntity;
 import net.glasslauncher.mods.glasstech.entity.renderer.GTTntEntityRenderer;
 import net.glasslauncher.mods.glasstech.entity.renderer.MiningLaserEntityRenderer;
 import net.mine_diver.unsafeevents.listener.EventListener;
-import net.minecraft.client.render.entity.ProjectileEntityRenderer;
 import net.modificationstation.stationapi.api.client.event.render.entity.EntityRendererRegisterEvent;
 import net.modificationstation.stationapi.api.event.entity.EntityRegisterEvent;
 import net.modificationstation.stationapi.api.event.registry.EntityHandlerRegistryEvent;
@@ -18,11 +17,9 @@ import net.modificationstation.stationapi.api.mod.entrypoint.EntrypointManager;
 import java.lang.invoke.MethodHandles;
 
 import static net.glasslauncher.mods.glasstech.GlassTech.NAMESPACE;
+import static net.glasslauncher.mods.glasstech.events.init.GlassTechClient.STICKY_DYNAMITE_RENDERER;
 
 public class GlassTechEntities {
-    @Environment(EnvType.CLIENT)
-    public static ProjectileEntityRenderer STICKY_DYNAMITE_RENDERER = new ProjectileEntityRenderer(0);
-
     static {
         EntrypointManager.registerLookup(MethodHandles.lookup());
     }

@@ -18,18 +18,18 @@ public class IronFurnaceScreen extends HandledScreen {
 
     @Override
     protected void drawBackground(float tickDelta) {
-        glassguis_renderBackground(this);
+        glassguis_renderBackground();
 
         GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
         GL11.glEnable(GL11.GL_BLEND);
 
-        glassguis_drawSlots(this);
+        glassguis_drawSlots();
 
-        glassguis_drawImage(this, "/assets/glasstech/stationapi/textures/gui/flame_bg.png", 57, 37);
-        glassguis_drawImagePercentage(this, "/assets/glasstech/stationapi/textures/gui/flame_fg.png", 56, 36, blockEntity.getFuelTimeDelta(), DrawDirection.UP);
+        glassguis_drawImage("/assets/glasstech/stationapi/textures/gui/flame_bg.png", 57, 37);
+        glassguis_drawImagePercentage("/assets/glasstech/stationapi/textures/gui/flame_fg.png", 56, 36, blockEntity.getFuelTimeDelta(), DrawDirection.UP);
 
-        glassguis_drawImage(this, "/assets/glasstech/stationapi/textures/gui/arrow_bg.png", 80, 35);
-        glassguis_drawImagePercentage(this, "/assets/glasstech/stationapi/textures/gui/arrow_fg.png", 79, 34, blockEntity.getCookTimeDelta(), DrawDirection.RIGHT);
+        glassguis_drawImage("/assets/glasstech/stationapi/textures/gui/arrow_bg.png", 80, 35);
+        glassguis_drawImagePercentage("/assets/glasstech/stationapi/textures/gui/arrow_fg.png", 79, 34, blockEntity.getCookTimeDelta(), DrawDirection.RIGHT);
 
         GL11.glDisable(GL11.GL_BLEND);
     }

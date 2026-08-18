@@ -25,7 +25,7 @@ public class SolarGeneratorScreen extends GeneratorScreenTemplate<SolarGenerator
         GL11.glBlendFunc(770, 1); // Removes the black from the image. Dunno why it's not just transparent.
         GL11.glColor3f(0.8f, 0.8f, 0.8f);
         if (blockEntity.hasSky) {
-            glassguis_drawImage(this, blockEntity.hasSun ? "/terrain/sun.png" : "/terrain/moon.png", 71, 39);
+            glassguis_drawImage(blockEntity.hasSun ? "/terrain/sun.png" : "/terrain/moon.png", 71, 39);
         }
         GL11.glDisable(GL11.GL_BLEND);
     }

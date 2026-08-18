@@ -3,7 +3,7 @@ package net.glasslauncher.mods.glasstech.compat.ami.drawable;
 import net.fabricmc.loader.api.FabricLoader;
 import net.glasslauncher.mods.alwaysmoreitems.api.gui.AMIDrawable;
 import net.glasslauncher.mods.glassguis.compat.StationAPICompat;
-import net.glasslauncher.mods.glassguis.screen.widget.slot.GlassSlot;
+import net.glasslauncher.mods.glassguis.screen.slot.GlassSlot;
 import net.glasslauncher.mods.glasstech.blocks.machine.MachineScreenTemplate;
 import net.glasslauncher.mods.glasstech.blocks.machine.RecipeBlockEntityTemplate;
 import net.minecraft.client.Minecraft;

@@ -34,18 +34,18 @@ public abstract class EnergySourceConsumerScreenTemplate<T extends EnergySourceC
         super.render(mouseX, mouseY, delta);
 
         if (euTooltipRect != null) {
-            glassguis_tooltip(this, List.of(((blockEntity.getEnergyStored() < blockEntity.getEnergyCapacity() / 5) ? Formatting.RED : Formatting.AQUA).toString() + blockEntity.getEnergyStored() + Formatting.FORMATTING_CODE_PREFIX + "r/" + Formatting.AQUA + blockEntity.getEnergyCapacity() + " EU"), euTooltipRect, mouseX, mouseY);
+            glassguis_tooltip(List.of(((blockEntity.getEnergyStored() < blockEntity.getEnergyCapacity() / 5) ? Formatting.RED : Formatting.AQUA).toString() + blockEntity.getEnergyStored() + Formatting.FORMATTING_CODE_PREFIX + "r/" + Formatting.AQUA + blockEntity.getEnergyCapacity() + " EU"), euTooltipRect, mouseX, mouseY);
         }
     }
 
     @Override
     public void drawBackground(float tickDelta) {
-        glassguis_renderBackground(this);
+        glassguis_renderBackground();
 
         GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
         GL11.glEnable(GL11.GL_BLEND);
 
-        glassguis_drawSlots(this);
+        glassguis_drawSlots();
 
         drawMachineForeground(tickDelta);
 
@@ -60,9 +60,9 @@ public abstract class EnergySourceConsumerScreenTemplate<T extends EnergySourceC
     }
 
     public void drawGauge(int x, int y) {
-        glassguis_drawImage(this, "/assets/glasstech/stationapi/textures/gui/energy_background.png", x, y);
-        glassguis_drawImagePercentage(this, "/assets/glasstech/stationapi/textures/gui/energy_bar.png", x + 2, y + 2, (((float) blockEntity.getEnergyStored()) / blockEntity.getEnergyCapacity()), DrawDirection.UP);
-        glassguis_drawImage(this, "/assets/glasstech/stationapi/textures/gui/energy_overlay.png", x, y);
+        glassguis_drawImage("/assets/glasstech/stationapi/textures/gui/energy_background.png", x, y);
+        glassguis_drawImagePercentage("/assets/glasstech/stationapi/textures/gui/energy_bar.png", x + 2, y + 2, (((float) blockEntity.getEnergyStored()) / blockEntity.getEnergyCapacity()), DrawDirection.UP);
+        glassguis_drawImage("/assets/glasstech/stationapi/textures/gui/energy_overlay.png", x, y);
         int[] size = GlassGUIs.IMAGE_SIZE_CACHE.getIfPresent("/assets/glasstech/stationapi/textures/gui/energy_background.png");
         if (size != null && (euTooltipRect == null || (euTooltipRect.x == x && euTooltipRect.y == y))) {
             euTooltipRect = new Rectangle(x, y, size[0], size[1]);
@@ -70,7 +70,7 @@ public abstract class EnergySourceConsumerScreenTemplate<T extends EnergySourceC
     }
 
     public void drawArrow(int x, int y, float progress) {
-        glassguis_drawImage(this, "/assets/glasstech/stationapi/textures/gui/arrow_bg.png", x + 1, y + 1);
-        glassguis_drawImagePercentage(this, "/assets/glasstech/stationapi/textures/gui/arrow_fg.png", x, y, progress, DrawDirection.RIGHT);
+        glassguis_drawImage("/assets/glasstech/stationapi/textures/gui/arrow_bg.png", x + 1, y + 1);
+        glassguis_drawImagePercentage("/assets/glasstech/stationapi/textures/gui/arrow_fg.png", x, y, progress, DrawDirection.RIGHT);
     }
 }

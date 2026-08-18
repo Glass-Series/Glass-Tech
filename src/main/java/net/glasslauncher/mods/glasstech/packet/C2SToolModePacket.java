@@ -28,7 +28,7 @@ public class C2SToolModePacket extends TemplateManagedPacket<C2SToolModePacket> 
     public void apply(NetworkHandler networkHandler) {
         PlayerEntity player;
         if (FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT) {
-            player = Minecraft.INSTANCE.player;
+            player = getPlayer();
         }
         else {
             player = getPlayer(networkHandler);
@@ -36,6 +36,11 @@ public class C2SToolModePacket extends TemplateManagedPacket<C2SToolModePacket> 
         if (player != null && player.getHand() != null && player.getHand().getItem() instanceof GTItemWithModes modesItem) {
             modesItem.cycleMode(player, player.getHand());
         }
+    }
+
+    @Environment(EnvType.CLIENT)
+    private PlayerEntity getPlayer() {
+        return Minecraft.INSTANCE.player;
     }
 
     @Environment(EnvType.SERVER)
