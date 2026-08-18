@@ -14,7 +14,7 @@ public class ItemRecipes {
         add(reactorCooler, "ICI", "OPO", 'O', coolantCell, 'C', advancedCircuit, 'I', tagKey("ingots/copper"), 'P', reactorPlating);
         add(reactorPlating, " C ", "CAC", " C ", 'C', tagKey("ingots/copper"), 'A', advancedAlloy);
         add(circuit, "CCC", "RIR", "CCC", 'I', tagKey("ingots/copper"), 'R', tagKey("dusts/redstone"), 'C', copperInsulatedCableBlock);
-        add(reBattery, " C ", "TRT", "TRT", 'T', tagKey("ingots/tin"), 'R', tagKey("dusts/redstone"), 'C', tagKey("ingots/copper"));
+        add(reBattery, " C ", "TRT", "TRT", 'T', tagKey("ingots/tin"), 'R', tagKey("dusts/redstone"), 'C', copperInsulatedCableBlock);
         addN(emptyCell, 16, " T ", "T T", " T ", 'T', tagKey("ingots/tin"));
         add(advancedCircuit, "RGR", "LCL", "RGR", 'L', new ItemStack(Item.DYE, 1, 4), 'G', tagKey("dusts/glowstone"), 'R', tagKey("dusts/redstone"), 'C', circuit);
         add(emptyFuelCan, " TT", "T T", "TTT", 'T', tagKey("ingots/tin"));
