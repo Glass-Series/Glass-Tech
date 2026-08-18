@@ -26,6 +26,7 @@ public class RecipeInit {
             ToolRecipes.initRecipes();
             BlockRecipes.initRecipes();
             ItemRecipes.initRecipes();
+            MassFabricatorRecipes.initRecipes();
 
             ItemStack painterStack = new ItemStack(GlassTechItems.painter);
             //noinspection unchecked
