@@ -182,22 +182,22 @@ public class GlassTechItems {
         advancedCircuit = new TemplateItem(NAMESPACE.id("advanced_circuit"));
         scrapBox = new ScrapBox(NAMESPACE.id("scrap_box"));
 
-        reBattery = new RechargeableCellItem(NAMESPACE.id("re_battery"), VoltageTier.LV, VoltageTier.LV.maxVoltage * 64);
-        energyCrystal = new RechargeableCellItem(NAMESPACE.id("energy_crystal"), VoltageTier.MV, VoltageTier.MV.maxVoltage * 64);
-        lapotronCrystal = new RechargeableCellItem(NAMESPACE.id("lapotron_crystal"), VoltageTier.HV, VoltageTier.HV.maxVoltage * 64);
+        reBattery = new RechargeableCellItem(NAMESPACE.id("re_battery"), VoltageTier.LV, 10_000);
+        energyCrystal = new RechargeableCellItem(NAMESPACE.id("energy_crystal"), VoltageTier.MV, 100_000);
+        lapotronCrystal = new RechargeableCellItem(NAMESPACE.id("lapotron_crystal"), VoltageTier.HV, 1_000_000);
 
-        batteryPack = new PowerStorageArmor(NAMESPACE.id("battery_pack"), 1, VoltageTier.LV, VoltageTier.LV.maxVoltage * 640);
-        lappack = new PowerStorageArmor(NAMESPACE.id("lappack"), 1, VoltageTier.HV, VoltageTier.HV.maxVoltage * 640);
+        batteryPack = new PowerStorageArmor(NAMESPACE.id("battery_pack"), 1, VoltageTier.LV, 20_000);
+        lappack = new PowerStorageArmor(NAMESPACE.id("lappack"), 1, VoltageTier.HV, VoltageTier.HV.maxVoltage * 200_000);
 
         cfPack = new CFBackpack(NAMESPACE.id("cf_pack"), 0, 0, 1);
 
         wrench = new Wrench(NAMESPACE.id("wrench"));
-        electricWrench = new ElectricWrench(NAMESPACE.id("electric_wrench"), VoltageTier.LV, VoltageTier.LV.maxVoltage * 256);
+        electricWrench = new ElectricWrench(NAMESPACE.id("electric_wrench"), VoltageTier.LV, 500_000);
 
-        chainsaw = new ElectricAxe(NAMESPACE.id("chainsaw"), ToolMaterial.IRON, VoltageTier.MV, VoltageTier.MV.maxVoltage * 160);
-        diamondChainsaw = new ElectricAxe(NAMESPACE.id("diamond_chainsaw"), ToolMaterial.DIAMOND, VoltageTier.HV, VoltageTier.HV.maxVoltage * 160);
-        drill = new ElectricPickaxe(NAMESPACE.id("drill"), ToolMaterial.IRON, VoltageTier.MV, VoltageTier.MV.maxVoltage * 160);
-        diamondDrill = new ElectricPickaxe(NAMESPACE.id("diamond_drill"), ToolMaterial.DIAMOND, VoltageTier.HV, VoltageTier.HV.maxVoltage * 160);
+        chainsaw = new ElectricAxe(NAMESPACE.id("chainsaw"), ToolMaterial.IRON, VoltageTier.MV, ToolMaterial.IRON.getDurability() * 50);
+        diamondChainsaw = new ElectricAxe(NAMESPACE.id("diamond_chainsaw"), ToolMaterial.DIAMOND, VoltageTier.HV, ToolMaterial.DIAMOND.getDurability() * 80);
+        drill = new ElectricPickaxe(NAMESPACE.id("drill"), ToolMaterial.IRON, VoltageTier.MV, ToolMaterial.IRON.getDurability() * 50);
+        diamondDrill = new ElectricPickaxe(NAMESPACE.id("diamond_drill"), ToolMaterial.DIAMOND, VoltageTier.HV, ToolMaterial.DIAMOND.getDurability() * 80);
 
         bronzeAxe = new TemplateAxeItem(NAMESPACE.id("bronze_axe"), ToolMaterial.IRON);
         bronzeHoe = new TemplateHoeItem(NAMESPACE.id("bronze_hoe"), ToolMaterial.IRON);
@@ -209,7 +209,7 @@ public class GlassTechItems {
         frequencyTransmitter = new FrequencyTransmitter(NAMESPACE.id("frequency_transmitter"));
         wireCutter = new WireCutters(NAMESPACE.id("wire_cutters"));
         painter = new PainterItem(NAMESPACE.id("painter"));
-        nanoSaber = new NanoSaberItem(NAMESPACE.id("nano_saber"), VoltageTier.MV, VoltageTier.MV.maxVoltage * 320);
+        nanoSaber = new NanoSaberItem(NAMESPACE.id("nano_saber"), VoltageTier.MV, 20_000);
 
         compressedHydratedCoal = new TemplateItem(NAMESPACE.id("compressed_hydrated_coal"));
         compressedPlantBall = new TemplateItem(NAMESPACE.id("compressed_plant_ball"));
@@ -220,18 +220,18 @@ public class GlassTechItems {
         suBattery = new SingleUseBatteryItem(NAMESPACE.id("su_battery"), 1000);
         uraniumCell = new TemplateItem(NAMESPACE.id("uranium_cell"));
 
-        nanoBoots = new NanoArmor(NAMESPACE.id("nano_boots"), 3, VoltageTier.MV, VoltageTier.MV.maxVoltage * 320);
-        nanoChestplate = new NanoArmor(NAMESPACE.id("nano_chestplate"), 1, VoltageTier.MV, VoltageTier.MV.maxVoltage * 320);
-        nanoHelmet = new NanoArmor(NAMESPACE.id("nano_helmet"), 0, VoltageTier.MV, VoltageTier.MV.maxVoltage * 320);
-        nanoLeggings = new NanoArmor(NAMESPACE.id("nano_leggings"), 2, VoltageTier.MV, VoltageTier.MV.maxVoltage * 320);
+        nanoBoots = new NanoArmor(NAMESPACE.id("nano_boots"), 3, VoltageTier.MV, 1_600_000);
+        nanoChestplate = new NanoArmor(NAMESPACE.id("nano_chestplate"), 1, VoltageTier.MV, 1_600_000);
+        nanoHelmet = new NanoArmor(NAMESPACE.id("nano_helmet"), 0, VoltageTier.MV, 1_600_000);
+        nanoLeggings = new NanoArmor(NAMESPACE.id("nano_leggings"), 2, VoltageTier.MV, 1_600_000);
 
-        quantumBoots = new QuantumArmor(NAMESPACE.id("quantum_boots"), 3, VoltageTier.HV, VoltageTier.HV.maxVoltage * 320);
-        quantumChestplate = new QuantumArmor(NAMESPACE.id("quantum_chestplate"), 1, VoltageTier.HV, VoltageTier.HV.maxVoltage * 320);
-        quantumHelmet = new QuantumArmor(NAMESPACE.id("quantum_helmet"), 0, VoltageTier.HV, VoltageTier.HV.maxVoltage * 320);
-        quantumLeggings = new QuantumArmor(NAMESPACE.id("quantum_leggings"), 2, VoltageTier.HV, VoltageTier.HV.maxVoltage * 320);
+        quantumBoots = new QuantumArmor(NAMESPACE.id("quantum_boots"), 3, VoltageTier.HV, 10_000_000);
+        quantumChestplate = new QuantumArmor(NAMESPACE.id("quantum_chestplate"), 1, VoltageTier.HV, 10_000_000);
+        quantumHelmet = new QuantumArmor(NAMESPACE.id("quantum_helmet"), 0, VoltageTier.HV, 10_000_000);
+        quantumLeggings = new QuantumArmor(NAMESPACE.id("quantum_leggings"), 2, VoltageTier.HV, 10_000_000);
 
         jetpack = new FuelJetPack(NAMESPACE.id("jetpack"), 1, VoltageTier.MV);
-        electricJetpack = new ElectricJetPack(NAMESPACE.id("electric_jetpack"), 1, VoltageTier.MV, VoltageTier.MV.maxVoltage * 160);
+        electricJetpack = new ElectricJetPack(NAMESPACE.id("electric_jetpack"), 1, VoltageTier.MV, 30_000);
 
         bronzeBoots = new BronzeArmor(NAMESPACE.id("bronze_boots"), 2, 0, 3);
         bronzeChestplate = new BronzeArmor(NAMESPACE.id("bronze_chestplate"), 2, 0, 1);
