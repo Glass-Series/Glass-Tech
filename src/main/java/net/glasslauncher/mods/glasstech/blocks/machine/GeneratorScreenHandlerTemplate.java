@@ -39,7 +39,7 @@ public class GeneratorScreenHandlerTemplate<T extends GeneratorBlockEntityTempla
     public void addListener(ScreenHandlerListener listener) {
         super.addListener(listener);
         // Ah yes, cursed shit, my favourite
-        ServerPlayerEntity player = (ServerPlayerEntity) listener;
+        PlayerEntity player = (PlayerEntity) listener;
         NbtCompound data = new NbtCompound();
         data.putInt("syncId", syncId);
         data.putInt("propertyId", 100);
@@ -58,7 +58,7 @@ public class GeneratorScreenHandlerTemplate<T extends GeneratorBlockEntityTempla
         }
 
         for (Object o : listeners) {
-            if (o instanceof ServerPlayerEntity player) {
+            if (o instanceof PlayerEntity player) {
                 if (updateEnergy) {
                     NbtCompound data = new NbtCompound();
                     data.putInt("syncId", syncId);

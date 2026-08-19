@@ -6,7 +6,6 @@ import net.glasslauncher.mods.networking.GlassPacket;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.screen.ScreenHandler;
@@ -38,7 +37,7 @@ public class ConsumerScreenHandlerTemplate<T extends ConsumerBlockEntityTemplate
     public void addListener(ScreenHandlerListener listener) {
         super.addListener(listener);
         // Ah yes, cursed shit, my favourite
-        ServerPlayerEntity player = (ServerPlayerEntity) listener;
+        PlayerEntity player = (PlayerEntity) listener;
         NbtCompound data = new NbtCompound();
         data.putInt("syncId", syncId);
         data.putInt("propertyId", 100);
@@ -57,7 +56,7 @@ public class ConsumerScreenHandlerTemplate<T extends ConsumerBlockEntityTemplate
         }
 
         for (Object o : listeners) {
-            if (o instanceof ServerPlayerEntity player) {
+            if (o instanceof PlayerEntity player) {
                 if (updateEnergy) {
                     NbtCompound data = new NbtCompound();
                     data.putInt("syncId", syncId);
