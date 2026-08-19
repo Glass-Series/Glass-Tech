@@ -54,6 +54,7 @@ public class ItemRecipes {
 
         add(scrapBox, "SSS", "SSS", "SSS", 'S', scrap);
 
+        add(coalBall, "CCC", "CFC", "CCC", 'C', tagKey("dusts/coal"), 'F', Item.FLINT);
         add(coalChunk, "BBB", "BOB", "BBB", 'B', compressedCoalBall, 'O', tagKey("obsidians"));
         add(coalChunk, "BBB", "BOB", "BBB", 'B', compressedCoalBall, 'O', tagKey("storage_blocks/iron"));
         add(coalChunk, "BBB", "BOB", "BBB", 'B', compressedCoalBall, 'O', tagKey("brick_blocks"));
