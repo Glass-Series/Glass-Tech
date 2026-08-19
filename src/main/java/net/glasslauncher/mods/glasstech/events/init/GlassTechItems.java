@@ -217,7 +217,7 @@ public class GlassTechItems {
         depletedUraniumCell = new TemplateItem(NAMESPACE.id("depleted_uranium_cell"));
         hydratedCoalDust = new TemplateItem(NAMESPACE.id("hydrated_coal_dust"));
         plantBall = new TemplateItem(NAMESPACE.id("plant_ball"));
-        suBattery = new TemplateItem(NAMESPACE.id("su_battery"));
+        suBattery = new SingleUseBatteryItem(NAMESPACE.id("su_battery"), 1000);
         uraniumCell = new TemplateItem(NAMESPACE.id("uranium_cell"));
 
         nanoBoots = new NanoArmor(NAMESPACE.id("nano_boots"), 3, VoltageTier.MV, VoltageTier.MV.maxVoltage * 320);
