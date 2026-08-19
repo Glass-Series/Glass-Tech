@@ -128,8 +128,11 @@ public class GTScaffoldBlock extends GTTemplateBlock {
 
     @Override
     public void onEntityCollision(World world, int x, int y, int z, Entity entity) {
-        if (FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT && entity instanceof PlayerEntity player) {
-            player.fallDistance = 0;
+        if (!(entity instanceof PlayerEntity player)) {
+            return;
+        }
+        player.fallDistance = 0;
+        if (FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT) {
             if (player.velocityY < -0.15) {
                 player.velocityY = -0.15;
             }
