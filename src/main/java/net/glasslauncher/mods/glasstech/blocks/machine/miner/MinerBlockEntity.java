@@ -37,11 +37,8 @@ public class MinerBlockEntity extends ProgressMachineBlockEntityTemplate {
 
     protected boolean retracted = false;
 
-    static {
-    }
-
     public MinerBlockEntity() {
-        super(VoltageTier.MV, 200, VoltageTier.MV.maxVoltage - 10);
+        super(VoltageTier.LV, 20, 4);
         addInput();
         addSlot(SlotType.FUEL);
     }
@@ -60,7 +57,7 @@ public class MinerBlockEntity extends ProgressMachineBlockEntityTemplate {
 
         // Try to ditch held items
         yeetItems(false);
-        if (heldItems != null) {
+        if (heldItems != null && !heldItems.isEmpty()) {
             return;
         }
 
@@ -120,14 +117,14 @@ public class MinerBlockEntity extends ProgressMachineBlockEntityTemplate {
 
     @Override
     public boolean canProcess() {
+        yeetItems(false);
         if (retracted) { // This is only checked once a tick, so we're good to handle this here.
-            yeetItems(false);
             if (world.getPowerLevel(x, y, z) > 0) {
                 retracted = false;
             }
         }
-        if (heldItems != null) {
-            return true;
+        if (heldItems != null && !heldItems.isEmpty()) {
+            return false;
         }
         if (retracted) {
             return false;
