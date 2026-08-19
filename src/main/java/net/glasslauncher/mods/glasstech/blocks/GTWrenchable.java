@@ -3,9 +3,8 @@ package net.glasslauncher.mods.glasstech.blocks;
 import net.danygames2014.uniwrench.api.WrenchMode;
 import net.danygames2014.uniwrench.api.Wrenchable;
 import net.glasslauncher.mods.glasstech.util.WorldHelper;
-import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.block.BlockState;
@@ -30,27 +29,12 @@ public interface GTWrenchable extends Wrenchable {
             return false;
         }
         if (wrenchMode == WrenchMode.MODE_WRENCH) {
-            BlockEntity blockEntity = world.getBlockEntity(x, y, z);
-            if (!(blockEntity instanceof Inventory inventory)) {
-                return false;
-            }
-            for (int i = 0; i < inventory.size(); i++) {
-                ItemStack itemStack = inventory.getStack(i);
-                if (itemStack == null) {
-                    continue;
-                }
-                dropStack(world, x, y, z, itemStack);
-            }
             WorldHelper.breakBlockWithParticles(world, x, y, z, world.getBlockId(x, y, z));
-            dropStacksWrench(world, x, y, z, 0);
+            ((Block) this).dropStacks(world, x, y, z, 0);
             return true;
         }
         return false;
     }
-
-    void dropStack(World world, int x, int y, int z, ItemStack itemStack);
-
-    void dropStacksWrench(World world, int x, int y, int z, int i);
 
     // TODO: Uncomment when dany L moment subsides
 //    @Override
