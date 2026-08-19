@@ -3,6 +3,7 @@ package net.glasslauncher.mods.glasstech.blocks.machine.miner;
 import net.glasslauncher.mods.glasstech.GlassTech;
 import net.glasslauncher.mods.glasstech.blocks.machine.MachineBlockEntityTemplate;
 import net.glasslauncher.mods.glasstech.blocks.machine.MachineBlockTemplate;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
@@ -30,5 +31,14 @@ public class MinerBlock extends MachineBlockTemplate {
                 new MinerScreenHandler(player.inventory, minerBlockEntity)
         );
         return true;
+    }
+
+    @Override
+    public void onBreak(World world, int x, int y, int z) {
+        BlockEntity entity = world.getBlockEntity(x, y, z);
+        if (entity instanceof MinerBlockEntity entity1) {
+            entity1.retract(true);
+        }
+        super.onBreak(world, x, y, z);
     }
 }
