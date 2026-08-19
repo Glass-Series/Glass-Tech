@@ -1,11 +1,14 @@
 package net.glasslauncher.mods.glasstech.blocks.machine;
 
 import net.glasslauncher.mods.glassguis.screen.AutoSyncingScreenHandler;
+import net.glasslauncher.mods.networking.GlassNetworking;
+import net.glasslauncher.mods.networking.GlassPacket;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.Inventory;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.packet.s2c.play.ScreenHandlerPropertyUpdateS2CPacket;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerListener;
@@ -37,7 +40,11 @@ public class EnergySourceConsumerScreenHandlerTemplate<T extends EnergySourceCon
         super.addListener(listener);
         // Ah yes, cursed shit, my favourite
         ServerPlayerEntity player = (ServerPlayerEntity) listener;
-        player.networkHandler.sendPacket(new ScreenHandlerPropertyUpdateS2CPacket(syncId, 100, blockEntity.getEnergyStored()));
+        NbtCompound data = new NbtCompound();
+        data.putInt("syncId", syncId);
+        data.putInt("propertyId", 100);
+        data.putInt("value", blockEntity.getEnergyStored());
+        GlassNetworking.sendToPlayer(player, new GlassPacket("glassguis", "int", data));
         cachedEnergy = blockEntity.getEnergyStored();
     }
 
@@ -53,7 +60,11 @@ public class EnergySourceConsumerScreenHandlerTemplate<T extends EnergySourceCon
         for (Object o : listeners) {
             if (o instanceof ServerPlayerEntity player) {
                 if (updateEnergy) {
-                    player.networkHandler.sendPacket(new ScreenHandlerPropertyUpdateS2CPacket(syncId, 100, blockEntity.getEnergyStored()));
+                    NbtCompound data = new NbtCompound();
+                    data.putInt("syncId", syncId);
+                    data.putInt("propertyId", 100);
+                    data.putInt("value", blockEntity.getEnergyStored());
+                    GlassNetworking.sendToPlayer(player, new GlassPacket("glassguis", "int", data));
                 }
             }
         }
