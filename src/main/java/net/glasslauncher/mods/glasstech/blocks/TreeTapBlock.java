@@ -119,8 +119,8 @@ public class TreeTapBlock extends TemplateBlock {
     public boolean onUse(World world, int x, int y, int z, PlayerEntity player) {
         int meta = world.getBlockMeta(x, y, z);
         if (meta > 0) {
-            world.setBlockState(x, y, z, world.getBlockState(x, y, z).with(GTProperties.RESIN, 0));
             world.setBlockMeta(x, y, z, 0);
+            world.setBlockState(x, y, z, world.getBlockState(x, y, z).with(GTProperties.RESIN, 0));
             dropStack(world, x, y, z, new ItemStack(GlassTechItems.resin, meta));
             return true;
         }
