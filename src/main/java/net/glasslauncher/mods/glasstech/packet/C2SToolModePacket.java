@@ -1,19 +1,16 @@
 package net.glasslauncher.mods.glasstech.packet;
 
 import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.fabricmc.loader.api.FabricLoader;
 import net.glasslauncher.mods.glasstech.item.GTItemWithModes;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.NetworkHandler;
-import net.minecraft.server.network.ServerPlayNetworkHandler;
 import net.modificationstation.stationapi.api.network.packet.PacketType;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.DataInputStream;
 
-public class C2SToolModePacket extends TemplateManagedPacket<C2SToolModePacket> {
+public class C2SToolModePacket extends TemplateManagedPacket<C2SToolModePacket> implements GTPlayerGetter {
     public static final PacketType<C2SToolModePacket> TYPE = PacketType.builder(false, true, C2SToolModePacket::new).build();
 
     @Override
@@ -36,16 +33,6 @@ public class C2SToolModePacket extends TemplateManagedPacket<C2SToolModePacket> 
         if (player != null && player.getHand() != null && player.getHand().getItem() instanceof GTItemWithModes modesItem) {
             modesItem.cycleMode(player, player.getHand());
         }
-    }
-
-    @Environment(EnvType.CLIENT)
-    private PlayerEntity getPlayer() {
-        return Minecraft.INSTANCE.player;
-    }
-
-    @Environment(EnvType.SERVER)
-    private PlayerEntity getPlayer(NetworkHandler networkHandler) {
-        return ((ServerPlayNetworkHandler) networkHandler).player;
     }
 
     @Override

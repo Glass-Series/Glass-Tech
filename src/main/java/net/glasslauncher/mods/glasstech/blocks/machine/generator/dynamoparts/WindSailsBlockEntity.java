@@ -1,11 +1,14 @@
 package net.glasslauncher.mods.glasstech.blocks.machine.generator.dynamoparts;
 
-import net.glasslauncher.mods.glassguis.screen.ServerSyncedField;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.loader.api.FabricLoader;
 import net.glasslauncher.mods.glasstech.blocks.GTProperties;
 import net.glasslauncher.mods.glasstech.blocks.machine.generator.DynamoComponent;
+import net.glasslauncher.mods.glasstech.packet.WindSailsDataPacket;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.modificationstation.stationapi.api.block.BlockState;
+import net.modificationstation.stationapi.api.network.packet.PacketHelper;
 import net.modificationstation.stationapi.api.util.math.Direction;
 
 import static net.modificationstation.stationapi.api.state.property.Properties.HORIZONTAL_FACING;
@@ -15,16 +18,21 @@ public class WindSailsBlockEntity extends BlockEntity implements DynamoComponent
     public int ticks = 0;
     public float brightness = 0;
     public int wheelDir = -1;
-    @ServerSyncedField
     public float red = 1;
-    @ServerSyncedField
     public float green = 1;
-    @ServerSyncedField
     public float blue = 1;
     public boolean showScan = false;
+    protected boolean didTick;
 
     @Override
     public void tick() {
+        if (!didTick) {
+            if (FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT) {
+                PacketHelper.send(new WindSailsDataPacket(x, y, z));
+            }
+
+            didTick = true;
+        }
         BlockState state = world.getBlockState(x, y, z);
         if (!(state.getBlock() instanceof WindSailsBlock)) {
             return;
