@@ -44,43 +44,45 @@ public class IronFurnaceBlockEntity extends BlockEntity implements Inventory, It
 
     @Override
     public void tick() {
+        if (this.world.isRemote) {
+            return;
+        }
+
         boolean wasBurning = isBurning();
         boolean didSomething = false;
         if (wasBurning) {
             --this.burnTime;
         }
 
-        if (!this.world.isRemote) {
-            if (!wasBurning && this.canAcceptRecipeOutput()) {
-                this.fuelTime = this.burnTime = this.getFuelTime(this.inventory[1]);
-                if (isBurning()) {
-                    didSomething = true;
-                    if (this.inventory[1] != null) {
-                        --this.inventory[1].count;
-                        if (this.inventory[1].count == 0) {
-                            this.inventory[1] = null;
-                        }
+        if (!wasBurning && this.canAcceptRecipeOutput()) {
+            this.fuelTime = this.burnTime = this.getFuelTime(this.inventory[1]);
+            if (isBurning()) {
+                didSomething = true;
+                if (this.inventory[1] != null) {
+                    --this.inventory[1].count;
+                    if (this.inventory[1].count == 0) {
+                        this.inventory[1] = null;
                     }
                 }
             }
+        }
 
-            if (this.isBurning() && this.canAcceptRecipeOutput()) {
-                ++this.cookTime;
-                if (this.cookTime == initialCookTime) {
-                    this.cookTime = 0;
-                    this.craftRecipe();
-                    didSomething = true;
-                }
-            } else {
+        if (this.isBurning() && this.canAcceptRecipeOutput()) {
+            ++this.cookTime;
+            if (this.cookTime == initialCookTime) {
                 this.cookTime = 0;
-            }
-
-            if (wasBurning != isBurning()) {
+                this.craftRecipe();
                 didSomething = true;
-                BlockState state = world.getBlockState(x, y, z);
-                state = state.with(Properties.LIT, isBurning());
-                world.setBlockState(x, y, z, state);
             }
+        } else {
+            this.cookTime = 0;
+        }
+
+        if (wasBurning != isBurning()) {
+            didSomething = true;
+            BlockState state = world.getBlockState(x, y, z);
+            state = state.with(Properties.LIT, isBurning());
+            world.setBlockState(x, y, z, state);
         }
 
         if (didSomething) {

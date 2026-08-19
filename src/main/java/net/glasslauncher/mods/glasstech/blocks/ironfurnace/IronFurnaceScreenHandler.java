@@ -1,13 +1,15 @@
 package net.glasslauncher.mods.glasstech.blocks.ironfurnace;
 
+import net.glasslauncher.mods.glassguis.screen.AutoSyncingScreenHandler;
 import net.glasslauncher.mods.glasstech.gui.BigOutputSlot;
 import net.glasslauncher.mods.glasstech.gui.FuelSlot;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 
-public class IronFurnaceScreenHandler extends ScreenHandler {
+public class IronFurnaceScreenHandler extends ScreenHandler implements AutoSyncingScreenHandler {
 
     private final IronFurnaceBlockEntity ironFurnaceBlockEntity;
 
@@ -25,5 +27,10 @@ public class IronFurnaceScreenHandler extends ScreenHandler {
     @Override
     public boolean canUse(PlayerEntity player) {
         return ironFurnaceBlockEntity.canPlayerUse(player);
+    }
+
+    @Override
+    public BlockEntity getBlockEntity() {
+        return ironFurnaceBlockEntity;
     }
 }
