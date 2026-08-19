@@ -10,9 +10,8 @@ import net.glasslauncher.mods.glasstech.recipe.machine.input.IdRecipeInput;
 import net.glasslauncher.mods.glasstech.recipe.machine.input.RecipeInput;
 import net.glasslauncher.mods.glasstech.recipe.machine.output.RecipeOutput;
 import net.minecraft.inventory.Inventory;
-import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
-import net.minecraft.recipe.SmeltingRecipeManager;
+import net.modificationstation.stationapi.api.recipe.SmeltingRegistry;
 
 public class ElectricFurnaceBlockEntity extends RecipeBlockEntityTemplate<BasicMachineRecipe> implements Inventory {
     public static Int2ObjectMap<BasicMachineRecipe> CACHE = new Int2ObjectOpenHashMap<>();
@@ -33,16 +32,11 @@ public class ElectricFurnaceBlockEntity extends RecipeBlockEntityTemplate<BasicM
             return null;
         }
 
-        int id = input[0].itemId;
-        if (input[0].getItem() instanceof BlockItem blockItem) {
-            id = blockItem.getBlock().id;
-        }
-
-        ItemStack output = SmeltingRecipeManager.getInstance().craft(id);
+        ItemStack output = SmeltingRegistry.getResultFor(input[0]);
         if (output == null) {
             return null;
         }
 
-        return CACHE.computeIfAbsent(id, k -> new BasicMachineRecipe(new RecipeInput[]{new IdRecipeInput(k)}, new RecipeOutput[]{new RecipeOutput(output)}));
+        return CACHE.computeIfAbsent(input[0].itemId, k -> new BasicMachineRecipe(new RecipeInput[]{new IdRecipeInput(k)}, new RecipeOutput[]{new RecipeOutput(output)}));
     }
 }
