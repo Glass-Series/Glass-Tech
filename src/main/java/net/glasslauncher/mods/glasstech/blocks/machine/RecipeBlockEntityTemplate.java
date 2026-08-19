@@ -16,6 +16,10 @@ public abstract class RecipeBlockEntityTemplate<R extends BasicMachineRecipe> ex
         super(tier, maxProgress, energyConsumption, energyCapacity);
     }
 
+    public RecipeBlockEntityTemplate(VoltageTier tier, int maxProgress, int energyConsumption) {
+        super(tier, maxProgress, energyConsumption);
+    }
+
     @Override
     public boolean canProcess() {
         currentShortestTime = Integer.MAX_VALUE;

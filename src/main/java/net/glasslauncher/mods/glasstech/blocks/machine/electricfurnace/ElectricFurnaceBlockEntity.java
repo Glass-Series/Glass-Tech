@@ -17,7 +17,7 @@ public class ElectricFurnaceBlockEntity extends RecipeBlockEntityTemplate<BasicM
     public static Int2ObjectMap<BasicMachineRecipe> CACHE = new Int2ObjectOpenHashMap<>();
 
     public ElectricFurnaceBlockEntity() {
-        super(VoltageTier.LV, 200, 4, 100);
+        super(VoltageTier.LV, 100, 3);
         SlotLayout.createBasic(this);
     }
 

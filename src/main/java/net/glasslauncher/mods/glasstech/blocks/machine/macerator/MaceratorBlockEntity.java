@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack;
 public class MaceratorBlockEntity extends RecipeBlockEntityTemplate<BasicMachineRecipe> {
 
     public MaceratorBlockEntity() {
-        super(VoltageTier.LV, 200, 2, 300);
+        super(VoltageTier.LV, 300, 2);
         SlotLayout.createBasic(this);
     }
 

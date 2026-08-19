@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack;
 public class CompressorBlockEntity extends RecipeBlockEntityTemplate<BasicMachineRecipe> {
 
     public CompressorBlockEntity() {
-        super(VoltageTier.LV, 200, 4, 300);
+        super(VoltageTier.LV, 300, 2);
         SlotLayout.createBasic(this);
     }
 

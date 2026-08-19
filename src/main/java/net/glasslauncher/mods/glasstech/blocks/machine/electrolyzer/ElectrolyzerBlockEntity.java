@@ -13,7 +13,7 @@ import net.modificationstation.stationapi.api.util.math.Direction;
 public class ElectrolyzerBlockEntity extends RecipeBlockEntityTemplate<ElectrolyzerMachineRecipe> {
 
     public ElectrolyzerBlockEntity() {
-        super(VoltageTier.MV, 200, 10, VoltageTier.MV.maxVoltage);
+        super(VoltageTier.MV, 1500, 2);
         SlotLayout.createBasic(this);
     }
 

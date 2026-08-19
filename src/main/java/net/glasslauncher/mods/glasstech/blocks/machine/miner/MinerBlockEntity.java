@@ -41,7 +41,7 @@ public class MinerBlockEntity extends ProgressMachineBlockEntityTemplate {
     }
 
     public MinerBlockEntity() {
-        super(VoltageTier.LV, 200, VoltageTier.MV.maxVoltage, 300);
+        super(VoltageTier.MV, 200, VoltageTier.MV.maxVoltage - 10);
         addInput();
         addSlot(SlotType.FUEL);
     }

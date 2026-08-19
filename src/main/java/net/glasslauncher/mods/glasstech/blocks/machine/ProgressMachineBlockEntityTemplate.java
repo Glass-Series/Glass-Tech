@@ -22,6 +22,9 @@ public abstract class ProgressMachineBlockEntityTemplate extends MachineBlockEnt
         this.maxProgress = maxProgress * PROGRESS_UNIT;
     }
 
+    public ProgressMachineBlockEntityTemplate(VoltageTier tier, int maxProgress, int energyConsumption) {
+        this(tier, maxProgress, energyConsumption, maxProgress * energyConsumption);
+    }
 
     public abstract void craftRecipe();
 

@@ -22,6 +22,15 @@ public class InductionFurnaceBlockEntity extends RecipeBlockEntityTemplate<Basic
     @Getter @Setter @ServerSyncedField
     private int heat;
 
+    public InductionFurnaceBlockEntity() {
+        super(VoltageTier.LV, 4000, 5);
+        addInput();
+        addInput();
+        addOutput(RecipeOutputType.PRIMARY);
+        addOutput(RecipeOutputType.PRIMARY);
+        addSlot(SlotType.FUEL);
+    }
+
     @Override
     public boolean tryCraft(boolean simulate) {
         boolean canCraft = craft(new int[]{0}, simulate);
@@ -56,15 +65,6 @@ public class InductionFurnaceBlockEntity extends RecipeBlockEntityTemplate<Basic
         if (heat < 0) {
             heat = 0;
         }
-    }
-
-    public InductionFurnaceBlockEntity() {
-        super(VoltageTier.LV, 4000, 15, 10000);
-        addInput();
-        addInput();
-        addOutput(RecipeOutputType.PRIMARY);
-        addOutput(RecipeOutputType.PRIMARY);
-        addSlot(SlotType.FUEL);
     }
 
     @Override

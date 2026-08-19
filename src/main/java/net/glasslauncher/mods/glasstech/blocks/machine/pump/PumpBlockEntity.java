@@ -18,7 +18,7 @@ public class PumpBlockEntity extends ProgressMachineBlockEntityTemplate implemen
     protected int maxFluidAmount = 4000;
 
     public PumpBlockEntity() {
-        super(VoltageTier.LV, 200, 2, 300);
+        super(VoltageTier.LV, 200, 2);
         SlotLayout.createFluid(this);
         autoResetProgress = false;
     }

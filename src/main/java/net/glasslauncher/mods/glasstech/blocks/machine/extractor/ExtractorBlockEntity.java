@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack;
 public class ExtractorBlockEntity extends RecipeBlockEntityTemplate<BasicMachineRecipe> {
 
     public ExtractorBlockEntity() {
-        super(VoltageTier.LV, 200, 4, 300);
+        super(VoltageTier.LV, 300, 2);
         SlotLayout.createBasic(this);
     }
 

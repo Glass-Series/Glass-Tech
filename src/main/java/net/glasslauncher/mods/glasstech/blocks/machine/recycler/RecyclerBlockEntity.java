@@ -31,7 +31,7 @@ public class RecyclerBlockEntity extends RecipeBlockEntityTemplate<BasicMachineR
     }, new ChanceRecipeOutput(new ItemStack(GlassTechItems.scrap), 10));
 
     public RecyclerBlockEntity() {
-        super(VoltageTier.LV, 200, 2, 300);
+        super(VoltageTier.LV, 35, 1);
         SlotLayout.createBasic(this);
     }
 
