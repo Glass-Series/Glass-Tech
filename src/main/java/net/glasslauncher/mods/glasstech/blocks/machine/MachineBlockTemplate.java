@@ -6,7 +6,6 @@ import net.glasslauncher.mods.glasstech.blocks.GTWrenchable;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.material.Material;
-import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.item.ItemPlacementContext;
 import net.modificationstation.stationapi.api.state.StateManager;
@@ -44,9 +43,4 @@ public abstract class MachineBlockTemplate extends EnergySourceBlockTemplate imp
 
     @Override
     public abstract BlockEntity createBlockEntity();
-
-    @Override
-    public void dropStacksWrench(World world, int x, int y, int z, int i) {
-        dropStacks(world, x, y, z, i);
-    }
 }

@@ -46,9 +46,4 @@ public abstract class EnergySourceConsumerBlockTemplate extends TemplateBlockWit
             energySource.update(world, x, y, z, network);
         }
     }
-
-    @Override
-    public void dropStacksWrench(World world, int x, int y, int z, int i) {
-        dropStacks(world, x, y, z, i);
-    }
 }
