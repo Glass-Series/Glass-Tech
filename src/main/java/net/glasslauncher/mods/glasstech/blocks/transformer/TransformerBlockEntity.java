@@ -32,7 +32,7 @@ public abstract class TransformerBlockEntity extends PowerStorageBlockEntityTemp
     @Override
     public int getMaxEnergyOutput(@Nullable Direction direction) {
         if (direction == null || direction == world.getBlockState(x, y, z).get(FACING)) {
-            return steppingUp ? stepUp.maxVoltage : stepDown.maxVoltage;
+            return steppingUp ? stepDown.maxVoltage : stepUp.maxVoltage;
         }
         return 0;
     }
@@ -40,7 +40,7 @@ public abstract class TransformerBlockEntity extends PowerStorageBlockEntityTemp
     @Override
     public int getMaxOutputVoltage(@Nullable Direction direction) {
         if (direction == null || direction == world.getBlockState(x, y, z).get(FACING)) {
-            return steppingUp ? stepUp.maxVoltage : stepDown.maxVoltage;
+            return steppingUp ? stepDown.maxVoltage : stepUp.maxVoltage;
         }
         return 0;
     }
@@ -50,7 +50,7 @@ public abstract class TransformerBlockEntity extends PowerStorageBlockEntityTemp
         if (direction != null && direction == world.getBlockState(x, y, z).get(FACING)) {
             return 0;
         }
-        return steppingUp ? stepDown.maxVoltage : stepUp.maxVoltage;
+        return steppingUp ? stepUp.maxVoltage : stepDown.maxVoltage;
     }
 
     @Override
@@ -58,7 +58,7 @@ public abstract class TransformerBlockEntity extends PowerStorageBlockEntityTemp
         if (direction != null && direction == world.getBlockState(x, y, z).get(FACING)) {
             return 0;
         }
-        return steppingUp ? stepDown.maxVoltage : stepUp.maxVoltage;
+        return steppingUp ? stepUp.maxVoltage : stepDown.maxVoltage;
     }
 
     @Override
