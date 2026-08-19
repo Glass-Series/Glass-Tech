@@ -14,28 +14,28 @@ public class BasicMachineRecipe {
     public final RecipeInput[] inputs;
     public final RecipeOutput[] outputs;
 
-    public final int time;
+    public final int progressModifier;
 
     public BasicMachineRecipe(RecipeInput[] inputs, RecipeOutput[] outputs) {
-        this(inputs, outputs, 200);
+        this(inputs, outputs, 1);
     }
 
-    public BasicMachineRecipe(RecipeInput[] inputs, RecipeOutput[] outputs, int time) {
+    public BasicMachineRecipe(RecipeInput[] inputs, RecipeOutput[] outputs, int progressModifier) {
         this.inputs = inputs;
         this.outputs = outputs;
-        this.time = time;
+        this.progressModifier = progressModifier;
     }
 
-    public BasicMachineRecipe(RecipeInput input, int time, RecipeOutput output) {
+    public BasicMachineRecipe(RecipeInput input, int progressModifier, RecipeOutput output) {
         this.inputs = new RecipeInput[]{input};
         this.outputs = new RecipeOutput[]{output};
-        this.time = time;
+        this.progressModifier = progressModifier;
     }
 
     public BasicMachineRecipe(RecipeInput input, RecipeOutput output) {
         this.inputs = new RecipeInput[]{input};
         this.outputs = new RecipeOutput[]{output};
-        this.time = 200;
+        this.progressModifier = 1;
     }
 
     public boolean matches(ItemStack[] inputs) {

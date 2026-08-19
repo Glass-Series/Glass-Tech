@@ -6,6 +6,7 @@ import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.minecraft.nbt.NbtCompound;
 
 public abstract class ProgressMachineBlockEntityTemplate extends MachineBlockEntityTemplate {
+    public static final int PROGRESS_UNIT = 4; // Gotta avoid using floats here
 
     // Progress
     @ServerSyncedField
@@ -18,7 +19,7 @@ public abstract class ProgressMachineBlockEntityTemplate extends MachineBlockEnt
         super(tier, energyConsumption, energyCapacity);
         // Progress
         this.progress = 0;
-        this.maxProgress = maxProgress;
+        this.maxProgress = maxProgress * PROGRESS_UNIT;
     }
 
 
@@ -28,14 +29,15 @@ public abstract class ProgressMachineBlockEntityTemplate extends MachineBlockEnt
     public void processTick() {
         // Check if we can process the current input
         if (canProcess()) {
-            if (this.energy > 0) {
+            if (energy > energyConsumption) {
+                removeEnergy(energyConsumption);
                 // If we can process and have the energy, process the recipe
-                progress += removeEnergy(energyConsumption);
+                progress += PROGRESS_UNIT;
                 lit = true;
             }
             else {
                 // If we can process but don't have the energy, slowly revert
-                progress -= 2;
+                progress -= 1;
                 lit = false;
             }
         }

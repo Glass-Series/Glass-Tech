@@ -2,6 +2,7 @@ package net.glasslauncher.mods.glasstech.blocks.machine;
 
 import lombok.Getter;
 import lombok.Setter;
+import net.glasslauncher.mods.glassguis.screen.ServerSyncedField;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.glasslauncher.mods.glasstech.recipe.machine.BasicMachineRecipe;
 import net.glasslauncher.mods.glasstech.recipe.machine.output.RecipeOutput;
@@ -64,8 +65,9 @@ public abstract class RecipeBlockEntityTemplate<R extends BasicMachineRecipe> ex
             }
         }
 
-        if (recipe.time / energyConsumption < currentShortestTime) {
-            currentShortestTime = recipe.time / energyConsumption;
+        int recipeTime = maxProgress * recipe.progressModifier;
+        if (recipeTime < currentShortestTime) {
+            currentShortestTime = recipeTime;
         }
 
         for (RecipeOutput output : recipe.outputs) {
