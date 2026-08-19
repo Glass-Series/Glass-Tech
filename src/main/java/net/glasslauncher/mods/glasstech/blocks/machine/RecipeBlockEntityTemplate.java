@@ -9,6 +9,7 @@ import net.glasslauncher.mods.glasstech.recipe.machine.output.RecipeOutput;
 import net.minecraft.item.ItemStack;
 
 public abstract class RecipeBlockEntityTemplate<R extends BasicMachineRecipe> extends ProgressMachineBlockEntityTemplate {
+    @ServerSyncedField
     @Getter @Setter
     private int currentShortestTime = Integer.MAX_VALUE;
 
