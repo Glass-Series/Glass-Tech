@@ -28,7 +28,7 @@ public class MaceratorRecipes {
         registry.register(NAMESPACE.id("copperore2dust"), new MaceratorRecipe(new TagRecipeInput(tagKey("ores/copper")), 200, new RecipeOutput(new ItemStack(GlassTechItems.copperDust, 2))));
         registry.register(NAMESPACE.id("coal2dust"), new MaceratorRecipe(new TagRecipeInput(tagKey("coals")), 200, new RecipeOutput(new ItemStack(GlassTechItems.coalDust))));
         registry.register(NAMESPACE.id("bronze2dust"), new MaceratorRecipe(new TagRecipeInput(tagKey("ingots/bronze")), 200, new RecipeOutput(new ItemStack(GlassTechItems.bronzeDust))));
-        registry.register(NAMESPACE.id("cobble2sand"), new MaceratorRecipe(new TagRecipeInput(tagKey("cobblestones")), 200, new RecipeOutput(new ItemStack(Block.SAND))));
+        registry.register(NAMESPACE.id("cobble2sand"), new MaceratorRecipe(new TagRecipeInput(tagKey("cobblestones/normal")), 200, new RecipeOutput(new ItemStack(Block.SAND))));
         registry.register(NAMESPACE.id("sandstone2sand"), new MaceratorRecipe(new TagRecipeInput(tagKey("sandstone/blocks")), 200, new RecipeOutput(new ItemStack(Block.SAND))));
         registry.register(NAMESPACE.id("wool2string"), new MaceratorRecipe(new TagRecipeInput(tagKey("wools")), 200, new RecipeOutput(new ItemStack(Item.STRING, 2))));
         registry.register(NAMESPACE.id("gravel2flint"), new MaceratorRecipe(new TagRecipeInput(tagKey("gravels")), 200, new RecipeOutput(new ItemStack(Item.FLINT, 1))));

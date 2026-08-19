@@ -31,7 +31,7 @@ public class ToolRecipes {
         add(rubberBoots, "R R", "R R", "RCR", 'R', tagKey("rubbers"), 'C', tagKey("wools"));
         add(voltageMeter, " G ", "cCc", "c c", 'G', tagKey("dusts/glowstone"), 'c', copperCableBlock, 'C', circuit);
         add(miningLaser, "Rcc", "AAC", " AA", 'A', advancedAlloy, 'C', advancedCircuit, 'c', energyCrystal, 'R', tagKey("dusts/redstone"));
-        add(cfSprayer, "SS ", "Ss ", "  S", 'S', tagKey("cobblestones"), 's', tagKey("sticks/wooden"));
+        add(cfSprayer, "SS ", "Ss ", "  S", 'S', tagKey("cobblestones/normal"), 's', tagKey("sticks/wooden"));
         add(quantumHelmet, "ILI", "CGC", 'I', iridiumPlate, 'L', lapotronCrystal, 'G', reinforcedGlassBlock, 'C', advancedCircuit);
         add(quantumChestplate, "A A", "ILI", "IAI", 'I', iridiumPlate, 'L', lapotronCrystal, 'A', advancedAlloy);
         add(quantumLeggings, "MLM", "I I", "G G", 'I', iridiumPlate, 'L', lapotronCrystal, 'G', tagKey("dusts/glowstone"), 'M', machineBlock);

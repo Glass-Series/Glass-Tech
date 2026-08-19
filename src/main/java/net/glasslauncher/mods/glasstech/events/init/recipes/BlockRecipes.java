@@ -50,7 +50,7 @@ public class BlockRecipes {
         add(cannerBlock, "TCT", "TMT", "TTT", 'T', tagKey("ingots/tin"), 'M', machineBlock, 'C', circuit);
         add(cannerBlock, "TCT", "TMT", "TTT", 'T', tagKey("ingots/tin"), 'M', machineBlock, 'C', circuit);
         add(electricFurnaceBlock, " C ", "RFR", 'C', circuit, 'R', tagKey("dusts/redstone"), 'F', ironFurnaceBlock);
-        add(maceratorBlock, "FFF", "SMS", " C ", 'F', Item.FLINT, 'S', tagKey("cobblestones"), 'M', machineBlock, 'C', circuit);
+        add(maceratorBlock, "FFF", "SMS", " C ", 'F', Item.FLINT, 'S', tagKey("cobblestones/normal"), 'M', machineBlock, 'C', circuit);
         add(extractorBlock, "TMT", "TCT", 'T', treeTap, 'M', machineBlock, 'C', circuit);
         add(compressorBlock, "S S", "SMS", "SCS", 'S', tagKey("stones"), 'M', machineBlock, 'C', circuit);
         add(minerBlock, "CMC", " P ", " P ", 'P', miningPipeBlock, 'M', machineBlock, 'C', circuit);
