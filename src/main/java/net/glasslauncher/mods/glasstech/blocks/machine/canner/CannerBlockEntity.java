@@ -18,7 +18,7 @@ import net.minecraft.item.ItemStack;
 public class CannerBlockEntity extends RecipeBlockEntityTemplate<BasicMachineRecipe> {
 
     public CannerBlockEntity() {
-        super(VoltageTier.LV, 200, 3);
+        super(VoltageTier.LV, 600, 3);
         addInput();
         addInput();
         addOutput(RecipeOutputType.PRIMARY);
