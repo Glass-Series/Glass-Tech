@@ -35,6 +35,8 @@ public class BlockRecipes {
         add(waterWheelBlock, "PPP", "PIP", "PPP", 'P', sealedPlanksBlock, 'I', tagKey("ingots/steel"));
         add(windSailsBlock, "PSP", "SIS", "PSP", 'P', tagKey("planks"), 'I', tagKey("ingots/steel"), 'S', sail);
 
+        addS(sealedPlanksBlock, tagKey("planks"), tagKey("resins"));
+
         add(lvTransformerBlock, "PCP", "ccc", "PCP", 'P', tagKey("planks"), 'C', copperInsulatedCableBlock, 'c', tagKey("ingots/copper"));
         add(mvTransformerBlock, " C ", " M ", " C ", 'M', machineBlock, 'C', copperInsulatedCableBlock);
         add(hvTransformerBlock, " c ", "CED", " c ", 'E', mvTransformerBlock, 'c', copperInsulatedCableBlock, 'D', energyCrystal, 'C', circuit);

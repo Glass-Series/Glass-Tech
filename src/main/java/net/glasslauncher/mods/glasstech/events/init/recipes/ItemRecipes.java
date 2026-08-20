@@ -50,8 +50,6 @@ public class ItemRecipes {
 
         add(iridiumPlate, "IAI", "ADA", "IAI", 'I', iridium, 'A', advancedAlloy, 'D', tagKey("gems/diamond"));
 
-        addS(sealedPlanksBlock, tagKey("planks"), tagKey("resin"));
-
         add(scrapBox, "SSS", "SSS", "SSS", 'S', scrap);
 
         add(coalBall, "CCC", "CFC", "CCC", 'C', tagKey("dusts/coal"), 'F', Item.FLINT);
