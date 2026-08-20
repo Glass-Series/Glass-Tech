@@ -6,14 +6,15 @@
   "name": "Glass Tech",
   "description": "A total conversion mod aiming to add new features and revitalize beta 1.7.3. Incompatible with everything, including StationAPI.\nI can't believe it's not IC2!",
   "authors": [
-    "calmilamsy"
+    "calmilamsy",
+    "Atilist (textures)"
   ],
   "contact": {
     "homepage": "https://glass-launcher.net/",
     "sources": "https://github.com/calmilamsy/stationapi-example-mod"
   },
 
-  "license": "LGPL V3",
+  "license": "LGPL V3, CC-BY-4.0 (textures)",
   "icon": "assets/glasstech/icon.png",
 
   "environment": "*",
