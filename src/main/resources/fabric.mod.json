@@ -11,7 +11,7 @@
   ],
   "contact": {
     "homepage": "https://glass-launcher.net/",
-    "sources": "https://github.com/calmilamsy/stationapi-example-mod"
+    "sources": "https://github.com/Glass-Series/Glass-Tech"
   },
 
   "license": "LGPL V3, CC-BY-4.0 (textures)",
@@ -44,6 +44,10 @@
   "accessWidener": "glasstech.classtweaker",
 
   "depends": {
-    "minecraft": "1.0.0-beta.7.3"
+    "minecraft": "1.0.0-beta.7.3",
+    "stationapi": "*",
+    "gcapi3": "*",
+    "glassguis": "*",
+    "nyalib": "*"
   }
 }
