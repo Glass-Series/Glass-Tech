@@ -16,6 +16,8 @@ public class BlockRecipes {
         addSN(copperIngot, 9, tagKey("storage_blocks/copper"));
         add(tinBlock, "III", "III", "III", 'I', tagKey("ingots/tin"));
         addSN(tinIngot, 9, tagKey("storage_blocks/tin"));
+        add(bronzeBlock, "III", "III", "III", 'I', tagKey("ingots/bronze"));
+        addSN(bronzeIngot, 9, tagKey("storage_blocks/bronze"));
         add(uraniumBlock, "III", "III", "III", 'I', tagKey("ingots/uranium"));
         addSN(uraniumIngot, 9, tagKey("storage_blocks/uranium"));
         materials();
@@ -106,7 +108,7 @@ public class BlockRecipes {
 
         addN(reinforcedStoneBlock, 8, "SSS", "SAS", "SSS", 'S', tagKey("stones"), 'A', advancedAlloy);
         addN(reinforcedGlassBlock, 7, "GAG", "GGG", "GAG", 'G', tagKey("glass_blocks"), 'A', advancedAlloy);
-        add(reinforcedDoorBlock, "SS", "SS", "SS", 'S', reinforcedStoneBlock);
+        add(reinforcedDoor, "SS", "SS", "SS", 'S', reinforcedStoneBlock);
     }
 
     private static void addN(Block block, int number, Object... recipe) {
