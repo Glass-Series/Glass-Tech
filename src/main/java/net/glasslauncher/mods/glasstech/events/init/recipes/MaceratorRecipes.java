@@ -3,6 +3,7 @@ package net.glasslauncher.mods.glasstech.events.init.recipes;
 import net.glasslauncher.mods.glasstech.events.init.GlassTechItems;
 import net.glasslauncher.mods.glasstech.recipe.machine.BasicMachineRecipe;
 import net.glasslauncher.mods.glasstech.recipe.machine.MaceratorRecipeRegistry;
+import net.glasslauncher.mods.glasstech.recipe.machine.input.ItemRecipeInput;
 import net.glasslauncher.mods.glasstech.recipe.machine.input.RecipeInput;
 import net.glasslauncher.mods.glasstech.recipe.machine.input.StackRecipeInput;
 import net.glasslauncher.mods.glasstech.recipe.machine.input.TagRecipeInput;
@@ -33,6 +34,7 @@ public class MaceratorRecipes {
         registry.register(NAMESPACE.id("wool2string"), new MaceratorRecipe(new TagRecipeInput(tagKey("wools")), new RecipeOutput(new ItemStack(Item.STRING, 2))));
         registry.register(NAMESPACE.id("gravel2flint"), new MaceratorRecipe(new TagRecipeInput(tagKey("gravels")), new RecipeOutput(new ItemStack(Item.FLINT, 1))));
         registry.register(NAMESPACE.id("ice2snowball"), new MaceratorRecipe(new TagRecipeInput(tagKey("snow")), new RecipeOutput(new ItemStack(Item.SNOWBALL))));
+        registry.register(NAMESPACE.id("clayball2dust"), new MaceratorRecipe(new ItemRecipeInput(Item.CLAY), new RecipeOutput(new ItemStack(GlassTechItems.clayDust))));
     }
 
     public static class MaceratorRecipe extends BasicMachineRecipe {

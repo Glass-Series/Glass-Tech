@@ -20,7 +20,7 @@ public class ExtractorRecipes {
         registry.register(NAMESPACE.id("resin2rubber"), new ExtractorRecipe(new TagRecipeInput(tagKey("resins")), new RecipeOutput(new ItemStack(GlassTechItems.rubber, 3))));
         registry.register(NAMESPACE.id("rubberwood2rubber"), new ExtractorRecipe(new StackRecipeInput(new ItemStack(GlassTechBlocks.rubberLogBlock)), new RecipeOutput(new ItemStack(GlassTechItems.rubber))));
         registry.register(NAMESPACE.id("rubberwoodsapling2rubber"), new ExtractorRecipe(new StackRecipeInput(new ItemStack(GlassTechBlocks.rubberSaplingBlock)), new RecipeOutput(new ItemStack(GlassTechItems.rubber))));
-//        registry.register(NAMESPACE.id("hydratedcoalcell2coalfuelcell"), new ExtractorRecipe(new StackRecipeInput(new ItemStack(GlassTechItems.hydratedCoalCell)), new RecipeOutput(new ItemStack(GlassTechItems.coalfuelCell))));
+        registry.register(NAMESPACE.id("hydratedcoalcell2coalfuelcell"), new ExtractorRecipe(new StackRecipeInput(new ItemStack(GlassTechItems.hydratedCoalCell)), new RecipeOutput(new ItemStack(GlassTechItems.coalfuelCell))));
         registry.register(NAMESPACE.id("water2coolant"), new ExtractorRecipe(new StackRecipeInput(new ItemStack(GlassTechItems.waterCell)), new RecipeOutput(new ItemStack(GlassTechItems.coolantCell))));
     }
 

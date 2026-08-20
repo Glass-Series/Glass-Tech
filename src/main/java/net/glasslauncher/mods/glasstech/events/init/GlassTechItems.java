@@ -90,6 +90,7 @@ public class GlassTechItems {
     public static Item coolantCell;
     public static Item depletedUraniumCell;
     public static Item hydratedCoalDust;
+    public static Item hydratedCoalCell;
     public static Item plantBall;
     public static Item suBattery;
     public static Item uraniumCell;
@@ -216,6 +217,7 @@ public class GlassTechItems {
         coolantCell = new TemplateItem(NAMESPACE.id("coolant_cell"));
         depletedUraniumCell = new TemplateItem(NAMESPACE.id("depleted_uranium_cell"));
         hydratedCoalDust = new TemplateItem(NAMESPACE.id("hydrated_coal_dust"));
+        hydratedCoalCell = new TemplateItem(NAMESPACE.id("hydrated_coal_cell"));
         plantBall = new TemplateItem(NAMESPACE.id("plant_ball"));
         suBattery = new SingleUseBatteryItem(NAMESPACE.id("su_battery"), 1000);
         uraniumCell = new TemplateItem(NAMESPACE.id("uranium_cell"));
