@@ -26,7 +26,7 @@ public class WindSailsBlockEntity extends BlockEntity implements DynamoComponent
 
     @Override
     public void tick() {
-        if (!didTick) {
+        if (world.isRemote && !didTick) {
             if (FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT) {
                 PacketHelper.send(new WindSailsDataPacket(x, y, z));
             }
