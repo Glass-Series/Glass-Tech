@@ -58,6 +58,7 @@ public class InductionFurnaceBlockEntity extends RecipeBlockEntityTemplate<Basic
             if (heat > maxHeat) {
                 heat = maxHeat;
             }
+            progress += heat / 32;
             return;
         }
 
@@ -86,7 +87,7 @@ public class InductionFurnaceBlockEntity extends RecipeBlockEntityTemplate<Basic
         ItemStack inputItem = input[0].copy();
         inputItem.count = 1;
 
-        return new BasicMachineRecipe(new RecipeInput[]{new StackRecipeInput(inputItem)}, new RecipeOutput[]{new RecipeOutput(output)}, maxHeat - heat);
+        return new BasicMachineRecipe(new RecipeInput[]{new StackRecipeInput(inputItem)}, new RecipeOutput[]{new RecipeOutput(output)});
     }
 
     @Override

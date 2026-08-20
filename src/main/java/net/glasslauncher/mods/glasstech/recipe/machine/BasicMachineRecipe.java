@@ -14,19 +14,19 @@ public class BasicMachineRecipe {
     public final RecipeInput[] inputs;
     public final RecipeOutput[] outputs;
 
-    public final int progressModifier;
+    public final float progressModifier;
 
     public BasicMachineRecipe(RecipeInput[] inputs, RecipeOutput[] outputs) {
         this(inputs, outputs, 1);
     }
 
-    public BasicMachineRecipe(RecipeInput[] inputs, RecipeOutput[] outputs, int progressModifier) {
+    public BasicMachineRecipe(RecipeInput[] inputs, RecipeOutput[] outputs, float progressModifier) {
         this.inputs = inputs;
         this.outputs = outputs;
         this.progressModifier = progressModifier;
     }
 
-    public BasicMachineRecipe(RecipeInput input, int progressModifier, RecipeOutput output) {
+    public BasicMachineRecipe(RecipeInput input, float progressModifier, RecipeOutput output) {
         this.inputs = new RecipeInput[]{input};
         this.outputs = new RecipeOutput[]{output};
         this.progressModifier = progressModifier;

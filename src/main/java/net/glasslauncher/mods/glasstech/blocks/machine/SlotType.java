@@ -5,9 +5,15 @@ import java.util.Iterator;
 
 public class SlotType {
     private static final HashMap<String, SlotType> REGISTRY = new HashMap<>();
+
+    public static SlotType register(String name) {
+        return REGISTRY.put(name, new SlotType(name));
+    }
+
     public static SlotType of(String name) {
         return REGISTRY.get(name);
     }
+
     public static Iterator<SlotType> iterator() {
         return REGISTRY.values().iterator();
     }
@@ -16,7 +22,7 @@ public class SlotType {
 
     public final String name;
 
-    public SlotType(String name) {
+    private SlotType(String name) {
         if (REGISTRY.containsKey(name)) {
             throw new IllegalArgumentException("Slot type " + name + " already exists");
         }

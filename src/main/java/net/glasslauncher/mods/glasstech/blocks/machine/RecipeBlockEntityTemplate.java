@@ -70,7 +70,7 @@ public abstract class RecipeBlockEntityTemplate<R extends BasicMachineRecipe> ex
             }
         }
 
-        int recipeTime = maxProgress * recipe.progressModifier;
+        int recipeTime = (int) (maxProgress * recipe.progressModifier);
         if (recipeTime < currentShortestTime) {
             currentShortestTime = recipeTime;
         }
