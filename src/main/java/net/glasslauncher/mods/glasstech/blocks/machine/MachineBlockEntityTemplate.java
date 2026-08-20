@@ -17,6 +17,7 @@ import net.modificationstation.stationapi.api.state.property.Properties;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Random;
 
 public abstract class MachineBlockEntityTemplate extends ConsumerBlockEntityTemplate implements Inventory, DropInventoryOnBreak, GTTooltipInfo {
@@ -48,7 +49,8 @@ public abstract class MachineBlockEntityTemplate extends ConsumerBlockEntityTemp
         }
 
         this.slots = new HashMap<>();
-        for (SlotType slotType : SlotType.values()) {
+        for (Iterator<SlotType> it = SlotType.iterator(); it.hasNext();) {
+            SlotType slotType = it.next();
             this.slots.put(slotType, new int[]{});
         }
     }
