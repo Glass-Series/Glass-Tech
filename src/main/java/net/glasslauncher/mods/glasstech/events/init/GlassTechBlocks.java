@@ -1,6 +1,5 @@
 package net.glasslauncher.mods.glasstech.events.init;
 
-import net.glasslauncher.mods.glasstech.blocks.WireMaterial;
 import net.glasslauncher.mods.glasstech.blocks.*;
 import net.glasslauncher.mods.glasstech.blocks.batbox.BatBoxBlock;
 import net.glasslauncher.mods.glasstech.blocks.batbox.BatBoxBlockEntity;
@@ -51,14 +50,12 @@ import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.modificationstation.stationapi.api.event.block.entity.BlockEntityRegisterEvent;
-import net.modificationstation.stationapi.api.event.mod.InitEvent;
 import net.modificationstation.stationapi.api.event.registry.BlockRegistryEvent;
 import net.modificationstation.stationapi.api.mod.entrypoint.EntrypointManager;
 import net.modificationstation.stationapi.api.template.block.TemplateBlock;
 
 import java.lang.invoke.MethodHandles;
 
-import static net.glasslauncher.mods.glasstech.GlassTech.LOGGER;
 import static net.glasslauncher.mods.glasstech.GlassTech.NAMESPACE;
 import static net.glasslauncher.mods.glasstech.blocks.TemplateCableBlock.PIXEL_SIZE;
 import static net.minecraft.block.Block.*;
@@ -152,11 +149,6 @@ public class GlassTechBlocks {
     public static Block windSailsBlock;
 
     public static Block treeTap;
-
-    @EventListener
-    private static void init(InitEvent event) {
-        LOGGER.info(NAMESPACE.toString());
-    }
 
     @EventListener
     private static void blockInit(BlockRegistryEvent event) {
