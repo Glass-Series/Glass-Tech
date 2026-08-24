@@ -11,8 +11,10 @@ import net.modificationstation.stationapi.api.util.math.Direction;
 import org.jetbrains.annotations.Nullable;
 
 public class ConsumerBlockEntityTemplate extends EnergyConsumerBlockEntityTemplate implements GTTooltipInfo {
-    @Setter @ServerSyncedField
+    @ServerSyncedField
     private int energyCapacity;
+    @Getter @Setter @ServerSyncedField
+    private int originalEnergyCapacity = -1;
     private int maxEnergyInput;
     @Setter
     private int maxInputVoltage;
@@ -59,5 +61,18 @@ public class ConsumerBlockEntityTemplate extends EnergyConsumerBlockEntityTempla
     @Override
     public int getEnergyCapacity() {
         return energyCapacity;
+    }
+
+    public void setEnergyCapacity(int capacity) {
+        energyCapacity = capacity;
+        if (originalEnergyCapacity == -1) {
+            originalEnergyCapacity = capacity;
+        }
+    }
+
+    @Override
+    public void tick() {
+        energyCapacity = originalEnergyCapacity;
+        super.tick();
     }
 }
