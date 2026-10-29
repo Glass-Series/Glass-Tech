@@ -1,27 +1,46 @@
 package net.glasslauncher.mods.glasstech.blocks.machine;
 
+import lombok.Getter;
+import lombok.Setter;
 import net.danygames2014.nyalib.capability.CapabilityHelper;
 import net.danygames2014.nyalib.capability.item.energyhandler.EnergyStorageItemCapability;
 import net.glasslauncher.mods.glasstech.VoltageTier;
+import net.glasslauncher.mods.glasstech.recipe.machine.output.RecipeOutputType;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 
-public abstract class GeneratorWithInventoryBlockEntityTemplate extends GeneratorBlockEntityTemplate implements Inventory {
+import java.util.HashMap;
 
-    protected ItemStack[] slots;
+public abstract class GeneratorWithInventoryBlockEntityTemplate extends GeneratorBlockEntityTemplate implements GTMachineInventory {
+    // Inventory
+    @Getter
+    @Setter
+    public ItemStack[] inventory;
+    @Getter
+    public int inventoryIndex;
+    @Getter @Setter
+    public int[] inputSlots = new int[0];
+    @Getter
+    public final HashMap<RecipeOutputType, int[]> outputs = blankOutputs();
+    @Getter
+    public final HashMap<SlotType, int[]> slots = blankInputs();
+
+    @Override
+    public void increaseInventoryIndex() {
+        inventoryIndex++;
+    }
 
     public GeneratorWithInventoryBlockEntityTemplate(int inventorySize, VoltageTier voltageTier) {
         super(voltageTier);
-        slots = new ItemStack[inventorySize];
+        inventory = new ItemStack[inventorySize];
     }
 
     @Override
     public void writeNbt(NbtCompound tag) {
         super.writeNbt(tag);
-        for (int i = 0; i < slots.length; i++) {
-            ItemStack slot = slots[i];
+        for (int i = 0; i < inventory.length; i++) {
+            ItemStack slot = inventory[i];
             if (slot != null) {
                 NbtCompound item = new NbtCompound();
                 slot.writeNbt(item);
@@ -33,48 +52,11 @@ public abstract class GeneratorWithInventoryBlockEntityTemplate extends Generato
     @Override
     public void readNbt(NbtCompound tag) {
         super.readNbt(tag);
-        for (int i = 0; i < slots.length; i++) {
+        for (int i = 0; i < inventory.length; i++) {
             if (tag.contains("item" + i)) {
-                slots[i] = new ItemStack(tag.getCompound("item" + i));
+                inventory[i] = new ItemStack(tag.getCompound("item" + i));
             }
         }
-    }
-
-    @Override
-    public int size() {
-        return slots.length;
-    }
-
-    @Override
-    public ItemStack getStack(int slot) {
-        return slots[slot];
-    }
-
-    @Override
-    public ItemStack removeStack(int slot, int amount) {
-        ItemStack stack = getStack(slot);
-        if (stack == null) {
-            return null;
-        }
-
-        if (stack.count == amount) {
-            slots[slot] = null;
-            return stack;
-        }
-        stack.count -= amount;
-        stack = stack.copy();
-        stack.count = amount;
-        return stack;
-    }
-
-    @Override
-    public void setStack(int slot, ItemStack stack) {
-        slots[slot] = stack;
-    }
-
-    @Override
-    public int getMaxCountPerStack() {
-        return 64;
     }
 
     @Override
@@ -89,7 +71,7 @@ public abstract class GeneratorWithInventoryBlockEntityTemplate extends Generato
             return;
         }
 
-        for (ItemStack stack : slots) {
+        for (ItemStack stack : inventory) {
             if (stack == null) {
                 continue;
             }

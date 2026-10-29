@@ -34,16 +34,16 @@ public class GeneratorBlockEntity extends GeneratorWithInventoryBlockEntityTempl
         if (world.isRemote) {
             return;
         }
-        if (slots[0] != null && fuelTicks < 1 && energy < getEnergyCapacity()) {
-            int fuelTime = (int) (FuelRegistry.getFuelTime(slots[0]) * fuelEfficiency);
+        if (inventory[0] != null && fuelTicks < 1 && energy < getEnergyCapacity()) {
+            int fuelTime = (int) (FuelRegistry.getFuelTime(inventory[0]) * fuelEfficiency);
             if (fuelTime < 1) {
                 return;
             }
             initialFuelTicks = fuelTime;
             fuelTicks = fuelTime;
-            slots[0].count--;
-            if (slots[0].count < 1) {
-                slots[0] = null;
+            inventory[0].count--;
+            if (inventory[0].count < 1) {
+                inventory[0] = null;
             }
         }
         BlockState state = world.getBlockState(x, y, z);

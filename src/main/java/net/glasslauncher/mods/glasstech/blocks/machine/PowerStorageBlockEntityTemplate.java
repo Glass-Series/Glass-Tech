@@ -6,8 +6,8 @@ import net.danygames2014.nyalib.capability.CapabilityHelper;
 import net.danygames2014.nyalib.capability.item.energyhandler.EnergyStorageItemCapability;
 import net.glasslauncher.mods.glassguis.screen.ServerSyncedField;
 import net.glasslauncher.mods.glasstech.VoltageTier;
+import net.glasslauncher.mods.glasstech.recipe.machine.output.RecipeOutputType;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.world.explosion.Explosion;
@@ -16,7 +16,9 @@ import net.modificationstation.stationapi.api.state.property.Properties;
 import net.modificationstation.stationapi.api.util.math.Direction;
 import org.jetbrains.annotations.Nullable;
 
-public abstract class PowerStorageBlockEntityTemplate extends EnergySourceConsumerBlockEntityTemplate implements Inventory {
+import java.util.HashMap;
+
+public abstract class PowerStorageBlockEntityTemplate extends EnergySourceConsumerBlockEntityTemplate implements GTMachineInventory {
 
     @Setter
     private int maxVoltage;
@@ -27,7 +29,22 @@ public abstract class PowerStorageBlockEntityTemplate extends EnergySourceConsum
     @Getter
     private int amps = 1;
 
-    protected ItemStack[] inventory = new ItemStack[2];
+    // Inventory
+    @Getter @Setter
+    public ItemStack[] inventory = new ItemStack[2];
+    @Getter
+    public int inventoryIndex;
+    @Getter @Setter
+    public int[] inputSlots = new int[0];
+    @Getter
+    public final HashMap<RecipeOutputType, int[]> outputs = blankOutputs();
+    @Getter
+    public final HashMap<SlotType, int[]> slots = blankInputs();
+
+    @Override
+    public void increaseInventoryIndex() {
+        inventoryIndex++;
+    }
 
     public PowerStorageBlockEntityTemplate(VoltageTier voltageTier, int energyCapacity) {
         maxVoltage = voltageTier.maxVoltage;
