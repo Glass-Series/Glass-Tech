@@ -4,8 +4,8 @@ import java.net.URI
 
 plugins {
 	id("maven-publish")
-	id("fabric-loom") version "1.16.2"
-	id("babric-loom-extension") version "1.16.1"
+	id("fabric-loom") version "1.17.20"
+	id("babric-loom-extension") version "1.16.5"
 	id("resourceGen")
 }
 
@@ -13,9 +13,9 @@ plugins {
 java.sourceCompatibility = JavaVersion.VERSION_17
 java.targetCompatibility = JavaVersion.VERSION_17
 
-base.archivesName = project.properties["archives_base_name"] as String
-version = project.properties["mod_version"] as String
-group = project.properties["maven_group"] as String
+base.archivesName = project.property("archives_base_name") as String
+version = project.property("mod_version") as String
+group = project.property("maven_group") as String
 
 sourceSets {
 	main {
@@ -84,8 +84,8 @@ configurations.all {
 
 dependencies {
 	minecraft("com.mojang:minecraft:b1.7.3")
-	mappings("net.glasslauncher:biny:${project.properties["yarn_mappings"]}:v2")
-	modImplementation("net.fabricmc:fabric-loader:${project.properties["loader_version"]}")
+	mappings("net.glasslauncher:biny:${project.property("yarn_mappings")}:v2")
+	modImplementation("net.fabricmc:fabric-loader:${project.property("loader_version")}")
 
 	implementation("org.apache.logging.log4j:log4j-core:2.17.2")
 
@@ -103,36 +103,36 @@ dependencies {
 
 	// StAPI itself.
 	// transitiveImplementation tells babric loom that you want this dependency to be pulled into other mod's development workspaces. Best used ONLY for required dependencies.
-	transitiveImplementation(modImplementation("net.modificationstation:StationAPI:${project.properties["stationapi_version"]}") as Dependency)
+	transitiveImplementation(modImplementation("net.modificationstation:StationAPI:${project.property("stationapi_version")}") as Dependency)
 
-	modImplementation("net.danygames2014:NyaLib:${project.properties["nyalib_version"]}")
+	modImplementation("net.danygames2014:NyaLib:${project.property("nyalib_version")}")
 
-	modImplementation("net.glasslauncher.mods:GlassGUIs:${project.properties["gguis_version"]}") {
+	modImplementation("net.glasslauncher.mods:GlassGUIs:${project.property("gguis_version")}") {
 		isTransitive = false
 	}
 
-	modImplementation("net.danygames2014:UniWrench:${project.properties["uniwrench_version"]}") {
+	modImplementation("net.danygames2014:UniWrench:${project.property("uniwrench_version")}") {
 		isTransitive = false;
 	}
 
 	// Extra mods.
 	// https://github.com/calmilamsy/glass-config-api
-	modImplementation("net.glasslauncher.mods:GlassConfigAPI:${project.properties["gcapi_version"]}")
+	modImplementation("net.glasslauncher.mods:GlassConfigAPI:${project.property("gcapi_version")}")
 	modImplementation("net.glasslauncher.mods:glass-networking:1.0.7")
 	// https://github.com/calmilamsy/modmenu
-	modImplementation("net.danygames2014:modmenu:${project.properties["modmenu_version"]}")
+	modImplementation("net.danygames2014:modmenu:${project.property("modmenu_version")}")
 	// https://github.com/Glass-Series/Always-More-Items
-	modImplementation("net.glasslauncher.mods:AlwaysMoreItems:${project.properties["alwaysmoreitems_version"]}")
-	modRuntimeOnly("net.danygames2014:DebugUtilities:${project.properties["debugutilities_version"]}") {
+	modImplementation("net.glasslauncher.mods:AlwaysMoreItems:${project.property("alwaysmoreitems_version")}")
+	modRuntimeOnly("net.danygames2014:DebugUtilities:${project.property("debugutilities_version")}") {
 		isTransitive = false
 	}
 }
 
 tasks.withType<ProcessResources> {
-	inputs.property("version", project.properties["version"])
+	inputs.property("version", project.property("version"))
 
 	filesMatching("fabric.mod.json") {
-		expand(mapOf("version" to project.properties["version"]))
+		expand(mapOf("version" to project.property("version")))
 	}
 }
 
@@ -152,7 +152,7 @@ java {
 
 tasks.withType<Jar> {
 	from("LICENSE") {
-		rename { "${it}_${project.properties["archivesBaseName"]}" }
+		rename { "${it}_${project.property("archivesBaseName")}" }
 	}
 }
 
@@ -163,8 +163,8 @@ publishing {
 			maven {
 				url = URI("https://maven.glass-launcher.net/releases")
 				credentials {
-					username = "${project.properties["glass_maven_username"]}"
-					password = "${project.properties["glass_maven_password"]}"
+					username = "${project.property("glass_maven_username")}"
+					password = "${project.property("glass_maven_password")}"
 				}
 			}
 		}
@@ -172,7 +172,7 @@ publishing {
 
 	publications {
 		register("mavenJava", MavenPublication::class) {
-			artifactId = project.properties["archives_base_name"] as String
+			artifactId = project.property("archives_base_name") as String
 			from(components["java"])
 		}
 	}
