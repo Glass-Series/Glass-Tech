@@ -152,7 +152,7 @@ java {
 
 tasks.withType<Jar> {
 	from("LICENSE") {
-		rename { "${it}_${project.property("archivesBaseName")}" }
+		rename { "${it}_${project.base.archivesName}" }
 	}
 }
 
@@ -172,7 +172,7 @@ publishing {
 
 	publications {
 		register("mavenJava", MavenPublication::class) {
-			artifactId = project.property("archives_base_name") as String
+			artifactId = project.base.archivesName.get()
 			from(components["java"])
 		}
 	}
