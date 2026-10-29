@@ -32,8 +32,8 @@ public class PumpBlockEntity extends ProgressMachineBlockEntityTemplate implemen
     public void tick() {
         super.tick();
         ItemStack stack = getInput(0);
-        if (stack != null && stack.getItem() instanceof FluidBucket bucket && bucket.getFluid() == null && currentFluid != null && currentFluid.fluid != null && Fluids.BUCKET_SIZE <= currentFluid.amount) {
-            Item fullBucket = bucket.getFullBucketItem(currentFluid.fluid);
+        if (stack != null && stack.getItem() instanceof FluidBucket bucket && bucket.getFluid(stack) == null && currentFluid != null && currentFluid.fluid != null && Fluids.BUCKET_SIZE <= currentFluid.amount) {
+            Item fullBucket = bucket.getFullBucketItem(currentFluid.fluid, stack);
             if (pushOutput(RecipeOutputType.PRIMARY, new ItemStack(fullBucket), false)) {
                 currentFluid.amount -= Fluids.BUCKET_SIZE;
                 stack.count--;

@@ -43,22 +43,22 @@ public class ThermalGeneratorBlockEntity extends GeneratorWithInventoryBlockEnti
         if (world.isRemote) {
             return;
         }
-        if ((currentFluid == null || currentFluid.amount <= maxFluidAmount - 1000) && slots[0] != null && slots[0].getItem() instanceof FluidBucket fluidBucket && (slots[1] == null || (slots[1].getItem() == fluidBucket.getEmptyBucketItem() && slots[1].count < fluidBucket.getEmptyBucketItem().getMaxCount()))) {
+        if ((currentFluid == null || currentFluid.amount <= maxFluidAmount - 1000) && inventory[0] != null && inventory[0].getItem() instanceof FluidBucket fluidBucket && (inventory[1] == null || (inventory[1].getItem() == fluidBucket.getEmptyBucketItem(inventory[1]) && inventory[1].count < fluidBucket.getEmptyBucketItem(inventory[1]).getMaxCount()))) {
             if (currentFluid == null) {
-                currentFluid = new FluidStack(fluidBucket.getFluid(), 1000);
+                currentFluid = new FluidStack(fluidBucket.getFluid(inventory[0]), 1000);
             }
             else {
                 currentFluid.amount += 1000;
             }
-            slots[0].count -= 1;
-            if (slots[0].count < 1) {
-                slots[0] = null;
-            }
-            if (slots[1] == null) {
-                slots[1] = new ItemStack(fluidBucket.getEmptyBucketItem());
+            inventory[0].count -= 1;
+            if (inventory[1] == null) {
+                inventory[1] = new ItemStack(fluidBucket.getEmptyBucketItem(inventory[0]));
             }
             else {
-                slots[1].count++;
+                inventory[1].count++;
+            }
+            if (inventory[0].count < 1) {
+                inventory[0] = null;
             }
         }
         if (currentFluid != null && currentFluid.amount >= 10 && fuelTicks < 1 && energy < getEnergyCapacity()) {

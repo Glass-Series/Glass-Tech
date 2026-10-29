@@ -27,7 +27,7 @@ public class FullBucketSlot extends Slot implements GlassSlot {
 
     @Override
     public boolean canInsert(ItemStack stack) {
-        return stack.getItem() instanceof FluidBucket bucket && bucket.getFluid() != null;
+        return stack.getItem() instanceof FluidBucket bucket && bucket.getFluid(stack) != null;
     }
 
     @Override

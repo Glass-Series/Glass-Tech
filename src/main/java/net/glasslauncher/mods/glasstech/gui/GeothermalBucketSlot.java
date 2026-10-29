@@ -12,6 +12,6 @@ public class GeothermalBucketSlot extends FullBucketSlot {
 
     @Override
     public boolean canInsert(ItemStack stack) {
-        return stack.getItem() instanceof FluidBucket fluidBucket && GeothermalFuelRegistry.getFuelTime(fluidBucket.getFluid()) != 0;
+        return stack.getItem() instanceof FluidBucket fluidBucket && GeothermalFuelRegistry.getFuelTime(fluidBucket.getFluid(stack)) != 0;
     }
 }

@@ -234,7 +234,7 @@ public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComp
 
     @Override
     public void onBreakdownPower(World world, NetworkComponentEntry networkComponentEntry, int voltage, int power) {
-        Vec3i pos = networkComponentEntry.pos();
+        Vec3i pos = networkComponentEntry.pos;
         for (int particle = 0; particle < 4; particle++) {
             ParticleHelper.addParticle(world, "smoke", pos.x + 0.5D + (world.random.nextDouble() - 0.5D), pos.y + 0.5D, pos.z + 0.5D + (world.random.nextDouble() - 0.5D));
         }
