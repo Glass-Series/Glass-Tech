@@ -1,7 +1,11 @@
 package net.glasslauncher.mods.glasstech.blocks;
 
 import net.danygames2014.nyalib.energy.EnergyConductor;
-import net.danygames2014.nyalib.network.*;
+import net.danygames2014.nyalib.energy.template.block.EnergyWireBlockTemplate;
+import net.danygames2014.nyalib.network.NetworkComponentEntry;
+import net.danygames2014.nyalib.network.NetworkManager;
+import net.danygames2014.nyalib.network.NetworkNodeComponent;
+import net.danygames2014.nyalib.network.NetworkType;
 import net.danygames2014.nyalib.network.energy.EnergyNetwork;
 import net.danygames2014.nyalib.particle.ParticleHelper;
 import net.fabricmc.api.EnvType;
@@ -22,18 +26,16 @@ import net.modificationstation.stationapi.api.item.ItemPlacementContext;
 import net.modificationstation.stationapi.api.state.StateManager;
 import net.modificationstation.stationapi.api.state.property.BooleanProperty;
 import net.modificationstation.stationapi.api.state.property.Properties;
-import net.modificationstation.stationapi.api.template.block.TemplateBlock;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.math.Direction;
 
-import javax.annotation.Nullable;
 import java.util.Map;
 import java.util.Random;
 
 import static net.glasslauncher.mods.glasstech.blocks.GTProperties.FOAM;
 import static net.glasslauncher.mods.glasstech.blocks.GTProperties.FOAM_COLOR;
 
-public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComponent, EnergyConductor {
+public class TemplateCableBlock extends EnergyWireBlockTemplate implements NetworkNodeComponent, EnergyConductor {
     public static final float PIXEL_SIZE = 1f / 16;
     // Fucking beta directions
     public static final Map<BooleanProperty, Direction> DIR_PROPS = Map.of(
@@ -91,11 +93,6 @@ public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComp
     }
 
     @Override
-    public NetworkType getNetworkType() {
-        return NetworkType.ENERGY;
-    }
-
-    @Override
     public boolean isFullCube() {
         return false;
     }
@@ -137,15 +134,6 @@ public class TemplateCableBlock extends TemplateBlock implements NetworkNodeComp
             state = state.with(it.getKey(), canConnectTo(world, x, y, z, null, it.getValue()));
         }
         return state;
-    }
-
-    @Override
-    public boolean canConnectTo(World world, int x, int y, int z, @Nullable Network network, Direction dir) {
-        BlockState other = world.getBlockState(x + dir.getOffsetX(), y + dir.getOffsetY(), z + dir.getOffsetZ());
-        if (other.getBlock() instanceof NetworkComponent component) {
-            return component.getNetworkTypes().contains(net.danygames2014.nyalib.network.NetworkType.ENERGY);
-        }
-        return false;
     }
 
     @Override
