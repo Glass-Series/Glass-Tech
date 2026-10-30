@@ -535,7 +535,7 @@ public interface GTMachineInventory extends Inventory, DropInventoryOnBreak, Ite
 
     @Override
     default boolean setItem(ItemStack stack, int slot, @Nullable Direction side) {
-        if (slot < 0 || slot >= getInputIndexes().length || stack.count > getMaxCountPerStack()) {
+        if (slot < 0 || slot >= getInputIndexes().length || (stack != null && stack.count > getMaxCountPerStack())) {
             return false;
         }
         setInput(slot, stack);
