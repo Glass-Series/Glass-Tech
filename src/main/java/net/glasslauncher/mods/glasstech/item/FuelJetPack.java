@@ -49,13 +49,23 @@ public class FuelJetPack extends TemplateArmorItem implements GTJetPackTick, GTE
     }
 
     @Override
-    public float getVelocity() {
+    public float getVerticalAcceleration() {
         return 0.15f;
     }
 
     @Override
-    public float getMaxVelocity() {
+    public float getMaxVerticalVelocity() {
         return 0.5f;
+    }
+
+    @Override
+    public float getHorizontalAcceleration() {
+        return 0.02f;
+    }
+
+    @Override
+    public float getMaxHorizontalVelocity() {
+        return 1;
     }
 
     @SubItemProvider

@@ -35,13 +35,23 @@ public class ElectricJetPack extends PowerArmor implements GTJetPackTick, Custom
     }
 
     @Override
-    public float getVelocity() {
+    public float getVerticalAcceleration() {
         return 0.12f;
     }
 
     @Override
-    public float getMaxVelocity() {
+    public float getMaxVerticalVelocity() {
         return 0.3f;
+    }
+
+    @Override
+    public float getHorizontalAcceleration() {
+        return 0.015f;
+    }
+
+    @Override
+    public float getMaxHorizontalVelocity() {
+        return 0.6f;
     }
 
     @Override

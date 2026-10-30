@@ -49,6 +49,8 @@ accessible method net/minecraft/block/Block dropStack (Lnet/minecraft/world/Worl
 accessible field net/minecraft/item/FoodItem healthRestored I
 
 accessible field net/minecraft/entity/LivingEntity jumping Z
+accessible field net/minecraft/entity/LivingEntity forwardSpeed F
+accessible field net/minecraft/entity/LivingEntity sidewaysSpeed F
 
 accessible field net/minecraft/server/network/ServerPlayNetworkHandler player Lnet/minecraft/entity/player/ServerPlayerEntity;
 
