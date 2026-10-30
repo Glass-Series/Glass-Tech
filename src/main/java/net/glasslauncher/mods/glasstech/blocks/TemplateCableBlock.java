@@ -22,7 +22,6 @@ import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.block.States;
-import net.modificationstation.stationapi.api.item.ItemPlacementContext;
 import net.modificationstation.stationapi.api.state.StateManager;
 import net.modificationstation.stationapi.api.state.property.BooleanProperty;
 import net.modificationstation.stationapi.api.state.property.Properties;
@@ -75,11 +74,6 @@ public class TemplateCableBlock extends EnergyWireBlockTemplate implements Netwo
     }
 
     @Override
-    public BlockState getPlacementState(ItemPlacementContext context) {
-        return updateModel(context.getWorld(), context.getBlockPos().x, context.getBlockPos().y, context.getBlockPos().z);
-    }
-
-    @Override
     public void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(Properties.NORTH);
         builder.add(Properties.SOUTH);
@@ -113,6 +107,7 @@ public class TemplateCableBlock extends EnergyWireBlockTemplate implements Netwo
     public void onPlaced(World world, int x, int y, int z) {
         if (!FurnaceBlock.ignoreBlockRemoval) {
             super.onPlaced(world, x, y, z);
+            world.setBlockStateWithoutNotifyingNeighbors(x, y, z, updateModel(world, x, y, z));
         }
     }
 
