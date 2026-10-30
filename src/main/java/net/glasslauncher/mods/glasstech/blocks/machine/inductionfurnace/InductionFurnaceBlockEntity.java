@@ -14,6 +14,7 @@ import net.glasslauncher.mods.glasstech.recipe.machine.output.RecipeOutputType;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.screen.ScreenHandler;
 import net.modificationstation.stationapi.api.recipe.SmeltingRegistry;
 
 public class InductionFurnaceBlockEntity extends RecipeBlockEntityTemplate<BasicMachineRecipe> implements Inventory {
@@ -43,6 +44,11 @@ public class InductionFurnaceBlockEntity extends RecipeBlockEntityTemplate<Basic
             return true;
         }
         return canCraft;
+    }
+
+    @Override
+    protected ScreenHandler initInventoryFilterHandler() {
+        return new InductionFurnaceScreenHandler(null, this);
     }
 
     @Override

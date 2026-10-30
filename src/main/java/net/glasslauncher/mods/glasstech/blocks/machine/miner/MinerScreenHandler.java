@@ -8,6 +8,10 @@ import net.minecraft.screen.slot.Slot;
 class MinerScreenHandler extends ConsumerScreenHandlerTemplate<MinerBlockEntity> {
     public MinerScreenHandler(PlayerInventory playerInventory, MinerBlockEntity blockEntity) {
         super(playerInventory, blockEntity, true);
+    }
+
+    @Override
+    protected void initSlots() {
         addSlot(new Slot(blockEntity, 0, 56, 17));
         addSlot(new BatterySlot(blockEntity, 1, 56, 53));
     }

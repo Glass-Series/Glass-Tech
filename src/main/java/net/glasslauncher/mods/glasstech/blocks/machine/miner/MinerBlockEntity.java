@@ -15,6 +15,7 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.screen.ScreenHandler;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
@@ -113,6 +114,11 @@ public class MinerBlockEntity extends ProgressMachineBlockEntityTemplate {
             pipeCount -= 64;
         }
         yeetItems(forceEject);
+    }
+
+    @Override
+    protected ScreenHandler initInventoryFilterHandler() {
+        return new MinerScreenHandler(null, this);
     }
 
     @Override

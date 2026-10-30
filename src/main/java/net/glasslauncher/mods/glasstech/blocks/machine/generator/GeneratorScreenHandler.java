@@ -9,7 +9,11 @@ class GeneratorScreenHandler extends GeneratorScreenHandlerTemplate<GeneratorBlo
 
     public GeneratorScreenHandler(PlayerInventory playerInventory, GeneratorBlockEntity generatorBlockEntity) {
         super(playerInventory, generatorBlockEntity, true);
-        addSlot(new FuelSlot(generatorBlockEntity, 0, 80, 58));
-        addSlot(new BatteryChargeSlot(generatorBlockEntity, 1, 80, 22));
+    }
+
+    @Override
+    protected void initSlots() {
+        addSlot(new FuelSlot(blockEntity, 0, 80, 58));
+        addSlot(new BatteryChargeSlot(blockEntity, 1, 80, 22));
     }
 }

@@ -14,4 +14,12 @@ class CannerScreenHandler extends ConsumerScreenHandlerTemplate<CannerBlockEntit
         addSlot(new BigOutputSlot(blockEntity,2, 116, 35));
         addSlot(new BatterySlot(blockEntity, 3, 30, 53));
     }
+
+    @Override
+    protected void initSlots() {
+        addSlot(new Slot(blockEntity, 0, 56, 17));
+        addSlot(new Slot(blockEntity, 1, 56, 53));
+        addSlot(new BigOutputSlot(blockEntity,2, 116, 35));
+        addSlot(new BatterySlot(blockEntity, 3, 30, 53));
+    }
 }

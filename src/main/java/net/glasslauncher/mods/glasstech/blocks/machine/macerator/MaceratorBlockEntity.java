@@ -6,6 +6,7 @@ import net.glasslauncher.mods.glasstech.blocks.machine.SlotLayout;
 import net.glasslauncher.mods.glasstech.recipe.machine.BasicMachineRecipe;
 import net.glasslauncher.mods.glasstech.recipe.machine.MaceratorRecipeRegistry;
 import net.minecraft.item.ItemStack;
+import net.minecraft.screen.ScreenHandler;
 
 public class MaceratorBlockEntity extends RecipeBlockEntityTemplate<BasicMachineRecipe> {
 
@@ -22,5 +23,10 @@ public class MaceratorBlockEntity extends RecipeBlockEntityTemplate<BasicMachine
     @Override
     public BasicMachineRecipe fetchRecipe(ItemStack[] input) {
         return MaceratorRecipeRegistry.INSTANCE.get(input);
+    }
+
+    @Override
+    protected ScreenHandler initInventoryFilterHandler() {
+        return new MaceratorScreenHandler(null, this);
     }
 }

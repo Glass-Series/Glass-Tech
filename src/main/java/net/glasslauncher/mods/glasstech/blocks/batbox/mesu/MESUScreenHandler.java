@@ -8,6 +8,10 @@ import net.minecraft.entity.player.PlayerInventory;
 public class MESUScreenHandler extends EnergySourceConsumerScreenHandlerTemplate<MESUBlockEntity> {
     public MESUScreenHandler(PlayerInventory playerInventory, MESUBlockEntity blockEntity) {
         super(playerInventory, blockEntity, true);
+    }
+
+    @Override
+    protected void initSlots() {
         addSlot(new BatteryChargeSlot(blockEntity, 0, 80, 26));
         addSlot(new BatterySlot(blockEntity, 1, 80, 54));
     }

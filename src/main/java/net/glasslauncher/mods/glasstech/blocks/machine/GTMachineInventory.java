@@ -5,19 +5,36 @@ import net.danygames2014.nyalib.item.block.ItemHandler;
 import net.glasslauncher.mods.glasstech.recipe.machine.output.RecipeOutputType;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.screen.ScreenHandler;
+import net.minecraft.screen.slot.Slot;
 import net.modificationstation.stationapi.api.util.math.Direction;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.stream.IntStream;
 
+// Pray for those who have to look at this bullshit inventory class, cause I'm sure as hell am at my breaking point, and I'm the one who made the fucking thing
 public interface GTMachineInventory extends Inventory, DropInventoryOnBreak, ItemHandler {
+
+    // Copy-paste minimal setup for implementing class.
+//    @Getter @Setter
+//    public ItemStack[] inventory = new ItemStack[0];
+//    @Getter
+//    public int inventoryIndex;
+//    @Getter @Setter
+//    public int[] inputSlots = new int[0];
+//    @Getter
+//    public final HashMap<RecipeOutputType, int[]> outputs = blankOutputs();
+//    @Getter
+//    public final HashMap<SlotType, int[]> slots = blankInputs();
+//
+//    @Override
+//    public void increaseInventoryIndex() {
+//        inventoryIndex++;
+//    }
+
     // Getters
-
-
     ItemStack[] getInventory();
     void setInventory(ItemStack[] inventory);
     int getInventoryIndex();
@@ -26,6 +43,7 @@ public interface GTMachineInventory extends Inventory, DropInventoryOnBreak, Ite
     void setInputSlots(int[] inputs);
     HashMap<RecipeOutputType, int[]> getOutputs();
     HashMap<SlotType, int[]> getSlots();
+    ScreenHandler getInventoryFilterHandler();
 
     // Generic Slot
 
@@ -437,33 +455,50 @@ public interface GTMachineInventory extends Inventory, DropInventoryOnBreak, Ite
             return null;
         }
         ItemStack stack = getOutput(RecipeOutputType.PRIMARY, slot);
+        Slot slotInstance = getInventoryFilterHandler() != null ? getInventoryFilterHandler().getSlot(getOutputIndexes(RecipeOutputType.PRIMARY)[slot]) : null;
+
+        if (slotInstance != null) {
+            return slotInstance.takeStack(amount); // Slot takes precedence
+        }
+
         if (stack == null) {
             return null;
         }
+
         return removeStack(slot, amount);
     }
 
     @Override
     default ItemStack insertItem(ItemStack stack, int slot, @Nullable Direction side) {
-        if (slot < 0 || slot >= getInventory().length) {
+        if (slot < 0 || slot >= getInputIndexes().length) {
             return stack;
         }
-        if (stack == null || stack.count <= 0 || Arrays.binarySearch(getInputIndexes(), slot) != -1) {
+        if (stack == null || stack.count <= 0) {
             return null;
         }
-        ItemStack current = getStack(slot);
-        int maxStack = Math.min(stack.getMaxCount(), getMaxCountPerStack());
+
+        Slot slotInstance = getInventoryFilterHandler() != null ? getInventoryFilterHandler().getSlot(getInputIndex(slot)) : null;
+        if (slotInstance != null && !slotInstance.canInsert(stack)) {
+            return stack; // Slot said no, now scram
+        }
+
+        ItemStack current = getInput(slot);
+        int maxStack = Math.min(Math.min(stack.getMaxCount(), getMaxCountPerStack()), stack.count);
         if (current == null) {
+            if (stack.count <= getMaxCountPerStack()) {
+                setInput(slot, stack);
+                return null;
+            }
             var newStack = stack.copy();
             newStack.count = maxStack;
             setInput(slot, newStack);
             stack.count -= maxStack;
             return stack;
         }
-        if (!current.isOf(stack.getItem())) {
+        if (!current.isItemEqual(stack)) {
             return stack;
         }
-        int space = maxStack - current.count;
+        int space = Math.min(current.getMaxCount(), getMaxCountPerStack()) - current.count;
         if (space <= 0) {
             return stack;
         }
@@ -509,12 +544,12 @@ public interface GTMachineInventory extends Inventory, DropInventoryOnBreak, Ite
 
     @Override
     default int getItemSlots(@Nullable Direction side) {
-        return getSlots().values().stream().map(e -> e.length).reduce(Integer::sum).orElse(0);
+        return getInventory().length;
     }
 
     @Override
     default ItemStack[] getInventory(@Nullable Direction side) {
-        return getSlots().values().stream().flatMap(e -> IntStream.of(e).mapToObj(this::getStack)).toArray(ItemStack[]::new);
+        return getInventory();
     }
 
     default HashMap<SlotType, int[]> blankInputs() {

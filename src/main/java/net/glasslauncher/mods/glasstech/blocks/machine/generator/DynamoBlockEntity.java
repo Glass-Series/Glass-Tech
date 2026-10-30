@@ -5,6 +5,7 @@ import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.glasslauncher.mods.glasstech.blocks.machine.GeneratorWithInventoryBlockEntityTemplate;
 import net.minecraft.block.FurnaceBlock;
 import net.minecraft.inventory.Inventory;
+import net.minecraft.screen.ScreenHandler;
 import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.state.property.Properties;
 import net.modificationstation.stationapi.api.util.math.Direction;
@@ -53,5 +54,10 @@ public class DynamoBlockEntity extends GeneratorWithInventoryBlockEntityTemplate
     @Override
     public int getGeneratingCurrent() {
         return generating;
+    }
+
+    @Override
+    public ScreenHandler getInventoryFilterHandler() {
+        return new DynamoScreenHandler(null, this);
     }
 }

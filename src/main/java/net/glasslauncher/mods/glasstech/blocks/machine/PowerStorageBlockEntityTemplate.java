@@ -31,13 +31,15 @@ public abstract class PowerStorageBlockEntityTemplate extends EnergySourceConsum
 
     // Inventory
     @Getter @Setter
-    public ItemStack[] inventory = new ItemStack[2];
+    public ItemStack[] inventory = new ItemStack[0];
     @Getter
     public int inventoryIndex;
     @Getter @Setter
     public int[] inputSlots = new int[0];
     @Getter
-    public final HashMap<RecipeOutputType, int[]> outputs = blankOutputs();
+    public final HashMap<RecipeOutputType, int[]> outputs = new HashMap<>() {{
+        put(RecipeOutputType.PRIMARY, new int[] {0, 1}); /// I need to add a proper way for doing this
+    }};
     @Getter
     public final HashMap<SlotType, int[]> slots = blankInputs();
 
@@ -50,6 +52,8 @@ public abstract class PowerStorageBlockEntityTemplate extends EnergySourceConsum
         maxVoltage = voltageTier.maxVoltage;
         capacity = energyCapacity;
         setAmps(amps);
+        addInput();
+        addInput();
     }
 
     public void setAmps(int amps) {
@@ -111,61 +115,6 @@ public abstract class PowerStorageBlockEntityTemplate extends EnergySourceConsum
         Explosion yesRicoKaboom = new Explosion(world, null, x, y, z, 5F);
         yesRicoKaboom.playExplosionSound(true);
         yesRicoKaboom.explode();
-    }
-
-    // Inventory Interface
-    @Override
-    public int size() {
-        return inventory.length;
-    }
-
-    @Override
-    public ItemStack getStack(int slot) {
-        if (slot < 0 || slot >= inventory.length) {
-            return null;
-        }
-
-        return inventory[slot];
-    }
-
-    @Override
-    public ItemStack removeStack(int slot, int amount) {
-        if (slot < 0 || slot >= inventory.length) {
-            return null;
-        }
-
-        ItemStack stack = null;
-
-        if (this.inventory[slot] != null) {
-            if (this.inventory[slot].count <= amount) {
-                stack = this.inventory[slot];
-                this.inventory[slot] = null;
-            } else {
-                stack = this.inventory[slot].split(amount);
-                if (this.inventory[slot].count == 0) {
-                    this.inventory[slot] = null;
-                }
-            }
-        }
-
-        return stack;
-    }
-
-    @Override
-    public void setStack(int slot, ItemStack stack) {
-        if (slot < 0 || slot >= inventory.length) {
-            return;
-        }
-
-        this.inventory[slot] = stack;
-        if (stack != null && stack.count > this.getMaxCountPerStack()) {
-            stack.count = this.getMaxCountPerStack();
-        }
-    }
-
-    @Override
-    public int getMaxCountPerStack() {
-        return 64;
     }
 
     @Override

@@ -14,6 +14,7 @@ import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtInt;
+import net.minecraft.screen.ScreenHandler;
 import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.state.property.Properties;
 import net.modificationstation.stationapi.api.util.math.Direction;
@@ -208,5 +209,10 @@ public class ThermalGeneratorBlockEntity extends GeneratorWithInventoryBlockEnti
     @Override
     public boolean canConnectFluid(Direction direction) {
         return true;
+    }
+
+    @Override
+    public ScreenHandler getInventoryFilterHandler() {
+        return new ThermalGeneratorScreenHandler(null, this);
     }
 }

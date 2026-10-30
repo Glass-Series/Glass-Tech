@@ -7,6 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.screen.ScreenHandler;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
@@ -164,6 +165,11 @@ public class IlluminatorBlock extends MachineBlockTemplate {
         public IlluminatorBlockEntity() {
             super(VoltageTier.LV, 1, 32);
             inventory = new ItemStack[0];
+        }
+
+        @Override
+        protected ScreenHandler initInventoryFilterHandler() {
+            return null;
         }
 
         @Override

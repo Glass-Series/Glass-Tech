@@ -16,9 +16,13 @@ public class IronFurnaceScreenHandler extends ScreenHandler implements AutoSynci
     public IronFurnaceScreenHandler(PlayerInventory playerInventory, IronFurnaceBlockEntity ironFurnaceBlockEntity) {
         super();
         this.ironFurnaceBlockEntity = ironFurnaceBlockEntity;
+        initSlots();
         if (playerInventory != null) {
             glassguis_setupPlayerInventory(8, 167, playerInventory);
         }
+    }
+
+    protected void initSlots() {
         addSlot(new Slot(ironFurnaceBlockEntity, 0, 56, 17));
         addSlot(new FuelSlot(ironFurnaceBlockEntity, 1, 56, 53));
         addSlot(new BigOutputSlot(ironFurnaceBlockEntity, 2, 116, 35));

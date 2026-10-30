@@ -9,6 +9,7 @@ import net.glasslauncher.mods.glasstech.recipe.machine.input.RecipeInput;
 import net.glasslauncher.mods.glasstech.recipe.machine.output.ChanceRecipeOutput;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
+import net.minecraft.screen.ScreenHandler;
 
 import java.util.List;
 
@@ -43,5 +44,10 @@ public class RecyclerBlockEntity extends RecipeBlockEntityTemplate<BasicMachineR
     @Override
     public BasicMachineRecipe fetchRecipe(ItemStack[] input) {
         return input[0] != null ? RECIPE : null;
+    }
+
+    @Override
+    protected ScreenHandler initInventoryFilterHandler() {
+        return new RecyclerScreenHandler(null, this);
     }
 }

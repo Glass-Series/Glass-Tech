@@ -8,6 +8,10 @@ class SolarGeneratorScreenHandler extends GeneratorScreenHandlerTemplate<SolarGe
 
     public SolarGeneratorScreenHandler(PlayerInventory playerInventory, SolarGeneratorBlockEntity solarGeneratorBlockEntity) {
         super(playerInventory, solarGeneratorBlockEntity, true);
-        addSlot(new BatteryChargeSlot(solarGeneratorBlockEntity, 0, 80, 22));
+    }
+
+    @Override
+    protected void initSlots() {
+        addSlot(new BatteryChargeSlot(blockEntity, 0, 80, 22));
     }
 }

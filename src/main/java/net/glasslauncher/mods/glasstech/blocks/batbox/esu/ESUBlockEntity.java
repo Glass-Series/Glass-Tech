@@ -2,6 +2,7 @@ package net.glasslauncher.mods.glasstech.blocks.batbox.esu;
 
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.glasslauncher.mods.glasstech.blocks.machine.PowerStorageBlockEntityTemplate;
+import net.minecraft.screen.ScreenHandler;
 
 public class ESUBlockEntity extends PowerStorageBlockEntityTemplate {
 
@@ -12,5 +13,10 @@ public class ESUBlockEntity extends PowerStorageBlockEntityTemplate {
     @Override
     public String getName() {
         return "ESU";
+    }
+
+    @Override
+    public ScreenHandler getInventoryFilterHandler() {
+        return new ESUScreenHandler(null, this);
     }
 }

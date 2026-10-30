@@ -7,6 +7,10 @@ import net.minecraft.entity.player.PlayerInventory;
 class ExtractorScreenHandler extends ConsumerScreenHandlerTemplate<ExtractorBlockEntity> {
     public ExtractorScreenHandler(PlayerInventory playerInventory, ExtractorBlockEntity blockEntity) {
         super(playerInventory, blockEntity, true);
+    }
+
+    @Override
+    protected void initSlots() {
         SlotLayout.createBasic(this, blockEntity);
     }
 }

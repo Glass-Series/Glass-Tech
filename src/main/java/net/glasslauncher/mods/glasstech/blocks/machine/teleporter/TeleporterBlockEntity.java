@@ -7,6 +7,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.screen.ScreenHandler;
 import net.minecraft.util.math.Box;
 
 import java.util.ArrayList;
@@ -28,6 +29,11 @@ public class TeleporterBlockEntity extends MachineBlockEntityTemplate {
     @Override
     public String getName() {
         return "Teleporter";
+    }
+
+    @Override
+    protected ScreenHandler initInventoryFilterHandler() {
+        return null;
     }
 
     @Override

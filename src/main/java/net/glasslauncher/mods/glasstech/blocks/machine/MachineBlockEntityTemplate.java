@@ -12,6 +12,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
+import net.minecraft.screen.ScreenHandler;
 import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.state.property.Properties;
 
@@ -40,6 +41,10 @@ public abstract class MachineBlockEntityTemplate extends ConsumerBlockEntityTemp
     public final HashMap<RecipeOutputType, int[]>outputs = blankOutputs();
     @Getter
     public final HashMap<SlotType, int[]> slots = blankInputs();
+    @Getter
+    public final ScreenHandler inventoryFilterHandler = initInventoryFilterHandler();
+
+    protected abstract ScreenHandler initInventoryFilterHandler();
 
     @Override
     public void increaseInventoryIndex() {

@@ -11,19 +11,22 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerListener;
 
-public class ConsumerScreenHandlerTemplate<T extends ConsumerBlockEntityTemplate> extends ScreenHandler implements AutoSyncingScreenHandler {
-    private final PlayerInventory playerInventory;
-    private final T blockEntity;
+public abstract class ConsumerScreenHandlerTemplate<T extends ConsumerBlockEntityTemplate> extends ScreenHandler implements AutoSyncingScreenHandler {
+    protected final PlayerInventory playerInventory;
+    protected final T blockEntity;
 
     private int cachedEnergy = 0;
 
     public ConsumerScreenHandlerTemplate(PlayerInventory playerInventory, T blockEntity, boolean hasPlayerInventory) {
         this.playerInventory = playerInventory;
         this.blockEntity = blockEntity;
+        initSlots();
         if (hasPlayerInventory && playerInventory != null) {
             glassguis_setupPlayerInventory(8, 167, playerInventory);
         }
     }
+
+    protected abstract void initSlots();
 
     @Override
     public boolean canUse(PlayerEntity player) {

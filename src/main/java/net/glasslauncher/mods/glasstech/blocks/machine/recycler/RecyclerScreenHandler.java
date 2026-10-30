@@ -7,6 +7,10 @@ import net.minecraft.entity.player.PlayerInventory;
 class RecyclerScreenHandler extends ConsumerScreenHandlerTemplate<RecyclerBlockEntity> {
     public RecyclerScreenHandler(PlayerInventory playerInventory, RecyclerBlockEntity blockEntity) {
         super(playerInventory, blockEntity, true);
+    }
+
+    @Override
+    protected void initSlots() {
         SlotLayout.createBasic(this, blockEntity);
     }
 }

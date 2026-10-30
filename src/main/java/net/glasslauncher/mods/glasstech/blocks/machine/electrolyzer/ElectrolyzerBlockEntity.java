@@ -8,6 +8,7 @@ import net.glasslauncher.mods.glasstech.recipe.machine.ElectrolyzerMachineRecipe
 import net.glasslauncher.mods.glasstech.recipe.machine.ElectrolyzerRecipeRegistry;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.screen.ScreenHandler;
 import net.modificationstation.stationapi.api.util.math.Direction;
 
 public class ElectrolyzerBlockEntity extends RecipeBlockEntityTemplate<ElectrolyzerMachineRecipe> {
@@ -67,5 +68,10 @@ public class ElectrolyzerBlockEntity extends RecipeBlockEntityTemplate<Electroly
     @Override
     public ElectrolyzerMachineRecipe fetchRecipe(ItemStack[] input) {
         return ElectrolyzerRecipeRegistry.INSTANCE.get(input);
+    }
+
+    @Override
+    protected ScreenHandler initInventoryFilterHandler() {
+        return new ElectrolyzerScreenHandler(null, this);
     }
 }

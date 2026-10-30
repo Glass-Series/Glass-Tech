@@ -7,6 +7,10 @@ import net.minecraft.entity.player.PlayerInventory;
 class MassFabricatorScreenHandler extends ConsumerScreenHandlerTemplate<MassFabricatorBlockEntity> {
     public MassFabricatorScreenHandler(PlayerInventory playerInventory, MassFabricatorBlockEntity blockEntity) {
         super(playerInventory, blockEntity, true);
+    }
+
+    @Override
+    protected void initSlots() {
         SlotLayout.createBasic(this, blockEntity);
     }
 }

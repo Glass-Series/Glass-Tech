@@ -11,6 +11,7 @@ import net.glasslauncher.mods.glasstech.recipe.machine.input.RecipeInput;
 import net.glasslauncher.mods.glasstech.recipe.machine.output.RecipeOutput;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.screen.ScreenHandler;
 import net.modificationstation.stationapi.api.recipe.SmeltingRegistry;
 
 public class ElectricFurnaceBlockEntity extends RecipeBlockEntityTemplate<BasicMachineRecipe> implements Inventory {
@@ -38,5 +39,10 @@ public class ElectricFurnaceBlockEntity extends RecipeBlockEntityTemplate<BasicM
         }
 
         return CACHE.computeIfAbsent(input[0].itemId, k -> new BasicMachineRecipe(new RecipeInput[]{new IdRecipeInput(k)}, new RecipeOutput[]{new RecipeOutput(output)}));
+    }
+
+    @Override
+    protected ScreenHandler initInventoryFilterHandler() {
+        return new ElectricFurnaceScreenHandler(null, this);
     }
 }

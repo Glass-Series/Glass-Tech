@@ -9,6 +9,7 @@ import net.glasslauncher.mods.glasstech.recipe.machine.output.RecipeOutputType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.screen.ScreenHandler;
 import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.util.math.Direction;
 import org.jetbrains.annotations.Nullable;
@@ -26,6 +27,11 @@ public class PumpBlockEntity extends ProgressMachineBlockEntityTemplate implemen
     @Override
     public String getName() {
         return "Pump";
+    }
+
+    @Override
+    protected ScreenHandler initInventoryFilterHandler() {
+        return new PumpScreenHandler(null, this);
     }
 
     @Override

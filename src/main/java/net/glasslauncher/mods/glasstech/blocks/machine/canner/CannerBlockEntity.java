@@ -14,6 +14,7 @@ import net.glasslauncher.mods.glasstech.recipe.machine.input.StackRecipeInput;
 import net.glasslauncher.mods.glasstech.recipe.machine.output.RecipeOutput;
 import net.glasslauncher.mods.glasstech.recipe.machine.output.RecipeOutputType;
 import net.minecraft.item.ItemStack;
+import net.minecraft.screen.ScreenHandler;
 
 public class CannerBlockEntity extends RecipeBlockEntityTemplate<BasicMachineRecipe> {
 
@@ -38,5 +39,10 @@ public class CannerBlockEntity extends RecipeBlockEntityTemplate<BasicMachineRec
             return new CannerRecipes.CannerRecipe(new RecipeInput[]{new StackRecipeInput(input[0]), new ItemRecipeInput(input[1].getItem())}, new RecipeOutput[]{new RecipeOutput(output)});
         }
         return CannerRecipeRegistry.INSTANCE.get(input);
+    }
+
+    @Override
+    protected ScreenHandler initInventoryFilterHandler() {
+        return new CannerScreenHandler(null, this);
     }
 }

@@ -9,6 +9,7 @@ import net.minecraft.block.FurnaceBlock;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtInt;
+import net.minecraft.screen.ScreenHandler;
 import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.recipe.FuelRegistry;
 import net.modificationstation.stationapi.api.state.property.Properties;
@@ -90,5 +91,10 @@ public class GeneratorBlockEntity extends GeneratorWithInventoryBlockEntityTempl
     @Override
     public int getGeneratingCurrent() {
         return fuelTicks > 1 ? generationAmount : 0;
+    }
+
+    @Override
+    public ScreenHandler getInventoryFilterHandler() {
+        return new GeneratorScreenHandler(null, this);
     }
 }

@@ -6,6 +6,7 @@ import net.glasslauncher.mods.glasstech.blocks.machine.SlotLayout;
 import net.glasslauncher.mods.glasstech.recipe.machine.BasicMachineRecipe;
 import net.glasslauncher.mods.glasstech.recipe.machine.CompressorRecipeRegistry;
 import net.minecraft.item.ItemStack;
+import net.minecraft.screen.ScreenHandler;
 
 public class CompressorBlockEntity extends RecipeBlockEntityTemplate<BasicMachineRecipe> {
 
@@ -22,5 +23,10 @@ public class CompressorBlockEntity extends RecipeBlockEntityTemplate<BasicMachin
     @Override
     public BasicMachineRecipe fetchRecipe(ItemStack[] input) {
         return CompressorRecipeRegistry.INSTANCE.get(input);
+    }
+
+    @Override
+    protected ScreenHandler initInventoryFilterHandler() {
+        return new CompressorScreenHandler(null, this);
     }
 }

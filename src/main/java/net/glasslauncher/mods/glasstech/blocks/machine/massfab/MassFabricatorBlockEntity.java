@@ -9,6 +9,7 @@ import net.glasslauncher.mods.glasstech.item.GTMassAccelerant;
 import net.glasslauncher.mods.glasstech.recipe.machine.output.RecipeOutputType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.screen.ScreenHandler;
 
 public class MassFabricatorBlockEntity extends MachineBlockEntityTemplate {
     @Getter
@@ -26,6 +27,11 @@ public class MassFabricatorBlockEntity extends MachineBlockEntityTemplate {
     @Override
     public String getName() {
         return "Mass Fabricator";
+    }
+
+    @Override
+    protected ScreenHandler initInventoryFilterHandler() {
+        return new MassFabricatorScreenHandler(null, this);
     }
 
     @Override

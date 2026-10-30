@@ -8,6 +8,10 @@ class ElectricFurnaceScreenHandler extends ConsumerScreenHandlerTemplate<Electri
 
     public ElectricFurnaceScreenHandler(PlayerInventory playerInventory, ElectricFurnaceBlockEntity blockEntity) {
         super(playerInventory, blockEntity, true);
+    }
+
+    @Override
+    protected void initSlots() {
         SlotLayout.createBasic(this, blockEntity);
     }
 }
