@@ -179,9 +179,7 @@ public class IlluminatorBlock extends MachineBlockTemplate {
                 int powerSipped = removeEnergy(1);
                 powerTime = powerSipped * 1200; // 1 minute
             }
-            if (powerTime > 0) {
-                lit = true;
-            }
+            lit = powerTime > 0;
         }
 
         @Override
