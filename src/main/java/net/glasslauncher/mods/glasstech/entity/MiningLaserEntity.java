@@ -87,7 +87,7 @@ public class MiningLaserEntity extends Entity implements StationSpawnDataProvide
             return;
         }
         Block block = world.getBlockState(result.blockX, result.blockY, result.blockZ).getBlock();
-        if (block.material.isHandHarvestable() || Item.IRON_PICKAXE.isSuitableFor(block) || Item.IRON_SHOVEL.isSuitableFor(block) || Item.IRON_AXE.isSuitableFor(block) || Item.IRON_HOE.isSuitableFor(block) || Item.SHEARS.isSuitableFor(block)) {
+        if (block.getHardness() >= 0 && (block.material.isHandHarvestable() || Item.IRON_PICKAXE.isSuitableFor(block) || Item.IRON_SHOVEL.isSuitableFor(block) || Item.IRON_AXE.isSuitableFor(block) || Item.IRON_HOE.isSuitableFor(block) || Item.SHEARS.isSuitableFor(block))) {
             block.dropStacks(world, result.blockX, result.blockY, result.blockZ, world.getBlockMeta(result.blockX, result.blockY, result.blockZ));
             WorldHelper.breakBlockWithParticles(world, result.blockX, result.blockY, result.blockZ, block.id);
         }
