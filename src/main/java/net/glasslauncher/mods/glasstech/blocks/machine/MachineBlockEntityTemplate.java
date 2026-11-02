@@ -103,7 +103,7 @@ public abstract class MachineBlockEntityTemplate extends ConsumerBlockEntityTemp
             if (singleUsePowerCapability != null) {
                 int powerProvided = singleUsePowerCapability.getPowerProvided();
                 if (powerProvided < 1) {
-                    return;
+                    continue;
                 }
 
                 if (energy + powerProvided <= getEnergyCapacity()) {
@@ -114,7 +114,7 @@ public abstract class MachineBlockEntityTemplate extends ConsumerBlockEntityTemp
                 if (fuelStack.count <= 0) {
                     setSlot(SlotType.FUEL, i, null);
                 }
-                return;
+                continue;
             }
 
             // discharging item
