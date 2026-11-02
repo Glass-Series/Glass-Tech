@@ -69,9 +69,9 @@ public class TeleporterBlockEntity extends MachineBlockEntityTemplate {
             }
             entity.setPosition(targetX + 0.5, targetY + 1 + entity.standingEyeHeight, targetZ + 0.5);
             // Stops the entity from visually shmoving at mach 7 towards where they teleported
-            entity.lastTickX = targetX;
-            entity.lastTickY = targetY;
-            entity.lastTickZ = targetZ;
+            entity.lastTickX = targetX + 0.5;
+            entity.lastTickY = targetY + 1 + entity.standingEyeHeight;
+            entity.lastTickZ = targetZ + 0.5;
         }
 
         setEnergy(0);
