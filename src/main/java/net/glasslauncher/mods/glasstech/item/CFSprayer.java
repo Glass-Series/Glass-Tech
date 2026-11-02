@@ -23,6 +23,7 @@ public class CFSprayer extends TemplateItem {
     public CFSprayer(Identifier identifier) {
         super(identifier);
         setMaxDamage(32);
+        setMaxCount(1);
     }
 
     @Override
