@@ -9,15 +9,11 @@ import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NbtCompound;
 import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.template.item.TemplateItem;
 import net.modificationstation.stationapi.api.util.Identifier;
+import net.modificationstation.stationapi.impl.item.StationNBTSetter;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -101,23 +97,14 @@ public class ScrapBox extends TemplateItem {
             }
         }
 
+        ItemStack itemStack = DROPS.get(i).stack.copy();
         // This is a workaround cause bald stapi man decided to not deep copy nbt on item copy
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        DataOutputStream dataOutputStream = new DataOutputStream(outputStream);
-        NbtCompound nbtToCopy = new NbtCompound();
-        DROPS.get(i).stack.writeNbt(nbtToCopy);
-        nbtToCopy.write(dataOutputStream);
-        dataOutputStream.flush();
-        ByteArrayInputStream inputStream = new ByteArrayInputStream(outputStream.toByteArray());
-        NbtCompound compound = new NbtCompound();
-        compound.read(new DataInputStream(inputStream));
+        StationNBTSetter.cast(itemStack).setStationNbt(itemStack.getStationNbt().copy());
 
-        ItemStack itemStack = new ItemStack(compound);
-
-        float var6 = 0.7F;
-        double randomX = world.random.nextFloat() * var6 * 0.5;
-        double randomY = world.random.nextFloat() * var6 * 0.5;
-        double randomZ = world.random.nextFloat() * var6 * 0.5;
+        float spread = 0.7F;
+        double randomX = world.random.nextFloat() * spread * 0.5;
+        double randomY = world.random.nextFloat() * spread * 0.5;
+        double randomZ = world.random.nextFloat() * spread * 0.5;
         ItemEntity itemEntity = new ItemEntity(world, user.x + randomX, user.y + randomY, user.z + randomZ, itemStack);
         world.spawnEntity(itemEntity);
 
