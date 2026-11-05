@@ -1,5 +1,6 @@
 package net.glasslauncher.mods.glasstech.item;
 
+import net.danygames2014.uniwrench.util.HotbarTooltipHelper;
 import net.glasslauncher.mods.glasstech.blocks.GTDynamiteBlock;
 import net.glasslauncher.mods.glasstech.events.init.GlassTechBlocks;
 import net.glasslauncher.mods.glasstech.util.NbtHelper;
@@ -9,7 +10,6 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.modificationstation.stationapi.api.block.States;
 import net.modificationstation.stationapi.api.client.item.CustomTooltipProvider;
 import net.modificationstation.stationapi.api.template.item.TemplateItem;
 import net.modificationstation.stationapi.api.util.Formatting;
@@ -60,13 +60,14 @@ public class DynamiteRemote extends TemplateItem implements CustomTooltipProvide
             return false;
         }
 
-        int meta = world.getBlockMeta(x, y, z);
-
         if (user.isSneaking() && targets.contains(target)) {
             targets.remove(target);
             setTargets(stack, targets);
-            world.setBlockMeta(x, y, z, meta & ~(1 << 3));
             user.sendMessage("Removed target: (x:" + target.getX() + ", y:" + target.getY() + ", z:" + target.getZ() + ")");
+        }
+        else if (targets.contains(target)) {
+            HotbarTooltipHelper.setTooltip("Already targeted", 40);
+            return true;
         }
         else {
             if (targets.size() >= MAX_TARGETS) {
@@ -75,7 +76,6 @@ public class DynamiteRemote extends TemplateItem implements CustomTooltipProvide
             }
             targets.add(target);
             setTargets(stack, targets);
-            world.setBlockMeta(x, y, z, meta | (1 << 3));
             user.sendMessage("Added target: (x:" + target.getX() + ", y:" + target.getY() + ", z:" + target.getZ() + ")");
         }
 
@@ -87,7 +87,7 @@ public class DynamiteRemote extends TemplateItem implements CustomTooltipProvide
         List<BlockPos> actualTargets = new ArrayList<>();
         for (BlockPos pos : getTargets(stack)) {
             if (world.getBlockState(pos).isOf(GlassTechBlocks.dynamiteBlock)) {
-                world.setBlockState(pos, States.AIR.get());
+                world.setBlock(pos.x, pos.y, pos.z, 0);
                 actualTargets.add(pos);
             }
         }
