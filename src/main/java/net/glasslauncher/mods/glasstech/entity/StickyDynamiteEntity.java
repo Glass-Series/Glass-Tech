@@ -67,7 +67,6 @@ public class StickyDynamiteEntity extends Entity implements StationSpawnDataProv
     public void tick() {
         super.tick();
 
-        setPosition(x + velocityX, y + velocityY, z + velocityZ);
         if (isSubmergedInWater()) {
             world.playSound(this, "random.fizz", 0.2f, 1.0f);
             explode = false;
@@ -81,6 +80,11 @@ public class StickyDynamiteEntity extends Entity implements StationSpawnDataProv
             return;
         }
 
+        if (world.isRemote) {
+            return;
+        }
+
+        setPosition(x + velocityX, y + velocityY, z + velocityZ);
         if (beenStuck && world.getBlockId(stuckX, stuckY, stuckZ) != 0 && getDistance(stuckX + 0.5, stuckY + 0.5, stuckZ + 0.5) < 2) {
             return;
         }
