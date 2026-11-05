@@ -28,6 +28,9 @@ public abstract class EnergySourceConsumerBlockEntityTemplate extends BlockEntit
 
     @Override
     public void tick() {
+        if (world.isRemote) {
+            return;
+        }
         // We are using a push system, so the machine is responsible for sending the energy
 
         // Reset the energy counters
@@ -60,38 +63,26 @@ public abstract class EnergySourceConsumerBlockEntityTemplate extends BlockEntit
                 extracted += usedPower;
             }
         }
-
-        // Remove queued energy nets
-        for (EnergyNetwork energyNet : energyNetRemoveQueue) {
-            energyNets.remove(energyNet);
-        }
-        energyNetRemoveQueue.clear();
-
-        // Add queued energy nets
-        for (ObjectObjectMutablePair<EnergyNetwork, Direction> entry : energyNetAddQueue) {
-            energyNets.put(entry.left(), entry.right());
-        }
-        energyNetAddQueue.clear();
     }
 
     public void addedToNet(World world, int x, int y, int z, Network network) {
         if (network instanceof EnergyNetwork energyNet) {
             if (!energyNets.containsKey(energyNet)) {
-                energyNetAddQueue.add(new ObjectObjectMutablePair<>(energyNet, getNetSide(x, y, z, network)));
+                energyNets.put(energyNet, getNetSide(x, y, z, network));
             }
         }
     }
 
     public void removedFromNet(World world, int x, int y, int z, Network network) {
         if (network instanceof EnergyNetwork energyNet) {
-            energyNetRemoveQueue.add(energyNet);
+            energyNets.remove(energyNet);
         }
     }
 
     public void update(World world, int x, int y, int z, Network network) {
         if (network instanceof EnergyNetwork energyNet) {
             if (!energyNets.containsKey(energyNet)) {
-                energyNetAddQueue.add(new ObjectObjectMutablePair<>(energyNet, getNetSide(x, y, z, network)));
+                energyNets.put(energyNet, getNetSide(x, y, z, network));
             }
         }
     }
