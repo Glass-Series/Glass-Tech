@@ -83,14 +83,14 @@ public class CFSprayer extends TemplateItem {
                         world.setBlock(placingX, placingY, placingZ, GlassTechBlocks.constructionFoamBlock.id);
                         foamPlaced++;
                         if (foamPlaced >= charges) {
-                            break;
+                            return foamPlaced;
                         }
                     }
                     else if (state.contains(GTProperties.FOAM) && state.get(GTProperties.FOAM) == 0) {
                         world.setBlockState(placingX, placingY, placingZ, state.with(GTProperties.FOAM, 1));
                         foamPlaced++;
                         if (foamPlaced >= charges) {
-                            break;
+                            return foamPlaced;
                         }
                     }
                 }

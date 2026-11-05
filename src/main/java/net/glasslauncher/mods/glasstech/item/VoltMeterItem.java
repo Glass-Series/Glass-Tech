@@ -18,6 +18,7 @@ import net.glasslauncher.mods.glasstech.blocks.machine.PowerStorageBlockEntityTe
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.hit.HitResult;
+import net.minecraft.util.hit.HitResultType;
 import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.template.item.TemplateItem;
 import net.modificationstation.stationapi.api.util.Formatting;
@@ -38,7 +39,7 @@ public class VoltMeterItem extends TemplateItem {
     @Environment(EnvType.CLIENT)
     public static void renderHud() {
         HitResult hitResult = Minecraft.INSTANCE.crosshairTarget;
-        if (hitResult == null) {
+        if (hitResult == null || hitResult.type != HitResultType.BLOCK) {
             return;
         }
         List<Object> tooltip = new ArrayList<>();

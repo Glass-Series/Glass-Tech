@@ -58,8 +58,8 @@ public class PainterItem extends TemplateItem {
             world.setBlockState(x, y, z, state);
             world.playSound(player, "random.click", 0.5f, 1);
             stack.damage(1, player);
-            if (stack.getDamage() == stack.getMaxDamage() - 1) {
-                nbt.putString("color", "");
+            if (stack.getDamage() >= stack.getMaxDamage() - 1) {
+                nbt.entries.remove("color");
             }
             return true;
         }
@@ -67,7 +67,7 @@ public class PainterItem extends TemplateItem {
             world.setBlockMeta(x, y, z, foamColor.woolMeta);
             world.playSound(player, "random.click", 0.5f, 1);
             stack.damage(1, player);
-            if (stack.getDamage() == stack.getMaxDamage() - 1) {
+            if (stack.getDamage() >= stack.getMaxDamage() - 1) {
                 nbt.entries.remove("color");
             }
             return true;
