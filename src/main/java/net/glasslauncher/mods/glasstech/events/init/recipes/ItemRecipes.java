@@ -39,7 +39,7 @@ public class ItemRecipes {
 
         addS(uraniumCell, reEnrichedUraniumCell, tagKey("dusts/coal"));
         addS(bioCell, emptyCell, compressedPlantBall);
-        addS(hydratedCoalCell, emptyCell, compressedHydratedCoalDust);
+        addS(hydratedCoalCell, emptyCell, compressedHydratedCoal);
         addS(waterCell, emptyCell, tagKey("buckets/water"));
         addS(lavaCell, emptyCell, tagKey("buckets/lava"));
         addS(Block.OBSIDIAN, waterCell, waterCell, lavaCell, lavaCell);

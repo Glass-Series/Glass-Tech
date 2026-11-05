@@ -118,7 +118,6 @@ public class GlassTechItems {
     public static Item nearDepletedUraniumCell;
     public static Item bioCell;
     public static Item coalfuelCell;
-    public static Item compressedHydratedCoalDust;
     public static Item sail;
 
     public static Item reinforcedDoor;
@@ -248,7 +247,6 @@ public class GlassTechItems {
         nearDepletedUraniumCell = new TemplateItem(NAMESPACE.id("near_depleted_uranium_cell"));
         bioCell = new TemplateItem(NAMESPACE.id("bio_cell"));
         coalfuelCell = new TemplateItem(NAMESPACE.id("coalfuel_cell"));
-        compressedHydratedCoalDust = new TemplateItem(NAMESPACE.id("compressed_hydrated_coal_dust"));
         sail = new TemplateItem(NAMESPACE.id("sail"));
         reinforcedDoor = new GTDoorBlock.GTDoorItem(NAMESPACE.id("reinforced_door"), Material.METAL, GlassTechBlocks.reinforcedDoorBlock);
         biofuelCell = new TemplateItem(NAMESPACE.id("biofuel_cell"));

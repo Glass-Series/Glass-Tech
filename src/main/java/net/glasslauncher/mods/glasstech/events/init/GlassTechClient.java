@@ -137,6 +137,7 @@ public class GlassTechClient {
         GlassTechItems.cfPellet.setTexture(NAMESPACE.id("item/resource/cf_pellet"));
         GlassTechItems.compressedCoalBall.setTexture(NAMESPACE.id("item/resource/compressed_coal_ball"));
         GlassTechItems.coalChunk.setTexture(NAMESPACE.id("item/resource/coal_chunk"));
+        GlassTechItems.hydratedCoalCell.setTexture(NAMESPACE.id("item/resource/hydrated_coal_cell"));
         GlassTechItems.silverDust.setTexture(NAMESPACE.id("item/resource/silver_dust"));
 
         GlassTechItems.circuit.setTexture(NAMESPACE.id("item/electronic_circuit"));
@@ -252,7 +253,6 @@ public class GlassTechClient {
         GlassTechItems.nearDepletedUraniumCell.setTexture(NAMESPACE.id("item/resource/near_depleted_uranium_cell"));
         GlassTechItems.bioCell.setTexture(NAMESPACE.id("item/resource/bio_cell"));
         GlassTechItems.coalfuelCell.setTexture(NAMESPACE.id("item/resource/coalfuel_cell"));
-        GlassTechItems.compressedHydratedCoalDust.setTexture(NAMESPACE.id("item/resource/compressed_hydrated_coal"));
         GlassTechItems.sail.setTexture(NAMESPACE.id("item/resource/sail"));
         GlassTechItems.reinforcedDoor.setTexture(NAMESPACE.id("item/reinforced_door"));
         GlassTechItems.biofuelCell.setTexture(NAMESPACE.id("item/resource/biofuel_cell"));
