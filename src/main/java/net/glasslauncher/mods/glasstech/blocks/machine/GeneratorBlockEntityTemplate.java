@@ -23,7 +23,7 @@ public abstract class GeneratorBlockEntityTemplate extends EnergySourceBlockEnti
 
     public GeneratorBlockEntityTemplate(VoltageTier voltageTier) {
         outputVoltage = voltageTier.maxVoltage;
-        maxOutputVoltage = 10;
+        maxOutputVoltage = voltageTier.maxVoltage;
         setMaxOutputAmps(maxOutputAmps);
     }
 

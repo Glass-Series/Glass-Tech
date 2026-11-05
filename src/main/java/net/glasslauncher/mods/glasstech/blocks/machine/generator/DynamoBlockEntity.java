@@ -38,12 +38,12 @@ public class DynamoBlockEntity extends GeneratorWithInventoryBlockEntityTemplate
                 world.setBlockState(x, y, z, state.with(Properties.LIT, true));
                 FurnaceBlock.ignoreBlockRemoval = false;
             }
+
+            markDirty();
         }
         if (energy > getEnergyCapacity()) {
             energy = getEnergyCapacity();
         }
-
-        markDirty();
     }
 
     @Override

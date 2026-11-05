@@ -32,7 +32,7 @@ public abstract class ProgressMachineBlockEntityTemplate extends MachineBlockEnt
     public void processTick() {
         // Check if we can process the current input
         if (canProcess()) {
-            if (energy > energyConsumption) {
+            if (energy >= energyConsumption) {
                 removeEnergy(energyConsumption);
                 // If we can process and have the energy, process the recipe
                 progress += PROGRESS_UNIT;

@@ -99,19 +99,21 @@ public class MinerBlockEntity extends ProgressMachineBlockEntityTemplate {
     public void retract(boolean forceEject) {
         retracted = true;
         BlockPos end = getEndOfDrill();
-        for (int removeY = y - 1; removeY >= end.y + 1; removeY--) {
-            WorldHelper.breakBlockWithParticles(world, x, removeY, z, GlassTechBlocks.miningPipeBlock.id);
-        }
-        int pipeCount = y - (end.y + 1);
-        if (pipeCount < 1) {
-            return;
-        }
         if (heldItems == null) {
             heldItems = new ArrayList<>();
         }
-        for (int pipeStack = (int) Math.ceil(pipeCount / 64f); pipeStack > 0; pipeStack--) {
-            heldItems.add(new ItemStack(GlassTechBlocks.miningPipeBlock, Math.min(pipeCount, 64)));
-            pipeCount -= 64;
+        if (end != null) {
+            for (int removeY = y - 1; removeY >= end.y + 1; removeY--) {
+                WorldHelper.breakBlockWithParticles(world, x, removeY, z, GlassTechBlocks.miningPipeBlock.id);
+            }
+            int pipeCount = y - (end.y + 1);
+            if (pipeCount < 1) {
+                return;
+            }
+            for (int pipeStack = (int) Math.ceil(pipeCount / 64f); pipeStack > 0; pipeStack--) {
+                heldItems.add(new ItemStack(GlassTechBlocks.miningPipeBlock, Math.min(pipeCount, 64)));
+                pipeCount -= 64;
+            }
         }
         yeetItems(forceEject);
     }

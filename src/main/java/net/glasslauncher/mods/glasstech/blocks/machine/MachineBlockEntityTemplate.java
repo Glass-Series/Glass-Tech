@@ -66,19 +66,20 @@ public abstract class MachineBlockEntityTemplate extends ConsumerBlockEntityTemp
     public void tick() {
         super.tick();
 
+        if (world.isRemote) {
+            return;
+        }
+
         consumeFuel();
+        processTick();
 
-        if (!world.isRemote) {
-            processTick();
-
-            // Update lit state
-            BlockState blockState = world.getBlockState(this.x, this.y, this.z);
-            if (blockState.contains(Properties.LIT)) {
-                if (!lit && blockState.get(Properties.LIT)) {
-                    world.setBlockState(this.x, this.y, this.z, blockState.with(Properties.LIT, false));
-                } else if (lit && !blockState.get(Properties.LIT)) {
-                    world.setBlockState(this.x, this.y, this.z, blockState.with(Properties.LIT, true));
-                }
+        // Update lit state
+        BlockState blockState = world.getBlockState(this.x, this.y, this.z);
+        if (blockState.contains(Properties.LIT)) {
+            if (!lit && blockState.get(Properties.LIT)) {
+                world.setBlockState(this.x, this.y, this.z, blockState.with(Properties.LIT, false));
+            } else if (lit && !blockState.get(Properties.LIT)) {
+                world.setBlockState(this.x, this.y, this.z, blockState.with(Properties.LIT, true));
             }
         }
     }
