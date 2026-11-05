@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 // Thanks dany, I have now stolen your code
 public class BlockWalker {
-    public static Vec3i[] ADJACENT_SEARCH_OFFSETS = new Vec3i[] {
+    public static final Vec3i[] ADJACENT_SEARCH_OFFSETS = new Vec3i[] {
             // Top and Bottom
             new Vec3i(0, 1, 0),
             new Vec3i(0, -1, 0),

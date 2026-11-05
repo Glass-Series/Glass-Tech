@@ -5,6 +5,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.Vec3d;
 
 public interface GTJetPackTick extends GTArmorPlayerTick {
+    // This should be ran on server and client, due to the fact the server doesn't tell the client player their velocity and position fast enough.
     @Override
     default void tick(PlayerEntity player, int armorSlot) {
         ItemStack jetPack = player.inventory.armor[armorSlot];

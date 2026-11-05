@@ -39,7 +39,7 @@ public enum VoltageTier {
     }
 
     public String fullName() {
-        return TranslationStorage.getInstance().getClientTranslation(translationKey);
+        return TranslationStorage.getInstance().get(translationKey + ".name");
     }
 
     public VoltageTier stepUp() {

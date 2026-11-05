@@ -48,6 +48,9 @@
     "stationapi": "*",
     "gcapi3": "*",
     "glassguis": "*",
-    "nyalib": "*"
+    "nyalib": "*",
+    "uniwrench": "*",
+    "glassnetworking": "*",
+    "alwaysmoreitems": "*"
   }
 }
