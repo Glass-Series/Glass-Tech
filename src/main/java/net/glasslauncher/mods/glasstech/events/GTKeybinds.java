@@ -35,9 +35,9 @@ public class GTKeybinds {
             Minecraft.INSTANCE.player.glasstech$setHoldingAbilityKey(Keyboard.getEventKeyState());
         }
         else if (Keyboard.getEventKey() == HOVER_MODE.code && Keyboard.getEventKeyState()) {
-            PacketHelper.send(new C2SJetpackModePacket());
             PlayerEntity player = Minecraft.INSTANCE.player;
             player.glasstech$setHovering(!player.glasstech$isHovering());
+            PacketHelper.send(new C2SJetpackModePacket(player.glasstech$isHovering()));
             player.sendMessage("Hovering: " + player.glasstech$isHovering());
         }
         else if (Keyboard.getEventKey() == TOOL_MODE.code && Keyboard.getEventKeyState()) {
