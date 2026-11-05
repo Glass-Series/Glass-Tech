@@ -7,7 +7,9 @@ public class SlotType {
     private static final HashMap<String, SlotType> REGISTRY = new HashMap<>();
 
     public static SlotType register(String name) {
-        return REGISTRY.put(name, new SlotType(name));
+        SlotType type = new SlotType(name);
+        REGISTRY.put(name, type);
+        return type;
     }
 
     public static SlotType of(String name) {
@@ -18,7 +20,7 @@ public class SlotType {
         return REGISTRY.values().iterator();
     }
 
-    public static final SlotType FUEL = new SlotType("fuel");
+    public static final SlotType FUEL = register("fuel");
 
     public final String name;
 
