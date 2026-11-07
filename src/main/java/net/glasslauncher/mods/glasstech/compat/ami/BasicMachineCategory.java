@@ -21,7 +21,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-public class BasicMachineCategory<T extends MachineScreenTemplate<V>, V extends RecipeBlockEntityTemplate<?>> implements RecipeCategory {
+public class BasicMachineCategory<T extends MachineScreenTemplate<V>, V extends RecipeBlockEntityTemplate<?, V>> implements RecipeCategory {
     private final AMIDrawable slotAutoDraw;
 
     private final String type;

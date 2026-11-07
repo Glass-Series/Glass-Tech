@@ -68,7 +68,7 @@ public class GlassTechAMIPlugin implements ModPluginProvider {
     }
 
     @Environment(EnvType.CLIENT)
-    private <T extends MachineScreenTemplate<V>, V extends RecipeBlockEntityTemplate<?>, C extends BasicMachineRecipe> void registerMachine(ModRegistry registry, Class<C> cls, String name, RecipeRegistryTemplate<C> recipeRegistry, T screenTemplate) {
+    private <T extends MachineScreenTemplate<V>, V extends RecipeBlockEntityTemplate<?, V>, C extends BasicMachineRecipe> void registerMachine(ModRegistry registry, Class<C> cls, String name, RecipeRegistryTemplate<C> recipeRegistry, T screenTemplate) {
         BasicMachineCategory<T, V> basicMachineCategory = new BasicMachineCategory<>("glasstech_" + name, name, screenTemplate);
         registry.addRecipeCategories(
                 basicMachineCategory

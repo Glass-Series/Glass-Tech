@@ -28,6 +28,10 @@ public interface GTMachineInventory extends Inventory, DropInventoryOnBreak, Ite
 //    public final HashMap<RecipeOutputType, int[]> outputs = blankOutputs();
 //    @Getter
 //    public final HashMap<SlotType, int[]> slots = blankInputs();
+//    @Getter
+//    public final ScreenHandler inventoryFilterHandler = initInventoryFilterHandler();
+//
+//    protected abstract ScreenHandler initInventoryFilterHandler();
 //
 //    @Override
 //    public void increaseInventoryIndex() {

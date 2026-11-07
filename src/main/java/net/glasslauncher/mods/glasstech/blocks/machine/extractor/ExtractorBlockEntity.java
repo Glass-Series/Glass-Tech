@@ -8,7 +8,7 @@ import net.glasslauncher.mods.glasstech.recipe.machine.ExtractorRecipeRegistry;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandler;
 
-public class ExtractorBlockEntity extends RecipeBlockEntityTemplate<BasicMachineRecipe> {
+public class ExtractorBlockEntity extends RecipeBlockEntityTemplate<BasicMachineRecipe, ExtractorBlockEntity> {
 
     public ExtractorBlockEntity() {
         super(VoltageTier.LV, 300, 2);

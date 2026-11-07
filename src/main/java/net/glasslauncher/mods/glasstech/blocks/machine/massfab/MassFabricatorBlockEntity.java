@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.screen.ScreenHandler;
 
-public class MassFabricatorBlockEntity extends MachineBlockEntityTemplate {
+public class MassFabricatorBlockEntity extends MachineBlockEntityTemplate<MassFabricatorBlockEntity> {
     @Getter
     protected int progress;
     @Getter

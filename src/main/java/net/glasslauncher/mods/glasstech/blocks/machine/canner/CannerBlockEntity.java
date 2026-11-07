@@ -16,7 +16,7 @@ import net.glasslauncher.mods.glasstech.recipe.machine.output.RecipeOutputType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandler;
 
-public class CannerBlockEntity extends RecipeBlockEntityTemplate<BasicMachineRecipe> {
+public class CannerBlockEntity extends RecipeBlockEntityTemplate<BasicMachineRecipe, CannerBlockEntity> {
 
     public CannerBlockEntity() {
         super(VoltageTier.LV, 600, 3);

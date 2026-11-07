@@ -8,7 +8,7 @@ import net.glasslauncher.mods.glasstech.recipe.machine.CompressorRecipeRegistry;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandler;
 
-public class CompressorBlockEntity extends RecipeBlockEntityTemplate<BasicMachineRecipe> {
+public class CompressorBlockEntity extends RecipeBlockEntityTemplate<BasicMachineRecipe, CompressorBlockEntity> {
 
     public CompressorBlockEntity() {
         super(VoltageTier.LV, 300, 2);

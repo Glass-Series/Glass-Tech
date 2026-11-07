@@ -8,7 +8,7 @@ import net.glasslauncher.mods.glasstech.recipe.machine.MaceratorRecipeRegistry;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandler;
 
-public class MaceratorBlockEntity extends RecipeBlockEntityTemplate<BasicMachineRecipe> {
+public class MaceratorBlockEntity extends RecipeBlockEntityTemplate<BasicMachineRecipe, MaceratorBlockEntity> {
 
     public MaceratorBlockEntity() {
         super(VoltageTier.LV, 300, 2);

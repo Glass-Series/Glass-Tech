@@ -72,7 +72,9 @@ public class ConsumerBlockEntityTemplate extends EnergyConsumerBlockEntityTempla
 
     @Override
     public void tick() {
-        energyCapacity = originalEnergyCapacity;
+        if (!world.isRemote) {
+            energyCapacity = originalEnergyCapacity;
+        }
         super.tick();
     }
 }

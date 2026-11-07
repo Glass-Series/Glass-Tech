@@ -6,6 +6,7 @@ import net.danygames2014.nyalib.capability.CapabilityHelper;
 import net.danygames2014.nyalib.capability.item.energyhandler.EnergyStorageItemCapability;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.glasslauncher.mods.glasstech.blocks.GTTooltipInfo;
+import net.glasslauncher.mods.glasstech.events.GTMachineListenerList;
 import net.glasslauncher.mods.glasstech.item.SingleUsePowerCapability;
 import net.glasslauncher.mods.glasstech.recipe.machine.output.RecipeOutputType;
 import net.minecraft.entity.player.PlayerEntity;
@@ -19,8 +20,7 @@ import net.modificationstation.stationapi.api.state.property.Properties;
 import java.util.HashMap;
 import java.util.Random;
 
-// Holy shit this is a giga monolithic class
-public abstract class MachineBlockEntityTemplate extends ConsumerBlockEntityTemplate implements GTMachineInventory, GTTooltipInfo {
+public abstract class MachineBlockEntityTemplate<T extends MachineBlockEntityTemplate<T>> extends ConsumerBlockEntityTemplate implements GTMachineInventory, GTTooltipInfo {
     // Properties
     public int energyConsumption;
 
@@ -38,11 +38,14 @@ public abstract class MachineBlockEntityTemplate extends ConsumerBlockEntityTemp
     @Getter @Setter
     public int[] inputSlots = new int[0];
     @Getter
-    public final HashMap<RecipeOutputType, int[]>outputs = blankOutputs();
+    public final HashMap<RecipeOutputType, int[]> outputs = blankOutputs();
     @Getter
     public final HashMap<SlotType, int[]> slots = blankInputs();
     @Getter
     public final ScreenHandler inventoryFilterHandler = initInventoryFilterHandler();
+
+    @SuppressWarnings("unchecked") // SpoOooky
+    public final GTMachineListenerList<T> listenerList = (GTMachineListenerList<T>) GTMachineListenerList.getOrInitListenerList(this.getClass());
 
     protected abstract ScreenHandler initInventoryFilterHandler();
 
@@ -64,14 +67,25 @@ public abstract class MachineBlockEntityTemplate extends ConsumerBlockEntityTemp
 
     @Override
     public void tick() {
-        super.tick();
+        super.tick(); // This just resets energy capacity and energy consumed this tick to default and 0, respectively.
 
         if (world.isRemote) {
             return;
         }
 
+        //noinspection unchecked
+        listenerList.preTick((T) this);
+
         consumeFuel();
-        processTick();
+        //noinspection unchecked
+        listenerList.onTick((T) this);
+        //noinspection unchecked
+        if (!listenerList.interruptMachine((T) this)) {
+            processTick();
+        }
+
+        //noinspection unchecked
+        listenerList.postTick((T) this);
 
         // Update lit state
         BlockState blockState = world.getBlockState(this.x, this.y, this.z);

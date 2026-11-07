@@ -14,7 +14,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandler;
 import net.modificationstation.stationapi.api.recipe.SmeltingRegistry;
 
-public class ElectricFurnaceBlockEntity extends RecipeBlockEntityTemplate<BasicMachineRecipe> implements Inventory {
+public class ElectricFurnaceBlockEntity extends RecipeBlockEntityTemplate<BasicMachineRecipe, ElectricFurnaceBlockEntity> implements Inventory {
     public static Int2ObjectMap<BasicMachineRecipe> CACHE = new Int2ObjectOpenHashMap<>();
 
     public ElectricFurnaceBlockEntity() {

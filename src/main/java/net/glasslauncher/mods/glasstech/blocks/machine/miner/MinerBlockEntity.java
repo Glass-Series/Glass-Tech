@@ -28,10 +28,10 @@ import net.modificationstation.stationapi.api.util.math.Direction;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MinerBlockEntity extends ProgressMachineBlockEntityTemplate {
+public class MinerBlockEntity extends ProgressMachineBlockEntityTemplate<MinerBlockEntity> {
     public static final TagKey<Block> ORES_TAG = TagKey.of(BlockRegistry.KEY, Identifier.of("c:ores"));
 
-    public static BlockWalker.WalkValidator MINING_FILTER = ((world, x, y, z) -> world.getBlockState(x, y, z).isIn(ORES_TAG) && canMine(world, x, y, z));
+    public static BlockWalker.WalkValidator MINING_FILTER = ((world, x, y, z) -> world.getBlockState(x, y, z).isIn(ORES_TAG, world, x, y, z) && canMine(world, x, y, z));
 
     protected ArrayList<BlockPos> queue;
     protected List<ItemStack> heldItems;

@@ -17,7 +17,7 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.screen.ScreenHandler;
 import net.modificationstation.stationapi.api.recipe.SmeltingRegistry;
 
-public class InductionFurnaceBlockEntity extends RecipeBlockEntityTemplate<BasicMachineRecipe> implements Inventory {
+public class InductionFurnaceBlockEntity extends RecipeBlockEntityTemplate<BasicMachineRecipe, InductionFurnaceBlockEntity> implements Inventory {
     @Getter @Setter @ServerSyncedField
     private int maxHeat = 10000;
     @Getter @Setter @ServerSyncedField

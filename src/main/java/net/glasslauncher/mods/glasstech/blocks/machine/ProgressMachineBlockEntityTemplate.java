@@ -5,7 +5,7 @@ import net.glasslauncher.mods.glassguis.screen.ServerSyncedField;
 import net.glasslauncher.mods.glasstech.VoltageTier;
 import net.minecraft.nbt.NbtCompound;
 
-public abstract class ProgressMachineBlockEntityTemplate extends MachineBlockEntityTemplate {
+public abstract class ProgressMachineBlockEntityTemplate<T extends ProgressMachineBlockEntityTemplate<T>> extends MachineBlockEntityTemplate<T> {
     public static final int PROGRESS_UNIT = 4; // Gotta avoid using floats here
 
     // Progress

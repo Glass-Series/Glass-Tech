@@ -8,7 +8,7 @@ import net.glasslauncher.mods.glasstech.recipe.machine.BasicMachineRecipe;
 import net.glasslauncher.mods.glasstech.recipe.machine.output.RecipeOutput;
 import net.minecraft.item.ItemStack;
 
-public abstract class RecipeBlockEntityTemplate<R extends BasicMachineRecipe> extends ProgressMachineBlockEntityTemplate {
+public abstract class RecipeBlockEntityTemplate<R extends BasicMachineRecipe, T extends RecipeBlockEntityTemplate<R, T>> extends ProgressMachineBlockEntityTemplate<T> {
     @ServerSyncedField
     @Getter @Setter
     private int currentShortestTime = Integer.MAX_VALUE;
@@ -28,6 +28,10 @@ public abstract class RecipeBlockEntityTemplate<R extends BasicMachineRecipe> ex
     }
 
     public boolean tryCraft(boolean simulate) {
+        //noinspection unchecked
+        if (!listenerList.canCraft((T) this)) {
+            return false;
+        }
         return craft(null, simulate);
     }
 
@@ -43,6 +47,8 @@ public abstract class RecipeBlockEntityTemplate<R extends BasicMachineRecipe> ex
         }
 
         tryCraft(false);
+        //noinspection unchecked
+        listenerList.postCraft((T) this);
     }
 
     public boolean craft(int[] inputIndexes, boolean simulate) {

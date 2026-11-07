@@ -20,7 +20,7 @@ import java.util.List;
 
 import static net.glasslauncher.mods.glasstech.blocks.machine.SlotLayout.GAUGE_LOCATION;
 
-public abstract class MachineScreenTemplate<T extends MachineBlockEntityTemplate> extends HandledScreen {
+public abstract class MachineScreenTemplate<T extends MachineBlockEntityTemplate<T>> extends HandledScreen {
     protected final PlayerInventory playerInventory;
     public final T blockEntity;
 

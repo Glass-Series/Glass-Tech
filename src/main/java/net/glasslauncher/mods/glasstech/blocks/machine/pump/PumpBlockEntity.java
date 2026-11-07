@@ -14,7 +14,7 @@ import net.modificationstation.stationapi.api.block.BlockState;
 import net.modificationstation.stationapi.api.util.math.Direction;
 import org.jetbrains.annotations.Nullable;
 
-public class PumpBlockEntity extends ProgressMachineBlockEntityTemplate implements FluidHandler {
+public class PumpBlockEntity extends ProgressMachineBlockEntityTemplate<PumpBlockEntity> implements FluidHandler {
     protected FluidStack currentFluid;
     protected int maxFluidAmount = 4000;
 

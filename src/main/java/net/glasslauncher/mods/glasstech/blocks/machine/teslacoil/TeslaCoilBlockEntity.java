@@ -9,7 +9,7 @@ import net.minecraft.util.math.Box;
 
 import java.util.List;
 
-public class TeslaCoilBlockEntity extends ProgressMachineBlockEntityTemplate {
+public class TeslaCoilBlockEntity extends ProgressMachineBlockEntityTemplate<TeslaCoilBlockEntity> {
 
     public TeslaCoilBlockEntity() {
         super(VoltageTier.MV, VoltageTier.MV.maxVoltage * 20, VoltageTier.MV.maxVoltage, VoltageTier.MV.maxVoltage * 2);

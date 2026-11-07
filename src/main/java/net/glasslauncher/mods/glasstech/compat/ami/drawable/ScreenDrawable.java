@@ -11,7 +11,7 @@ import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 import org.jetbrains.annotations.NotNull;
 
-public class ScreenDrawable<T extends MachineScreenTemplate<V>, V extends RecipeBlockEntityTemplate<?>> implements AMIDrawable {
+public class ScreenDrawable<T extends MachineScreenTemplate<V>, V extends RecipeBlockEntityTemplate<?, V>> implements AMIDrawable {
     private final ScreenHandler fakeInventory;
     private final T screen;
 

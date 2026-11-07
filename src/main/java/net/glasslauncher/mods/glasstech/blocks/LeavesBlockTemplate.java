@@ -103,7 +103,7 @@ public class LeavesBlockTemplate extends TemplateBlock {
 
     public int getDistance(World world, int x, int y, int z) {
         BlockState state = world.getBlockState(x, y, z);
-        if (state.isIn(BlockTags.LOGS)) {
+        if (state.isIn(BlockTags.LOGS, world, x, y, z)) {
             return 0;
         } else if (state.contains(LEAVES_DISTANCE)) {
             return state.get(LEAVES_DISTANCE);

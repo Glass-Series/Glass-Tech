@@ -13,7 +13,7 @@ import net.minecraft.screen.ScreenHandler;
 
 import java.util.List;
 
-public class RecyclerBlockEntity extends RecipeBlockEntityTemplate<BasicMachineRecipe> {
+public class RecyclerBlockEntity extends RecipeBlockEntityTemplate<BasicMachineRecipe, RecyclerBlockEntity> {
     public static final BasicMachineRecipe RECIPE = new BasicMachineRecipe(new RecipeInput() {
         @Override
         public boolean matches(ItemStack other) {

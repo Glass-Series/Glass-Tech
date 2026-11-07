@@ -6,6 +6,7 @@ import net.glasslauncher.mods.glasstech.events.init.GlassTechBlocks;
 import net.minecraft.block.Block;
 import net.modificationstation.stationapi.api.registry.BlockRegistry;
 import net.modificationstation.stationapi.api.tag.TagKey;
+import net.modificationstation.stationapi.api.tag.context.TagEvaluationContext;
 import net.modificationstation.stationapi.api.util.Identifier;
 
 public class OreScannerRegistry {
@@ -14,7 +15,7 @@ public class OreScannerRegistry {
     public static void initDefaults() {
         TagKey<Block> oreTag = TagKey.of(BlockRegistry.KEY, Identifier.of("c:ores"));
         for (Block block : Block.BLOCKS) {
-            if (BlockRegistry.INSTANCE.getEntry(block).isIn(oreTag)) {
+            if (BlockRegistry.INSTANCE.getEntry(block).isIn(oreTag, TagEvaluationContext.DEFAULT)) {
                 INSTANCE.put(block, 1); // (basic) awareness of other ores
             }
         }

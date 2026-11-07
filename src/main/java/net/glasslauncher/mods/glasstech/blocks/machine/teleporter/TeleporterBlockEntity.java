@@ -13,7 +13,7 @@ import net.minecraft.util.math.Box;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TeleporterBlockEntity extends MachineBlockEntityTemplate {
+public class TeleporterBlockEntity extends MachineBlockEntityTemplate<TeleporterBlockEntity> {
 
     public boolean targetSet;
     public int targetX;

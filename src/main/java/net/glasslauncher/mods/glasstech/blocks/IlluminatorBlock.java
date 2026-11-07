@@ -159,7 +159,7 @@ public class IlluminatorBlock extends MachineBlockTemplate {
         return new IlluminatorBlockEntity();
     }
 
-    public static class IlluminatorBlockEntity extends MachineBlockEntityTemplate {
+    public static class IlluminatorBlockEntity extends MachineBlockEntityTemplate<IlluminatorBlockEntity> {
         int powerTime = 0;
 
         public IlluminatorBlockEntity() {
